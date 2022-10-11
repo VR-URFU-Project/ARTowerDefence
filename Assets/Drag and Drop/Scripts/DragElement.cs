@@ -12,7 +12,6 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private Transform startPos;
     private Canvas parentCanvas;
     private GameObject gamingPlace;
-    [SerializeField] float rayDist;
 
     //private CanvasGroup canvasGroup;
     private void Start()
@@ -81,7 +80,7 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, rayDist))
+        if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.gameObject.name == "Plane")
             {
@@ -90,16 +89,16 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 Instantiate(towerPrefab, new Vector3(hit.point.x, hit.point.y + 0.025f, hit.point.z), Quaternion.identity, gamingPlace.transform);
                 Destroy(gameObject);
             }
-            else if (hit.distance == rayDist)
-            {
-                transform.SetParent(DefaultParentTransform);
-                transform.SetSiblingIndex(0);
-            }
             else
             {
                 transform.SetParent(DefaultParentTransform);
                 transform.SetSiblingIndex(0);
             }
+        }
+        else
+        {
+            transform.SetParent(DefaultParentTransform);
+            transform.SetSiblingIndex(0);
         }
     }
 }

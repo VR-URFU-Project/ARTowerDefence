@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3038635778473629482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 467.46585
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 29.599998
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 200.99847
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9981837
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.060244
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 1073.092
+      objectReference: {fileID: 0}
+    - target: {fileID: 564029391757541181, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 907480903140648327, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}
+      propertyPath: m_Name
+      value: tree house archer tower 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8955814bd53deee43bcb7ae19724973d, type: 3}

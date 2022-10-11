@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3210821275473340118
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 277.17838
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.5999985
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 452.29102
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.664058
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.747681
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 96.78
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3273613560307843734, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 71e833caf5f54634a811f2685bc8c162, type: 2}
+    - target: {fileID: 919132149155446097, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_Name
+      value: goblin try 2 with cloth Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202271454713460447, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97d00340f1a2d1d4e92a52a3f55bf7db, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a26837cf0dba9a54395c8f87c8ac7b68, type: 3}

@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Drag and Drop.unity
+    guid: b67e850607e6a094387ea5c2504b13ca
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: fc842c7e3dde3af46ba1692f798d2c7c, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b4e598e268a97e54bb3e2fc92a4cc348, type: 2}

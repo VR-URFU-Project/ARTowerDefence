@@ -86,7 +86,8 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             {
                 transform.SetParent(DefaultParentTransform);
                 transform.SetSiblingIndex(SiblingIndex);
-                Instantiate(towerPrefab, new Vector3(hit.point.x, hit.point.y + 0.025f, hit.point.z), Quaternion.identity, gamingPlace.transform);
+                Debug.Log($"X: {hit.point.x}, Y: {hit.point.y}, Z:{hit.point.z}");
+                Instantiate(towerPrefab, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity, gamingPlace.transform);
                 Destroy(gameObject);
             }
             else

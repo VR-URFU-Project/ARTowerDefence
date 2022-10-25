@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 7842888822707930003, guid: 39bac95d8d92e154bac70842607717c2, type: 3}
+  holoTower: {fileID: 0}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class Bullet : MonoBehaviour
     private Transform target;
 
     public float speed = 70f;
+
+    public int _damage = 20;
 
     public void Seek(Transform _target)
     {
@@ -32,11 +35,21 @@ public class Bullet : MonoBehaviour
         }
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+        transform.LookAt(target);
     }
 
     void HitTarget()
     {
         Debug.Log("Hitted the target");
+        Damage(target);
         Destroy(gameObject);
+    }
+
+    void Damage(Transform targetEnemy)
+    {
+        EnemyScript e = targetEnemy.transform.parent.GetComponent<EnemyScript>();
+
+        if (e != null)
+            e.TakeDamage(_damage);
     }
 }

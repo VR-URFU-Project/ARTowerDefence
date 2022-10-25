@@ -518,6 +518,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 498914638}
     m_Modifications:
+    - target: {fileID: -7268425234749588112, guid: 83fac1fe239d60e428881013327ffa8e, type: 3}
+      propertyPath: range
+      value: 22.29
+      objectReference: {fileID: 0}
     - target: {fileID: 4942654555698684568, guid: 83fac1fe239d60e428881013327ffa8e, type: 3}
       propertyPath: m_Name
       value: Canon

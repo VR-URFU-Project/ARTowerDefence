@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wire_153228214
-    second: {fileID: 6238783482728813256, guid: cf7e170391a39794697f3f555dbf591f, type: 3}
+    second: {instanceID: 0}
   materials:
     materialImportMode: 2
     materialName: 0

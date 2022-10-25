@@ -6,11 +6,21 @@ using UnityEngine;
 public class Canon : MonoBehaviour
 {
     private Transform target;
-    [SerializeField]private float range = 15f;
 
+    [Header("Attributes")]
+    [SerializeField]
+    private float range = 15f;
+    public float fireRate = 1f;
+    private float fireCountdown = 0f;
+
+    [Header("Unity Setup Fields")]
     public string EnemyTag = "Enemy";
 
     public Transform partToRotate;
+    public float turnSpeed = 5f;
+
+    public GameObject bulletPrefab;
+    public Transform firePoint;
 
     void Start()
     {
@@ -51,8 +61,28 @@ public class Canon : MonoBehaviour
 
         Vector3 direction = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotationVector = lookRotation.eulerAngles;
+        Vector3 rotationVector = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotationVector.y, 0f);
+
+        if (fireCountdown <= 0f)
+        {
+            Shoot();
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime;
+    }
+
+    void Shoot()
+    {
+        //Debug.Log("SHHHHOOOOOOOOOOTTTTTTT!!!");
+        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        if (bullet != null)
+        {
+            bullet.Seek(target);
+        }
     }
 
     private void OnDrawGizmosSelected()

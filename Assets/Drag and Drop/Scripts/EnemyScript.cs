@@ -13,6 +13,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        target = GameObject.FindGameObjectWithTag("Crystal").transform;
     }
 
     public void TakeDamage(int amount)

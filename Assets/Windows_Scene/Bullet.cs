@@ -31,12 +31,12 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        transform.Translate(direction.normalized * distanceThisFrame); //, Space World);
+        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
 
     void HitTarget()
     {
-        //Debug.Log("Hitted the target");
+        Debug.Log("Hitted the target");
         Destroy(gameObject);
     }
 }

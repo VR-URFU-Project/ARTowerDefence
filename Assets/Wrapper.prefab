@@ -186,7 +186,6 @@ Transform:
   - {fileID: 1388355624555065660}
   - {fileID: 5308228250018413855}
   - {fileID: 8021602047473628717}
-  - {fileID: 9088322160191289477}
   - {fileID: 9138796153281722842}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -884,7 +883,7 @@ Transform:
   - {fileID: 993427403513472639}
   - {fileID: 8981089404455003340}
   m_Father: {fileID: 1388355624723619656}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6375270596838285408
 GameObject:
@@ -1147,69 +1146,3 @@ Transform:
   m_Father: {fileID: 1388355624723619656}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3032567648640738040
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1388355624723619656}
-    m_Modifications:
-    - target: {fileID: 4992148627208608735, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 3495148514378623099}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.8400004
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.7220001
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.7999997
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.7812405
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.6242302
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 282.749
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6881003540716830919, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-      propertyPath: m_Name
-      value: goblin try 2 no cloth run Variant (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
---- !u!4 &9088322160191289477 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6068016587482438269, guid: 617818bd6c4e0db48ad6e58a301acbb6, type: 3}
-  m_PrefabInstance: {fileID: 3032567648640738040}
-  m_PrefabAsset: {fileID: 0}

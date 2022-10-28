@@ -6,6 +6,7 @@ using UnityEngine;
 public class Canon : MonoBehaviour
 {
     private Transform target;
+    private GameObject parent;
 
     [Header("Attributes")]
     [SerializeField]
@@ -25,6 +26,7 @@ public class Canon : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        parent = GameObject.FindGameObjectWithTag("GamingPlace");
     }
 
     void UpdateTarget()
@@ -78,7 +80,7 @@ public class Canon : MonoBehaviour
     void Shoot()
     {
         //Debug.Log("SHHHHOOOOOOOOOOTTTTTTT!!!");
-        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, parent.transform);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null)

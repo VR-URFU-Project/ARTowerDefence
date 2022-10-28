@@ -36,4 +36,9 @@ public class EnemyScript : MonoBehaviour
     {
         agent.SetDestination(target.position);
     }
+
+    public void SetTarget(GameObject newTarget)
+    {
+        target = newTarget.transform;
+    }
 }

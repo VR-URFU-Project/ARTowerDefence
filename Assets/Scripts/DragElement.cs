@@ -74,7 +74,6 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         rect.anchoredPosition += eventData.delta / parentCanvas.scaleFactor;//Camera.main.(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         //Debug.Log($"X: {transform.localPosition.x}\tY: {transform.localPosition.y}\tZ: {transform.localPosition.z}");
 
-        // ниже пытался голограммы сделать
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         //RaycastHit hit;
 
@@ -103,9 +102,7 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 transform.SetParent(DefaultParentTransform);
                 transform.SetSiblingIndex(SiblingIndex);
                 //Debug.Log($"X: {hit.point.x}, Y: {hit.point.y}, Z:{hit.point.z}");
-                //  pos - предполагалось, что эта переменная нужна для корректировки координат спавна
-                //var pos = holoTower.transform.Find("position").position;
-                Instantiate(towerPrefab, new Vector3(hit.point.x /*+ pos.x*/, hit.point.y /*+ pos.y*/, hit.point.z /*+ pos.z*/), Quaternion.identity, gamingPlace.transform);
+                Instantiate(towerPrefab, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity, gamingPlace.transform);
                 Destroy(gameObject);
             }
             else

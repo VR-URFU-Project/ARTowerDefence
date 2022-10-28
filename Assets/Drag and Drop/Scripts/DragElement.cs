@@ -74,19 +74,20 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         rect.anchoredPosition += eventData.delta / parentCanvas.scaleFactor;//Camera.main.(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         //Debug.Log($"X: {transform.localPosition.x}\tY: {transform.localPosition.y}\tZ: {transform.localPosition.z}");
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+        // ниже пытался голограммы сделать
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.collider.gameObject.name == "Plane")
-            {
-                transform.SetParent(DefaultParentTransform);
-                transform.SetSiblingIndex(SiblingIndex);
-                Instantiate(holoTower, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity, gamingPlace.transform);
-                holoTower.transform.Translate(new Vector3(hit.point.x, hit.point.y, hit.point.z), Space.World);
-            }
-        }
+        //if (Physics.Raycast(ray, out hit))
+        //{
+        //    if (hit.collider.gameObject.name == "Plane")
+        //    {
+        //        transform.SetParent(DefaultParentTransform);
+        //        transform.SetSiblingIndex(SiblingIndex);
+        //        Instantiate(holoTower, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity, gamingPlace.transform);
+        //        holoTower.transform.Translate(new Vector3(hit.point.x, hit.point.y, hit.point.z), Space.World);
+        //    }
+        //}
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -102,7 +103,9 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 transform.SetParent(DefaultParentTransform);
                 transform.SetSiblingIndex(SiblingIndex);
                 //Debug.Log($"X: {hit.point.x}, Y: {hit.point.y}, Z:{hit.point.z}");
-                Instantiate(towerPrefab, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity, gamingPlace.transform);
+                //  pos - предполагалось, что эта переменная нужна для корректировки координат спавна
+                //var pos = holoTower.transform.Find("position").position;
+                Instantiate(towerPrefab, new Vector3(hit.point.x /*+ pos.x*/, hit.point.y /*+ pos.y*/, hit.point.z /*+ pos.z*/), Quaternion.identity, gamingPlace.transform);
                 Destroy(gameObject);
             }
             else

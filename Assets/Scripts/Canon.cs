@@ -6,6 +6,8 @@ using UnityEngine;
 public class Canon : MonoBehaviour
 {
     private Transform target;
+    // вторая цель для дерева с лучниками
+    //private Transform target_2;
     private GameObject parent;
 
     [Header("Attributes")]
@@ -37,10 +39,10 @@ public class Canon : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, //enemy.transform.position);
-                                                        new Vector3(enemy.transform.position.x,
-                                                                     enemy.transform.position.y + 2.96f,
-                                                                     enemy.transform.position.z));
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                                                        //new Vector3(enemy.transform.position.x,
+                                                        //             enemy.transform.position.y + 2.96f,
+                                                        //             enemy.transform.position.z));
             if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;

@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de03cf63867598c44a5690d68f43b233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 7842888822707930003, guid: 1c1751a1929779740add2aaaece73ffa, type: 3}
+  towerPrefab: {fileID: 6991681139334568636, guid: 0fe27caf538fb4849ab207d6cf1e7c40, type: 3}
   holoTower: {fileID: 7842888822707930003, guid: 39bac95d8d92e154bac70842607717c2, type: 3}

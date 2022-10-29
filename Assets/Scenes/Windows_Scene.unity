@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: create2_Win
       objectReference: {fileID: 0}
+    - target: {fileID: 2351717961538998995, guid: b91b92a04ae7c5241911c83b8a9be558, type: 3}
+      propertyPath: Count
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2351717961538999008, guid: b91b92a04ae7c5241911c83b8a9be558, type: 3}
       propertyPath: m_Camera
       value: 
@@ -295,6 +299,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6344616908489589731, guid: b91b92a04ae7c5241911c83b8a9be558, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 286b349485ce0f44bb8e5eee6d1ebcc0, type: 2}
     - target: {fileID: 8373507371521032335, guid: b91b92a04ae7c5241911c83b8a9be558, type: 3}
       propertyPath: EnemyPrefab
       value: 

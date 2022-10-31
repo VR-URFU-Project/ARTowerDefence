@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -8,6 +8,10 @@ public class WaveData
     public List<SubwaveData> Data = new List<SubwaveData>();
     public int SubwavesCount => Data.Count();
 
+    /// <summary>
+    /// Добавляет волне подволну, расшифрованную из строки
+    /// </summary>
+    /// <param name="description"></param>
     public void AddSubwave(string description)
     {
         var subwave = new SubwaveData();

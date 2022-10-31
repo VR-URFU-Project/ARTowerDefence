@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,10 @@ public class SubwaveData
     public int Duration;
     public List<MonsterData> Monsters = new List<MonsterData>();
 
+    /// <summary>
+    /// Парсит строку с врагами и записывает их в список
+    /// </summary>
+    /// <param name="wave"></param>
     public void GenerateEnemies(string wave)
     {
         var parts = wave.Split('+').Select(x => x.Trim()).ToList();
@@ -16,16 +20,20 @@ public class SubwaveData
             switch (part[part.Length - 1])
             {
                 case 'g':
-                    Monsters.Add(MonsterController.GetGoblin());
+                    for(int i=0; i< int.Parse(part.Substring(0, part.Length - 1)); ++i)
+                        Monsters.Add(MonsterController.GetGoblin());
                     break;
                 case 'w':
-                    Monsters.Add(MonsterController.GetWolf());
+                    for (int i = 0; i < int.Parse(part.Substring(0, part.Length - 1)); ++i)
+                        Monsters.Add(MonsterController.GetWolf());
                     break;
                 case 'o':
-                    Monsters.Add(MonsterController.GetOrc());
+                    for (int i = 0; i < int.Parse(part.Substring(0, part.Length - 1)); ++i)
+                        Monsters.Add(MonsterController.GetOrc());
                     break;
                 case 'h':
-                    Monsters.Add(MonsterController.GetHarpy());
+                    for (int i = 0; i < int.Parse(part.Substring(0, part.Length - 1)); ++i)
+                        Monsters.Add(MonsterController.GetHarpy());
                     break;
             }
         }

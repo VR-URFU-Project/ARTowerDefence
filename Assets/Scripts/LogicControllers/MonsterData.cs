@@ -1,6 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Данные монстра
+/// </summary>
 public class MonsterData
 {
     public string Name;

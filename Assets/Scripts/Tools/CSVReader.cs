@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -6,6 +6,9 @@ using System.Globalization;
 
 public static class CSVReader
 {
+    /// <summary>
+    /// Возвращает список существующих монстров с характеристиками
+    /// </summary>
     public static List<MonsterData> ReadMonsterData()
     {
         var strData = Resources
@@ -60,6 +63,9 @@ public static class CSVReader
         return mobsData;
     }
 
+    /// <summary>
+    /// Возвращает список волн с информацией по ним
+    /// </summary>
     public static List<WaveData> ReadWaveData()
     {
         var strData = Resources

@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 6991681139334568636, guid: 0fe27caf538fb4849ab207d6cf1e7c40, type: 3}
-  holoTower: {fileID: 7842888822707930003, guid: 39bac95d8d92e154bac70842607717c2, type: 3}
+  holoTower: {fileID: 6991681139334568636, guid: 4c710247cd358a547983a3333e4ed153, type: 3}

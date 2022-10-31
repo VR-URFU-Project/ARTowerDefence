@@ -8,11 +8,14 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 {
     
     [SerializeField] private GameObject towerPrefab;
-    [SerializeField] private GameObject holoTower;
+    //[SerializeField] private GameObject holoTower;
     private RectTransform rect;
-    private Transform startPos;
     private Canvas parentCanvas;
     private GameObject gamingPlace;
+
+    //  нужны для костылей ниже
+    //private bool ifTowerInstantiate = false;
+    //private bool ifTowerBuilt = false;
 
     //private CanvasGroup canvasGroup;
     private void Start()
@@ -74,6 +77,7 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         rect.anchoredPosition += eventData.delta / parentCanvas.scaleFactor;//Camera.main.(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         //Debug.Log($"X: {transform.localPosition.x}\tY: {transform.localPosition.y}\tZ: {transform.localPosition.z}");
 
+        //  дальше костыли, простите
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         //RaycastHit hit;
 
@@ -83,8 +87,14 @@ public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         //    {
         //        transform.SetParent(DefaultParentTransform);
         //        transform.SetSiblingIndex(SiblingIndex);
-        //        Instantiate(holoTower, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity, gamingPlace.transform);
-        //        holoTower.transform.Translate(new Vector3(hit.point.x, hit.point.y, hit.point.z), Space.World);
+        //        if (!ifTowerInstantiate)
+        //        {
+        //            Instantiate(holoTower, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity, gamingPlace.transform);
+        //            ifTowerInstantiate = true;
+        //        }
+        //        if (ifTowerInstantiate && !ifTowerBuilt) { 
+        //            holoTower.transform.Translate(new Vector3(hit.point.x, hit.point.y, hit.point.z), Space.World);
+        //        }
         //    }
         //}
     }

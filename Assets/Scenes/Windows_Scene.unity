@@ -300,6 +300,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6344616908489589731, guid: b91b92a04ae7c5241911c83b8a9be558, type: 3}
+      propertyPath: m_VoxelSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344616908489589731, guid: b91b92a04ae7c5241911c83b8a9be558, type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 286b349485ce0f44bb8e5eee6d1ebcc0, type: 2}

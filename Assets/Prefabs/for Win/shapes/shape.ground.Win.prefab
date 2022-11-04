@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 8483935778771800637}
   - component: {fileID: 5329912314316268729}
   m_Layer: 0
-  m_Name: shape.ground.Win 1
+  m_Name: shape.ground.Win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,4 +775,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc311b89ec4af0c44abdab0ad7d60306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originTower: {fileID: 0}
+  originTower: {fileID: 6991681139334568636, guid: 0fe27caf538fb4849ab207d6cf1e7c40, type: 3}

@@ -30,4 +30,14 @@ public class BuildManager : MonoBehaviour
     {
         towerToBuild = tower;
     }
+
+    public void Build()
+    {
+        Shape.yes_pressed = true;
+    }
+
+    public void NotToBuild()
+    {
+        Shape.no_pressed = true;
+    }
 }

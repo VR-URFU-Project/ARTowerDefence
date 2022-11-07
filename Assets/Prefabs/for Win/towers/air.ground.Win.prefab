@@ -324,9 +324,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerType: 2
   range: 20
   fireRate: 1
   EnemyTag: Enemy
+  FlyEnemyTag: Fly
   partToRotate: {fileID: 7858662222980133823}
   turnSpeed: 5
   bulletPrefab: {fileID: 4106941565636486379, guid: 426204a32d2d9604db7af85f79e5f34a, type: 3}

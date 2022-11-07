@@ -9,6 +9,8 @@ TagManager:
   - Crystal
   - Enemy
   - _position
+  - Yes
+  - No
   layers:
   - Default
   - TransparentFX

@@ -7,8 +7,10 @@ public class EnemyScript : MonoBehaviour
 {
     private NavMeshAgent agent;
     [SerializeField] private Transform target;
+    public MonsterData BasicData;
 
-    public int health = 100;
+    public delegate void OnKill();
+    private OnKill KillEvent;
 
     void Start()
     {
@@ -18,9 +20,9 @@ public class EnemyScript : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        health -= amount;
+        BasicData.Health -= amount;
 
-        if (health <= 0f)
+        if (BasicData.Health <= 0)
         {
             Die();
         }
@@ -28,6 +30,8 @@ public class EnemyScript : MonoBehaviour
 
     void Die()
     {
+        KillEvent();
+        MoneySystem.ChangeMoney(BasicData.Money);
         Destroy(gameObject);
     }
 
@@ -40,5 +44,10 @@ public class EnemyScript : MonoBehaviour
     public void SetTarget(GameObject newTarget)
     {
         target = newTarget.transform;
+    }
+
+    public void SetKillEvent(OnKill newEvent)
+    {
+        KillEvent = newEvent;
     }
 }

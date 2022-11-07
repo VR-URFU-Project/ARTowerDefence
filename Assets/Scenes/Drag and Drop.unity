@@ -128,7 +128,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8373507371521032335, guid: f01b9e0dbbdceff41956fd16bef14e2e, type: 3}
   m_PrefabInstance: {fileID: 8373507369779376534}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1936752592}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf33ae83361bba34fbc7a3fbf60705cb, type: 3}
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8373507371521032332, guid: f01b9e0dbbdceff41956fd16bef14e2e, type: 3}
   m_PrefabInstance: {fileID: 8373507369779376534}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1936752592}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -624,6 +624,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633885033}
   m_CullTransparentMesh: 1
+--- !u!1 &1936752592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8373507371521032321, guid: f01b9e0dbbdceff41956fd16bef14e2e, type: 3}
+  m_PrefabInstance: {fileID: 8373507369779376534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958965911
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,5 +815,9 @@ PrefabInstance:
       propertyPath: EnemyPrefab
       value: 
       objectReference: {fileID: 6881003540716830919, guid: c99bf0a281fb2b7479a1d18574cfb0eb, type: 3}
+    - target: {fileID: 8373507371521032335, guid: f01b9e0dbbdceff41956fd16bef14e2e, type: 3}
+      propertyPath: StartButton
+      value: 
+      objectReference: {fileID: 1936752592}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f01b9e0dbbdceff41956fd16bef14e2e, type: 3}

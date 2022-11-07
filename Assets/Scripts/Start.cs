@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Threading;
 
 public class Start : MonoBehaviour
@@ -8,13 +9,16 @@ public class Start : MonoBehaviour
     [SerializeField] GameObject EnemyPrefab;
     [SerializeField] List<GameObject> spawnPlaces;
     [SerializeField] GameObject crystal;
+    [SerializeField] GameObject StartButton;
 
-    private int waveCounter = 6;
+    private int waveCounter = 0;
     private double timer = 0;
     private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
+    private int activeEnemies = 0;
 
     private void Update()
     {
+        StartButton.GetComponent<Button>().enabled = (activeEnemies == 0 && dataQueue.Count == 0);
         if (timer == 0) return;
         timer -= Time.deltaTime;
         if (timer > 0) return;
@@ -26,6 +30,7 @@ public class Start : MonoBehaviour
     /// </summary>
     public void EnableEnemy()
     {
+        if (waveCounter >= 20) waveCounter = 0;
         foreach (var subWave in WaveController.WawesInfo[waveCounter].Data)
         {
             dataQueue.Enqueue(subWave);
@@ -67,11 +72,24 @@ public class Start : MonoBehaviour
     /// <param name="enemies"></param>
     private void SpawnCircle(List<MonsterData> enemies)
     {
-        for (var i = 0; i < enemies.Count; ++i)
+        var i = 0;
+        for (; i < enemies.Count - enemies.Count % spawnPlaces.Count; ++i)
         {
-            var newEnemy = GameObject.Instantiate(EnemyPrefab, spawnPlaces[i % spawnPlaces.Count].transform);
-            newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
-            newEnemy.gameObject.SetActive(true);
+            CreateEnemy(i % spawnPlaces.Count, enemies[i]);
+        }
+
+        var left = enemies.Count % spawnPlaces.Count;
+
+        for(var ind = 0; ind< spawnPlaces.Count && left>0; i+=2, --left)
+        {
+            CreateEnemy(ind, enemies[i]);
+            ++i;
+        }
+
+        for (var ind = 1; ind < spawnPlaces.Count && left > 0; ind += 2, --left)
+        {
+            CreateEnemy(ind, enemies[i]);
+            ++i;
         }
     }
 
@@ -84,9 +102,7 @@ public class Start : MonoBehaviour
         var ind = getRandomSpawnPlace();
         for (var i = 0; i < enemies.Count; ++i)
         {
-            var newEnemy = GameObject.Instantiate(EnemyPrefab, spawnPlaces[ind].transform);
-            newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
-            newEnemy.gameObject.SetActive(true);
+            CreateEnemy(ind, enemies[i]);
         }
 
     }
@@ -99,9 +115,7 @@ public class Start : MonoBehaviour
     {
         for (var i = 0; i < enemies.Count; ++i)
         {
-            var newEnemy = GameObject.Instantiate(EnemyPrefab, spawnPlaces[getRandomSpawnPlace()].transform);
-            newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
-            newEnemy.gameObject.SetActive(true);
+            CreateEnemy(getRandomSpawnPlace(), enemies[i]);
         }
     }
 
@@ -114,5 +128,21 @@ public class Start : MonoBehaviour
         var ind = Random.Range(0, spawnPlaces.Count);
         if (ind == spawnPlaces.Count) --ind;
         return ind;
+    }
+
+    /// <summary>
+    /// Создаёт врага на месте спавна
+    /// </summary>
+    /// <param name="index">Индекс места спавна</param>
+    private void CreateEnemy(int index, MonsterData data)
+    {
+        var newEnemy = GameObject.Instantiate(EnemyPrefab, spawnPlaces[index].transform);
+        newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
+        newEnemy.GetComponent<EnemyScript>().BasicData = data;
+        newEnemy.gameObject.SetActive(true);
+        ++activeEnemies;
+        newEnemy.GetComponent<EnemyScript>().SetKillEvent(() => {
+            --activeEnemies;
+        });
     }
 }

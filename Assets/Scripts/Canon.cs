@@ -9,7 +9,6 @@ public class Canon : MonoBehaviour
     {
         Ballista,
         Mushroom,
-        AirCanon,
         TreeHouse,
         LazerTower
     }
@@ -58,9 +57,6 @@ public class Canon : MonoBehaviour
                     foreach (GameObject enemy in enemies)
                     {
                         float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-                        //new Vector3(enemy.transform.position.x,
-                        //             enemy.transform.position.y + 2.96f,
-                        //             enemy.transform.position.z));
                         if (distanceToEnemy < shortestDistance)
                         {
                             shortestDistance = distanceToEnemy;
@@ -79,7 +75,7 @@ public class Canon : MonoBehaviour
                     }
                     return;
                 }
-            case TowerType.AirCanon:
+            case TowerType.TreeHouse:
                 {
                     GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
                     GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
@@ -125,56 +121,6 @@ public class Canon : MonoBehaviour
                     }
                     return;
                 }
-            //case TowerType.TreeHouse:
-            //    {
-            //        GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
-            //        GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
-            //        float shortestDistance = Mathf.Infinity;
-            //        float fly_shortestDistance = Mathf.Infinity;
-            //        GameObject fly_nearestEnemy_1 = null;
-            //        GameObject fly_nearestEnemy_2 = null;
-            //        GameObject nearestEnemy_1 = null;
-            //        GameObject nearestEnemy_2 = null;
-
-            //        foreach (GameObject fly in fly_enemies)
-            //        {
-            //            float distanceToEnemy = Vector3.Distance(transform.position, fly.transform.position);
-            //            if (distanceToEnemy < fly_shortestDistance)
-            //            {
-            //                fly_shortestDistance = distanceToEnemy;
-            //                fly_nearestEnemy_1 = fly;
-            //            }
-            //        }
-
-            //        foreach (GameObject enemy in enemies)
-            //        {
-            //            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            //            if (distanceToEnemy < shortestDistance)
-            //            {
-            //                shortestDistance = distanceToEnemy;
-            //                nearestEnemy = enemy;
-            //            }
-            //        }
-
-            //        if (nearestEnemy != null || fly_nearestEnemy != null)
-            //            if (shortestDistance <= range || fly_shortestDistance <= range)
-            //            {
-            //                if (shortestDistance < fly_shortestDistance)
-            //                    target = nearestEnemy.transform;
-            //                else
-            //                    target = fly_nearestEnemy.transform;
-            //            }
-            //            //if (nearestEnemy != null && (shortestDistance <= range || fly_shortestDistance <= range))
-            //            //{
-            //            //    target = nearestEnemy.transform;
-            //            //}
-            //            else
-            //            {
-            //                target = null;
-            //            }
-            //        return;
-            //  }
-            //default: Debug.LogError(@$"Tower {gameObject.name} need to be connected with the appropriate type!");
         }
     }
 

@@ -16,14 +16,14 @@ public class Shape : MonoBehaviour
     public static bool yes_pressed = false;
     public static bool no_pressed = false;
 
-    private Button YesButton;
-    private Button NoButton;
+    //private Button YesButton;
+    //private Button NoButton;
 
 
     void Start()
     {
-        YesButton = GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>();
-        NoButton = GameObject.FindGameObjectWithTag("No").GetComponent<Button>();
+        //YesButton = GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>();
+        //NoButton = GameObject.FindGameObjectWithTag("No").GetComponent<Button>();
         gamingPlace = GameObject.FindWithTag("GamingPlace");
         YesNoPanel.SetActive(false);
         yes_pressed = false;

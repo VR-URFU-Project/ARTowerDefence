@@ -33,11 +33,11 @@ public class BuildManager : MonoBehaviour
 
     public void Build()
     {
-        Shape.yes_pressed = true;
+        //Shape.yes_pressed = true;
     }
 
     public void NotToBuild()
     {
-        Shape.no_pressed = true;
+        //Shape.no_pressed = true;
     }
 }

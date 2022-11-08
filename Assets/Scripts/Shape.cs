@@ -10,53 +10,58 @@ public class Shape : MonoBehaviour
     [SerializeField] private GameObject originTower;
     private GameObject gamingPlace;
     [SerializeField] GameObject YesNoPanel;
+    //[SerializeField] Button yes;
+    //[SerializeField] Button no;
 
     private bool mouseButtonUped = false;
 
-    public static bool yes_pressed = false;
-    public static bool no_pressed = false;
+    //public static bool yes_pressed = false;
+    //public static bool no_pressed = false;
 
-    //private Button YesButton;
-    //private Button NoButton;
+    private Button YesButton;
+    private Button NoButton;
+
+    private GameObject mainCanvas;
 
 
     void Start()
     {
-        //YesButton = GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>();
-        //NoButton = GameObject.FindGameObjectWithTag("No").GetComponent<Button>();
+        mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
+        YesButton = GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>();
+        NoButton = GameObject.FindGameObjectWithTag("No").GetComponent<Button>();
         gamingPlace = GameObject.FindWithTag("GamingPlace");
         YesNoPanel.SetActive(false);
-        yes_pressed = false;
-        no_pressed = false;
+        mainCanvas.SetActive(false);
+        //yes_pressed = false;
+        //no_pressed = false;
     }
 
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (!mouseButtonUped)
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider.gameObject.name == "Plane")
-                    transform.position = hit.point;
-            }
+        if (!mouseButtonUped && Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.gameObject.name == "Plane")
+                transform.position = hit.point;
+        }
 
         if (Input.GetMouseButtonUp(0))
         {
             YesNoPanel.SetActive(true);
             mouseButtonUped = true;
-        }
-
-        if (yes_pressed)
-        {
-            Instantiate(originTower, transform.position, transform.rotation, gamingPlace.transform);
-            yes_pressed = false;
-            Destroy(gameObject);
-        }
-        if (no_pressed)
-        {
-            no_pressed = false;
-            Destroy(gameObject);
-            
+            YesButton.onClick.AddListener(() =>
+            {
+                Instantiate(originTower, transform.position, transform.rotation, gamingPlace.transform);
+                mainCanvas.SetActive(true);
+                Destroy(gameObject);
+                Debug.Log("yes");
+            });
+            NoButton.onClick.AddListener(() =>
+            {
+                mainCanvas.SetActive(true);
+                Destroy(gameObject);
+                Debug.Log("no");
+            });
         }
     }
 

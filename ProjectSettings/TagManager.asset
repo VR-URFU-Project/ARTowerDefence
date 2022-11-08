@@ -11,6 +11,7 @@ TagManager:
   - _position
   - Yes
   - No
+  - MainCanvas
   layers:
   - Default
   - TransparentFX

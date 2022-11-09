@@ -9728,8 +9728,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8195588829386300555}
+  - component: {fileID: 864329853291141721}
   m_Layer: 0
-  m_Name: shape_mushroom
+  m_Name: shape_mushroom_Win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9754,6 +9755,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -271.61902, z: 0}
+--- !u!114 &864329853291141721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8860625777139025457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc311b89ec4af0c44abdab0ad7d60306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originTower: {fileID: 178832741734399000, guid: 3d7b307ee5f5d454dbd23a79dc0cb91d, type: 3}
+  YesNoPanel: {fileID: 0}
 --- !u!1 &9078690853391442488
 GameObject:
   m_ObjectHideFlags: 0

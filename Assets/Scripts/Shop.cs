@@ -4,26 +4,52 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    //BuildManager buildManager;
     public GameObject ballistaShapePrefab;
     private GameObject gamingPlace;
 
     private void Start()
     {
-        //buildManager = BuildManager.instance;
         gamingPlace = GameObject.FindWithTag("GamingPlace");
     }
+    
+    private TowerData data;
 
-    public void PurchaseBallista()
+    public void Purchase(string type)
     {
-        Debug.Log("Вы купили баллисту");
-        //buildManager.SetTowerToBuild(buildManager.canonPrefab);
-        Instantiate(ballistaShapePrefab, gamingPlace.transform);
+        
+        switch (type)
+        {
+            case "Ballista":
+                data = TowerManager.GetBallista();
+                Instantiate(data.shapePrefab, gamingPlace.transform);
+                break;
+
+            case "TreeHouse":
+                data = TowerManager.GetTreeHouse();
+                Instantiate(data.shapePrefab, gamingPlace.transform);
+                break;
+
+            case "Mushroom":
+                data = TowerManager.GetMushroom();
+                Instantiate(data.shapePrefab, gamingPlace.transform);
+                break;
+
+            case "LazerTower":
+                data = TowerManager.GetLazerTower();
+                Instantiate(data.shapePrefab, gamingPlace.transform);
+                break;
+        }
     }
 
-    public void PurchaseAirCanon()
+    public void CreateTower(Transform shape, Transform gamingPlace)
     {
-        Debug.Log("Вы купили улучшенную баллисту");
-        //buildManager.SetTowerToBuild(buildManager.airCanonPrefab);
+        var obj = Instantiate(data.prefab, shape.position, shape.rotation, gamingPlace);
+        obj.GetComponent<Canon>().Tdata = this.data;
     }
+
+    //public void PurchaseBallista()
+    //{
+    //    Debug.Log("Вы купили баллисту");
+    //    Instantiate(ballistaShapePrefab, gamingPlace.transform);
+    //}
 }

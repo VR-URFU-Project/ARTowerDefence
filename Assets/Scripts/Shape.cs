@@ -6,34 +6,28 @@ using UnityEngine.UI;
 public class Shape : MonoBehaviour
 {
     RaycastHit hit;
-    Vector3 movePoint;
-    [SerializeField] private GameObject originTower;
+    //[SerializeField] private GameObject originTower;
     private GameObject gamingPlace;
     [SerializeField] GameObject YesNoPanel;
-    //[SerializeField] Button yes;
-    //[SerializeField] Button no;
 
     private bool mouseButtonUped = false;
-
-    //public static bool yes_pressed = false;
-    //public static bool no_pressed = false;
 
     private Button YesButton;
     private Button NoButton;
 
-    private GameObject mainCanvas;
+    private Shop shop;
 
+    private GameObject mainCanvas;
 
     void Start()
     {
+        shop = GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>();
         mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
         YesButton = GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>();
         NoButton = GameObject.FindGameObjectWithTag("No").GetComponent<Button>();
         gamingPlace = GameObject.FindWithTag("GamingPlace");
         YesNoPanel.SetActive(false);
         mainCanvas.SetActive(false);
-        //yes_pressed = false;
-        //no_pressed = false;
     }
 
     void Update()
@@ -51,7 +45,7 @@ public class Shape : MonoBehaviour
             mouseButtonUped = true;
             YesButton.onClick.AddListener(() =>
             {
-                Instantiate(originTower, transform.position, transform.rotation, gamingPlace.transform);
+                shop.CreateTower(transform, gamingPlace.transform);
                 mainCanvas.SetActive(true);
                 Destroy(gameObject);
                 Debug.Log("yes");
@@ -64,6 +58,4 @@ public class Shape : MonoBehaviour
             });
         }
     }
-
-
 }

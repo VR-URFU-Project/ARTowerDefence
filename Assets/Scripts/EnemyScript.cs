@@ -35,7 +35,6 @@ public class EnemyScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
         agent.SetDestination(target.position);

@@ -12,6 +12,7 @@ TagManager:
   - Yes
   - No
   - MainCanvas
+  - Shop
   layers:
   - Default
   - TransparentFX

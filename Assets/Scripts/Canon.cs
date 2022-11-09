@@ -5,27 +5,16 @@ using UnityEngine;
 
 public class Canon : MonoBehaviour
 {
-    public enum TowerType
-    {
-        Ballista,
-        Mushroom,
-        TreeHouse,
-        LazerTower
-    }
-
-    [Header("Tower Type")]
+    [Header("Tower Info")]
     public TowerType towerType = TowerType.Ballista;
+    public TowerData Tdata;
 
     private Transform target;
-    // вторая цель для дерева с лучниками
-    //private Transform target_2;
     private GameObject parent;
 
     [Header("Attributes")]
     [SerializeField]
-    private float range = 15f;
-    public float fireRate = 1f;
-    private float fireCountdown = 0f;
+    private double fireCountdown = 0f;
 
     [Header("Unity Setup Fields")]
     public string EnemyTag = "Enemy";
@@ -37,7 +26,6 @@ public class Canon : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
@@ -46,7 +34,7 @@ public class Canon : MonoBehaviour
 
     void UpdateTarget()
     {
-        switch (towerType)
+        switch (Tdata.Type)
         {
             case TowerType.Ballista:
                 {
@@ -65,7 +53,7 @@ public class Canon : MonoBehaviour
 
                     }
 
-                    if (nearestEnemy != null && shortestDistance <= range)
+                    if (nearestEnemy != null && shortestDistance <= Tdata.Range)
                     {
                         target = nearestEnemy.transform;
                     }
@@ -75,52 +63,52 @@ public class Canon : MonoBehaviour
                     }
                     return;
                 }
-            case TowerType.TreeHouse:
-                {
-                    GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
-                    GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
-                    float shortestDistance = Mathf.Infinity;
-                    float fly_shortestDistance = Mathf.Infinity;
-                    GameObject fly_nearestEnemy = null;
-                    GameObject nearestEnemy = null;
+            //case TowerType.TreeHouse:
+            //    {
+            //        GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
+            //        GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
+            //        float shortestDistance = Mathf.Infinity;
+            //        float fly_shortestDistance = Mathf.Infinity;
+            //        GameObject fly_nearestEnemy = null;
+            //        GameObject nearestEnemy = null;
 
-                    foreach (GameObject fly in fly_enemies)
-                    {
-                        float distanceToEnemy = Vector3.Distance(transform.position, fly.transform.position);
-                        if (distanceToEnemy < fly_shortestDistance)
-                        {
-                            fly_shortestDistance = distanceToEnemy;
-                            fly_nearestEnemy = fly;
-                        }
-                    }
+            //        foreach (GameObject fly in fly_enemies)
+            //        {
+            //            float distanceToEnemy = Vector3.Distance(transform.position, fly.transform.position);
+            //            if (distanceToEnemy < fly_shortestDistance)
+            //            {
+            //                fly_shortestDistance = distanceToEnemy;
+            //                fly_nearestEnemy = fly;
+            //            }
+            //        }
 
-                    foreach (GameObject enemy in enemies)
-                    {
-                        float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-                        if (distanceToEnemy < shortestDistance)
-                        {
-                            shortestDistance = distanceToEnemy;
-                            nearestEnemy = enemy;
-                        }
-                    }
+            //        foreach (GameObject enemy in enemies)
+            //        {
+            //            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            //            if (distanceToEnemy < shortestDistance)
+            //            {
+            //                shortestDistance = distanceToEnemy;
+            //                nearestEnemy = enemy;
+            //            }
+            //        }
 
-                    if (nearestEnemy != null || fly_nearestEnemy != null)
-                        if (shortestDistance <= range || fly_shortestDistance <= range) {
-                            if (shortestDistance < fly_shortestDistance)
-                                target = nearestEnemy.transform;
-                            else
-                                target = fly_nearestEnemy.transform;
-                            }
-                    //if (nearestEnemy != null && (shortestDistance <= range || fly_shortestDistance <= range))
-                    //{
-                    //    target = nearestEnemy.transform;
-                    //}
-                    else
-                    {
-                        target = null;
-                    }
-                    return;
-                }
+            //        if (nearestEnemy != null || fly_nearestEnemy != null)
+            //            if (shortestDistance <= Tdata.Range || fly_shortestDistance <= Tdata.Range) {
+            //                if (shortestDistance < fly_shortestDistance)
+            //                    target = nearestEnemy.transform;
+            //                else
+            //                    target = fly_nearestEnemy.transform;
+            //                }
+            //        //if (nearestEnemy != null && (shortestDistance <= range || fly_shortestDistance <= range))
+            //        //{
+            //        //    target = nearestEnemy.transform;
+            //        //}
+            //        else
+            //        {
+            //            target = null;
+            //        }
+            //        return;
+            //    }
         }
     }
 
@@ -136,7 +124,7 @@ public class Canon : MonoBehaviour
         if (fireCountdown <= 0f)
         {
             Shoot();
-            fireCountdown = 1f / fireRate;
+            fireCountdown = 1d / Tdata.AtackSpeed;
         }
 
         fireCountdown -= Time.deltaTime;
@@ -157,6 +145,6 @@ public class Canon : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, (float)Tdata.Range);
     }
 }

@@ -16,7 +16,6 @@ public class Shop : MonoBehaviour
 
     public void Purchase(string type)
     {
-        
         switch (type)
         {
             case "Ballista":

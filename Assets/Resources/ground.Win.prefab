@@ -517,9 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerType: 0
-  range: 0.2
-  fireRate: 1
+  towerType: 1
+  fireCountdown: 0
   EnemyTag: Enemy
   FlyEnemyTag: Fly
   partToRotate: {fileID: 4906380155987311093}

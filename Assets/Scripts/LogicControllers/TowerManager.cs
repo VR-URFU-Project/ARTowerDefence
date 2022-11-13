@@ -8,10 +8,7 @@ using System.Text;
 /// </summary>
 public static class TowerManager
 {
-    /// <remarks>
-    /// TO DO: сделать List башен через CVSReader
-    /// </remarks>
-    static List<TowerData> Towers = new List<TowerData>();
+    static List<TowerData> Towers = CSVReader.ReadTowerData();
 
     /// <summary>
     /// Получить данные о баллисте

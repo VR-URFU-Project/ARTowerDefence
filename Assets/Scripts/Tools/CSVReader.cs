@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 using System.Globalization;
+using System.Collections;
 
 public static class CSVReader
 {
@@ -86,5 +86,69 @@ public static class CSVReader
             waves.Add(wave);
         }
         return waves;
+    }
+
+    public static List<TowerData> ReadTowerData()
+    {
+        var strData = Resources
+            .Load<TextAsset>("TowerStats")
+            .text
+            .Split('\n');
+        
+        var towersStats = new List<TowerData>();
+        var mas = new List<List<string>>();
+
+        var dict = new Dictionary<string, TowerType>() 
+        {
+            {"Crystal", TowerType.Crystal },
+            {"Ballista", TowerType.Ballista },
+            {"Archer tower", TowerType.TreeHouse },
+            {"Shroom tower", TowerType.Mushroom },
+            {"Laser tower", TowerType.LazerTower }
+        };
+
+        foreach(var line in strData)
+        {
+            mas.Add(line.Split(',').Select(x => x.Trim()).ToList());
+        }
+
+        for (int i = 1; i < mas[0].Count; i++)
+        {
+            var towerData = new TowerData();
+
+            for (int k = 0; k < mas.Count; ++k)
+            {
+                switch (mas[k][0])
+                {
+                    case var str when str.Contains("Name"):
+                        towerData.Type = dict[ mas[k][i] ];
+                        break;
+                    case var str when str.Contains("Range"):
+                        towerData.Range = double.Parse(mas[k][i], CultureInfo.InvariantCulture);
+                        break;
+                    case var str when str.Contains("Health"):
+                        towerData.Health = int.Parse(mas[k][i]);
+                        break;
+                    case var str when str.Contains("Damage"):
+                        towerData.Damage = int.Parse(mas[k][i]);
+                        break;
+                    case var str when str.Contains("Attack speed"):
+                        towerData.AtackSpeed = double.Parse(mas[k][i], CultureInfo.InvariantCulture);
+                        break;
+                    case var str when str.Contains("Targets amount"):
+                        towerData.TargetsAmount = int.Parse(mas[k][i]);
+                        break;
+                    case var str when str.Contains("Can shoot up"):
+                        towerData.PVO_enabled = mas[k][i] == "Yes";
+                        break;
+                    case var str when str.Contains("Price"):
+                        towerData.Price = int.Parse(mas[k][i]);
+                        break;
+                }
+                
+            }
+            towersStats.Add(towerData);
+        }
+        return towersStats;
     }
 }

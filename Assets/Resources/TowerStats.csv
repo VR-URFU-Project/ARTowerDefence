@@ -1,0 +1,8 @@
+Name,Crystal,Ballista,Archer tower,Shroom tower,Laser tower
+Range,10,3,3,4,4
+Health,100,30,20,20,30
+Damage,0,2,1,2,1
+Attack speed,0,1,2,1,1
+Targets amount,0,1,2,-1,1
+Can shoot up,No,No,Yes,Yes,Yes
+Price,0,10,15,20,40

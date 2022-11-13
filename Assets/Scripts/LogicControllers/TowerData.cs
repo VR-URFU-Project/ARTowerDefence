@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class TowerData
 {
     public int Health { get; set; }
-    
+
     public double Range { get; set; }
-    
+
     public int Damage { get; set; }
 
     public double AtackSpeed { get; set; }
@@ -19,12 +20,12 @@ public class TowerData
     /// Может ли башня бить по воздуху
     /// </summary>
     public bool PVO_enabled { get; set; }
-    
+
     public int Price { get; set; }
 
     public TowerType Type { get; set; }
 
-    public GameObject prefab;
+    public GameObject prefab => Resources.Load<GameObject>("ground.Win");
 
-    public GameObject shapePrefab;
+    public GameObject shapePrefab => Resources.Load<GameObject>("shape.ground.Win");
 }

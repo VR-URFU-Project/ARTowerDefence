@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public enum TowerType
 {
+    Crystal,
     Ballista,
     Mushroom,
     TreeHouse,

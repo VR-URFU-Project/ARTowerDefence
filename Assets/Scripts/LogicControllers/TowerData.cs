@@ -25,7 +25,11 @@ public class TowerData
 
     public TowerType Type { get; set; }
 
-    public GameObject prefab => Resources.Load<GameObject>("ground.Win");
+    public string PrefabName { get; set; }
 
-    public GameObject shapePrefab => Resources.Load<GameObject>("shape.ground.Win");
+    public string ShapePrefabName { get; set; }
+
+    public GameObject prefab => Resources.Load<GameObject>(PrefabName);
+
+    public GameObject shapePrefab => Resources.Load<GameObject>(ShapePrefabName);
 }

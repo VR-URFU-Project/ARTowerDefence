@@ -8,7 +8,7 @@ public enum TowerType
 {
     Crystal,
     Ballista,
-    Mushroom,
     TreeHouse,
+    Mushroom,
     LazerTower
 }

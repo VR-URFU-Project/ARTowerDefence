@@ -5,18 +5,39 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public enum BulletType
+    {
+        Arrow,
+        Bullet
+    }
+
+    public BulletType type;
+
     private Transform target;
 
-    public float speed = 70f;
+    public double speed = 5d;
 
-    public int _damage = 20;
+    private int _damage;
+
+    private void Start()
+    {
+        switch (type)
+        {
+            case BulletType.Arrow:
+                _damage= TowerManager.GetTreeHouse().Damage;
+                break;
+
+            case BulletType.Bullet:
+                _damage = TowerManager.GetBallista().Damage;
+                break;
+        }
+    }
 
     public void Seek(Transform _target)
     {
         target = _target;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (target == null)
@@ -26,7 +47,7 @@ public class Bullet : MonoBehaviour
         }
 
         Vector3 direction = target.position - transform.position;
-        float distanceThisFrame = speed * Time.deltaTime;
+        float distanceThisFrame = (float)speed * Time.deltaTime;
 
         if (direction.magnitude <= distanceThisFrame)
         {

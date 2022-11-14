@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public GameObject ballistaShapePrefab;
     private GameObject gamingPlace;
 
     private void Start()
@@ -30,7 +29,10 @@ public class Shop : MonoBehaviour
 
             case "Mushroom":
                 data = TowerManager.GetMushroom();
-                Instantiate(data.shapePrefab, gamingPlace.transform);
+                Instantiate(data.shapePrefab, 
+                    //data.shapePrefab.transform.parent.position, 
+                    //data.shapePrefab.transform.parent.rotation, 
+                    gamingPlace.transform);
                 break;
 
             case "LazerTower":

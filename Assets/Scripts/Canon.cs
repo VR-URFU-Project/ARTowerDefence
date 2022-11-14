@@ -93,20 +93,21 @@ public class Canon : MonoBehaviour
             //        }
 
             //        if (nearestEnemy != null || fly_nearestEnemy != null)
-            //            if (shortestDistance <= Tdata.Range || fly_shortestDistance <= Tdata.Range) {
+            //            if (shortestDistance <= Tdata.Range || fly_shortestDistance <= Tdata.Range)
+            //            {
             //                if (shortestDistance < fly_shortestDistance)
             //                    target = nearestEnemy.transform;
             //                else
             //                    target = fly_nearestEnemy.transform;
-            //                }
-            //        //if (nearestEnemy != null && (shortestDistance <= range || fly_shortestDistance <= range))
-            //        //{
-            //        //    target = nearestEnemy.transform;
-            //        //}
-            //        else
-            //        {
-            //            target = null;
-            //        }
+            //            }
+            //            //if (nearestEnemy != null && (shortestDistance <= range || fly_shortestDistance <= range))
+            //            //{
+            //            //    target = nearestEnemy.transform;
+            //            //}
+            //            else
+            //            {
+            //                target = null;
+            //            }
             //        return;
             //    }
         }

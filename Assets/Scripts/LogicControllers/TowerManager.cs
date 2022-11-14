@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 /// <summary>
 /// Методы для работы с башнями
@@ -16,6 +17,8 @@ public static class TowerManager
     public static TowerData GetBallista()
     {
         var tower = Towers.Where(x => x.Type == TowerType.Ballista).ToArray();
+        tower[0].PrefabName = Enum.GetName(typeof(TowerType), TowerType.Ballista);
+        tower[0].ShapePrefabName = "shape_"+ Enum.GetName(typeof(TowerType), TowerType.Ballista);
         return tower[0];
     }
 
@@ -34,6 +37,8 @@ public static class TowerManager
     public static TowerData GetMushroom()
     {
         var tower = Towers.Where(x => x.Type == TowerType.Mushroom).ToArray();
+        tower[0].PrefabName = Enum.GetName(typeof(TowerType), TowerType.Mushroom);
+        tower[0].ShapePrefabName = "shape_" + Enum.GetName(typeof(TowerType), TowerType.Mushroom);
         return tower[0];
     }
 

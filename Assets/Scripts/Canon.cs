@@ -144,7 +144,6 @@ public class Canon : MonoBehaviour
 
     void Explode()
     {
-
         Collider[] colliders = Physics.OverlapSphere(transform.position, (float)Tdata.Range);
         foreach(var collider in colliders)
         {
@@ -159,6 +158,7 @@ public class Canon : MonoBehaviour
 
     void Damage(Transform enemy)
     {
+        //TO DO: added a delay between damage
         Debug.Log("DAMAGEEEE!!");
         enemy.GetComponent<EnemyScript>().TakeDamage(TowerManager.GetMushroom().Damage);
     }

@@ -15,7 +15,7 @@ public static class MonsterController
     public static MonsterData GetGoblin()
     {
         var monster = Monsters.Where(x => x.Name == "Goblin").ToArray();
-        return monster[0];
+        return new MonsterData(monster[0]);
     }
 
     /// <summary>
@@ -24,7 +24,7 @@ public static class MonsterController
     public static MonsterData GetWolf()
     {
         var monster = Monsters.Where(x => x.Name == "Wolf").ToArray();
-        return monster[0];
+        return new MonsterData(monster[0]);
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public static class MonsterController
     public static MonsterData GetOrc()
     {
         var monster = Monsters.Where(x => x.Name == "Orc").ToArray();
-        return monster[0];
+        return new MonsterData(monster[0]);
     }
 
     /// <summary>
@@ -42,6 +42,6 @@ public static class MonsterController
     public static MonsterData GetHarpy()
     {
         var monster = Monsters.Where(x => x.Name == "Harpy").ToArray();
-        return monster[0];
+        return new MonsterData(monster[0]);
     }
 }

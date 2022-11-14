@@ -19,7 +19,8 @@ public class Shop : MonoBehaviour
         {
             case "Ballista":
                 data = TowerManager.GetBallista();
-                Instantiate(data.shapePrefab, gamingPlace.transform);
+                if (MoneySystem.GetMoney() >= data.Price)
+                    Instantiate(data.shapePrefab, gamingPlace.transform);
                 break;
 
             case "TreeHouse":
@@ -44,6 +45,7 @@ public class Shop : MonoBehaviour
 
     public void CreateTower(Transform shape, Transform gamingPlace)
     {
+        MoneySystem.ChangeMoney(-data.Price);
         var obj = Instantiate(data.prefab, shape.position, shape.rotation, gamingPlace);
         obj.GetComponent<Canon>().Tdata = this.data;
     }

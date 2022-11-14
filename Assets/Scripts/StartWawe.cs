@@ -4,21 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
 
-public class Start : MonoBehaviour
+public class StartWawe : MonoBehaviour
 {
     [SerializeField] GameObject EnemyPrefab;
     [SerializeField] List<GameObject> spawnPlaces;
     [SerializeField] GameObject crystal;
     [SerializeField] GameObject StartButton;
+    [SerializeField] GameObject AdditionalButton;
 
     private int waveCounter = 0;
     private double timer = 0;
     private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
     private int activeEnemies = 0;
 
+    private void Start()
+    {
+        gameObject.GetComponent<Button>().onClick.AddListener(EnableEnemy);
+    }
+
     private void Update()
     {
-        StartButton.GetComponent<Button>().enabled = (activeEnemies == 0 && dataQueue.Count == 0);
+        if(activeEnemies == 0 && dataQueue.Count == 0 && AdditionalButton.gameObject.active  == false)
+        {
+            gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+            gameObject.GetComponent<Button>().onClick.AddListener(EnableEnemy);
+        }
+        AdditionalButton.gameObject.SetActive(activeEnemies == 0 && dataQueue.Count == 0);
         if (timer == 0) return;
         timer -= Time.deltaTime;
         if (timer > 0) return;
@@ -30,6 +41,11 @@ public class Start : MonoBehaviour
     /// </summary>
     public void EnableEnemy()
     {
+        gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+        gameObject.GetComponent<Button>().onClick.AddListener(PauseManager.TogglePause);
+        //StartButton.GetComponent<Button>().enabled = false;
+        //AdditionalButton.gameObject.SetActive(false);
+
         if (waveCounter >= 20) waveCounter = 0;
         foreach (var subWave in WaveController.WawesInfo[waveCounter].Data)
         {
@@ -142,6 +158,7 @@ public class Start : MonoBehaviour
         newEnemy.gameObject.SetActive(true);
         ++activeEnemies;
         newEnemy.GetComponent<EnemyScript>().SetKillEvent(() => {
+            MoneySystem.ChangeMoney(data.Money);
             --activeEnemies;
         });
     }

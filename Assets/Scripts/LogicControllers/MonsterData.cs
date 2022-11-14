@@ -14,4 +14,21 @@ public class MonsterData
     public double AttacRange;
     public bool Flight;
     public int Money;
+
+    public MonsterData()
+    {
+
+    }
+
+    public MonsterData(MonsterData data)
+    {
+        Name = data.Name;
+        Health = data.Health;
+        Movement = data.Movement;
+        Damage = data.Damage;
+        AttacSpeed = data.AttacSpeed;
+        AttacRange = data.AttacRange;
+        Flight = data.Flight;
+        Money = data.Money;
+    }
 }

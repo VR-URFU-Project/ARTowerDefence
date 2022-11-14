@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class MoneySystem
 {
-    private static int money = 0;
+    private static int money = 100;
 
     /// <summary>
     /// Получить количество денег

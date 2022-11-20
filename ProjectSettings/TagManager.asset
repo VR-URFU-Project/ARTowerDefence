@@ -13,8 +13,8 @@ TagManager:
   - No
   - MainCanvas
   - Shop
-  - Particle_System
   - Fly
+  - Particle_System
   layers:
   - Default
   - TransparentFX

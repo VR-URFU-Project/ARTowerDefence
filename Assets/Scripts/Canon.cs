@@ -40,7 +40,7 @@ public class Canon : MonoBehaviour
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         parent = GameObject.FindGameObjectWithTag("GamingPlace");
-        particleSystems = GameObject.FindGameObjectsWithTag("Particle_System");
+        //particleSystems = GameObject.FindGameObjectsWithTag("Particle_System");
     }
 
     void UpdateTarget()
@@ -76,12 +76,24 @@ public class Canon : MonoBehaviour
                 }
             case TowerType.Mushroom:
                 {
+                    particleSystems = GameObject.FindGameObjectsWithTag("Particle_System");
                     GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
                     GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
 
                     if (fly_enemies.Length > 0)
                     {
-                        if (!partSys_isON) partSys_isON = true;
+                        //if (!partSys_isON) partSys_isON = true;
+                        //else partSys_isON = false;
+                        if (!partSys_isON)
+                        {
+                            partSys_isON = true;
+                            foreach (var go in particleSystems) go.SetActive(true);
+                        }
+                        else
+                        {
+                            partSys_isON = false;
+                            foreach (var go in particleSystems) go.SetActive(false);
+                        }
 
                         foreach (GameObject fly in fly_enemies)
                         {
@@ -93,11 +105,21 @@ public class Canon : MonoBehaviour
                             }
                         }
                     }
-                    else partSys_isON = false;
 
                     if (enemies.Length > 0)
                     {
-                        if (!partSys_isON) partSys_isON = true;
+                        //if (!partSys_isON) partSys_isON = true;
+                        //else partSys_isON = false;
+                        if (!partSys_isON)
+                        {
+                            partSys_isON = true;
+                            foreach (var go in particleSystems) go.SetActive(true);
+                        }
+                        else
+                        {
+                            partSys_isON = false;
+                            foreach (var go in particleSystems) go.SetActive(false);
+                        }
 
                         foreach (GameObject enemy in enemies)
                         {
@@ -109,8 +131,6 @@ public class Canon : MonoBehaviour
                             }
                         }
                     }
-                    else partSys_isON = false;
-
                     return;
                 }
         }

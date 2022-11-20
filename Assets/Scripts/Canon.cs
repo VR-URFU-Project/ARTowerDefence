@@ -31,6 +31,8 @@ public class Canon : MonoBehaviour
 
     private GameObject[] particleSystems;
 
+    private bool ifEnemiesNearBy = false;
+
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
@@ -83,7 +85,8 @@ public class Canon : MonoBehaviour
                             var radius = Tdata.Range;
                             if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
                             {
-                                Explode();
+                                ifEnemiesNearBy = true;
+                                //Explode();
                             }
                         }
                     }
@@ -98,7 +101,8 @@ public class Canon : MonoBehaviour
                             var radius = Tdata.Range;
                             if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
                             {
-                                Explode();
+                                ifEnemiesNearBy = true;
+                                //Explode();
                             }
                         }
                     }
@@ -114,20 +118,36 @@ public class Canon : MonoBehaviour
         if (partSys_isON) foreach (var go in particleSystems) go.SetActive(true); //particleSystems.Select(x => x.SetActive(true));
         else foreach (var go in particleSystems) go.SetActive(false);
 
-        if (target == null) return;
-
-        Vector3 direction = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotationVector = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(0f, rotationVector.y, 0f);
-
-        if (fireCountdown <= 0f)
+        if (target == null && !ifEnemiesNearBy) return;
+        else
         {
-            Shoot();
-            fireCountdown = 1d / Tdata.AtackSpeed;
-        }
+            if (target != null)
+            {
+                Vector3 direction = target.position - transform.position;
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                Vector3 rotationVector = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+                partToRotate.rotation = Quaternion.Euler(0f, rotationVector.y, 0f);
 
-        fireCountdown -= Time.deltaTime;
+                if (fireCountdown <= 0f)
+                {
+                    Shoot();
+                    fireCountdown = 1d / Tdata.AtackSpeed;
+                }
+
+                fireCountdown -= Time.deltaTime;
+            }
+
+            if (ifEnemiesNearBy)
+            {
+                if (fireCountdown <= 0f)
+                {
+                    Explode();
+                    fireCountdown = 1d / Tdata.AtackSpeed;
+                }
+
+                fireCountdown -= Time.deltaTime;
+            }
+        }
     }
 
     void Shoot()

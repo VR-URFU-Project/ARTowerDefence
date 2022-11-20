@@ -381,6 +381,10 @@ PrefabInstance:
       value: Ballista
       objectReference: {fileID: 0}
     - target: {fileID: 7994147741071716185, guid: f5f9e04f08518814e91085d294ee9c74, type: 3}
+      propertyPath: EnemyPrefab
+      value: 
+      objectReference: {fileID: 5583698313775322084, guid: af55d1bf41e8d4e4e82749fddb334ed0, type: 3}
+    - target: {fileID: 7994147741071716185, guid: f5f9e04f08518814e91085d294ee9c74, type: 3}
       propertyPath: AdditionalButton
       value: 
       objectReference: {fileID: 1594710360}

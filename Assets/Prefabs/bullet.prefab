@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7078819341737606344}
   - component: {fileID: 7716559045001203718}
   m_Layer: 0
-  m_Name: bullet.ballista
+  m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,5 +95,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  speed: 5
-  _damage: 20
+  speed: 0.4

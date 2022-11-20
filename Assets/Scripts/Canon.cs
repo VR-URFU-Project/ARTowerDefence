@@ -33,6 +33,9 @@ public class Canon : MonoBehaviour
 
     private bool ifEnemiesNearBy = false;
 
+    [Header("Special Settings")]
+    [SerializeField] private double _scale = 0.006;
+
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
@@ -61,7 +64,7 @@ public class Canon : MonoBehaviour
 
                     }
 
-                    if (nearestEnemy != null && shortestDistance <= Tdata.Range)
+                    if (nearestEnemy != null && shortestDistance <= Tdata.Range * _scale)
                     {
                         target = nearestEnemy.transform;
                     }
@@ -82,7 +85,7 @@ public class Canon : MonoBehaviour
 
                         foreach (GameObject fly in fly_enemies)
                         {
-                            var radius = Tdata.Range;
+                            var radius = Tdata.Range * _scale;
                             if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
                             {
                                 ifEnemiesNearBy = true;
@@ -98,7 +101,7 @@ public class Canon : MonoBehaviour
 
                         foreach (GameObject enemy in enemies)
                         {
-                            var radius = Tdata.Range;
+                            var radius = Tdata.Range * _scale;
                             if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
                             {
                                 ifEnemiesNearBy = true;
@@ -164,7 +167,7 @@ public class Canon : MonoBehaviour
 
     void Explode()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, (float)Tdata.Range);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, (float)(Tdata.Range * _scale));
         foreach(var collider in colliders)
         {
             if (collider.tag == EnemyTag || collider.tag == FlyEnemyTag)
@@ -186,6 +189,6 @@ public class Canon : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, (float)Tdata.Range);
+        Gizmos.DrawWireSphere(transform.position, (float)(Tdata.Range * _scale));
     }
 }

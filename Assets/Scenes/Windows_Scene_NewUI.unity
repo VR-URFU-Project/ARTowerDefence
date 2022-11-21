@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.1
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.033333335
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -123,6 +123,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &828226443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1607850803492825304, guid: f5f9e04f08518814e91085d294ee9c74, type: 3}
+  m_PrefabInstance: {fileID: 2565592713952217307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &828226445
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828226443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.21267593
+  m_Height: 2.0326347
+  m_Direction: 1
+  m_Center: {x: 0.018574595, y: 0.51631683, z: 0.14150381}
 --- !u!1 &1374767115
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 23800000, guid: b4aecfe88f4714f43b4443d60863e695, type: 2}
     - target: {fileID: 4812339075757894709, guid: f5f9e04f08518814e91085d294ee9c74, type: 3}
       propertyPath: m_UseGeometry
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4912706666603179296, guid: f5f9e04f08518814e91085d294ee9c74, type: 3}
       propertyPath: m_TagString

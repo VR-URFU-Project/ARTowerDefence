@@ -454,7 +454,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 71e833caf5f54634a811f2685bc8c162, type: 2}
+  - {fileID: 2100000, guid: 682f4301908a27a43a12ff7d82cc5a76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 8096786130412163540}
   - component: {fileID: 1805382901487002917}
   m_Layer: 6
-  m_Name: Goblin
+  m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

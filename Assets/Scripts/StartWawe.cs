@@ -6,13 +6,13 @@ using System.Threading;
 
 public class StartWawe : MonoBehaviour
 {
-    [SerializeField] GameObject EnemyPrefab;
+    //[SerializeField] GameObject EnemyPrefab;
     [SerializeField] List<GameObject> spawnPlaces;
     [SerializeField] GameObject crystal;
     [SerializeField] GameObject StartButton;
     [SerializeField] GameObject AdditionalButton;
 
-    private int waveCounter = 5;
+    private int waveCounter = 10;
     private double timer = 0;
     private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
     private int activeEnemies = 0;
@@ -152,7 +152,7 @@ public class StartWawe : MonoBehaviour
     /// <param name="index">Индекс места спавна</param>
     private void CreateEnemy(int index, MonsterData data)
     {
-        var newEnemy = GameObject.Instantiate(EnemyPrefab, spawnPlaces[index].transform);
+        var newEnemy = Instantiate(data.prefab, spawnPlaces[index].transform);
         newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
         newEnemy.GetComponent<EnemyScript>().BasicData = data;
         newEnemy.gameObject.SetActive(true);

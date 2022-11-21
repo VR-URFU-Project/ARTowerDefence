@@ -64,7 +64,7 @@ Transform:
   - {fileID: 8132747585640308992}
   - {fileID: 4020620795838249740}
   m_Father: {fileID: 5059399064881645918}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &508790402058087967
 GameObject:
@@ -433,7 +433,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 5059399064881645918}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &232126776140661101
 SkinnedMeshRenderer:
@@ -540,7 +540,7 @@ Transform:
   m_LocalScale: {x: 46.571796, y: 46.571796, z: 74.19262}
   m_Children: []
   m_Father: {fileID: 5059399064881645918}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8699726951684177572
 MeshFilter:
@@ -713,7 +713,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5059399064881645918}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5071447613089272309
 GameObject:
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 8096786130412163540}
   - component: {fileID: 1805382901487002917}
   m_Layer: 6
-  m_Name: goblin (1)
+  m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -777,10 +777,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.49999997, y: 0.5, z: 0.49999997}
   m_Children:
+  - {fileID: 5277044001550049654}
   - {fileID: 506981538392979780}
   - {fileID: 2035601388929023076}
   - {fileID: 6369307628110648113}
-  - {fileID: 5277044001550049654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 282.749, z: 0}

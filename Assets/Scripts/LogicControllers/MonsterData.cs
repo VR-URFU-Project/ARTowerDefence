@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Данные монстра
@@ -14,6 +15,9 @@ public class MonsterData
     public double AttacRange;
     public bool Flight;
     public int Money;
+
+    //public string PrefabName;
+    public GameObject prefab => Resources.Load<GameObject>(Name);
 
     public MonsterData()
     {

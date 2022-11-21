@@ -15,6 +15,7 @@ TagManager:
   - Shop
   - Fly
   - Particle_System
+  - Target
   layers:
   - Default
   - TransparentFX

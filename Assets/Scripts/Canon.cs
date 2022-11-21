@@ -20,6 +20,7 @@ public class Canon : MonoBehaviour
     private bool partSys_isON = false;
 
     [Header("Unity Setup Fields")]
+    public string TargetTag = "Target";
     public string EnemyTag = "Enemy";
     public string FlyEnemyTag = "Fly";
 
@@ -34,13 +35,14 @@ public class Canon : MonoBehaviour
     private bool ifEnemiesNearBy = false;
 
     [Header("Special Settings")]
-    [SerializeField] private double _scale = 0.006;
+    private const double _scale = 0.1;
 
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         parent = GameObject.FindGameObjectWithTag("GamingPlace");
-        //particleSystems = GameObject.FindGameObjectsWithTag("Particle_System");
+        particleSystems = GameObject.FindGameObjectsWithTag("Particle_System");
+        foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Stop();
     }
 
     void UpdateTarget()
@@ -49,7 +51,7 @@ public class Canon : MonoBehaviour
         {
             case TowerType.Ballista:
                 {
-                    GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
                     float shortestDistance = Mathf.Infinity;
                     GameObject nearestEnemy = null;
 
@@ -76,7 +78,7 @@ public class Canon : MonoBehaviour
                 }
             case TowerType.Mushroom:
                 {
-                    particleSystems = GameObject.FindGameObjectsWithTag("Particle_System");
+                    //particleSystems = GameObject.FindGameObjectsWithTag("Particle_System");
                     GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
                     GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
 
@@ -87,13 +89,13 @@ public class Canon : MonoBehaviour
                         if (!partSys_isON)
                         {
                             partSys_isON = true;
-                            foreach (var go in particleSystems) go.SetActive(true);
+                            //foreach (var go in particleSystems) go.SetActive(true);
                         }
-                        else
-                        {
-                            partSys_isON = false;
-                            foreach (var go in particleSystems) go.SetActive(false);
-                        }
+                        //else
+                        //{
+                        //    partSys_isON = false;
+                        //    foreach (var go in particleSystems) go.SetActive(false);
+                        //}
 
                         foreach (GameObject fly in fly_enemies)
                         {
@@ -105,6 +107,11 @@ public class Canon : MonoBehaviour
                             }
                         }
                     }
+                    else
+                    {
+                        ifEnemiesNearBy = false;
+                        partSys_isON = false;
+                    }
 
                     if (enemies.Length > 0)
                     {
@@ -113,13 +120,13 @@ public class Canon : MonoBehaviour
                         if (!partSys_isON)
                         {
                             partSys_isON = true;
-                            foreach (var go in particleSystems) go.SetActive(true);
+                            //foreach (var go in particleSystems) go.SetActive(true);
                         }
-                        else
-                        {
-                            partSys_isON = false;
-                            foreach (var go in particleSystems) go.SetActive(false);
-                        }
+                        //else
+                        //{
+
+                        //    //foreach (var go in particleSystems) go.SetActive(false);
+                        //}
 
                         foreach (GameObject enemy in enemies)
                         {
@@ -131,6 +138,11 @@ public class Canon : MonoBehaviour
                             }
                         }
                     }
+                    else
+                    {
+                        ifEnemiesNearBy = false;
+                        partSys_isON = false;
+                    }
                     return;
                 }
         }
@@ -138,8 +150,8 @@ public class Canon : MonoBehaviour
 
     void Update()
     {
-        if (partSys_isON) foreach (var go in particleSystems) go.SetActive(true); //particleSystems.Select(x => x.SetActive(true));
-        else foreach (var go in particleSystems) go.SetActive(false);
+        if (partSys_isON) foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Play();
+        else foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Stop();
 
         if (target == null && !ifEnemiesNearBy) return;
         else
@@ -168,7 +180,8 @@ public class Canon : MonoBehaviour
                     fireCountdown = 1d / Tdata.AtackSpeed;
                 }
 
-                fireCountdown -= Time.deltaTime;
+
+               fireCountdown -= Time.deltaTime;
             }
         }
     }
@@ -187,6 +200,7 @@ public class Canon : MonoBehaviour
 
     void Explode()
     {
+        Debug.Log("EXPLOOOOODEEE!!!");
         Collider[] colliders = Physics.OverlapSphere(transform.position, (float)(Tdata.Range * _scale));
         foreach(var collider in colliders)
         {
@@ -195,15 +209,13 @@ public class Canon : MonoBehaviour
                 Damage(collider.transform);
             }
         }
-
         //partSys_isON = false;
     }
 
     void Damage(Transform enemy)
     {
-        //TO DO: added a delay between damage
         Debug.Log("DAMAGEEEE!!");
-        enemy.GetComponent<EnemyScript>().TakeDamage(TowerManager.GetMushroom().Damage);
+        enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage);
     }
 
     private void OnDrawGizmosSelected()

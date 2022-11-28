@@ -17,7 +17,7 @@ public static class TowerManager
     public static TowerData GetBallista()
     {
         var tower = Towers.Where(x => x.Type == TowerType.Ballista).ToArray();
-        return tower[0];
+        return new TowerData(tower[0]);
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ public static class TowerManager
     public static TowerData GetTreeHouse()
     {
         var tower = Towers.Where(x => x.Type == TowerType.TreeHouse).ToArray();
-        return tower[0];
+        return new TowerData(tower[0]);
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ public static class TowerManager
     public static TowerData GetMushroom()
     {
         var tower = Towers.Where(x => x.Type == TowerType.Mushroom).ToArray();
-        return tower[0];
+        return new TowerData(tower[0]);
     }
 
     /// <summary>
@@ -44,6 +44,15 @@ public static class TowerManager
     public static TowerData GetLazerTower()
     {
         var tower = Towers.Where(x => x.Type == TowerType.LazerTower).ToArray();
-        return tower[0];
+        return new TowerData(tower[0]);
+    }
+
+    /// <summary>
+    /// Получить данные о кристале
+    /// </summary>
+    public static TowerData GetCrystal()
+    {
+        var tower = Towers.Where(x => x.Type == TowerType.Crystal).ToArray();
+        return new TowerData(tower[0]);
     }
 }

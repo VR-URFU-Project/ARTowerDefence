@@ -43,12 +43,12 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         agent.SetDestination(target.position);
-        if (Vector3.Distance(transform.position, target.position) < 2)
-        {
-            animator.SetInteger("IfCrystalIsNear", 2);
-            //IfCrystalIsNear.defaultBool = true;
-        }
-        else animator.SetInteger("IfCrystalIsNear", 1);
+        //if (Vector3.Distance(transform.position, target.position) < 2)
+        //{
+        //    animator.SetInteger("IfCrystalIsNear", 2);
+        //    //IfCrystalIsNear.defaultBool = true;
+        //}
+        //else animator.SetInteger("IfCrystalIsNear", 1);
     }
 
     public void SetTarget(GameObject newTarget)
@@ -63,9 +63,14 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Canon>() == null) return;
+        if (other.GetComponent<Canon>() == null)
+        {
+            if (other.GetComponent<CrystalLogic>() == null) return;
+            attackingRN = other.GetComponent<CrystalLogic>().Tdata;
+        }
+        else
+            attackingRN = other.GetComponent<Canon>().Tdata;
         agent.speed = 0;
-        attackingRN = other.GetComponent<Canon>().Tdata;
         InvokeRepeating("CrashTower", 0f, 1f);
         Debug.Log(other.name);
     }

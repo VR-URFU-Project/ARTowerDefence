@@ -28,6 +28,23 @@ public class TowerData
 
     public GameObject shapePrefab => Resources.Load<GameObject>("shape_" + Enum.GetName(typeof(TowerType), Type));
 
+    public TowerData()
+    {
+
+    }
+
+    public TowerData(TowerData old)
+    {
+        Health = old.Health;
+        Range = old.Range;
+        Damage = old.Damage;
+        AtackSpeed = old.AtackSpeed;
+        TargetsAmount = old.TargetsAmount;
+        PVO_enabled = old.PVO_enabled;
+        Price = old.Price;
+        Type = old.Type;
+    }
+
     public void TakeDamage(int damage)
     {
         Health -= damage;

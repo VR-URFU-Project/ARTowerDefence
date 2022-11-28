@@ -14,14 +14,17 @@ public class EnemyScript : MonoBehaviour
 
     private TowerData attackingRN;
 
+    private Animator animator;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Crystal").transform;
     }
 
     public void TakeDamage(int amount)
-    {
+    {    
         BasicData.Health -= amount;
 
         if (BasicData.Health <= 0)
@@ -40,6 +43,12 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         agent.SetDestination(target.position);
+        if (Vector3.Distance(transform.position, target.position) < 2)
+        {
+            animator.SetInteger("IfCrystalIsNear", 2);
+            //IfCrystalIsNear.defaultBool = true;
+        }
+        else animator.SetInteger("IfCrystalIsNear", 1);
     }
 
     public void SetTarget(GameObject newTarget)

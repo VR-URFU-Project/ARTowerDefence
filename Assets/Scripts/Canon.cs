@@ -150,6 +150,7 @@ public class Canon : MonoBehaviour
 
     void Update()
     {
+        if (Tdata.Health <= 0) Destroy(gameObject);
         if (partSys_isON) foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Play();
         else foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Stop();
 

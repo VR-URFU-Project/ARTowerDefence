@@ -31,4 +31,9 @@ public class TowerData
     public GameObject prefab => Resources.Load<GameObject>(PrefabName);
 
     public GameObject shapePrefab => Resources.Load<GameObject>(ShapePrefabName);
+
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+    }
 }

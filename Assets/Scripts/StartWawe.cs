@@ -10,9 +10,9 @@ public class StartWawe : MonoBehaviour
     [SerializeField] List<GameObject> spawnPlaces;
     [SerializeField] GameObject crystal;
     [SerializeField] GameObject StartButton;
-    [SerializeField] GameObject AdditionalButton;
+    //[SerializeField] GameObject AdditionalButton;
 
-    private int waveCounter = 10;
+    private int waveCounter = 0;
     private double timer = 0;
     private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
     private int activeEnemies = 0;
@@ -24,12 +24,12 @@ public class StartWawe : MonoBehaviour
 
     private void Update()
     {
-        if(activeEnemies == 0 && dataQueue.Count == 0 && AdditionalButton.gameObject.active  == false)
+        if(activeEnemies == 0 && dataQueue.Count == 0 /*&& AdditionalButton.gameObject.active  == false*/)
         {
             gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
             gameObject.GetComponent<Button>().onClick.AddListener(EnableEnemy);
         }
-        AdditionalButton.gameObject.SetActive(activeEnemies == 0 && dataQueue.Count == 0);
+        //AdditionalButton.gameObject.SetActive(activeEnemies == 0 && dataQueue.Count == 0);
         if (timer == 0) return;
         timer -= Time.deltaTime;
         if (timer > 0) return;

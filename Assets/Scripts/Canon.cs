@@ -21,7 +21,7 @@ public class Canon : MonoBehaviour
 
     [Header("Unity Setup Fields")]
     public string TargetTag = "Target";
-    //public string EnemyTag = "Enemy";
+    public string EnemyTag = "Enemy";
     public string FlyEnemyTag = "Fly";
 
     public Transform partToRotate;
@@ -81,52 +81,44 @@ public class Canon : MonoBehaviour
                     GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
                     GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
 
-
-                    if (fly_enemies.Length > 0)
+                    if (fly_enemies.Length > 0 || enemies.Length > 0)
                     {
-                        //if (!partSys_isON) partSys_isON = true;
-                        //else partSys_isON = false;
-                        if (!partSys_isON)
+                        if (fly_enemies.Length > 0)
                         {
-                            partSys_isON = true;
-                        }
-
-                        foreach (GameObject fly in fly_enemies)
-                        {
-                            var radius = Tdata.Range * _scale;
-                            if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
+                            if (!partSys_isON)
                             {
-                                ifEnemiesNearBy = true;
+                                partSys_isON = true;
                             }
-                        }
-                    }
-                    else
-                    {
-                        ifEnemiesNearBy = false;
-                        partSys_isON = false;
-                    }
 
-                    if (enemies.Length > 0)
-                    {
-                        //if (!partSys_isON) partSys_isON = true;
-                        //else partSys_isON = false;
-                        if (!partSys_isON)
-                        {
-                            partSys_isON = true;
-                            //foreach (var go in particleSystems) go.SetActive(true);
+                            foreach (GameObject fly in fly_enemies)
+                            {
+                                var radius = Tdata.Range * _scale;
+                                if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
+                                {
+                                    ifEnemiesNearBy = true;
+                                }
+                            }
                         }
                         //else
                         //{
-
-                        //    //foreach (var go in particleSystems) go.SetActive(false);
+                        //    ifEnemiesNearBy = false;
+                        //    partSys_isON = false;
                         //}
 
-                        foreach (GameObject enemy in enemies)
+                        if (enemies.Length > 0)
                         {
-                            var radius = Tdata.Range * _scale;
-                            if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
+                            if (!partSys_isON)
                             {
-                                ifEnemiesNearBy = true;
+                                partSys_isON = true;
+                            }
+
+                            foreach (GameObject enemy in enemies)
+                            {
+                                var radius = Tdata.Range * _scale;
+                                if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
+                                {
+                                    ifEnemiesNearBy = true;
+                                }
                             }
                         }
                     }
@@ -144,8 +136,15 @@ public class Canon : MonoBehaviour
     {
         if (Tdata.Health <= 0) Destroy(gameObject);
 
-        if (partSys_isON) foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Play();
-        else foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Stop();
+        if (partSys_isON)
+        {
+            Debug.Log("partSys_isON");
+            foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Play();
+        }
+        else
+        {
+            foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Stop();
+        }
 
         if (target == null && !ifEnemiesNearBy) return;
         else
@@ -198,7 +197,7 @@ public class Canon : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, (float)(Tdata.Range * _scale));
         foreach(var collider in colliders)
         {
-            if (collider.tag == TargetTag || collider.tag == FlyEnemyTag)
+            if (collider.tag == EnemyTag || collider.tag == FlyEnemyTag)
             {
                 Damage(collider.transform);
             }

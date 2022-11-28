@@ -24,13 +24,9 @@ public class TowerData
 
     public TowerType Type { get; set; }
 
-    public string PrefabName { get; set; }
+    public GameObject prefab => Resources.Load<GameObject>(Enum.GetName(typeof(TowerType), Type));
 
-    public string ShapePrefabName { get; set; }
-
-    public GameObject prefab => Resources.Load<GameObject>(PrefabName);
-
-    public GameObject shapePrefab => Resources.Load<GameObject>(ShapePrefabName);
+    public GameObject shapePrefab => Resources.Load<GameObject>("shape_" + Enum.GetName(typeof(TowerType), Type));
 
     public void TakeDamage(int damage)
     {

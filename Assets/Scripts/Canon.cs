@@ -21,7 +21,7 @@ public class Canon : MonoBehaviour
 
     [Header("Unity Setup Fields")]
     public string TargetTag = "Target";
-    public string EnemyTag = "Enemy";
+    //public string EnemyTag = "Enemy";
     public string FlyEnemyTag = "Fly";
 
     public Transform partToRotate;
@@ -78,9 +78,9 @@ public class Canon : MonoBehaviour
                 }
             case TowerType.Mushroom:
                 {
-                    //particleSystems = GameObject.FindGameObjectsWithTag("Particle_System");
-                    GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
                     GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
+
 
                     if (fly_enemies.Length > 0)
                     {
@@ -89,13 +89,7 @@ public class Canon : MonoBehaviour
                         if (!partSys_isON)
                         {
                             partSys_isON = true;
-                            //foreach (var go in particleSystems) go.SetActive(true);
                         }
-                        //else
-                        //{
-                        //    partSys_isON = false;
-                        //    foreach (var go in particleSystems) go.SetActive(false);
-                        //}
 
                         foreach (GameObject fly in fly_enemies)
                         {
@@ -103,7 +97,6 @@ public class Canon : MonoBehaviour
                             if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
                             {
                                 ifEnemiesNearBy = true;
-                                //Explode();
                             }
                         }
                     }
@@ -134,7 +127,6 @@ public class Canon : MonoBehaviour
                             if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
                             {
                                 ifEnemiesNearBy = true;
-                                //Explode();
                             }
                         }
                     }
@@ -151,6 +143,7 @@ public class Canon : MonoBehaviour
     void Update()
     {
         if (Tdata.Health <= 0) Destroy(gameObject);
+
         if (partSys_isON) foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Play();
         else foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Stop();
 
@@ -205,7 +198,7 @@ public class Canon : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, (float)(Tdata.Range * _scale));
         foreach(var collider in colliders)
         {
-            if (collider.tag == EnemyTag || collider.tag == FlyEnemyTag)
+            if (collider.tag == TargetTag || collider.tag == FlyEnemyTag)
             {
                 Damage(collider.transform);
             }

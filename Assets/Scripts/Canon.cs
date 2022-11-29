@@ -33,7 +33,7 @@ public class Canon : MonoBehaviour
     [Header("TreeHouse Setup Fileds")]
     public GameObject archer_1;
     public GameObject archer_2;
-    private TowerType towerType = TowerType.TreeHouse;
+    [SerializeField] public TowerType towerType;
 
     [Header("Lazer Settings")]
     private LineRenderer lineRenderer;
@@ -227,7 +227,7 @@ public class Canon : MonoBehaviour
 
         if (partSys_isON)
         {
-            Debug.Log("partSys_isON");
+            //Debug.Log("partSys_isON");
             foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Play();
         }
         else
@@ -248,6 +248,15 @@ public class Canon : MonoBehaviour
         } 
         else
         {
+            if (ifEnemiesNearBy)
+            {
+                if (fireCountdown <= 0f)
+                {
+                    Explode();
+                    fireCountdown = 1d / Tdata.AtackSpeed;
+                }
+            }
+
             if (target != null)
             {
                 void LookOnTarget()
@@ -268,32 +277,20 @@ public class Canon : MonoBehaviour
 
                         if (secCounter < 10) secCounter += 1;
                     }
-
-                    fireCountdown -= Time.deltaTime;
                 }
                 else
                 {
-                    LookOnTarget();
-                    if (fireCountdown <= 0f)
-                    {
-                        Shoot();
-                        fireCountdown = 1d / Tdata.AtackSpeed;
-                    }
-
-                    fireCountdown -= Time.deltaTime;
+                        LookOnTarget();
+                        if (fireCountdown <= 0f)
+                        {
+                            Shoot();
+                            fireCountdown = 1d / Tdata.AtackSpeed;
+                        }
                 }
+                
             }
+            fireCountdown -= Time.deltaTime;
 
-            if (ifEnemiesNearBy)
-            {
-                if (fireCountdown <= 0f)
-                {
-                    Explode();
-                    fireCountdown = 1d / Tdata.AtackSpeed;
-                }
-
-               fireCountdown -= Time.deltaTime;
-            }
         }
     }
 

@@ -343,6 +343,7 @@ MonoBehaviour:
   firePoint: {fileID: 8192492122265239082}
   archer_1: {fileID: 0}
   archer_2: {fileID: 0}
+  towerType: 2
 --- !u!1 &2887119381577478736
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +517,7 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   archer_1: {fileID: 8296932915142367666}
   archer_2: {fileID: 2649066788863068757}
+  towerType: 2
 --- !u!54 &1872124359052883639
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -600,3 +602,4 @@ MonoBehaviour:
   firePoint: {fileID: 3292702108470565263}
   archer_1: {fileID: 0}
   archer_2: {fileID: 0}
+  towerType: 2

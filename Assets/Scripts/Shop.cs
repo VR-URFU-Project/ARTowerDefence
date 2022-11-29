@@ -25,17 +25,20 @@ public class Shop : MonoBehaviour
 
             case "TreeHouse":
                 data = TowerManager.GetTreeHouse();
-                Instantiate(data.shapePrefab, gamingPlace.transform);
+                if (MoneySystem.GetMoney() >= data.Price)
+                    Instantiate(data.shapePrefab, gamingPlace.transform);
                 break;
 
             case "Mushroom":
                 data = TowerManager.GetMushroom();
-                Instantiate(data.shapePrefab, gamingPlace.transform);
+                if (MoneySystem.GetMoney() >= data.Price)
+                    Instantiate(data.shapePrefab, gamingPlace.transform);
                 break;
 
             case "LazerTower":
                 data = TowerManager.GetLazerTower();
-                Instantiate(data.shapePrefab, gamingPlace.transform);
+                if (MoneySystem.GetMoney() >= data.Price)
+                    Instantiate(data.shapePrefab, gamingPlace.transform);
                 break;
         }
     }

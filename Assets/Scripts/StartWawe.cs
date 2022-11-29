@@ -17,6 +17,8 @@ public class StartWawe : MonoBehaviour
     private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
     private int activeEnemies = 0;
 
+    private int textToggle = 0;
+
     private void Start()
     {
         gameObject.GetComponent<Button>().onClick.AddListener(EnableEnemy);
@@ -28,7 +30,7 @@ public class StartWawe : MonoBehaviour
         {
             gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
             gameObject.GetComponent<Button>().onClick.AddListener(EnableEnemy);
-
+            gameObject.GetComponentInChildren<Text>().text = "New wave";
         }
         //AdditionalButton.gameObject.SetActive(activeEnemies == 0 && dataQueue.Count == 0);
         if (timer == 0) return;
@@ -44,6 +46,8 @@ public class StartWawe : MonoBehaviour
     {
         gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
         gameObject.GetComponent<Button>().onClick.AddListener(PauseManager.TogglePause);
+        gameObject.GetComponent<Button>().onClick.AddListener(ToggleText);
+        gameObject.GetComponentInChildren<Text>().text = "Pause";
         //StartButton.GetComponent<Button>().enabled = false;
         //AdditionalButton.gameObject.SetActive(false);
 
@@ -83,6 +87,15 @@ public class StartWawe : MonoBehaviour
         timer = subwave.Duration;
     }
 
+    private void ToggleText()
+    {
+        textToggle = textToggle == 0 ? 1 : 0;
+        if (textToggle == 0)
+            gameObject.GetComponentInChildren<Text>().text = "Pause";
+        if (textToggle == 1)
+            gameObject.GetComponentInChildren<Text>().text = "Resume";
+    }
+
     /// <summary>
     /// Монстры появляются равномерно по кругу
     /// </summary>
@@ -97,7 +110,7 @@ public class StartWawe : MonoBehaviour
 
         var left = enemies.Count % spawnPlaces.Count;
 
-        for(var ind = 0; ind< spawnPlaces.Count && left>0; i+=2, --left)
+        for(var ind = 0; ind< spawnPlaces.Count && left>0; ind+=2, --left)
         {
             CreateEnemy(ind, enemies[i]);
             ++i;

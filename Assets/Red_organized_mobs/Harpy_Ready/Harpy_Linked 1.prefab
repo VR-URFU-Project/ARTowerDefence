@@ -2115,7 +2115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2637889419564421375}
   m_Layer: 0
-  m_Name: Harpy_Linked
+  m_Name: Harpy_Linked 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

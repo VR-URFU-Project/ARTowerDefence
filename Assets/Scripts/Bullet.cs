@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
         switch (type)
         {
             case BulletType.Arrow:
-                _damage= TowerManager.GetTreeHouse().Damage;
+                _damage = TowerManager.GetTreeHouse().Damage;
                 break;
 
             case BulletType.Bullet:
@@ -68,8 +68,9 @@ public class Bullet : MonoBehaviour
 
     void Damage(Transform targetEnemy)
     {
-        EnemyScript e = targetEnemy.transform.parent.GetComponent<EnemyScript>();
+        Debug.Log("Damage from Bullet");
 
+        EnemyScript e = targetEnemy.transform.parent.GetComponent<EnemyScript>();
         if (e != null)
             e.TakeDamage(_damage);
     }

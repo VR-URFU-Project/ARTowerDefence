@@ -164,6 +164,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1820139715188043781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3292702108470565263}
+  m_Layer: 0
+  m_Name: firePoint_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3292702108470565263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820139715188043781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 1.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 668481524459459708}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2207015552250427833
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +289,60 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2649066788863068757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7567144581853051386}
+  - component: {fileID: 5269391434442473306}
+  m_Layer: 0
+  m_Name: Archer_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7567144581853051386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649066788863068757}
+  m_LocalRotation: {x: 0, y: -0.67559016, z: 0, w: 0.7372774}
+  m_LocalPosition: {x: -1.51, y: 10.3, z: 1.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8192492122265239082}
+  m_Father: {fileID: 8027286754611741622}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: -85, z: 0}
+--- !u!114 &5269391434442473306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649066788863068757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireCountdown: 0
+  TargetTag: Target
+  EnemyTag: Enemy
+  FlyEnemyTag: Fly
+  partToRotate: {fileID: 7567144581853051386}
+  turnSpeed: 5
+  bulletPrefab: {fileID: 3664311509907110316, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
+  firePoint: {fileID: 8192492122265239082}
+  archer_1: {fileID: 0}
+  archer_2: {fileID: 0}
 --- !u!1 &2887119381577478736
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +425,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6427584482718447702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8192492122265239082}
+  m_Layer: 0
+  m_Name: firePoint_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8192492122265239082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6427584482718447702}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7567144581853051386}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7218555972235860236
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +489,8 @@ Transform:
   - {fileID: 3382090619947299769}
   - {fileID: 5401783276734341878}
   - {fileID: 4189964771628105246}
+  - {fileID: 668481524459459708}
+  - {fileID: 7567144581853051386}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 1073.092, z: 0}
@@ -385,12 +501,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7218555972235860236}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerType: 2
   fireCountdown: 0
   TargetTag: Target
   EnemyTag: Enemy
@@ -399,6 +514,8 @@ MonoBehaviour:
   turnSpeed: 5
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 0}
+  archer_1: {fileID: 8296932915142367666}
+  archer_2: {fileID: 2649066788863068757}
 --- !u!54 &1872124359052883639
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -429,3 +546,57 @@ CapsuleCollider:
   m_Height: 17.192358
   m_Direction: 1
   m_Center: {x: 0.20330377, y: 5.5985446, z: 0.036603775}
+--- !u!1 &8296932915142367666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 668481524459459708}
+  - component: {fileID: 6493246870547495044}
+  m_Layer: 0
+  m_Name: Archer_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &668481524459459708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296932915142367666}
+  m_LocalRotation: {x: 0, y: 0.7386906, z: 0, w: 0.6740447}
+  m_LocalPosition: {x: 2.25, y: 9.85, z: -1.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3292702108470565263}
+  m_Father: {fileID: 8027286754611741622}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 95.24, z: 0}
+--- !u!114 &6493246870547495044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296932915142367666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireCountdown: 0
+  TargetTag: Target
+  EnemyTag: Enemy
+  FlyEnemyTag: Fly
+  partToRotate: {fileID: 668481524459459708}
+  turnSpeed: 5
+  bulletPrefab: {fileID: 3664311509907110316, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
+  firePoint: {fileID: 3292702108470565263}
+  archer_1: {fileID: 0}
+  archer_2: {fileID: 0}

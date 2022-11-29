@@ -30,10 +30,7 @@ public class Shop : MonoBehaviour
 
             case "Mushroom":
                 data = TowerManager.GetMushroom();
-                Instantiate(data.shapePrefab, 
-                    //data.shapePrefab.transform.parent.position, 
-                    //data.shapePrefab.transform.parent.rotation, 
-                    gamingPlace.transform);
+                Instantiate(data.shapePrefab, gamingPlace.transform);
                 break;
 
             case "LazerTower":

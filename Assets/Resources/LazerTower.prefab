@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 1653866157655293056}
   - component: {fileID: 3308237148492774879}
   - component: {fileID: -8411869969305284873}
+  - component: {fileID: 7090328794377775655}
   m_Layer: 0
   m_Name: LazerTower
   m_TagString: Untagged
@@ -569,7 +570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerType: 4
   fireCountdown: 0
   TargetTag: Target
   EnemyTag: Enemy
@@ -578,8 +578,9 @@ MonoBehaviour:
   turnSpeed: 5
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 6219929931980337954}
-  lineRenderer: {fileID: 0}
-  useLazer: 0
+  archer_1: {fileID: 0}
+  archer_2: {fileID: 0}
+  towerType: 4
 --- !u!54 &1653866157655293056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -708,3 +709,17 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &7090328794377775655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245361145959436885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01832e354fa1f4428dac2553c013306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gg: {fileID: 0}
+  type: 4

@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 34059729279762986}
   - component: {fileID: 7546589702349091342}
   - component: {fileID: -1162993566226000319}
+  - component: {fileID: 2913607412306116368}
   m_Layer: 0
   m_Name: Ballista
   m_TagString: Untagged
@@ -519,7 +520,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerType: 1
   fireCountdown: 0
   TargetTag: Target
   EnemyTag: Enemy
@@ -528,6 +528,9 @@ MonoBehaviour:
   turnSpeed: 5
   bulletPrefab: {fileID: 3664311509907110316, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
   firePoint: {fileID: 1353202873411176373}
+  archer_1: {fileID: 0}
+  archer_2: {fileID: 0}
+  towerType: 1
 --- !u!54 &7546589702349091342
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -558,6 +561,20 @@ CapsuleCollider:
   m_Height: 15
   m_Direction: 1
   m_Center: {x: 0, y: 5.29497, z: 0}
+--- !u!114 &2913607412306116368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991681139334568636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01832e354fa1f4428dac2553c013306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gg: {fileID: 0}
+  type: 1
 --- !u!1 &7033092216996269212
 GameObject:
   m_ObjectHideFlags: 0

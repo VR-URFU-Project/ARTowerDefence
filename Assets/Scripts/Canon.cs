@@ -31,8 +31,8 @@ public class Canon : MonoBehaviour
     public Transform firePoint;
 
     [Header("TreeHouse Setup Fileds")]
-    public GameObject archer_1;
-    public GameObject archer_2;
+    //public GameObject archer_1;
+    //public GameObject archer_2;
     [SerializeField] public TowerType towerType;
 
     [Header("Lazer Settings")]
@@ -43,7 +43,7 @@ public class Canon : MonoBehaviour
     // флаг для дерева с лучниками
     //private bool treeIsAtacking = false;
 
-    private GameObject[] particleSystems;
+    private ParticleSystem[] particleSystems;
 
     private bool ifEnemiesNearBy = false;
 
@@ -55,8 +55,8 @@ public class Canon : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         parent = GameObject.FindGameObjectWithTag("GamingPlace");
-        particleSystems = GameObject.FindGameObjectsWithTag("Particle_System");
-        foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Stop();
+        particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>();//gameObject.FindGameObjectsWithTag("Particle_System");
+        foreach (var go in particleSystems) go.Stop();
 
         if (towerType == TowerType.TreeHouse)
         {
@@ -66,176 +66,117 @@ public class Canon : MonoBehaviour
 
     void UpdateTarget()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
+        GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
+        GameObject nearestEnemy;
+
         switch (Tdata.Type)
         {
             case TowerType.Ballista:
-                {
-                    GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
-                    float shortestDistance = Mathf.Infinity;
-                    GameObject nearestEnemy = null;
+                nearestEnemy = GetNearestAvailableEnemy(enemies);
 
-                    foreach (GameObject enemy in enemies)
-                    {
-                        float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-                        if (distanceToEnemy < shortestDistance)
-                        {
-                            shortestDistance = distanceToEnemy;
-                            nearestEnemy = enemy;
-                        }
-                    }
+                if (nearestEnemy != null)
+                    target = nearestEnemy.transform;
+                else
+                    target = null;
+                break;
 
-                    if (nearestEnemy != null && shortestDistance <= Tdata.Range * _scale)
-                    {
-                        target = nearestEnemy.transform;
-                    }
-                    else
-                    {
-                        target = null;
-                    }
-                    return;
-                }
             case TowerType.TreeHouse:
-                {
-                    GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
-                    GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
-                    float shortestDistance = Mathf.Infinity;
-                    GameObject nearestEnemy = null;
+                nearestEnemy = GetNearestAvailableEnemy(enemies.Concat(fly_enemies).ToArray());
 
-                    foreach (GameObject enemy in enemies)
-                    {
-                        float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-                        if (distanceToEnemy < shortestDistance)
-                        {
-                            shortestDistance = distanceToEnemy;
-                            nearestEnemy = enemy;
-                        }
-                    }
+                if (nearestEnemy != null)
+                    target = nearestEnemy.transform;
+                else
+                    target = null;
+                break;
 
-                    foreach (GameObject fly in fly_enemies)
-                    {
-                        float distanceToEnemy = Vector3.Distance(transform.position, fly.transform.position);
-                        if (distanceToEnemy < shortestDistance)
-                        {
-                            shortestDistance = distanceToEnemy;
-                            nearestEnemy = fly;
-                        }
-                    }
-
-                    if (nearestEnemy != null && shortestDistance <= Tdata.Range * _scale)
-                    {
-                        target = nearestEnemy.transform;
-                    }
-                    else
-                    {
-                        target = null;
-                    }
-                    return;
-                }
             case TowerType.Mushroom:
+                if (fly_enemies.Length > 0 || enemies.Length > 0)
                 {
-                    GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
-                    GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
-
-                    if (fly_enemies.Length > 0 || enemies.Length > 0)
+                    var radius = Tdata.Range * _scale;
+                    if (fly_enemies.Length > 0)
                     {
-                        if (fly_enemies.Length > 0)
+                        foreach (GameObject fly in fly_enemies)
                         {
-                            if (!partSys_isON)
+                            if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
                             {
-                                partSys_isON = true;
-                            }
-
-                            foreach (GameObject fly in fly_enemies)
-                            {
-                                var radius = Tdata.Range * _scale;
-                                if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
-                                {
-                                    ifEnemiesNearBy = true;
-                                }
-                            }
-                        }
-
-                        if (enemies.Length > 0)
-                        {
-                            if (!partSys_isON)
-                            {
-                                partSys_isON = true;
-                            }
-
-                            foreach (GameObject enemy in enemies)
-                            {
-                                var radius = Tdata.Range * _scale;
-                                if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
-                                {
-                                    ifEnemiesNearBy = true;
-                                }
+                                ifEnemiesNearBy = true;
                             }
                         }
                     }
-                    else
+
+                    if (enemies.Length > 0)
                     {
-                        ifEnemiesNearBy = false;
-                        partSys_isON = false;
+                        foreach (GameObject enemy in enemies)
+                        {
+                            if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
+                            {
+                                ifEnemiesNearBy = true;
+                            }
+                        }
                     }
-                    return;
+
+                    partSys_isON = ifEnemiesNearBy;
                 }
+                else
+                {
+                    ifEnemiesNearBy = false;
+                    partSys_isON = false;
+                }
+                break;
             case TowerType.LazerTower:
+                nearestEnemy = GetNearestAvailableEnemy(enemies.Concat(fly_enemies).ToArray());
+
+                if (nearestEnemy != null)
                 {
-                    GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
-                    GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
-                    float shortestDistance = Mathf.Infinity;
-                    GameObject nearestEnemy = null;
-
-                    foreach (GameObject enemy in enemies)
-                    {
-                        float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-                        if (distanceToEnemy < shortestDistance)
-                        {
-                            shortestDistance = distanceToEnemy;
-                            nearestEnemy = enemy;
-                        }
-                    }
-
-                    foreach (GameObject fly in fly_enemies)
-                    {
-                        float distanceToEnemy = Vector3.Distance(transform.position, fly.transform.position);
-                        if (distanceToEnemy < shortestDistance)
-                        {
-                            shortestDistance = distanceToEnemy;
-                            nearestEnemy = fly;
-                        }
-                    }
-
-                    if (nearestEnemy != null && shortestDistance <= Tdata.Range * _scale)
-                    {
-                        target = nearestEnemy.transform;
-                        useLazer = true;
-                    }
-                    else
-                    {
-                        target = null;
-                    }
-
-                    return;
+                    target = nearestEnemy.transform;
+                    useLazer = true;
                 }
+                else
+                {
+                    target = null;
+                }
+
+                break;
         }
+    }
+
+    private GameObject GetNearestAvailableEnemy(GameObject[] enemies)
+    {
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+        foreach (GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distanceToEnemy < shortestDistance)
+            {
+                shortestDistance = distanceToEnemy;
+                nearestEnemy = enemy;
+            }
+        }
+        if (shortestDistance <= Tdata.Range * _scale)
+            return nearestEnemy;
+        return null;
     }
 
     void Update()
     {
-        if (Tdata.Health <= 0) Destroy(gameObject);
-
         if (partSys_isON)
         {
             //Debug.Log("partSys_isON");
-            foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Play();
+            foreach (var go in particleSystems)
+            {
+                if (!go.isPlaying)
+                    go.Play();
+            }
         }
         else
         {
-            foreach (var go in particleSystems) go.GetComponent<ParticleSystem>().Stop();
+            foreach (var go in particleSystems) go.Stop();
         }
 
-        if (target == null && !ifEnemiesNearBy) {
+        if (target == null && !ifEnemiesNearBy)
+        {
             if (useLazer)
             {
                 if (lineRenderer.enabled)
@@ -245,7 +186,7 @@ public class Canon : MonoBehaviour
             }
             secCounter = 1;
             return;
-        } 
+        }
         else
         {
             if (ifEnemiesNearBy)
@@ -280,14 +221,14 @@ public class Canon : MonoBehaviour
                 }
                 else
                 {
-                        LookOnTarget();
-                        if (fireCountdown <= 0f)
-                        {
-                            Shoot();
-                            fireCountdown = 1d / Tdata.AtackSpeed;
-                        }
+                    LookOnTarget();
+                    if (fireCountdown <= 0f)
+                    {
+                        Shoot();
+                        fireCountdown = 1d / Tdata.AtackSpeed;
+                    }
                 }
-                
+
             }
             fireCountdown -= Time.deltaTime;
 
@@ -320,7 +261,7 @@ public class Canon : MonoBehaviour
     {
         Debug.Log("EXPLOOOOODEEE!!!");
         Collider[] colliders = Physics.OverlapSphere(transform.position, (float)(Tdata.Range * _scale));
-        foreach(var collider in colliders)
+        foreach (var collider in colliders)
         {
             if (collider.tag == EnemyTag || collider.tag == FlyEnemyTag)
             {
@@ -331,7 +272,7 @@ public class Canon : MonoBehaviour
 
     void Damage(Transform enemy)
     {
-        
+
         if (useLazer)
         {
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage * secCounter);

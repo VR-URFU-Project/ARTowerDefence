@@ -4816,6 +4816,7 @@ GameObject:
   - component: {fileID: 2138296133229420624}
   - component: {fileID: 4998984462972202346}
   - component: {fileID: 1130549059040691309}
+  - component: {fileID: 6042125401952683135}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -4853,14 +4854,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerType: 3
   fireCountdown: 0
   TargetTag: Target
+  EnemyTag: Enemy
   FlyEnemyTag: Fly
   partToRotate: {fileID: 0}
   turnSpeed: 5
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 0}
+  archer_1: {fileID: 0}
+  archer_2: {fileID: 0}
+  towerType: 3
 --- !u!54 &4998984462972202346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4891,6 +4895,20 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!114 &6042125401952683135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138296133229420626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01832e354fa1f4428dac2553c013306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gg: {fileID: 0}
+  type: 3
 --- !u!1 &2138296133556196026
 GameObject:
   m_ObjectHideFlags: 0

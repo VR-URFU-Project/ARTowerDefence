@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 1646689558911142784}
   - component: {fileID: 1872124359052883639}
   - component: {fileID: 482774607638815321}
+  - component: {fileID: 4772244938604846211}
   m_Layer: 0
   m_Name: TreeHouse
   m_TagString: Untagged
@@ -548,6 +549,20 @@ CapsuleCollider:
   m_Height: 17.192358
   m_Direction: 1
   m_Center: {x: 0.20330377, y: 5.5985446, z: 0.036603775}
+--- !u!114 &4772244938604846211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7218555972235860236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01832e354fa1f4428dac2553c013306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gg: {fileID: 0}
+  type: 2
 --- !u!1 &8296932915142367666
 GameObject:
   m_ObjectHideFlags: 0

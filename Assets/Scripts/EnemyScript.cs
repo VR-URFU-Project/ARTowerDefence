@@ -24,7 +24,9 @@ public class EnemyScript : MonoBehaviour
     }
 
     public void TakeDamage(int amount)
-    {    
+    {
+        if (BasicData.Health <= 0) return;
+
         BasicData.Health -= amount;
 
         if (BasicData.Health <= 0)
@@ -63,13 +65,9 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Canon>() == null)
-        {
-            if (other.GetComponent<CrystalLogic>() == null) return;
-            attackingRN = other.GetComponent<CrystalLogic>().Tdata;
-        }
-        else
-            attackingRN = other.GetComponent<Canon>().Tdata;
+        if (other.GetComponent<TowerHealthLogic>() == null) return;
+
+        attackingRN = other.GetComponent<TowerHealthLogic>().Tdata;
         agent.speed = 0;
         InvokeRepeating("CrashTower", 0f, 1f);
         Debug.Log(other.name);
@@ -84,8 +82,12 @@ public class EnemyScript : MonoBehaviour
 
     private void CrashTower()
     {
-        if (attackingRN == null || attackingRN.Health<=0) TriggerExit();
+        if (attackingRN == null || attackingRN.Health <= 0)
+        {
+            TriggerExit();
+            return;
+        }
         attackingRN.TakeDamage(BasicData.Damage);
-        Debug.Log("left hp "+ attackingRN.Health);
+        Debug.Log("left hp " + attackingRN.Health);
     }
 }

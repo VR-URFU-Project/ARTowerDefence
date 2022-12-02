@@ -8,4 +8,9 @@ using UnityEngine;
 public static class WaveController
 {
     public static List<WaveData> WawesInfo = CSVReader.ReadWaveData();
+
+    public static void RefreshWaveData()
+    {
+        WawesInfo = CSVReader.ReadWaveData();
+    }
 }

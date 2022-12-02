@@ -93,9 +93,10 @@ public class Canon : MonoBehaviour
             case TowerType.Mushroom:
                 if (fly_enemies.Length > 0 || enemies.Length > 0)
                 {
+                    ifEnemiesNearBy = false;
                     var radius = Tdata.Range * _scale;
-                    if (fly_enemies.Length > 0)
-                    {
+                    //if (fly_enemies.Length > 0)
+                    //{
                         foreach (GameObject fly in fly_enemies)
                         {
                             if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
@@ -103,10 +104,10 @@ public class Canon : MonoBehaviour
                                 ifEnemiesNearBy = true;
                             }
                         }
-                    }
+                    //}
 
-                    if (enemies.Length > 0)
-                    {
+                    //if (enemies.Length > 0)
+                    //{
                         foreach (GameObject enemy in enemies)
                         {
                             if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
@@ -114,7 +115,7 @@ public class Canon : MonoBehaviour
                                 ifEnemiesNearBy = true;
                             }
                         }
-                    }
+                    //}
 
                     partSys_isON = ifEnemiesNearBy;
                 }

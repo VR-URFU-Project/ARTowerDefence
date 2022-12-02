@@ -51,7 +51,11 @@ public class StartWawe : MonoBehaviour
         //StartButton.GetComponent<Button>().enabled = false;
         //AdditionalButton.gameObject.SetActive(false);
 
-        if (waveCounter >= 20) waveCounter = 0;
+        if (waveCounter >= 20)
+        {
+            WaveController.RefreshWaveData();
+            waveCounter = 0;
+        }
         foreach (var subWave in WaveController.WawesInfo[waveCounter].Data)
         {
             dataQueue.Enqueue(subWave);

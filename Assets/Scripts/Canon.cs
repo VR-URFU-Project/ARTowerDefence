@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Xml.Linq;
 using UnityEngine;
 
@@ -75,10 +74,14 @@ public class Canon : MonoBehaviour
             case TowerType.Ballista:
                 nearestEnemy = GetNearestAvailableEnemy(enemies);
 
-                if (nearestEnemy != null)
-                    target = nearestEnemy.transform;
-                else
-                    target = null;
+                // проверка на наземного врага
+                if (nearestEnemy.transform.parent.tag == EnemyTag)
+                {
+                    if (nearestEnemy != null)
+                        target = nearestEnemy.transform;
+                    else
+                        target = null;
+                }
                 break;
 
             case TowerType.TreeHouse:

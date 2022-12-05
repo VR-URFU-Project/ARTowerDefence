@@ -2065,7 +2065,7 @@ GameObject:
   - component: {fileID: 6347280301012045514}
   m_Layer: 0
   m_Name: Harpy
-  m_TagString: Enemy
+  m_TagString: Fly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -15,7 +15,7 @@ public class Canon : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField]
-    private double fireCountdown = 0f;
+    private double fireCountdown = 0d;
 
     private bool partSys_isON = false;
 
@@ -55,7 +55,7 @@ public class Canon : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         parent = GameObject.FindGameObjectWithTag("GamingPlace");
-        particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>();//gameObject.FindGameObjectsWithTag("Particle_System");
+        particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>();
         foreach (var go in particleSystems) go.Stop();
 
         if (towerType == TowerType.TreeHouse)
@@ -95,8 +95,6 @@ public class Canon : MonoBehaviour
                 {
                     ifEnemiesNearBy = false;
                     var radius = Tdata.Range * _scale;
-                    //if (fly_enemies.Length > 0)
-                    //{
                         foreach (GameObject fly in fly_enemies)
                         {
                             if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
@@ -104,10 +102,7 @@ public class Canon : MonoBehaviour
                                 ifEnemiesNearBy = true;
                             }
                         }
-                    //}
 
-                    //if (enemies.Length > 0)
-                    //{
                         foreach (GameObject enemy in enemies)
                         {
                             if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
@@ -115,7 +110,6 @@ public class Canon : MonoBehaviour
                                 ifEnemiesNearBy = true;
                             }
                         }
-                    //}
 
                     partSys_isON = ifEnemiesNearBy;
                 }
@@ -144,11 +138,11 @@ public class Canon : MonoBehaviour
 
     private GameObject GetNearestAvailableEnemy(GameObject[] enemies)
     {
-        float shortestDistance = Mathf.Infinity;
+        var shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
         foreach (GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            var distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;

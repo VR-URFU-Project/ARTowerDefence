@@ -75,13 +75,16 @@ public class Canon : MonoBehaviour
                 nearestEnemy = GetNearestAvailableEnemy(enemies);
 
                 // проверка на наземного врага
-                if (nearestEnemy.transform.parent.tag == EnemyTag)
-                {
                     if (nearestEnemy != null)
-                        target = nearestEnemy.transform;
+                    {
+                        if (nearestEnemy.transform.parent.tag == EnemyTag)
+                        {
+                            target = nearestEnemy.transform;
+                        }
+                    }
                     else
                         target = null;
-                }
+                
                 break;
 
             case TowerType.TreeHouse:

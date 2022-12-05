@@ -3,7 +3,10 @@ guid: cc311b89ec4af0c44abdab0ad7d60306
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - YesNoPanel: {instanceID: 0}
+  - mat_plane: {fileID: 2100000, guid: be82322485c8b734197842011504d590, type: 2}
+  - mat_sphere: {fileID: 2100000, guid: 79e2031b818af6549b6d10e57b7f892f, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

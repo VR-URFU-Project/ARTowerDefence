@@ -341,8 +341,6 @@ MonoBehaviour:
   turnSpeed: 5
   bulletPrefab: {fileID: 3664311509907110316, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
   firePoint: {fileID: 8192492122265239082}
-  archer_1: {fileID: 0}
-  archer_2: {fileID: 0}
   towerType: 2
 --- !u!1 &2887119381577478736
 GameObject:
@@ -485,7 +483,7 @@ Transform:
   m_GameObject: {fileID: 7218555972235860236}
   m_LocalRotation: {x: -0, y: 0.060244, z: -0, w: -0.9981837}
   m_LocalPosition: {x: 1.244, y: 0.056999207, z: -0.19}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children:
   - {fileID: 2285683912636327360}
   - {fileID: 3382090619947299769}
@@ -516,8 +514,6 @@ MonoBehaviour:
   turnSpeed: 5
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 0}
-  archer_1: {fileID: 8296932915142367666}
-  archer_2: {fileID: 2649066788863068757}
   towerType: 2
 --- !u!54 &1872124359052883639
 Rigidbody:
@@ -615,6 +611,4 @@ MonoBehaviour:
   turnSpeed: 5
   bulletPrefab: {fileID: 3664311509907110316, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
   firePoint: {fileID: 3292702108470565263}
-  archer_1: {fileID: 0}
-  archer_2: {fileID: 0}
   towerType: 2

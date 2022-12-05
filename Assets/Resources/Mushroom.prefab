@@ -4833,7 +4833,7 @@ Transform:
   m_GameObject: {fileID: 2138296133229420626}
   m_LocalRotation: {x: -0, y: -0.69704366, z: -0, w: -0.7170287}
   m_LocalPosition: {x: 1.09, y: 0.032, z: -3.1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 2138296133985109257}
   - {fileID: 2138296134577833735}
@@ -4862,8 +4862,6 @@ MonoBehaviour:
   turnSpeed: 5
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 0}
-  archer_1: {fileID: 0}
-  archer_2: {fileID: 0}
   towerType: 3
 --- !u!54 &4998984462972202346
 Rigidbody:

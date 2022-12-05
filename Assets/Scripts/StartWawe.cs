@@ -12,7 +12,7 @@ public class StartWawe : MonoBehaviour
     [SerializeField] GameObject StartButton;
     //[SerializeField] GameObject AdditionalButton;
 
-    private int waveCounter = 0;
+    private int waveCounter = 14;
     private double timer = 0;
     private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
     private int activeEnemies = 0;

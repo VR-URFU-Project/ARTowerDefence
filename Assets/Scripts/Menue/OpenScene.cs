@@ -7,8 +7,8 @@ public class OpenScene : MonoBehaviour
 {
     public void OpenNewScene(int sceneId)
     {
-        var oldScene = SceneManager.GetActiveScene();
+        //var oldScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(sceneId);
-        SceneManager.UnloadSceneAsync(oldScene);
+        //SceneManager.UnloadSceneAsync(oldScene);
     }
 }

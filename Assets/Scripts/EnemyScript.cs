@@ -21,6 +21,8 @@ public class EnemyScript : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Crystal").transform;
+
+        animator = GetComponent<Animator>();
     }
 
     public void TakeDamage(int amount)
@@ -35,11 +37,18 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    IEnumerator WaitBeforeDeath(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(gameObject);
+    }
+
     void Die()
     {
+        animator.SetTrigger("Death");
         KillEvent();
         MoneySystem.ChangeMoney(BasicData.Money);
-        Destroy(gameObject);
+        StartCoroutine(WaitBeforeDeath(2f));
     }
 
     void Update()
@@ -67,6 +76,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (other.GetComponent<TowerHealthLogic>() == null) return;
 
+        animator.SetInteger("Attack", 1);
         attackingRN = other.GetComponent<TowerHealthLogic>().Tdata;
         agent.speed = 0;
         InvokeRepeating("CrashTower", 0f, 1f);
@@ -75,6 +85,7 @@ public class EnemyScript : MonoBehaviour
 
     private void TriggerExit()
     {
+        animator.SetInteger("Attack", 0);
         //agent.speed = (float)BasicData.Movement/100;
         agent.speed = 0.05f;
         CancelInvoke("CrashTower");

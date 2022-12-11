@@ -39,6 +39,7 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator WaitBeforeDeath(float seconds)
     {
+        agent.baseOffset = 0f;
         yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
     }

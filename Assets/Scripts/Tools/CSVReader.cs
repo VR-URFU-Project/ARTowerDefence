@@ -38,13 +38,13 @@ public static class CSVReader
                         mobData.Health = int.Parse(mas[k][i]);
                         break;
                     case var str when str.Contains("Movement"):
-                        mobData.Movement = double.Parse(mas[k][i], CultureInfo.InvariantCulture);
+                        mobData.Movement = float.Parse(mas[k][i], CultureInfo.InvariantCulture);
                         break;
                     case var str when str.Contains("Damage"):
                         mobData.Damage = int.Parse(mas[k][i]);
                         break;
                     case var str when str.Contains("Attack Speed"):
-                        mobData.AttacSpeed = double.Parse(mas[k][i], CultureInfo.InvariantCulture);
+                        mobData.AttacSpeed = float.Parse(mas[k][i], CultureInfo.InvariantCulture);
                         break;
                     case var str when str.Contains("Attack Range"):
                         mobData.AttacRange = double.Parse(mas[k][i], CultureInfo.InvariantCulture);
@@ -86,6 +86,37 @@ public static class CSVReader
             waves.Add(wave);
         }
         return waves;
+    }
+
+    public static List<int> ReadWaveTimeData()
+    {
+        var strData = Resources
+            .Load<TextAsset>("Waves")
+            .text
+            .Split('\n')
+            .Skip(1)
+            .Select(x => x.Split(',')[0])
+            .ToArray();
+
+        List<int> wavesTime = new List<int>();
+        foreach (var line in strData)
+        {
+            var parts = line.Split(':').Select(x => x.Trim()).ToArray();
+            int time = 0;
+            foreach (var part in parts)
+            {
+                if (part == "")
+                {
+                    Debug.LogError("ошибка парсинга времени");
+                    continue;
+                }
+
+                time = (time + int.Parse(part)) * 60;   
+            }
+            time /= 60;
+            wavesTime.Add(time);
+        }
+        return wavesTime;
     }
 
     public static List<TowerData> ReadTowerData()

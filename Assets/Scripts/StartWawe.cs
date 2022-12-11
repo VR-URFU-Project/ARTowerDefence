@@ -6,14 +6,14 @@ using System.Threading;
 
 public class StartWawe : MonoBehaviour
 {
-    //[SerializeField] GameObject EnemyPrefab;
     [SerializeField] List<GameObject> spawnPlaces;
     [SerializeField] GameObject crystal;
-    [SerializeField] GameObject StartButton;
-    //[SerializeField] GameObject AdditionalButton;
+    //[SerializeField] GameObject StartButton;
 
-    private int waveCounter = 0;
-    private double timer = 0;
+    private const int DISABLED_TIMER_VALUE = -10;
+    private int curGameTime = 0;
+    private int curWave = 0;
+    private double timer = DISABLED_TIMER_VALUE;
     private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
     private int activeEnemies = 0;
 
@@ -21,19 +21,17 @@ public class StartWawe : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<Button>().onClick.AddListener(EnableEnemy);
+        GameTimer.ResetTimer();
     }
 
     private void Update()
     {
-        if(activeEnemies == 0 && dataQueue.Count == 0 /*&& AdditionalButton.gameObject.active  == false*/)
+        if (activeEnemies == 0 && dataQueue.Count == 0 && curWave != 0)
         {
-            gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
-            gameObject.GetComponent<Button>().onClick.AddListener(EnableEnemy);
-            gameObject.GetComponentInChildren<Text>().text = "New wave";
+            Debug.Log("Победа");
+            return;
         }
-        //AdditionalButton.gameObject.SetActive(activeEnemies == 0 && dataQueue.Count == 0);
-        if (timer == 0) return;
+        if (timer == DISABLED_TIMER_VALUE) return;
         timer -= Time.deltaTime;
         if (timer > 0) return;
         processSubwave(dataQueue.Dequeue());
@@ -44,24 +42,30 @@ public class StartWawe : MonoBehaviour
     /// </summary>
     public void EnableEnemy()
     {
-        gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
-        gameObject.GetComponent<Button>().onClick.AddListener(PauseManager.TogglePause);
-        gameObject.GetComponent<Button>().onClick.AddListener(ToggleText);
-        gameObject.GetComponentInChildren<Text>().text = "Pause";
-        //StartButton.GetComponent<Button>().enabled = false;
-        //AdditionalButton.gameObject.SetActive(false);
+        GameTimer.StartTimer();
+        PauseManager.Resume();
 
-        if (waveCounter >= 20)
-        {
-            WaveController.RefreshWaveData();
-            waveCounter = 0;
-        }
-        foreach (var subWave in WaveController.WawesInfo[waveCounter].Data)
-        {
-            dataQueue.Enqueue(subWave);
-        }
+        GenerateWavesForRound();
         processSubwave(dataQueue.Dequeue());
-        ++waveCounter;
+    }
+
+    private void GenerateWavesForRound()
+    {
+        if(curWave >= WaveController.WawesInfo.Count)
+        {
+            timer = DISABLED_TIMER_VALUE;
+            return;
+        }
+        while (curGameTime < WaveController.WavesTimeInfo[curWave])
+        {
+            foreach (var subWave in WaveController.WawesInfo[curWave].Data)
+            {
+                dataQueue.Enqueue(subWave);
+                curGameTime += subWave.Duration;
+                if (curGameTime >= WaveController.WavesTimeInfo[curWave]) break;
+            }
+        }
+        ++curWave;
     }
 
     /// <summary>
@@ -70,6 +74,7 @@ public class StartWawe : MonoBehaviour
     /// <param name="subwave"></param>
     private void processSubwave(SubwaveData subwave)
     {
+        Debug.Log("Processing " + GameTimer.GetSeconds().ToString());
         switch (subwave.SpawnType)
         {
             case "C":
@@ -85,8 +90,8 @@ public class StartWawe : MonoBehaviour
 
         if (dataQueue.Count == 0)
         {
-            timer = 0;
-            return;
+            GenerateWavesForRound();
+            if (timer == DISABLED_TIMER_VALUE) return;
         }
         timer = subwave.Duration;
     }
@@ -114,7 +119,7 @@ public class StartWawe : MonoBehaviour
 
         var left = enemies.Count % spawnPlaces.Count;
 
-        for(var ind = 0; ind< spawnPlaces.Count && left>0; ind+=2, --left)
+        for (var ind = 0; ind < spawnPlaces.Count && left > 0; ind += 2, --left)
         {
             CreateEnemy(ind, enemies[i]);
             ++i;
@@ -172,10 +177,11 @@ public class StartWawe : MonoBehaviour
     {
         var newEnemy = Instantiate(data.prefab, spawnPlaces[index].transform);
         newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
-        newEnemy.GetComponent<EnemyScript>().BasicData = data;
+        newEnemy.GetComponent<EnemyScript>().BasicData = new MonsterData(data);
         newEnemy.gameObject.SetActive(true);
         ++activeEnemies;
-        newEnemy.GetComponent<EnemyScript>().SetKillEvent(() => {
+        newEnemy.GetComponent<EnemyScript>().SetKillEvent(() =>
+        {
             MoneySystem.ChangeMoney(data.Money);
             --activeEnemies;
         });

@@ -260,7 +260,7 @@ public class Canon : MonoBehaviour
 
     void Explode()
     {
-        Debug.Log("EXPLOOOOODEEE!!!");
+        //Debug.Log("EXPLOOOOODEEE!!!");
         Collider[] colliders = Physics.OverlapSphere(transform.position, (float)(Tdata.Range * _scale));
         foreach (var collider in colliders)
         {
@@ -281,7 +281,7 @@ public class Canon : MonoBehaviour
         }
         else
         {
-            Debug.Log("DAMAGEEEE!!");
+            //Debug.Log("DAMAGEEEE!!");
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage);
         }
     }

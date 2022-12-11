@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +9,9 @@ public class MonsterData
 {
     public string Name;
     public int Health;
-    public double Movement;
+    public float Movement;
     public int Damage;
-    public double AttacSpeed;
+    public float AttacSpeed;
     public double AttacRange;
     public bool Flight;
     public int Money;

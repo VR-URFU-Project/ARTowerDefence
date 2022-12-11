@@ -81,15 +81,15 @@ public class EnemyScript : MonoBehaviour
         animator.SetInteger("Attack", 1);
         attackingRN = other.GetComponent<TowerHealthLogic>().Tdata;
         agent.speed = 0;
-        InvokeRepeating("CrashTower", 0f, 1f);
-        Debug.Log(other.name);
+        InvokeRepeating("CrashTower", 0f, BasicData.AttacSpeed);
+        //Debug.Log(other.name);
     }
 
     private void TriggerExit()
     {
         animator.SetInteger("Attack", 0);
-        //agent.speed = (float)BasicData.Movement/100;
-        agent.speed = 0.05f;
+        agent.speed = BasicData.Movement * 0.03f;
+        //agent.speed = 0.05f;
         CancelInvoke("CrashTower");
     }
 
@@ -101,6 +101,6 @@ public class EnemyScript : MonoBehaviour
             return;
         }
         attackingRN.TakeDamage(BasicData.Damage);
-        Debug.Log("left hp " + attackingRN.Health);
+        //Debug.Log("left hp " + attackingRN.Health);
     }
 }

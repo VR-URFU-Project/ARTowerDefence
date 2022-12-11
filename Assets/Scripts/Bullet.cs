@@ -61,14 +61,14 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        Debug.Log("Hitted the target");
+       // Debug.Log("Hitted the target");
         Damage(target);
         Destroy(gameObject);
     }
 
     void Damage(Transform targetEnemy)
     {
-        Debug.Log("Damage from Bullet");
+        //Debug.Log("Damage from Bullet");
 
         EnemyScript e = targetEnemy.transform.parent.GetComponent<EnemyScript>();
         if (e != null)

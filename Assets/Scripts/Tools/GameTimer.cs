@@ -38,4 +38,14 @@ public static class GameTimer
     {
         return seconds;
     }
+
+    public static string GetFormatedTime()
+    {
+        int min = seconds / 60;
+        int sec = seconds % 60;
+        string formated = ((min < 10) ? "0" + min.ToString() : min.ToString()) +
+                    ":" +
+                    ((sec < 10) ? "0" + sec.ToString() : sec.ToString());
+        return formated;
+    }
 }

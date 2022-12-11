@@ -14,6 +14,6 @@ public class TimerShow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Text>().text = GameTimer.GetSeconds().ToString();
+        gameObject.GetComponent<Text>().text = GameTimer.GetFormatedTime();
     }
 }

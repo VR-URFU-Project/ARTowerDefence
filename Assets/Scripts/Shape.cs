@@ -11,6 +11,7 @@ public class Shape : MonoBehaviour
     [SerializeField] GameObject YesNoPanel;
 
     private bool mouseButtonUped = false;
+    private bool canPlaceTheTower = false;
 
     private Button YesButton;
     private Button NoButton;
@@ -57,27 +58,24 @@ public class Shape : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!mouseButtonUped && Physics.Raycast(ray, out hit))
         {
+            
             MaterialToChange_plane.GetComponent<Renderer>().material = GreenMatPlane;
             MaterialToChange_sphere.GetComponent<Renderer>().material = GreenMatSphere;
             if (hit.collider.gameObject.name == "Plane")
+            {
                 transform.position = hit.point;
+                canPlaceTheTower = true;
+            }
             else
             {
+                canPlaceTheTower = false;
                 transform.position = hit.point;
-                MaterialToChange_plane.GetComponent<Renderer>().material = RedMatPlane;
-                MaterialToChange_sphere.GetComponent<Renderer>().material = RedMatSphere;
-            }
-        }
-        else
-        {
-            if (!mouseButtonUped)
-            {
                 MaterialToChange_plane.GetComponent<Renderer>().material = RedMatPlane;
                 MaterialToChange_sphere.GetComponent<Renderer>().material = RedMatSphere;
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (canPlaceTheTower & Input.GetMouseButtonUp(0))
         {
             YesNoPanel.SetActive(true);
             mouseButtonUped = true;

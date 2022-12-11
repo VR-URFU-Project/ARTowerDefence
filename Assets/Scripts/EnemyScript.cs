@@ -21,7 +21,7 @@ public class EnemyScript : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Crystal").transform;
-
+        transform.LookAt(target.position);
         animator = GetComponent<Animator>();
     }
 
@@ -48,12 +48,13 @@ public class EnemyScript : MonoBehaviour
         animator.SetTrigger("Death");
         KillEvent();
         MoneySystem.ChangeMoney(BasicData.Money);
-        StartCoroutine(WaitBeforeDeath(2f));
+        StartCoroutine(WaitBeforeDeath(1.7f));
     }
 
     void Update()
     {
         agent.SetDestination(target.position);
+
         //if (Vector3.Distance(transform.position, target.position) < 2)
         //{
         //    animator.SetInteger("IfCrystalIsNear", 2);

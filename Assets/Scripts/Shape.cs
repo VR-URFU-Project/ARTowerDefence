@@ -40,17 +40,6 @@ public class Shape : MonoBehaviour
         gamingPlace = GameObject.FindWithTag("GamingPlace");
         YesNoPanel.SetActive(false);
         mainCanvas.SetActive(false);
-
-        //MaterialToChange_plane = gameObject.GetComponent<Renderer>().material;
-        //MaterialToChange_sphere = gameObject.GetComponent<Renderer>().material;
-
-        //this_mat_plane = gameObject.FindC<Renderer>().material;
-        //this_mat_sphere = gameObject.GetComponentInChildren<Renderer>().material;
-
-        //Green = new Color(0, 255, 20, 0.5f);
-        //Red = new Color(255, 3, 0, 0.5f);
-        //Green.r = 0f; Green.g = 255f; Green.b = 20f; Green.a = 0;
-        //Red.r = 255f; Red.g = 2f; Red.b = 0f; Red.a = 0;
     }
 
     void Update()

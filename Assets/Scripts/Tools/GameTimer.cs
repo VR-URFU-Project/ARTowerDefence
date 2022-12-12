@@ -11,7 +11,7 @@ public static class GameTimer
     public static void StartTimer()
     {
         timer = new Timer(1000);
-        seconds = 0;
+        //seconds = 0;
         timer.Elapsed += (sender, e) => { seconds++; };
         timer.Start();
     }

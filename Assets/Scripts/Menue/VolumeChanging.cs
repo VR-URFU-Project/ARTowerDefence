@@ -9,8 +9,10 @@ public class VolumeChanging : MonoBehaviour
 {
     [SerializeField]
     AudioMixerGroup backMusic;
+    
     [SerializeField]
     AudioMixerGroup effects;
+    
     [SerializeField]
     Slider musicSlider;
 

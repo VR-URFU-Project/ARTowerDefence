@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -16,13 +17,21 @@ public class EnemyScript : MonoBehaviour
 
     private Animator animator;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip AttackSound;
+    [SerializeField] AudioClip DeathSound;
+    [SerializeField] AudioClip SpawnSound;
+
+    AudioSource audio;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Crystal").transform;
         transform.LookAt(target.position);
-        animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
+        audio.PlayOneShot(SpawnSound);
     }
 
     public void TakeDamage(int amount)
@@ -49,6 +58,7 @@ public class EnemyScript : MonoBehaviour
         animator.SetTrigger("Death");
         KillEvent();
         MoneySystem.ChangeMoney(BasicData.Money);
+        audio.PlayOneShot(DeathSound);
         StartCoroutine(WaitBeforeDeath(1.7f));
     }
 
@@ -81,7 +91,7 @@ public class EnemyScript : MonoBehaviour
         animator.SetInteger("Attack", 1);
         attackingRN = other.GetComponent<TowerHealthLogic>().Tdata;
         agent.speed = 0;
-        InvokeRepeating("CrashTower", 0f, BasicData.AttacSpeed);
+        InvokeRepeating("CrashTower", 0f, 1 / BasicData.AttacSpeed);
         //Debug.Log(other.name);
     }
 
@@ -101,6 +111,8 @@ public class EnemyScript : MonoBehaviour
             return;
         }
         attackingRN.TakeDamage(BasicData.Damage);
+
+        audio.PlayOneShot(AttackSound);
         //Debug.Log("left hp " + attackingRN.Health);
     }
 }

@@ -8,8 +8,13 @@ public class TowerHealthLogic : MonoBehaviour
     [SerializeField] public TowerType type;
     public TowerData Tdata;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip DeathSound;
+    AudioSource audio;
+
     void Start()
     {
+        audio= GetComponent<AudioSource>();
         switch (type)
         {
             case TowerType.Ballista:
@@ -41,7 +46,10 @@ public class TowerHealthLogic : MonoBehaviour
                 gg.SetActive(true);
             }
             else
+            {
+                audio.PlayOneShot(DeathSound);
                 Destroy(gameObject);
+            }
         }
     }
 }

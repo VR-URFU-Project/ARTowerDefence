@@ -18,6 +18,10 @@ public class Canon : MonoBehaviour
 
     private bool partSys_isON = false;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip ShootSound;
+    AudioSource audio;
+
     [Header("Unity Setup Fields")]
     public string TargetTag = "Target";
     public string EnemyTag = "Enemy";
@@ -55,6 +59,7 @@ public class Canon : MonoBehaviour
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         parent = GameObject.FindGameObjectWithTag("GamingPlace");
         particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>();
+        audio = GetComponent<AudioSource>();
         foreach (var go in particleSystems) go.Stop();
 
         if (towerType == TowerType.TreeHouse)
@@ -245,11 +250,13 @@ public class Canon : MonoBehaviour
 
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
+        audio.PlayOneShot(ShootSound, 0.3f);
     }
 
     void Shoot()
     {
         GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, parent.transform);
+        audio.PlayOneShot(ShootSound);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null)
@@ -261,6 +268,7 @@ public class Canon : MonoBehaviour
     void Explode()
     {
         //Debug.Log("EXPLOOOOODEEE!!!");
+        audio.PlayOneShot(ShootSound);
         Collider[] colliders = Physics.OverlapSphere(transform.position, (float)(Tdata.Range * _scale));
         foreach (var collider in colliders)
         {

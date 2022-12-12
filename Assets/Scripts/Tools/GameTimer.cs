@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
+using CI.QuickSave;
 
 public static class GameTimer
 {
@@ -47,5 +48,16 @@ public static class GameTimer
                     ":" +
                     ((sec < 10) ? "0" + sec.ToString() : sec.ToString());
         return formated;
+    }
+
+    public static void Save() {
+        var writer = QuickSaveWriter.Create("PlayerTime");
+        writer.Write("seconds", seconds);
+        writer.Commit();
+    }
+
+    public static void Load() {
+        var reader = QSReader.Create("PlayerTime");
+        seconds = reader.Exists("seconds") ? reader.Read<int>("seconds") : 0;
     }
 }

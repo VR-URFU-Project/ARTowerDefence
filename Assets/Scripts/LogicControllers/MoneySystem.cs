@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CI.QuickSave;
 
 public static class MoneySystem
 {
@@ -25,5 +26,18 @@ public static class MoneySystem
             return false;
         money += value;
         return true;
+    }
+
+    public static void Save()
+    {
+        var writer = QuickSaveWriter.Create("PlayerMoney");
+        writer.Write("money", money);
+        writer.Commit();
+    }
+
+    public static void Load()
+    {
+        var reader = QSReader.Create("PlayerMoney");
+        money = reader.Exists("money") ? reader.Read<int>("money") : 0;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
+using CI.QuickSave;
 
 public class StartWawe : MonoBehaviour
 {
@@ -96,15 +97,6 @@ public class StartWawe : MonoBehaviour
         timer = subwave.Duration;
     }
 
-    private void ToggleText()
-    {
-        textToggle = textToggle == 0 ? 1 : 0;
-        if (textToggle == 0)
-            gameObject.GetComponentInChildren<Text>().text = "Pause";
-        if (textToggle == 1)
-            gameObject.GetComponentInChildren<Text>().text = "Resume";
-    }
-
     /// <summary>
     /// Монстры появляются равномерно по кругу
     /// </summary>
@@ -185,5 +177,20 @@ public class StartWawe : MonoBehaviour
             MoneySystem.ChangeMoney(data.Money);
             --activeEnemies;
         });
+    }
+
+    public void Save()
+    {
+        var writer = QuickSaveWriter.Create("GameStatus");
+        writer.Write("time", curGameTime)
+            .Write("wave", curWave);
+        writer.Commit();
+    }
+
+    public void Load()
+    {
+        var reader = QSReader.Create("GameStatus");
+        curGameTime = reader.Exists("time") ? reader.Read<int>("time") : 0;
+        curWave = reader.Exists("wave") ? reader.Read<int>("wave") : 0;
     }
 }

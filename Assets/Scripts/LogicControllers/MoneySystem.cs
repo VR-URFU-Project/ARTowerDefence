@@ -5,7 +5,8 @@ using CI.QuickSave;
 
 public static class MoneySystem
 {
-    private static int money = 100;
+    private const int DEFAULT_MONEY = 100;
+    private static int money = DEFAULT_MONEY;
 
     /// <summary>
     /// Получить количество денег
@@ -26,6 +27,11 @@ public static class MoneySystem
             return false;
         money += value;
         return true;
+    }
+
+    public static void BackToDefault()
+    {
+        money = DEFAULT_MONEY;
     }
 
     public static void Save()

@@ -22,6 +22,7 @@ public class StartWawe : MonoBehaviour
     private void Start()
     {
         GameTimer.ResetTimer();
+        MoneySystem.BackToDefault();
 
         var reader = QSReader.Create("Temp");
         if (!reader.Exists("needsLoad")) return;

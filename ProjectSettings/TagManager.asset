@@ -16,6 +16,7 @@ TagManager:
   - Fly
   - Particle_System
   - Target
+  - MainPrefab
   layers:
   - Default
   - TransparentFX

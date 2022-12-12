@@ -17,17 +17,26 @@ public class StartWawe : MonoBehaviour
     private double timer = DISABLED_TIMER_VALUE;
     private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
     private int activeEnemies = 0;
-
-    private int textToggle = 0;
+    private int waveTime=0;
 
     private void Start()
     {
         GameTimer.ResetTimer();
+
+        var reader = QSReader.Create("Temp");
+        if (!reader.Exists("needsLoad")) return;
+        var flag = reader.Read<int>("needsLoad");
+
+        if (flag == 1) GameDataController.LoadGameData();
+
+        var writer = QuickSaveWriter.Create("Temp");
+        writer.Write("needsLoad", 0);
+        writer.Commit();
     }
 
     private void Update()
     {
-        if (activeEnemies == 0 && dataQueue.Count == 0 && curWave != 0)
+        if (activeEnemies == 0 && dataQueue.Count == 0 && curWave >= WaveController.WawesInfo.Count)
         {
             Debug.Log("Победа");
             return;
@@ -57,12 +66,14 @@ public class StartWawe : MonoBehaviour
             timer = DISABLED_TIMER_VALUE;
             return;
         }
+        waveTime = 0;
         while (curGameTime < WaveController.WavesTimeInfo[curWave])
         {
             foreach (var subWave in WaveController.WawesInfo[curWave].Data)
             {
                 dataQueue.Enqueue(subWave);
                 curGameTime += subWave.Duration;
+                waveTime += subWave.Duration;
                 if (curGameTime >= WaveController.WavesTimeInfo[curWave]) break;
             }
         }
@@ -182,8 +193,8 @@ public class StartWawe : MonoBehaviour
     public void Save()
     {
         var writer = QuickSaveWriter.Create("GameStatus");
-        writer.Write("time", curGameTime)
-            .Write("wave", curWave);
+        writer.Write("time", curGameTime-waveTime)
+            .Write("wave", (curWave-1 < 0) ? 0 : curWave - 1);
         writer.Commit();
     }
 

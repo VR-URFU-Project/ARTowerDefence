@@ -2079,7 +2079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3445388817083025989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3418326, y: 0, z: -1.0771816}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 3559575369477141521}
@@ -2127,7 +2127,6 @@ MonoBehaviour:
   AttackSound: {fileID: 8300000, guid: 2ae1d559c0aa1da4290118c9303d9c32, type: 3}
   DeathSound: {fileID: 8300000, guid: c14cb7a29eb3fdc46ba301ab76c67d88, type: 3}
   SpawnSound: {fileID: 8300000, guid: fcb77bae08977134cb6a2bd6a16c8a53, type: 3}
-  Tower: 0
 --- !u!65 &1922406534705860358
 BoxCollider:
   m_ObjectHideFlags: 0

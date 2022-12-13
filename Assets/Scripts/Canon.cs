@@ -71,7 +71,7 @@ public class Canon : MonoBehaviour
     void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
-        GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
+        //GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
         GameObject nearestEnemy;
 
         switch (Tdata.Type)
@@ -93,7 +93,7 @@ public class Canon : MonoBehaviour
                 break;
 
             case TowerType.TreeHouse:
-                nearestEnemy = GetNearestAvailableEnemy(enemies.Concat(fly_enemies).ToArray());
+                nearestEnemy = GetNearestAvailableEnemy(enemies/*.Concat(fly_enemies).ToArray()*/);
 
                 if (nearestEnemy != null)
                     target = nearestEnemy.transform;
@@ -102,17 +102,17 @@ public class Canon : MonoBehaviour
                 break;
 
             case TowerType.Mushroom:
-                if (fly_enemies.Length > 0 || enemies.Length > 0)
+                if (/*fly_enemies.Length > 0 ||*/ enemies.Length > 0)
                 {
                     ifEnemiesNearBy = false;
                     var radius = Tdata.Range * _scale;
-                        foreach (GameObject fly in fly_enemies)
-                        {
-                            if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
-                            {
-                                ifEnemiesNearBy = true;
-                            }
-                        }
+                        //foreach (GameObject fly in fly_enemies)
+                        //{
+                        //    if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
+                        //    {
+                        //        ifEnemiesNearBy = true;
+                        //    }
+                        //}
 
                         foreach (GameObject enemy in enemies)
                         {
@@ -131,7 +131,7 @@ public class Canon : MonoBehaviour
                 }
                 break;
             case TowerType.LazerTower:
-                nearestEnemy = GetNearestAvailableEnemy(enemies.Concat(fly_enemies).ToArray());
+                nearestEnemy = GetNearestAvailableEnemy(enemies/*.Concat(fly_enemies).ToArray()*/);
 
                 if (nearestEnemy != null)
                 {
@@ -185,10 +185,10 @@ public class Canon : MonoBehaviour
         {
             if (useLazer)
             {
-                if (lineRenderer.enabled)
-                {
+                //if (lineRenderer.enabled)
+                //{
                     lineRenderer.enabled = false;
-                }
+                //}
             }
             secCounter = 1;
             return;
@@ -250,7 +250,7 @@ public class Canon : MonoBehaviour
 
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
-        audio.PlayOneShot(ShootSound, 0.3f);
+        audio.PlayOneShot(ShootSound, 0.99f);
     }
 
     void Shoot()
@@ -268,7 +268,7 @@ public class Canon : MonoBehaviour
     void Explode()
     {
         //Debug.Log("EXPLOOOOODEEE!!!");
-        audio.PlayOneShot(ShootSound);
+        audio.PlayOneShot(ShootSound, 0.99f);
         Collider[] colliders = Physics.OverlapSphere(transform.position, (float)(Tdata.Range * _scale));
         foreach (var collider in colliders)
         {

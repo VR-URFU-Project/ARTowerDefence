@@ -10,8 +10,10 @@ public class Shape : MonoBehaviour
     private GameObject gamingPlace;
     [SerializeField] GameObject YesNoPanel;
 
+    private bool mouseButtonDowned = false;
     private bool mouseButtonUped = false;
     private bool canPlaceTheTower = false;
+    private int towersNearby = 0;
 
     private Button YesButton;
     private Button NoButton;
@@ -47,10 +49,10 @@ public class Shape : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!mouseButtonUped && Physics.Raycast(ray, out hit))
         {
-            
+            gameObject.layer = 2;
             MaterialToChange_plane.GetComponent<Renderer>().material = GreenMatPlane;
             MaterialToChange_sphere.GetComponent<Renderer>().material = GreenMatSphere;
-            if (hit.collider.gameObject.name == "Plane")
+            if (hit.collider.gameObject.name == "Plane" && towersNearby == 0)
             {
                 transform.position = hit.point;
                 canPlaceTheTower = true;
@@ -61,11 +63,12 @@ public class Shape : MonoBehaviour
                 transform.position = hit.point;
                 MaterialToChange_plane.GetComponent<Renderer>().material = RedMatPlane;
                 MaterialToChange_sphere.GetComponent<Renderer>().material = RedMatSphere;
-            }
+            } 
         }
 
         if (canPlaceTheTower & Input.GetMouseButtonUp(0))
         {
+            gameObject.layer = 0;
             YesNoPanel.SetActive(true);
             mouseButtonUped = true;
             YesButton.onClick.AddListener(() =>
@@ -82,5 +85,25 @@ public class Shape : MonoBehaviour
                 Debug.Log("no");
             });
         }
+
+        if (Physics.Raycast(ray, out hit) && mouseButtonUped && Input.GetMouseButtonDown(0))
+        {
+            if (hit.collider.gameObject.GetComponent<Shape>())
+            {
+                mouseButtonUped = false;
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<TowerHealthLogic>() == null) return;
+        towersNearby++;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<TowerHealthLogic>() == null) return;
+        towersNearby--;
     }
 }

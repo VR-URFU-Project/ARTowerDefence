@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 75877155690152266}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4036113071573605024}
   - component: {fileID: 4036113071573605224}
   - component: {fileID: 4036113071573605239}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BA_Extra1_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4036113071573605048}
   - component: {fileID: 4036113071573605185}
   - component: {fileID: 4036113071573605220}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bullet.ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 4036113071573605015}
   - component: {fileID: 4036113071573605227}
   - component: {fileID: 4036113071573605001}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: tree_1_LOD1.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4036113071573605081}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 4036113071573605068}
   - component: {fileID: 4036113071573605191}
   - component: {fileID: 4036113071573605232}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4036113071573605027}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 4036113071573605065}
   - component: {fileID: 4036113071573605205}
   - component: {fileID: 4036113071573605246}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BA_Mid_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,7 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4036113071573605034}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4036113071573604998}
   - component: {fileID: 4036113071573605132}
-  m_Layer: 0
+  - component: {fileID: 8401404238859152587}
+  m_Layer: 2
   m_Name: shape_Ballista
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,6 +589,20 @@ MonoBehaviour:
   RedMatSphere: {fileID: 2100000, guid: 1847c6faad635a24ea368e9d3173f08b, type: 2}
   MaterialToChange_plane: {fileID: 4036113071573604875}
   MaterialToChange_sphere: {fileID: 4036113071573604875}
+--- !u!136 &8401404238859152587
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036113071573605078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 14.999999
+  m_Height: 29.999998
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4036113071573605079
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +614,7 @@ GameObject:
   - component: {fileID: 4036113071573605033}
   - component: {fileID: 4036113071573605215}
   - component: {fileID: 4036113071573605238}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BA_Top_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,7 +695,7 @@ GameObject:
   - component: {fileID: 4036113071573605087}
   - component: {fileID: 4036113071573605214}
   - component: {fileID: 4036113071573605002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BA_Mid_low.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -789,9 +804,37 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913438, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913441, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913450, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913454, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913477, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913478, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2065385710597913485, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
       propertyPath: m_Name
       value: YesNoPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913485, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2065385710597913539, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
       propertyPath: m_RootOrder
@@ -859,6 +902,10 @@ PrefabInstance:
     - target: {fileID: 1062456506671922339, guid: b62d64ecdfdb0344ca3f24f4c320d47f, type: 3}
       propertyPath: m_Name
       value: RadiusOfAtack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062456506671922339, guid: b62d64ecdfdb0344ca3f24f4c320d47f, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1062456506671922562, guid: b62d64ecdfdb0344ca3f24f4c320d47f, type: 3}
       propertyPath: m_Pivot.x

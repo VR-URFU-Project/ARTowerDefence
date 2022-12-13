@@ -12,12 +12,11 @@ public class StartWawe : MonoBehaviour
     //[SerializeField] GameObject StartButton;
 
     private const int DISABLED_TIMER_VALUE = -10;
-    private int curGameTime = 0;
     private int curWave = 0;
+    private int curSubWave = 0;
     private double timer = DISABLED_TIMER_VALUE;
     private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
     private int activeEnemies = 0;
-    private int waveTime=0;
 
     private void Start()
     {
@@ -45,6 +44,9 @@ public class StartWawe : MonoBehaviour
         if (timer == DISABLED_TIMER_VALUE) return;
         timer -= Time.deltaTime;
         if (timer > 0) return;
+
+        GenerateNextSubwave();
+        if (timer == DISABLED_TIMER_VALUE) return;
         processSubwave(dataQueue.Dequeue());
     }
 
@@ -56,29 +58,26 @@ public class StartWawe : MonoBehaviour
         GameTimer.StartTimer();
         PauseManager.Resume();
 
-        GenerateWavesForRound();
+        GenerateNextSubwave();
         processSubwave(dataQueue.Dequeue());
     }
 
-    private void GenerateWavesForRound()
+    private void GenerateNextSubwave()
     {
-        if(curWave >= WaveController.WawesInfo.Count)
+        if(GameTimer.GetSeconds() >= WaveController.WavesTimeInfo[curWave])
         {
-            timer = DISABLED_TIMER_VALUE;
-            return;
-        }
-        waveTime = 0;
-        while (curGameTime < WaveController.WavesTimeInfo[curWave])
-        {
-            foreach (var subWave in WaveController.WawesInfo[curWave].Data)
+            ++curWave;
+            curSubWave = 0;
+
+            if (curWave >= WaveController.WawesInfo.Count)
             {
-                dataQueue.Enqueue(subWave);
-                curGameTime += subWave.Duration;
-                waveTime += subWave.Duration;
-                if (curGameTime >= WaveController.WavesTimeInfo[curWave]) break;
+                timer = DISABLED_TIMER_VALUE;
+                return;
             }
         }
-        ++curWave;
+        dataQueue.Enqueue(WaveController.WawesInfo[curWave].Data[curSubWave]);
+        curSubWave++;
+        curSubWave = curSubWave % WaveController.WawesInfo[curWave].Data.Count;
     }
 
     /// <summary>
@@ -99,12 +98,6 @@ public class StartWawe : MonoBehaviour
             case "R":
                 SpawnRandom(subwave.Monsters);
                 break;
-        }
-
-        if (dataQueue.Count == 0)
-        {
-            GenerateWavesForRound();
-            if (timer == DISABLED_TIMER_VALUE) return;
         }
         timer = subwave.Duration;
     }
@@ -194,7 +187,7 @@ public class StartWawe : MonoBehaviour
     public void Save()
     {
         var writer = QuickSaveWriter.Create("GameStatus");
-        writer.Write("time", curGameTime-waveTime)
+        writer.Write("subWave", curSubWave)
             .Write("wave", (curWave-1 < 0) ? 0 : curWave - 1);
         writer.Commit();
     }
@@ -202,7 +195,7 @@ public class StartWawe : MonoBehaviour
     public void Load()
     {
         var reader = QSReader.Create("GameStatus");
-        curGameTime = reader.Exists("time") ? reader.Read<int>("time") : 0;
         curWave = reader.Exists("wave") ? reader.Read<int>("wave") : 0;
+        curSubWave = reader.Exists("subWave") ? reader.Read<int>("subWave") : 0;
     }
 }

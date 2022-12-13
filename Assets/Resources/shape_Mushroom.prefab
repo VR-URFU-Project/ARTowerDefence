@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2167117303781670172}
   - component: {fileID: 6235453987040830224}
   - component: {fileID: 6697147737797089266}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1345898248704551037}
   - component: {fileID: 5509594168998181551}
-  m_Layer: 0
+  - component: {fileID: -2593157002234522207}
+  m_Layer: 2
   m_Name: shape_Mushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,6 +138,20 @@ MonoBehaviour:
   RedMatSphere: {fileID: 2100000, guid: 28b5f0eeed7926044a5c293679b9111a, type: 2}
   MaterialToChange_plane: {fileID: 4705325767203291706}
   MaterialToChange_sphere: {fileID: 8816653923935257164}
+--- !u!136 &-2593157002234522207
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345898248704551036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2352429223001099789
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +163,7 @@ GameObject:
   - component: {fileID: 2352429223001099778}
   - component: {fileID: 2352429223001099776}
   - component: {fileID: 2352429223001099779}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4952,7 +4967,7 @@ GameObject:
   - component: {fileID: 2352429223197853902}
   - component: {fileID: 2352429223197853900}
   - component: {fileID: 2352429223197853903}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9756,7 +9771,7 @@ GameObject:
   - component: {fileID: 20707398590686310}
   - component: {fileID: 3108815440944774341}
   - component: {fileID: 4943494454329546962}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pDisc2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9833,6 +9848,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1345898248704551037}
     m_Modifications:
+    - target: {fileID: 1197643749209916397, guid: fd6da360638ba65409b3d27308267a5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137111707161052059, guid: fd6da360638ba65409b3d27308267a5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3597129008791586955, guid: fd6da360638ba65409b3d27308267a5f, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -9892,6 +9915,10 @@ PrefabInstance:
     - target: {fileID: 6358674603295090520, guid: fd6da360638ba65409b3d27308267a5f, type: 3}
       propertyPath: m_Name
       value: Range
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358674603295090520, guid: fd6da360638ba65409b3d27308267a5f, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd6da360638ba65409b3d27308267a5f, type: 3}
@@ -9961,9 +9988,37 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913438, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913441, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913450, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913454, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913477, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913478, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2065385710597913485, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
       propertyPath: m_Name
       value: YesNoPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065385710597913485, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2065385710597913539, guid: 7cd19da4661f7524d896c83edf5c27fa, type: 3}
       propertyPath: m_RootOrder

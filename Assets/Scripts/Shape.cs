@@ -13,6 +13,7 @@ public class Shape : MonoBehaviour
     private bool mouseButtonDowned = false;
     private bool mouseButtonUped = false;
     private bool canPlaceTheTower = false;
+    private int towersNearby = 0;
 
     private Button YesButton;
     private Button NoButton;
@@ -51,7 +52,7 @@ public class Shape : MonoBehaviour
             gameObject.layer = 2;
             MaterialToChange_plane.GetComponent<Renderer>().material = GreenMatPlane;
             MaterialToChange_sphere.GetComponent<Renderer>().material = GreenMatSphere;
-            if (hit.collider.gameObject.name == "Plane")
+            if (hit.collider.gameObject.name == "Plane" && towersNearby == 0)
             {
                 transform.position = hit.point;
                 canPlaceTheTower = true;
@@ -92,5 +93,17 @@ public class Shape : MonoBehaviour
                 mouseButtonUped = false;
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<TowerHealthLogic>() == null) return;
+        towersNearby++;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<TowerHealthLogic>() == null) return;
+        towersNearby--;
     }
 }

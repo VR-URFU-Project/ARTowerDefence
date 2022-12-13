@@ -250,7 +250,7 @@ public class Canon : MonoBehaviour
 
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
-        audio.PlayOneShot(ShootSound, 0.3f);
+        audio.PlayOneShot(ShootSound, 0.99f);
     }
 
     void Shoot()
@@ -268,7 +268,7 @@ public class Canon : MonoBehaviour
     void Explode()
     {
         //Debug.Log("EXPLOOOOODEEE!!!");
-        audio.PlayOneShot(ShootSound);
+        audio.PlayOneShot(ShootSound, 0.99f);
         Collider[] colliders = Physics.OverlapSphere(transform.position, (float)(Tdata.Range * _scale));
         foreach (var collider in colliders)
         {

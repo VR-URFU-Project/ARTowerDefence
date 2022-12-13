@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class PauseButton : MonoBehaviour
 {
-    //[SerializeField] Button pauseButton;
-    //[SerializeField] Button startButton;
-    //private int flag = 0;
-
-    private void Start()
+    private void Update()
     {
-        gameObject.GetComponentInChildren<Text>().text = (Time.timeScale == 0) ? "Resume" : "Pause";
+        if (Time.timeScale == 0)
+            gameObject.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("play icon");
+        else
+            gameObject.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("pause icon");
     }
 
     /// <summary>
@@ -20,6 +19,6 @@ public class PauseButton : MonoBehaviour
     public void PressButton()
     {
         PauseManager.TogglePause();
-        gameObject.GetComponentInChildren<Text>().text = (Time.timeScale == 0) ? "Resume" : "Pause";
+        //gameObject.GetComponentInChildren<Text>().text = (Time.timeScale == 0) ? "Resume" : "Pause";
     }
 }

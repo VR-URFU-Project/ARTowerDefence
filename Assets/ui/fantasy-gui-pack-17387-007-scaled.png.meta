@@ -1,0 +1,553 @@
+fileFormatVersion: 2
+guid: 040d2b2ce7eb8484785fb84dec3db8b9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9046812962705213285
+    second: fantasy-gui-pack-17387-007-scaled_0
+  - first:
+      213: -4055338814067784779
+    second: fantasy-gui-pack-17387-007-scaled_1
+  - first:
+      213: -2955451605004765953
+    second: fantasy-gui-pack-17387-007-scaled_2
+  - first:
+      213: 6564338851163056862
+    second: fantasy-gui-pack-17387-007-scaled_3
+  - first:
+      213: -5455879472048156894
+    second: fantasy-gui-pack-17387-007-scaled_4
+  - first:
+      213: -6350151022406599774
+    second: fantasy-gui-pack-17387-007-scaled_5
+  - first:
+      213: -9114691437037850162
+    second: fantasy-gui-pack-17387-007-scaled_6
+  - first:
+      213: 2200357892559680087
+    second: fantasy-gui-pack-17387-007-scaled_7
+  - first:
+      213: 398132005985188412
+    second: fantasy-gui-pack-17387-007-scaled_8
+  - first:
+      213: -5580849178129476516
+    second: fantasy-gui-pack-17387-007-scaled_9
+  - first:
+      213: 560861222245045603
+    second: fantasy-gui-pack-17387-007-scaled_10
+  - first:
+      213: 8050866937202793984
+    second: fantasy-gui-pack-17387-007-scaled_11
+  - first:
+      213: -4454467352492135822
+    second: fantasy-gui-pack-17387-007-scaled_12
+  - first:
+      213: -2660262911393002254
+    second: fantasy-gui-pack-17387-007-scaled_13
+  - first:
+      213: 291297561741465349
+    second: fantasy-gui-pack-17387-007-scaled_14
+  - first:
+      213: 6440841015539470067
+    second: fantasy-gui-pack-17387-007-scaled_15
+  - first:
+      213: -2338327034396209436
+    second: fantasy-gui-pack-17387-007-scaled_16
+  - first:
+      213: -6313364984423155436
+    second: fantasy-gui-pack-17387-007-scaled_17
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 212
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567817f157cbc8d70800000000000000
+      internalID: 9046812962705213285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_1
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 212
+        width: 113
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b3c2afa5da88b7c0800000000000000
+      internalID: -4055338814067784779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_2
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 212
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff435d48c602cf6d0800000000000000
+      internalID: -2955451605004765953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_3
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 212
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edaaed0e767391b50800000000000000
+      internalID: 6564338851163056862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_4
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 212
+        width: 113
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f4933d682d844b0800000000000000
+      internalID: -5455879472048156894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_5
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 212
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2abfe572a4bbfd7a0800000000000000
+      internalID: -6350151022406599774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 113
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec170120e6c128180800000000000000
+      internalID: -9114691437037850162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_7
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 113
+        width: 113
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7523fb468dd398e10800000000000000
+      internalID: 2200357892559680087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_8
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 113
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3af57633f2768500800000000000000
+      internalID: 398132005985188412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_9
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 113
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c54df88bd37dc82b0800000000000000
+      internalID: -5580849178129476516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_10
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 113
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36515306f4498c700800000000000000
+      internalID: 560861222245045603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_11
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 113
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ed8e5f2dc6abf60800000000000000
+      internalID: 8050866937202793984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27aa12f2b8d8e22c0800000000000000
+      internalID: -4454467352492135822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_13
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 16
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fc064d0af8d41bd0800000000000000
+      internalID: -2660262911393002254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_14
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 16
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507998bc695ea0400800000000000000
+      internalID: 291297561741465349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_15
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 16
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe0ff157c6726950800000000000000
+      internalID: 6440841015539470067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_16
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 16
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee0f1283f79c8fd0800000000000000
+      internalID: -2338327034396209436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fantasy-gui-pack-17387-007-scaled_17
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 16
+        width: 112
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 419711e0ffb6268a0800000000000000
+      internalID: -6313364984423155436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 7aad3695271e75744a484e64bc2089a5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

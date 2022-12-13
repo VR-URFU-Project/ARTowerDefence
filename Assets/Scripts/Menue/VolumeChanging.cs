@@ -14,41 +14,54 @@ public class VolumeChanging : MonoBehaviour
     AudioMixerGroup effects;
     
     [SerializeField]
-    Slider musicSlider;
+    Toggle musicToggle;
 
     [SerializeField]
     bool BackgroundMusic;
 
     private void Start()
     {
-
         if (BackgroundMusic)
         {
             var reader = QSReader.Create("BackMusicData");
             if (!reader.Exists("CurrentBackMusicVolume")) return;
-            musicSlider.value = reader.Read<float>("CurrentBackMusicVolume");
+            musicToggle.isOn = reader.Read<bool>("CurrentBackMusicVolume");
+            if (reader.Read<bool>("CurrentBackMusicVolume"))
+                backMusic.audioMixer.SetFloat("BackVolume", 0f);
+            else backMusic.audioMixer.SetFloat("BackVolume", -80f);
         }
         else
         {
             var reader = QSReader.Create("EffectsMusicData");
             if (!reader.Exists("CurrentEffectsMusicVolume")) return;
-            musicSlider.value = reader.Read<float>("CurrentEffectsMusicVolume");
+            musicToggle.isOn = reader.Read<bool>("CurrentEffectsMusicVolume");
+            if (reader.Read<bool>("CurrentEffectsMusicVolume"))
+                effects.audioMixer.SetFloat("EffectsVolume", 0f);
+            else effects.audioMixer.SetFloat("EffectsVolume", -80f);
         }
     }
 
     public void ChangeMusicVolume()
     {
-        backMusic.audioMixer.SetFloat("BackVolume", Mathf.Lerp(-80, 0, musicSlider.value));
+        if (musicToggle.isOn)
+        backMusic.audioMixer.SetFloat("BackVolume", 0f);
+        else
+            backMusic.audioMixer.SetFloat("BackVolume", -80f);
+
         var writer = QuickSaveWriter.Create("BackMusicData");
-        writer.Write("CurrentBackMusicVolume", musicSlider.value);
+        writer.Write("CurrentBackMusicVolume", musicToggle.isOn);
         writer.Commit();
     }
 
     public void ChangeEffectsVolume()
-    { 
-        effects.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, musicSlider.value));
+    {
+        if (musicToggle.isOn)
+            backMusic.audioMixer.SetFloat("EffectsVolume", 0f);
+        else
+            backMusic.audioMixer.SetFloat("EffectsVolume", -80f);
+
         var writer = QuickSaveWriter.Create("EffectsMusicData");
-        writer.Write("CurrentEffectsMusicVolume", musicSlider.value);
+        writer.Write("CurrentEffectsMusicVolume", musicToggle.isOn);
         writer.Commit();
     }
 }

@@ -74,6 +74,7 @@ public class EnemyScript : MonoBehaviour
         else
         {
             agent.isStopped=true;
+            this.GetComponent<Collider>().enabled=false;
         }
         //if (Vector3.Distance(transform.position, target.position) < 2)
         //{

@@ -24,6 +24,8 @@ public class EnemyScript : MonoBehaviour
 
     AudioSource audio;
 
+    bool dead = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -55,6 +57,7 @@ public class EnemyScript : MonoBehaviour
 
     void Die()
     {
+        dead = true;
         animator.SetTrigger("Death");
         KillEvent();
         MoneySystem.ChangeMoney(BasicData.Money);
@@ -64,8 +67,14 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        agent.SetDestination(target.position);
-
+        if(dead == false)
+        {   
+            agent.SetDestination(target.position);
+        }
+        else
+        {
+            agent.isStopped=true;
+        }
         //if (Vector3.Distance(transform.position, target.position) < 2)
         //{
         //    animator.SetInteger("IfCrystalIsNear", 2);

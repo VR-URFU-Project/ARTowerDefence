@@ -351,7 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   AttackSound: {fileID: 8300000, guid: 217f37df112183b48b459cdade8404d6, type: 3}
-  DeathSound: {fileID: 8300000, guid: 56893161db276554290077ae292666f5, type: 3}
+  DeathSound: {fileID: 8300000, guid: deab54023ce065047bc9bb6b42190d9d, type: 3}
   SpawnSound: {fileID: 8300000, guid: fcb77bae08977134cb6a2bd6a16c8a53, type: 3}
 --- !u!82 &-5440107438907560832
 AudioSource:
@@ -365,7 +365,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 953994403339015062, guid: e2d5750a4a46ef64d8a857db248c4c37, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0

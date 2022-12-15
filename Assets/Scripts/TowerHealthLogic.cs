@@ -47,7 +47,7 @@ public class TowerHealthLogic : MonoBehaviour
             }
             else
             {
-                audio.PlayOneShot(DeathSound);
+                audio.PlayOneShot(DeathSound, 1f);
                 Destroy(gameObject);
             }
         }

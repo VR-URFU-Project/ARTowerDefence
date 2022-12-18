@@ -451,6 +451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705755998043385659}
   - component: {fileID: 8488089255651620728}
+  - component: {fileID: 1414758660044869575}
   m_Layer: 0
   m_Name: AR13
   m_TagString: MainPrefab
@@ -497,6 +498,18 @@ MonoBehaviour:
   - {fileID: 3133450225303023798}
   - {fileID: 7842228216318208552}
   crystal: {fileID: 5246501248146989591}
+--- !u!114 &1414758660044869575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705755998043385634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f95b4458d65ead42b555559eae1bdfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705755998043385689
 GameObject:
   m_ObjectHideFlags: 0

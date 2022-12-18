@@ -17,6 +17,7 @@ TagManager:
   - Particle_System
   - Target
   - MainPrefab
+  - HideOnGameLoad
   layers:
   - Default
   - TransparentFX

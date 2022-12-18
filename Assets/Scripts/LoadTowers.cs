@@ -33,7 +33,9 @@ public class LoadTowers : MonoBehaviour
                     break;
             }
             data.Health = reader.Read<int>("health" + i.ToString());
-            var obj = Instantiate(data.prefab, reader.Read<Vector3>("position" + i.ToString()), gameObject.transform.rotation, gameObject.transform);
+            var obj = Instantiate(data.prefab, gameObject.transform);          
+            obj.transform.localPosition = reader.Read<Vector3>("position" + i.ToString());
+
             obj.GetComponent<TowerHealthLogic>().Tdata = data;
             obj.GetComponent<Canon>().Tdata = data;
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4312422684565481432}
   - component: {fileID: 1270160566833867367}
   - component: {fileID: 5707884533242051106}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: BA_Mid_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4906380155987311093}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 6543068387616079729}
   - component: {fileID: 5006157873743895979}
   - component: {fileID: 8498203172746351823}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: bullet.ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 4562496006290138396}
   - component: {fileID: 5568450246485392676}
   - component: {fileID: 3573487712275644063}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1353202873411176373}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 5611169120731438695}
   - component: {fileID: 1694808612236364229}
   - component: {fileID: 181409690047274019}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: BA_Extra1_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 4667905627661923675}
   - component: {fileID: 1589260216906588010}
   - component: {fileID: 1490021756117270448}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: tree_1_LOD1.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 7546589702349091342}
   - component: {fileID: -1162993566226000319}
   - component: {fileID: 426149963657683194}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: Ballista
   m_TagString: Towers
   m_Icon: {fileID: 0}
@@ -683,7 +683,7 @@ GameObject:
   - component: {fileID: 5008808610914204455}
   - component: {fileID: 3189449060108143365}
   - component: {fileID: 3907220172116526020}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: BA_Top_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 1976731018753767426}
   - component: {fileID: 3038751320253988176}
   - component: {fileID: 824275413043863270}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: BA_Mid_low.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

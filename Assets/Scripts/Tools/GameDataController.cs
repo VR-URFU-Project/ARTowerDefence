@@ -26,8 +26,6 @@ public static class GameDataController
         writer.Commit();
         for (int i = 0; i < towers.Length; i++)
         {
-            Debug.Log(towers[i].transform.localPosition.ToString());
-            Debug.Log(towers[i].transform.position.ToString());
             writer.Write("health" + i.ToString(), towers[i].GetComponent<TowerHealthLogic>().Tdata.Health)
                 .Write("position" + i.ToString(), towers[i].transform.localPosition)
                 .Write("type" + i.ToString(), towers[i].GetComponent<TowerHealthLogic>().type);

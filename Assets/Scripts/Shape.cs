@@ -14,6 +14,7 @@ public class Shape : MonoBehaviour
     private bool mouseButtonUped = false;
     private bool canPlaceTheTower = false;
     private int towersNearby = 0;
+    private int layerMask;
 
     private Button YesButton;
     private Button NoButton;
@@ -42,25 +43,25 @@ public class Shape : MonoBehaviour
         gamingPlace = GameObject.FindWithTag("GamingPlace");
         YesNoPanel.SetActive(false);
         mainCanvas.SetActive(false);
+        layerMask = LayerMask.GetMask("Surface");
     }
 
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (!mouseButtonUped && Physics.Raycast(ray, out hit))
+        if (!mouseButtonUped && Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
             gameObject.layer = 2;
             MaterialToChange_plane.GetComponent<Renderer>().material = GreenMatPlane;
             MaterialToChange_sphere.GetComponent<Renderer>().material = GreenMatSphere;
+            transform.position = hit.point;
             if (hit.collider.gameObject.name == "Plane" && towersNearby == 0)
             {
-                transform.position = hit.point;
                 canPlaceTheTower = true;
             }
             else
             {
                 canPlaceTheTower = false;
-                transform.position = hit.point;
                 MaterialToChange_plane.GetComponent<Renderer>().material = RedMatPlane;
                 MaterialToChange_sphere.GetComponent<Renderer>().material = RedMatSphere;
             } 
@@ -76,13 +77,13 @@ public class Shape : MonoBehaviour
                 shop.CreateTower(transform, gamingPlace.transform);
                 mainCanvas.SetActive(true);
                 Destroy(gameObject);
-                Debug.Log("yes");
+                //Debug.Log("yes");
             });
             NoButton.onClick.AddListener(() =>
             {
                 mainCanvas.SetActive(true);
                 Destroy(gameObject);
-                Debug.Log("no");
+                //Debug.Log("no");
             });
         }
 

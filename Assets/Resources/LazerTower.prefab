@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6219929931980337954}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 7115988298944034473}
   - component: {fileID: 8586845432393553028}
   - component: {fileID: 3590202157085969685}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 1495144242767949629}
   - component: {fileID: 8335278038331490516}
   - component: {fileID: 3242512927374149833}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 3817260609521833188}
   - component: {fileID: 3449170205458630703}
   - component: {fileID: 3368577987256370810}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 6453579734188228629}
   - component: {fileID: 3294979859231761706}
   - component: {fileID: 4904318871354302587}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: tree_1_LOD0.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 1868639008948657899}
   - component: {fileID: 2383472893484545982}
   - component: {fileID: 8144099111110512450}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 7607016147421827978}
   - component: {fileID: 1183564280950187284}
   - component: {fileID: 7307882708120385995}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 3308237148492774879}
   - component: {fileID: -8411869969305284873}
   - component: {fileID: 8156370123334500356}
-  m_Layer: 2
+  m_Layer: 3
   m_Name: LazerTower
   m_TagString: Towers
   m_Icon: {fileID: 0}

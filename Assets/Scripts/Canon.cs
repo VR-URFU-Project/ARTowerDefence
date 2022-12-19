@@ -62,7 +62,7 @@ public class Canon : MonoBehaviour
         audio = GetComponent<AudioSource>();
         foreach (var go in particleSystems) go.Stop();
 
-        if (towerType == TowerType.TreeHouse)
+        if (towerType == TowerType.TreeHouse && Tdata == null)
         {
             Tdata = TowerManager.GetTreeHouse();
         }

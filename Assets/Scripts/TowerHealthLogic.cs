@@ -15,6 +15,7 @@ public class TowerHealthLogic : MonoBehaviour
     void Start()
     {
         audio= GetComponent<AudioSource>();
+        if (Tdata != null) return;
         switch (type)
         {
             case TowerType.Ballista:

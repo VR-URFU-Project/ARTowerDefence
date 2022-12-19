@@ -32,12 +32,21 @@ public class LoadTowers : MonoBehaviour
                     data = TowerManager.GetLazerTower();
                     break;
             }
-            data.Health = reader.Read<int>("health" + i.ToString());
+
             var obj = Instantiate(data.prefab, gameObject.transform);          
             obj.transform.localPosition = reader.Read<Vector3>("position" + i.ToString());
 
+            var level = reader.Read<int>("level" + i.ToString());
+            for (int k = 1; k < level; ++k)
+                data.Upgrade();
+            data.Health = reader.Read<int>("health" + i.ToString());
+
             obj.GetComponent<TowerHealthLogic>().Tdata = data;
-            obj.GetComponent<Canon>().Tdata = data;
+            var items = obj.GetComponentsInChildren<Canon>();
+            foreach(var item in items)
+            {
+                item.Tdata = data;
+            }
         }
     }
 }

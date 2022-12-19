@@ -243,7 +243,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eaddb126d12586647a5a003097ce6651, type: 2}
+  - {fileID: 2100000, guid: c687f5ee35b29874f85f25c23c32e1f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -347,7 +347,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 71e833caf5f54634a811f2685bc8c162, type: 2}
+  - {fileID: 2100000, guid: 8acb292194e99a9408928edc1060fbab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -913,7 +913,7 @@ GameObject:
   - component: {fileID: 4263542886728959501}
   - component: {fileID: -8573297052149425492}
   m_Layer: 0
-  m_Name: Goblin
+  m_Name: Goblin_black
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

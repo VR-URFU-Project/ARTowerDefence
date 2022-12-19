@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,21 +30,36 @@ public class UpdateTower : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            Debug.Log("Hitted tower" + hit.collider.gameObject.name);
+            //Debug.Log("Hitted tower" + hit.collider.gameObject.name);
             var healthItem = hit.collider.gameObject.GetComponent<TowerHealthLogic>();
             if(healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
             {
                 Debug.Log("денег мало");
                 return;
             }
-            MoneySystem.ChangeMoney(-healthItem.Tdata.UpdatePrice);
-            healthItem.Tdata.Upgrade();
 
-            var towerDatas = hit.collider.gameObject.GetComponentsInChildren<Canon>();
-            foreach(var data in towerDatas)
+            mainCanvas.SetActive(false);
+            var askPanel = Instantiate(YesNoPanel);
+            GameObject.Find("Question").GetComponent<TMP_Text>().text = "Upgrade tower to level " + (healthItem.Tdata.Level+1).ToString();
+            GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>().onClick.AddListener(() =>
             {
-                data.Tdata.Upgrade();
-            }
+                MoneySystem.ChangeMoney(-healthItem.Tdata.UpdatePrice);
+                healthItem.Tdata.Upgrade();
+                var towerDatas = hit.collider.gameObject.GetComponentsInChildren<Canon>();
+                foreach (var data in towerDatas)
+                {
+                    data.Tdata.Upgrade();
+                }
+                mainCanvas.SetActive(true);
+                Destroy(askPanel);
+                //Debug.Log("yes");
+            });
+            GameObject.FindGameObjectWithTag("No").GetComponent<Button>().onClick.AddListener(() =>
+            {
+                mainCanvas.SetActive(true);
+                Destroy(askPanel);
+                //Debug.Log("no");
+            });
         }
     }
 }

@@ -11,7 +11,7 @@ public class VolumeChanging : MonoBehaviour
     AudioMixerGroup backMusic;
     
     [SerializeField]
-    AudioMixerGroup effects;
+    static AudioMixerGroup effects;
     
     [SerializeField]
     Toggle musicToggle;
@@ -44,7 +44,7 @@ public class VolumeChanging : MonoBehaviour
     public void ChangeMusicVolume()
     {
         if (musicToggle.isOn)
-        backMusic.audioMixer.SetFloat("BackVolume", 0f);
+            backMusic.audioMixer.SetFloat("BackVolume", 0f);
         else
             backMusic.audioMixer.SetFloat("BackVolume", -80f);
 
@@ -56,12 +56,22 @@ public class VolumeChanging : MonoBehaviour
     public void ChangeEffectsVolume()
     {
         if (musicToggle.isOn)
-            backMusic.audioMixer.SetFloat("EffectsVolume", 0f);
+            effects.audioMixer.SetFloat("EffectsVolume", 0f);
         else
-            backMusic.audioMixer.SetFloat("EffectsVolume", -80f);
+            effects.audioMixer.SetFloat("EffectsVolume", -80f);
 
         var writer = QuickSaveWriter.Create("EffectsMusicData");
         writer.Write("CurrentEffectsMusicVolume", musicToggle.isOn);
         writer.Commit();
     }
+
+    //public static void Off_EffectsVolume()
+    //{
+    //    effects.audioMixer.SetFloat("EffectsVolume", 0f);
+    //}
+
+    //public static void On_EffectsVolume()
+    //{
+    //    effects.audioMixer.SetFloat("EffectsVolume", -80f);
+    //}
 }

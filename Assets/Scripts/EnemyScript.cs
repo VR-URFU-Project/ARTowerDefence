@@ -74,7 +74,12 @@ public class EnemyScript : MonoBehaviour
         else
         {
             agent.isStopped=true;
-            this.GetComponent<Collider>().enabled=false;
+            gameObject.GetComponent<Collider>().enabled=false;
+            foreach (Transform child in gameObject.transform)
+            {
+                if (child.CompareTag("Target")) child.gameObject.SetActive(false);
+            }
+
         }
         //if (Vector3.Distance(transform.position, target.position) < 2)
         //{

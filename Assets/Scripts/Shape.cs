@@ -68,16 +68,19 @@ public class Shape : MonoBehaviour
             } 
         }
 
-        if (canPlaceTheTower & Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             gameObject.layer = 0;
             YesNoPanel.SetActive(true);
             mouseButtonUped = true;
             YesButton.onClick.AddListener(() =>
             {
-                shop.CreateTower(transform, gamingPlace.transform);
-                mainCanvas.SetActive(true);
-                Destroy(gameObject);
+                if (canPlaceTheTower)
+                {
+                    shop.CreateTower(transform, gamingPlace.transform);
+                    mainCanvas.SetActive(true);
+                    Destroy(gameObject);
+                }
                 //Debug.Log("yes");
             });
             NoButton.onClick.AddListener(() =>

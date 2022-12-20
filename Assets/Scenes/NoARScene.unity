@@ -24984,6 +24984,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: NOAR13
       objectReference: {fileID: 0}
+    - target: {fileID: 3656311774581075497, guid: e0c7998c0cd518a4ba8d95967f819ec0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273656011450974384, guid: e0c7998c0cd518a4ba8d95967f819ec0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6913004
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812033777457328858, guid: e0c7998c0cd518a4ba8d95967f819ec0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -6.799999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0c7998c0cd518a4ba8d95967f819ec0, type: 3}
 --- !u!1 &7841124280493794837

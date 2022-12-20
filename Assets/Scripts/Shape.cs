@@ -10,10 +10,8 @@ public class Shape : MonoBehaviour
     private GameObject gamingPlace;
     [SerializeField] GameObject YesNoPanel;
 
-    private bool mouseButtonDowned = false;
     private bool mouseButtonUped = false;
     private bool canPlaceTheTower = false;
-    private int towersNearby = 0;
     private int layerMask;
 
     private Button YesButton;
@@ -56,7 +54,7 @@ public class Shape : MonoBehaviour
             MaterialToChange_plane.GetComponent<Renderer>().material = GreenMatPlane;
             MaterialToChange_sphere.GetComponent<Renderer>().material = GreenMatSphere;
             transform.position = hit.point;
-            if (hit.collider.gameObject.name == "Plane" && towersNearby == 0)
+            if (hit.collider.gameObject.name == "Plane" && IsTowersNearby())
             {
                 canPlaceTheTower = true;
             }
@@ -100,15 +98,17 @@ public class Shape : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private bool IsTowersNearby()
     {
-        if (other.GetComponent<TowerHealthLogic>() == null) return;
-        towersNearby++;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<TowerHealthLogic>() == null) return;
-        towersNearby--;
+        var towers = GameObject.FindGameObjectsWithTag("Towers");
+        foreach (GameObject enemy in towers)
+        {
+            if (Vector3.Distance(transform.position, enemy.transform.position) < 0.08)
+                return false;
+        }
+        var crystal = GameObject.FindGameObjectWithTag("Crystal");
+        if (Vector3.Distance(transform.position, crystal.transform.position) < 0.15)
+            return false;
+        return true;
     }
 }

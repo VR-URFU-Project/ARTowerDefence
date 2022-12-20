@@ -4,27 +4,40 @@ using UnityEngine;
 
 public static class PauseManager
 {
-    private static int flag = 0;
+    private static float flag = 0.01f;
+    private static bool adminPaused = false;
 
-    public static void TogglePause()
+    public static void TogglePause(bool admin = false)
     {
+        if (adminPaused && !admin) return;
         Time.timeScale = flag;
-        if(flag == 1) GameTimer.ResumeTimer();
-        else GameTimer.PauseTimer();
-        flag = (flag == 0) ? 1 : 0;
+        if (flag == 1)
+        {
+            GameTimer.ResumeTimer();
+            adminPaused = false;
+        }
+        else
+        {
+            adminPaused = admin;
+            GameTimer.PauseTimer();
+        }
+        flag = (flag == 1) ? 0.01f : 1;
     }
 
-    public static void Pause()
+    public static void Pause(bool admin = false)
     {
-        Time.timeScale = 0;
+        if (adminPaused) return;
+        adminPaused = admin;
+        Time.timeScale = 0.01f;
         GameTimer.PauseTimer();
         flag = 1;
     }
 
-    public static void Resume()
+    public static void Resume(bool admin = false)
     {
+        if (adminPaused && !admin) return;
         Time.timeScale = 1;
         GameTimer.ResumeTimer();
-        flag = 0;
+        flag = 0.01f;
     }
 }

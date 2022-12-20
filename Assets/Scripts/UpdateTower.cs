@@ -11,11 +11,11 @@ public class UpdateTower : MonoBehaviour
 
     private int layerMask;
 
-    private GameObject mainCanvas;
+    //private GameObject mainCanvas;
 
     void Start()
     {
-        mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
+        //mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
         //YesNoPanel.SetActive(false);
         //mainCanvas.SetActive(false);
         layerMask = LayerMask.GetMask("Tower");
@@ -31,32 +31,33 @@ public class UpdateTower : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
             //Debug.Log("Hitted tower" + hit.collider.gameObject.name);
-            var healthItem = hit.collider.gameObject.GetComponent<TowerHealthLogic>();
+            var tower = hit.collider.gameObject;
+            var healthItem = tower.GetComponent<TowerHealthLogic>();
             if(healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
             {
                 Debug.Log("денег мало");
                 return;
             }
 
-            mainCanvas.SetActive(false);
+            //mainCanvas.SetActive(false);
             var askPanel = Instantiate(YesNoPanel);
             GameObject.Find("Question").GetComponent<TMP_Text>().text = "Upgrade tower to level " + (healthItem.Tdata.Level+1).ToString();
             GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>().onClick.AddListener(() =>
             {
                 MoneySystem.ChangeMoney(-healthItem.Tdata.UpdatePrice);
                 healthItem.Tdata.Upgrade();
-                var towerDatas = hit.collider.gameObject.GetComponentsInChildren<Canon>();
+                var towerDatas = tower.GetComponentsInChildren<Canon>();
                 foreach (var data in towerDatas)
                 {
                     data.Tdata.Upgrade();
                 }
-                mainCanvas.SetActive(true);
+                //mainCanvas.SetActive(true);
                 Destroy(askPanel);
                 //Debug.Log("yes");
             });
             GameObject.FindGameObjectWithTag("No").GetComponent<Button>().onClick.AddListener(() =>
             {
-                mainCanvas.SetActive(true);
+                //mainCanvas.SetActive(true);
                 Destroy(askPanel);
                 //Debug.Log("no");
             });

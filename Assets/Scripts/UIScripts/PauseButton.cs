@@ -8,9 +8,9 @@ public class PauseButton : MonoBehaviour
     private void Update()
     {
         if (Time.timeScale == 0)
-            gameObject.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("play icon");
+            gameObject.GetComponentsInChildren<Image>()[0].sprite = Resources.Load<Sprite>("play icon");
         else
-            gameObject.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>("pause icon");
+            gameObject.GetComponentsInChildren<Image>()[0].sprite = Resources.Load<Sprite>("pause icon");
     }
 
     /// <summary>
@@ -18,7 +18,7 @@ public class PauseButton : MonoBehaviour
     /// </summary>
     public void PressButton()
     {
-        PauseManager.TogglePause();
+        PauseManager.TogglePause(true);
         //gameObject.GetComponentInChildren<Text>().text = (Time.timeScale == 0) ? "Resume" : "Pause";
     }
 }

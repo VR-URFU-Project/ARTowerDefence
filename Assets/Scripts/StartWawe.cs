@@ -20,18 +20,6 @@ public class StartWawe : MonoBehaviour
 
     private void Start()
     {
-        GameTimer.ResetTimer();
-        MoneySystem.BackToDefault();
-
-        var reader = QSReader.Create("Temp");
-        if (!reader.Exists("needsLoad")) return;
-        var flag = reader.Read<int>("needsLoad");
-
-        if (flag == 1) GameDataController.LoadGameData();
-
-        var writer = QuickSaveWriter.Create("Temp");
-        writer.Write("needsLoad", 0);
-        writer.Commit();
     }
 
     private void Update()

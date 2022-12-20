@@ -33,15 +33,9 @@ public class UpdateTower : MonoBehaviour
             //Debug.Log("Hitted tower" + hit.collider.gameObject.name);
             var tower = hit.collider.gameObject;
             var healthItem = tower.GetComponent<TowerHealthLogic>();
-            if(healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
-            {
-                Debug.Log("денег мало");
-                return;
-            }
 
             //mainCanvas.SetActive(false);
             var askPanel = Instantiate(YesNoPanel);
-            GameObject.Find("Question").GetComponent<TMP_Text>().text = "Upgrade tower to level " + (healthItem.Tdata.Level+1).ToString();
             GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>().onClick.AddListener(() =>
             {
                 MoneySystem.ChangeMoney(-healthItem.Tdata.UpdatePrice);
@@ -61,6 +55,18 @@ public class UpdateTower : MonoBehaviour
                 Destroy(askPanel);
                 //Debug.Log("no");
             });
+
+            if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
+            {
+                GameObject.Find("Question").GetComponent<TMP_Text>().color = Color.red;
+                GameObject.Find("Question").GetComponent<TMP_Text>().text = "Not enough money";
+                GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>().gameObject.SetActive(false);
+            }
+            else
+            {
+                GameObject.Find("Question").GetComponent<TMP_Text>().text = "Upgrade tower to level " + (healthItem.Tdata.Level + 1).ToString()
+                    + "\nCost: " + healthItem.Tdata.UpdatePrice.ToString();
+            }
         }
     }
 }

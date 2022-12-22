@@ -36,6 +36,7 @@ public static class PauseManager
     public static void Resume(bool admin = false)
     {
         if (adminPaused && !admin) return;
+        adminPaused = false;
         Time.timeScale = 1;
         GameTimer.ResumeTimer();
         flag = 0;

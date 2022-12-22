@@ -13,6 +13,7 @@ public class Shape : MonoBehaviour
     private bool mouseButtonUped = false;
     private bool canPlaceTheTower = false;
     private int layerMask;
+    private int counter;
 
     private Button YesButton;
     private Button NoButton;
@@ -75,6 +76,8 @@ public class Shape : MonoBehaviour
             {
                 if (canPlaceTheTower)
                 {
+                    counter++;
+                    if (counter != 1) return;
                     shop.CreateTower(transform, gamingPlace.transform);
                     mainCanvas.SetActive(true);
                     Destroy(gameObject);
@@ -83,6 +86,8 @@ public class Shape : MonoBehaviour
             });
             NoButton.onClick.AddListener(() =>
             {
+                counter++;
+                if (counter != 1) return;
                 mainCanvas.SetActive(true);
                 Destroy(gameObject);
                 //Debug.Log("no");

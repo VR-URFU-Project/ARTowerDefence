@@ -30,13 +30,15 @@ public class UpdateTower : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            //Debug.Log("Hitted tower" + hit.collider.gameObject.name);
+            Debug.Log("TowerHit");
             var tower = hit.collider.gameObject;
             var healthItem = tower.GetComponent<TowerHealthLogic>();
+            if (healthItem == null) return;
 
-            //mainCanvas.SetActive(false);
             var askPanel = Instantiate(YesNoPanel);
-            GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>().onClick.AddListener(() =>
+            var askPanelLogic = askPanel.GetComponent<YesNoPanelLogic>();
+            askPanel.GetComponentInChildren<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            askPanelLogic.SetYesAction(() =>
             {
                 MoneySystem.ChangeMoney(-healthItem.Tdata.UpdatePrice);
                 healthItem.Tdata.Upgrade();
@@ -45,27 +47,18 @@ public class UpdateTower : MonoBehaviour
                 {
                     data.Tdata.Upgrade();
                 }
-                //mainCanvas.SetActive(true);
-                Destroy(askPanel);
-                //Debug.Log("yes");
-            });
-            GameObject.FindGameObjectWithTag("No").GetComponent<Button>().onClick.AddListener(() =>
-            {
-                //mainCanvas.SetActive(true);
-                Destroy(askPanel);
-                //Debug.Log("no");
+                return true;
             });
 
             if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
             {
-                GameObject.Find("Question").GetComponent<TMP_Text>().color = Color.red;
-                GameObject.Find("Question").GetComponent<TMP_Text>().text = "Not enough money";
+                askPanelLogic.SetText("Not enough money", Color.red);
                 GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>().gameObject.SetActive(false);
             }
             else
             {
-                GameObject.Find("Question").GetComponent<TMP_Text>().text = "Upgrade tower to level " + (healthItem.Tdata.Level + 1).ToString()
-                    + "\nCost: " + healthItem.Tdata.UpdatePrice.ToString();
+                askPanelLogic.SetText("Upgrade tower to level " + (healthItem.Tdata.Level + 1).ToString()
+                    + "\nCost: " + healthItem.Tdata.UpdatePrice.ToString());
             }
         }
     }

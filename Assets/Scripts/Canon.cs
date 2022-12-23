@@ -219,6 +219,7 @@ public class Canon : MonoBehaviour
                     UseLazer();
                     if (fireCountdown <= 0f)
                     {
+                        audio.PlayOneShot(ShootSound, 0.99f);
                         Damage(target.parent.transform);
                         fireCountdown = 1d / Tdata.AtackSpeed;
 
@@ -250,7 +251,6 @@ public class Canon : MonoBehaviour
 
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
-        audio.PlayOneShot(ShootSound, 0.99f);
     }
 
     void Shoot()

@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: -2316546007093308379}
   m_Layer: 2
   m_Name: shape_LazerTower
-  m_TagString: Untagged
+  m_TagString: Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

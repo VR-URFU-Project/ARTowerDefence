@@ -18,6 +18,8 @@ TagManager:
   - Target
   - MainPrefab
   - HideOnGameLoad
+  - Cinemachine
+  - Shape
   layers:
   - Default
   - TransparentFX

@@ -20,6 +20,7 @@ TagManager:
   - HideOnGameLoad
   - Cinemachine
   - Shape
+  - DeadZone
   layers:
   - Default
   - TransparentFX

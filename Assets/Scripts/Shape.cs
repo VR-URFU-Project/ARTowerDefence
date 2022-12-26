@@ -33,6 +33,8 @@ public class Shape : MonoBehaviour
     [SerializeField] private GameObject MaterialToChange_plane;
     [SerializeField] private GameObject MaterialToChange_sphere;
 
+    [SerializeField] private Material Transparent;
+
     void Start()
     {
         shop = GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>();
@@ -44,6 +46,9 @@ public class Shape : MonoBehaviour
         YesNoPanel.SetActive(false);
         mainCanvas.SetActive(false);
         layerMask = LayerMask.GetMask("Surface");
+
+        foreach (var zone in GameObject.FindGameObjectsWithTag("DeadZone"))
+            zone.GetComponent<Renderer>().material = RedMatPlane;
     }
 
     void Update()
@@ -78,6 +83,10 @@ public class Shape : MonoBehaviour
                 {
                     counter++;
                     if (counter != 1) return;
+
+                    foreach (var zone in GameObject.FindGameObjectsWithTag("DeadZone"))
+                        zone.GetComponent<Renderer>().material = Transparent;
+
                     shop.CreateTower(transform, gamingPlace.transform);
                     mainCanvas.SetActive(true);
                     Destroy(gameObject);
@@ -88,6 +97,10 @@ public class Shape : MonoBehaviour
             {
                 counter++;
                 if (counter != 1) return;
+
+                foreach (var zone in GameObject.FindGameObjectsWithTag("DeadZone"))
+                    zone.GetComponent<Renderer>().material = Transparent;
+
                 mainCanvas.SetActive(true);
                 Destroy(gameObject);
                 //Debug.Log("no");

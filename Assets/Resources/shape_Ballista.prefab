@@ -589,6 +589,7 @@ MonoBehaviour:
   RedMatSphere: {fileID: 2100000, guid: 1847c6faad635a24ea368e9d3173f08b, type: 2}
   MaterialToChange_plane: {fileID: 4036113071573604875}
   MaterialToChange_sphere: {fileID: 4036113071573604875}
+  Transparent: {fileID: 2100000, guid: 9168f15a9800f73458355dd5b72e3762, type: 2}
 --- !u!136 &8401404238859152587
 CapsuleCollider:
   m_ObjectHideFlags: 0

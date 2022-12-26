@@ -30,7 +30,7 @@ public class UpdateTower : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            Debug.Log("TowerHit");
+            
             var tower = hit.collider.gameObject;
             var healthItem = tower.GetComponent<TowerHealthLogic>();
             if (healthItem == null) return;

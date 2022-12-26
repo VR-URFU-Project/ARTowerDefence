@@ -74,7 +74,7 @@ public class StartWawe : MonoBehaviour
     /// <param name="subwave"></param>
     private void processSubwave(SubwaveData subwave)
     {
-        Debug.Log("Processing " + GameTimer.GetSeconds().ToString());
+        
         switch (subwave.SpawnType)
         {
             case "C":
@@ -160,14 +160,16 @@ public class StartWawe : MonoBehaviour
     /// <param name="index">Индекс места спавна</param>
     private void CreateEnemy(int index, MonsterData data)
     {
-        var newEnemy = Instantiate(data.prefab, spawnPlaces[index].transform);
+        var newData = MonsterController.GetMutatedEnemy(data);
+
+        var newEnemy = Instantiate(newData.prefab, spawnPlaces[index].transform);
         newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
-        newEnemy.GetComponent<EnemyScript>().BasicData = new MonsterData(data);
+        newEnemy.GetComponent<EnemyScript>().BasicData = newData;
         newEnemy.gameObject.SetActive(true);
         ++activeEnemies;
         newEnemy.GetComponent<EnemyScript>().SetKillEvent(() =>
         {
-            MoneySystem.ChangeMoney(data.Money);
+            MoneySystem.ChangeMoney(newData.Money);
             --activeEnemies;
         });
     }

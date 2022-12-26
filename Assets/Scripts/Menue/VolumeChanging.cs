@@ -3,15 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class VolumeChanging : MonoBehaviour
 {
-    //[SerializeField]
-    //AudioMixerGroup backMusic;
-    
-    //[SerializeField]
-    //AudioMixerGroup effects;
 
     [SerializeField]
     AudioMixerGroup mixer;

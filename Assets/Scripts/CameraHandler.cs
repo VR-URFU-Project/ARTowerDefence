@@ -24,6 +24,13 @@ public class CameraHandler : MonoBehaviour
     float distanceBetweenPositions;
     float distanceBetweenDirections;
 
+    [Header("Menus")]
+    [SerializeField] GameObject gamePause;
+    [SerializeField] GameObject settingsMenu;
+
+    bool gamePause_enabled;
+    bool settingsMenu_enabled;
+
     private void Start()
     {
         fieldOfView = virtualCamera.GetComponent<CinemachineFreeLook>().m_Lens.FieldOfView;
@@ -40,9 +47,11 @@ public class CameraHandler : MonoBehaviour
     }
     private void CheckCameraCanMove()
     {
+        gamePause_enabled = gamePause.activeSelf;
+        settingsMenu_enabled = settingsMenu.activeSelf;
         shop = GameObject.FindGameObjectWithTag(shopTag);
         shape = GameObject.FindGameObjectWithTag(shapeTag);
-        if (shop != null || shape != null)
+        if (shop != null || shape != null || gamePause_enabled || settingsMenu_enabled)
         {
             virtualCamera.SetActive(false);
         }

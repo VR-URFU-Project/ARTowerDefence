@@ -25,3 +25,33 @@ MonoBehaviour:
     m_SpecifySize: 0
     m_Name: arimg4
     m_Texture: {fileID: 2800000, guid: d4931dad256fd1a4aa1fa3d13fb39e31, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4631753023002339085
+      m_GuidHigh: 16384120411709627307
+    m_SerializedTextureGuid:
+      m_GuidLow: 8193432654401407738
+      m_GuidHigh: 11843416582840659848
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: ar1
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4638418639658379110
+      m_GuidHigh: 6954041676208773268
+    m_SerializedTextureGuid:
+      m_GuidLow: 11093768148190924125
+      m_GuidHigh: 11519694979328473480
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: ar5
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4703590781852505979
+      m_GuidHigh: 12997259759799171722
+    m_SerializedTextureGuid:
+      m_GuidLow: 6211644429352683046
+      m_GuidHigh: 3122779925397538955
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: code
+    m_Texture: {fileID: 0}

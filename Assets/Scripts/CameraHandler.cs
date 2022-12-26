@@ -41,9 +41,7 @@ public class CameraHandler : MonoBehaviour
     {
         CheckCameraCanMove();
 
-#if UNITY_ANDROID
         AndroidZoom();
-#endif
     }
     private void CheckCameraCanMove()
     {

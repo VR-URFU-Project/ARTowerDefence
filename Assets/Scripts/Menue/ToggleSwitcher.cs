@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class ToggleSwitcher : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField]
-    private bool _isOn = false;
+    //[SerializeField]
+    //private bool _isOn = false;
     public bool isOn { get; set; }
 
     [SerializeField] private RectTransform toggleIndicator;
@@ -17,40 +17,43 @@ public class ToggleSwitcher : MonoBehaviour, IPointerDownHandler
 
     private Toggle toggle;
 
-    private void OnEnable()
+    private void Start()
     {
         toggle = GetComponent<Toggle>();
         isOn = toggle.isOn;
-        Toggle(isOn);
+        //Toggle(isOn);
+        MoveIndicator(isOn);
     }
 
-    private void Toggle(bool value)
-    {
 
-        if (value != isOn)
-        {
-            _isOn = value;
+    //private void Toggle(bool value)
+    //{
+    //    if (value != isOn)
+    //    {
+    //        isOn = value;
 
-            MoveIndicator(isOn);
-        }
-    }
+    //        MoveIndicator(isOn);
+    //    }
+
+    //}
 
     private void MoveIndicator(bool value) 
     {
         if (value)
-            toggleIndicator.position = offValue.position;
-        else
             toggleIndicator.position = onValue.position;
+        else
+            toggleIndicator.position = offValue.position;
     }
 
-    public void OnSwitch(PointerEventData eventData)
-    {
-        Toggle(!isOn);
-    }
+    //public void OnSwitch(PointerEventData eventData)
+    //{
+    //    Toggle(!isOn);
+    //}
 
     public void OnPointerDown(PointerEventData eventData)
     {
         isOn = toggle.isOn;
-        Toggle(!isOn);
+        //Toggle(!isOn);
+        MoveIndicator(!isOn);
     }
 }

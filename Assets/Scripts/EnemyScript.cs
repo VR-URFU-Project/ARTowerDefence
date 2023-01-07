@@ -74,6 +74,7 @@ public class EnemyScript : MonoBehaviour
         else
         {
             agent.isStopped=true;
+            gameObject.tag = "Untagged";
             gameObject.GetComponent<Collider>().enabled=false;
             foreach (Transform child in gameObject.transform)
             {

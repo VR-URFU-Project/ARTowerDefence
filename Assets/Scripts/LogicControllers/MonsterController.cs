@@ -52,14 +52,14 @@ public static class MonsterController
     {
         var chance = Random.value;
         var newData = new MonsterData(data);
-        if (chance < blackChance && GameTimer.GetSeconds() > 10)
+        if (chance < blackChance && GameTimer.GetSeconds() > 60)
             MakeEnemyBlack(newData);
-        if (chance > 1 - purpleChance && GameTimer.GetSeconds() > 30)
+        if (chance > 1 - purpleChance && GameTimer.GetSeconds() > 300)
             MakeEnemyPurple(newData);
         return newData;
     }
 
-    private static void MakeEnemyPurple(MonsterData data)
+    public static void MakeEnemyPurple(MonsterData data)
     {
         //Debug.Log("Wait for purple");
         data.Name = data.Name+"_purple";
@@ -70,7 +70,7 @@ public static class MonsterController
         data.Money = data.Money * 4;
     }
 
-    private static void MakeEnemyBlack(MonsterData data)
+    public static void MakeEnemyBlack(MonsterData data)
     {
         //Debug.Log("Wait for black");
         data.Name = data.Name + "_black";

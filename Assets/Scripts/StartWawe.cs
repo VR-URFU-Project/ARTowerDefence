@@ -9,17 +9,22 @@ public class StartWawe : MonoBehaviour
 {
     [SerializeField] List<GameObject> spawnPlaces;
     [SerializeField] GameObject crystal;
+    private GameObject mainArea;
     //[SerializeField] GameObject StartButton;
 
     private const int DISABLED_TIMER_VALUE = -10;
     private int curWave = 0;
     private int curSubWave = 0;
     private double timer = DISABLED_TIMER_VALUE;
-    private Queue<SubwaveData> dataQueue = new Queue<SubwaveData>();
+    private Queue<SubwaveData> dataQueue;
     private int activeEnemies = 0;
+    //private LinkedList<GameObject> activeEnemies;
 
     private void Start()
     {
+        mainArea = GameObject.FindGameObjectWithTag("GamingPlace");
+        //activeEnemies = new LinkedList<GameObject>();
+        dataQueue = new Queue<SubwaveData>();
     }
 
     private void Update()
@@ -161,15 +166,17 @@ public class StartWawe : MonoBehaviour
     private void CreateEnemy(int index, MonsterData data)
     {
         var newData = MonsterController.GetMutatedEnemy(data);
-
-        var newEnemy = Instantiate(newData.prefab, spawnPlaces[index].transform);
+        var newEnemy = Instantiate(newData.prefab, mainArea.transform);
+        newEnemy.transform.localPosition = spawnPlaces[index].transform.localPosition;
         newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
         newEnemy.GetComponent<EnemyScript>().BasicData = newData;
         newEnemy.gameObject.SetActive(true);
+        //activeEnemies.AddLast(newEnemy);
         ++activeEnemies;
         newEnemy.GetComponent<EnemyScript>().SetKillEvent(() =>
         {
             MoneySystem.ChangeMoney(newData.Money);
+            //activeEnemies.Remove(newEnemy);
             --activeEnemies;
         });
     }

@@ -9,7 +9,13 @@ public class UpdateTower : MonoBehaviour
     RaycastHit hit;
     [SerializeField] GameObject YesNoPanel;
 
+    [SerializeField] GameObject CloseShop;
+    [SerializeField] GameObject OpenShop;
+    [SerializeField] GameObject Shop;
+    private bool shopState;
+
     private int layerMask;
+    private bool panelActive = false;
 
     //private GameObject mainCanvas;
 
@@ -33,7 +39,10 @@ public class UpdateTower : MonoBehaviour
             
             var tower = hit.collider.gameObject;
             var healthItem = tower.GetComponent<TowerHealthLogic>();
-            if (healthItem == null) return;
+            if (healthItem == null || panelActive) return;
+
+            HideShop();
+            panelActive = true;
 
             var askPanel = Instantiate(YesNoPanel);
             var askPanelLogic = askPanel.GetComponent<YesNoPanelLogic>();
@@ -47,7 +56,16 @@ public class UpdateTower : MonoBehaviour
                 {
                     data.Tdata.Upgrade();
                 }
+
+                ShowShop();
+                panelActive = false;
+
                 return true;
+            });
+
+            askPanelLogic.SetNoAction(() => {
+                ShowShop();
+                panelActive = false;
             });
 
             if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
@@ -61,5 +79,22 @@ public class UpdateTower : MonoBehaviour
                     + "\nCost: " + healthItem.Tdata.UpdatePrice.ToString());
             }
         }
+    }
+
+    private void HideShop()
+    {
+        shopState = Shop.activeSelf;
+        Shop.SetActive(false);
+        CloseShop.SetActive(false);
+        OpenShop.SetActive(true);
+        OpenShop.GetComponent<Button>().interactable = false;
+    }
+
+    private void ShowShop()
+    {
+        Shop.SetActive(shopState);
+        CloseShop.SetActive(shopState);
+        OpenShop.SetActive(!shopState);
+        OpenShop.GetComponent<Button>().interactable = true;
     }
 }

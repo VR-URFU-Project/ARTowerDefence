@@ -69,7 +69,8 @@ public static class CSVReader
     public static List<WaveData> ReadWaveData()
     {
         var strData = Resources
-            .Load<TextAsset>("Waves")
+            //.Load<TextAsset>("Waves")
+            .Load<TextAsset>("Waves debug")
             .text
             .Split('\n').Skip(1).ToArray();
         var waves = new List<WaveData>();

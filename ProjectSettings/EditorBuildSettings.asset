@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenue.unity
     guid: 80b9b13d8f26b304e81952c81e8abc29
   - enabled: 1
-    path: Assets/Scenes/ViewModeChoise.unity
-    guid: 12b2fe9495e032e4fa2b5fb07dd11214
-  - enabled: 1
     path: Assets/Scenes/Drag and Drop.unity
     guid: b67e850607e6a094387ea5c2504b13ca
   - enabled: 1

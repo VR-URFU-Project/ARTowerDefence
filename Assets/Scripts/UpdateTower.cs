@@ -70,7 +70,7 @@ public class UpdateTower : MonoBehaviour
 
             if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
             {
-                askPanelLogic.SetText("Not enough money", Color.red);
+                askPanelLogic.SetText("Not enough money\n" + "Cost: " + healthItem.Tdata.UpdatePrice.ToString(), Color.red);
                 GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>().interactable = false;
             }
             else

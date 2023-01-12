@@ -971,7 +971,7 @@ MonoBehaviour:
   target: {fileID: 6068016587482438269, guid: c99bf0a281fb2b7479a1d18574cfb0eb, type: 3}
   AttackSound: {fileID: 8300000, guid: d587149c8bbd34f40a95f49ca421a23f, type: 3}
   DeathSound: {fileID: 8300000, guid: 9555eea9aa6bead4cb282014f067f9f4, type: 3}
-  SpawnSound: {fileID: 8300000, guid: fcb77bae08977134cb6a2bd6a16c8a53, type: 3}
+  SpawnSound: {fileID: 8300000, guid: 170a8dbdf827ba446829f59865aaecdb, type: 3}
 --- !u!65 &5942701546732729084
 BoxCollider:
   m_ObjectHideFlags: 0

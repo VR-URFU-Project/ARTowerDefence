@@ -20,6 +20,9 @@ public class StartWawe : MonoBehaviour
     private int activeEnemies = 0;
     //private LinkedList<GameObject> activeEnemies;
 
+    private float timeoutForSpawn = 0.2f;
+    private int spawnBunchSize = 10000;
+
     private void Start()
     {
         mainArea = GameObject.FindGameObjectWithTag("GamingPlace");
@@ -83,13 +86,13 @@ public class StartWawe : MonoBehaviour
         switch (subwave.SpawnType)
         {
             case "C":
-                SpawnCircle(subwave.Monsters);
+                StartCoroutine(SpawnCircle(subwave.Monsters));
                 break;
             case "T":
-                SpawnTogether(subwave.Monsters);
+                StartCoroutine(SpawnTogether(subwave.Monsters));
                 break;
             case "R":
-                SpawnRandom(subwave.Monsters);
+                StartCoroutine(SpawnRandom(subwave.Monsters));
                 break;
         }
         timer = subwave.Duration;
@@ -99,12 +102,14 @@ public class StartWawe : MonoBehaviour
     /// Монстры появляются равномерно по кругу
     /// </summary>
     /// <param name="enemies"></param>
-    private void SpawnCircle(List<MonsterData> enemies)
+    private IEnumerator SpawnCircle(List<MonsterData> enemies)
     {
         var i = 0;
         for (; i < enemies.Count - enemies.Count % spawnPlaces.Count; ++i)
         {
             CreateEnemy(i % spawnPlaces.Count, enemies[i]);
+            if (i % spawnBunchSize == 0 && i != 0)
+                yield return new WaitForSeconds(timeoutForSpawn);
         }
 
         var left = enemies.Count % spawnPlaces.Count;
@@ -126,12 +131,14 @@ public class StartWawe : MonoBehaviour
     /// Все монстры появляются в одном случайном месте
     /// </summary>
     /// <param name="enemies"></param>
-    private void SpawnTogether(List<MonsterData> enemies)
+    private IEnumerator SpawnTogether(List<MonsterData> enemies)
     {
         var ind = getRandomSpawnPlace();
         for (var i = 0; i < enemies.Count; ++i)
         {
             CreateEnemy(ind, enemies[i]);
+            if(i % spawnBunchSize == 0 && i != 0)
+                yield return new WaitForSeconds(timeoutForSpawn);
         }
 
     }
@@ -140,11 +147,13 @@ public class StartWawe : MonoBehaviour
     /// Монстры появляются в случайных местах
     /// </summary>
     /// <param name="enemies"></param>
-    private void SpawnRandom(List<MonsterData> enemies)
+    private IEnumerator SpawnRandom(List<MonsterData> enemies)
     {
         for (var i = 0; i < enemies.Count; ++i)
         {
             CreateEnemy(getRandomSpawnPlace(), enemies[i]);
+            if (i % spawnBunchSize == 0 && i!=0)
+                yield return new WaitForSeconds(timeoutForSpawn);
         }
     }
 

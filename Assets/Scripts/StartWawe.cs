@@ -175,7 +175,7 @@ public class StartWawe : MonoBehaviour
         ++activeEnemies;
         newEnemy.GetComponent<EnemyScript>().SetKillEvent(() =>
         {
-            MoneySystem.ChangeMoney(newData.Money);
+            //MoneySystem.ChangeMoney(newData.Money);
             //activeEnemies.Remove(newEnemy);
             --activeEnemies;
         });

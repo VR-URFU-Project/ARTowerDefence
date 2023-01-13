@@ -7,7 +7,8 @@ public class PinchDetection : MonoBehaviour
 {
     private ZoomActions actions;
     private Coroutine zoomCoroutine;
-    public CinemachineFreeLook cineCamera;
+    public GameObject cineCamera;
+    private CinemachineFreeLook freeLookCam;
     private CinemachineCameraOffset camOffset;
     
     [SerializeField] float zoomMin = 0f;
@@ -18,6 +19,7 @@ public class PinchDetection : MonoBehaviour
     {
         actions = new ZoomActions();
         camOffset = cineCamera.GetComponent<CinemachineCameraOffset>();
+        freeLookCam = cineCamera.GetComponent<CinemachineFreeLook>();
     }
 
     private void OnEnable()

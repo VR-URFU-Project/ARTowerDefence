@@ -1315,7 +1315,6 @@ GameObject:
   m_Component:
   - component: {fileID: 396156367}
   - component: {fileID: 396156366}
-  - component: {fileID: 396156368}
   m_Layer: 0
   m_Name: CameraHandler
   m_TagString: Untagged
@@ -1338,6 +1337,9 @@ MonoBehaviour:
   virtualCamera: {fileID: 1841130224}
   shopTag: Shop
   shapeTag: Shape
+  zoomMin: 0
+  zoomMax: 1.14
+  zoomSpeed: 0.01
   gamePause: {fileID: 7018229155241482738}
   settingsMenu: {fileID: 953265107}
 --- !u!4 &396156367
@@ -1354,22 +1356,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &396156368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396156365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec9ceecae3ebd8642924323cd99f1fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cineCamera: {fileID: 1841130225}
-  zoomMin: 0
-  zoomMax: 1.4
-  zoomSpeed: 1
 --- !u!1 &403980763
 GameObject:
   m_ObjectHideFlags: 0

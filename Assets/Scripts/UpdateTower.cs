@@ -47,6 +47,7 @@ public class UpdateTower : MonoBehaviour
             var askPanel = Instantiate(YesNoPanel);
             var askPanelLogic = askPanel.GetComponent<YesNoPanelLogic>();
             askPanel.GetComponentInChildren<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            askPanel.GetComponentInChildren<Canvas>().planeDistance = 0.19f;
             askPanelLogic.SetYesAction(() =>
             {
                 MoneySystem.ChangeMoney(-healthItem.Tdata.UpdatePrice);

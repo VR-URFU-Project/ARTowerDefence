@@ -15,7 +15,7 @@ public class UpdateTower : MonoBehaviour
     private bool shopState;
 
     private int layerMask;
-    private bool panelActive = false;
+    //private bool panelActive = false;
 
     //private GameObject mainCanvas;
 
@@ -39,10 +39,10 @@ public class UpdateTower : MonoBehaviour
             Debug.Log("hit tower");
             var tower = hit.collider.gameObject;
             var healthItem = tower.GetComponent<TowerHealthLogic>();
-            if (healthItem == null || panelActive) return;
+            if (healthItem == null /*|| panelActive*/) return;
 
             HideShop();
-            panelActive = true;
+            //panelActive = true;
 
             var askPanel = Instantiate(YesNoPanel);
             var askPanelLogic = askPanel.GetComponent<YesNoPanelLogic>();
@@ -59,14 +59,14 @@ public class UpdateTower : MonoBehaviour
                 }
 
                 ShowShop();
-                panelActive = false;
+                //panelActive = false;
 
                 return true;
             });
 
             askPanelLogic.SetNoAction(() => {
                 ShowShop();
-                panelActive = false;
+                //panelActive = false;
             });
 
             if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())

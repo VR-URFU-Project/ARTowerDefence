@@ -900,56 +900,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261263645}
   m_Mesh: {fileID: 4300000, guid: 122765e07584ed64b95fbe713fee2c7b, type: 2}
---- !u!1 &271572244 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2336821819628938405, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
-  m_PrefabInstance: {fileID: 113393662297178815}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &271572252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271572244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 396156366}
-          m_TargetAssemblyTypeName: CameraHandler, Assembly-CSharp
-          m_MethodName: ChangeShopItemSelectedStage
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 5
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 646282342}
-          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-          m_MethodName: Purchase
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: TreeHouse
-            m_BoolArgument: 1
-          m_CallState: 2
 --- !u!1 &302090686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,67 +1926,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605570307}
   m_Mesh: {fileID: 4300000, guid: 9e4c1ed0f2a409f43817b2c9c1b0548e, type: 2}
---- !u!1 &632126474 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6037653908296883839, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
-  m_PrefabInstance: {fileID: 113393662297178815}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &632126482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 632126474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 396156366}
-          m_TargetAssemblyTypeName: CameraHandler, Assembly-CSharp
-          m_MethodName: ChangeShopItemSelectedStage
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 5
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 646282342}
-          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-          m_MethodName: Purchase
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Mushroom
-            m_BoolArgument: 1
-          m_CallState: 2
---- !u!114 &646282342 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8326035755668898573, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
-  m_PrefabInstance: {fileID: 113393662297178815}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef62d610a039153428f9b72501cb17e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &667528627
 GameObject:
   m_ObjectHideFlags: 0
@@ -3128,56 +3017,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067789376}
   m_Mesh: {fileID: 4300000, guid: 9e4c1ed0f2a409f43817b2c9c1b0548e, type: 2}
---- !u!1 &1073714140 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7189152719265678979, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
-  m_PrefabInstance: {fileID: 113393662297178815}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1073714148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073714140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 396156366}
-          m_TargetAssemblyTypeName: CameraHandler, Assembly-CSharp
-          m_MethodName: ChangeShopItemSelectedStage
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 5
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 646282342}
-          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-          m_MethodName: Purchase
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: LazerTower
-            m_BoolArgument: 1
-          m_CallState: 2
 --- !u!1 &1077728507
 GameObject:
   m_ObjectHideFlags: 3
@@ -4983,56 +4822,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421489061}
   m_Mesh: {fileID: 4300000, guid: 578894a7537cbef419f58af627d06e5e, type: 2}
---- !u!1 &1423135157 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8965924034276981911, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
-  m_PrefabInstance: {fileID: 113393662297178815}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1423135165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423135157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 396156366}
-          m_TargetAssemblyTypeName: CameraHandler, Assembly-CSharp
-          m_MethodName: ChangeShopItemSelectedStage
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 5
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 646282342}
-          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-          m_MethodName: Purchase
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Ballista
-            m_BoolArgument: 1
-          m_CallState: 2
 --- !u!1 &1436110589
 GameObject:
   m_ObjectHideFlags: 0
@@ -7224,6 +7013,62 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 238520346547458335, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 396156366}
+    - target: {fileID: 2284261091097667869, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284261091097667869, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284261091097667869, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284261091097667869, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284261091097667869, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 186.69995
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284261091097667869, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 113.79999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284261091097667869, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284261091097667869, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -498
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284261091097667869, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -102
+      objectReference: {fileID: 0}
+    - target: {fileID: 2858209372215048812, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 396156366}
+    - target: {fileID: 3950891755191338643, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 396156366}
+    - target: {fileID: 4818656593681579103, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 396156366}
+    - target: {fileID: 4849646761971536236, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5414739401453327106, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
       propertyPath: m_Camera
       value: 
@@ -7275,6 +7120,70 @@ PrefabInstance:
     - target: {fileID: 5414739401453327319, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
       propertyPath: m_Name
       value: NOAR17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821497166159509955, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821497166159509955, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821497166159509955, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821497166159509955, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821497166159509955, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 186.69995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821497166159509955, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 113.79999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821497166159509955, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821497166159509955, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -199
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821497166159509955, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -102
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987080648198877560, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987080648198877560, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987080648198877560, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987080648198877560, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 94
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987080648198877560, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323469829438460845, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514772732887927657, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 044b943c2d8ad4447a61e004e0cdf3bd, type: 3}

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6134103238082730732}
   - component: {fileID: 194440614537598908}
   - component: {fileID: 1666253668938149630}
+  - component: {fileID: 2839268362446825293}
   m_Layer: 5
   m_Name: TreeHouse_Item
   m_TagString: Untagged
@@ -197,6 +198,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: TreeHouse
   spawnPlace: {fileID: 0}
+--- !u!114 &2839268362446825293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308057206909211383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: CameraHandler, Assembly-CSharp
+          m_MethodName: ChangeShopItemSelectedStage
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6315306844765517151}
+          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+          m_MethodName: Purchase
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: TreeHouse
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &1575130047789604589
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +826,7 @@ GameObject:
   - component: {fileID: 1624595755882690762}
   - component: {fileID: 4913060801422519535}
   - component: {fileID: 3893377218908731626}
+  - component: {fileID: 252792232944208958}
   m_Layer: 5
   m_Name: LazerTower_Item
   m_TagString: Untagged
@@ -962,6 +1009,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: LazerTower
   spawnPlace: {fileID: 0}
+--- !u!114 &252792232944208958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182938639328522449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: CameraHandler, Assembly-CSharp
+          m_MethodName: ChangeShopItemSelectedStage
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6315306844765517151}
+          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+          m_MethodName: Purchase
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: LazerTower
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &5348223033401560142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1278,7 @@ GameObject:
   - component: {fileID: 658621838902199006}
   - component: {fileID: 6595221408643897083}
   - component: {fileID: 2583685888254714766}
+  - component: {fileID: 1367999635993194689}
   m_Layer: 5
   m_Name: Ballista_Item
   m_TagString: Untagged
@@ -1369,6 +1462,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: Ballista
   spawnPlace: {fileID: 0}
+--- !u!114 &1367999635993194689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360528610024524485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: CameraHandler, Assembly-CSharp
+          m_MethodName: ChangeShopItemSelectedStage
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6315306844765517151}
+          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+          m_MethodName: Purchase
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Ballista
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &6924573409401734692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,6 +1775,7 @@ GameObject:
   - component: {fileID: 2775544793855107126}
   - component: {fileID: 6034986609437632323}
   - component: {fileID: 8454756206614974961}
+  - component: {fileID: 7419453688507533837}
   m_Layer: 5
   m_Name: Mushroom_Item
   m_TagString: Untagged
@@ -1819,3 +1958,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: Mushroom
   spawnPlace: {fileID: 0}
+--- !u!114 &7419453688507533837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638591590287747117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: CameraHandler, Assembly-CSharp
+          m_MethodName: ChangeShopItemSelectedStage
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6315306844765517151}
+          m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+          m_MethodName: Purchase
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Mushroom
+            m_BoolArgument: 1
+          m_CallState: 2

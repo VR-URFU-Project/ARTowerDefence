@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerHealthLogic : MonoBehaviour
 {
-    [SerializeField] public GameObject gg;
+    [SerializeField] public GameObject EndgameMessage;
+    [SerializeField] public Button pauseButton;
     [SerializeField] public TowerType type;
     public TowerData Tdata;
 
@@ -43,8 +45,9 @@ public class TowerHealthLogic : MonoBehaviour
         {
             if (type == TowerType.Crystal)
             {
-                Time.timeScale = 0;
-                gg.SetActive(true);
+                PauseManager.Pause(true);
+                pauseButton.enabled = false;
+                EndgameMessage.SetActive(true);
             }
             else
             {

@@ -1,7 +1,6 @@
 using UnityEngine;
 using Cinemachine;
-//using UnityEngine.InputSystem;
-using System.Runtime.CompilerServices;
+using UnityEngine.UI;
 
 public class CameraHandler : MonoBehaviour
 {
@@ -33,12 +32,12 @@ public class CameraHandler : MonoBehaviour
 
     bool gamePause_enabled;
     bool settingsMenu_enabled;
+    public static bool shopItem_selected;
 
     private void Start()
     {
         camOffset = virtualCamera.GetComponent<CinemachineCameraOffset>();
-        //fieldOfView = virtualCamera.GetComponent<CinemachineFreeLook>().m_Lens.FieldOfView;
-        //fieldOfView = 40f;
+        shopItem_selected = false;
     }
 
     private void Update()
@@ -53,7 +52,7 @@ public class CameraHandler : MonoBehaviour
         settingsMenu_enabled = settingsMenu.activeSelf;
         shop = GameObject.FindGameObjectWithTag(shopTag);
         shape = GameObject.FindGameObjectWithTag(shapeTag);
-        if (shop != null || shape != null || gamePause_enabled || settingsMenu_enabled)
+        if (/*shop != null ||*/ shape != null || gamePause_enabled || settingsMenu_enabled || shopItem_selected)
         {
             virtualCamera.SetActive(false);
         }
@@ -85,5 +84,10 @@ public class CameraHandler : MonoBehaviour
             //fieldOfView = Mathf.Clamp(currentZoom, zoomMin, zoomMax);
         }
         virtualCamera.GetComponent<CinemachineFreeLook>().enabled = true;        
+    }
+
+    public static void ChangeShopItemSelectedStage(bool B)
+    {
+        shopItem_selected = B;
     }
 }

@@ -89,6 +89,7 @@ public class Shape : MonoBehaviour
 
                     shop.CreateTower(transform, gamingPlace.transform);
                     mainCanvas.SetActive(true);
+                    CameraHandler.ChangeShopItemSelectedStage(false);
                     Destroy(gameObject);
                 }
                 //Debug.Log("yes");
@@ -102,6 +103,7 @@ public class Shape : MonoBehaviour
                     zone.GetComponent<Renderer>().material = Transparent;
 
                 mainCanvas.SetActive(true);
+                CameraHandler.ChangeShopItemSelectedStage(false);
                 Destroy(gameObject);
                 //Debug.Log("no");
             });

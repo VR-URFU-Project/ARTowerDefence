@@ -26,10 +26,8 @@ public class DragItem : MonoBehaviour
     //            gamingPlace.transform);
     //}
 
-    private void OnMouseDrag()
-    {
-        GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().Purchase(type);
-    }
-
-
+    //private void OnMouseDrag()
+    //{
+    //    GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().Purchase(type);
+    //}
 }

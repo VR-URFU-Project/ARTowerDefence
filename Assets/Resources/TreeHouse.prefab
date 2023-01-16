@@ -341,7 +341,7 @@ MonoBehaviour:
   FlyEnemyTag: Fly
   partToRotate: {fileID: 7567144581853051386}
   turnSpeed: 5
-  bulletPrefab: {fileID: 3664311509907110316, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
+  bulletPrefab: {fileID: 5511888285492028580, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
   firePoint: {fileID: 8192492122265239082}
   towerType: 2
 --- !u!82 &3434861330056822549
@@ -694,7 +694,7 @@ MonoBehaviour:
   FlyEnemyTag: Fly
   partToRotate: {fileID: 0}
   turnSpeed: 5
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 5511888285492028580, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
   firePoint: {fileID: 0}
   towerType: 2
 --- !u!114 &4772244938604846211
@@ -709,7 +709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01832e354fa1f4428dac2553c013306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gg: {fileID: 0}
+  EndgameMessage: {fileID: 0}
+  pauseButton: {fileID: 0}
   type: 2
   DeathSound: {fileID: 8300000, guid: 2f806726a534ff845a9ea746ae930744, type: 3}
 --- !u!54 &1872124359052883639
@@ -890,7 +891,7 @@ MonoBehaviour:
   FlyEnemyTag: Fly
   partToRotate: {fileID: 668481524459459708}
   turnSpeed: 5
-  bulletPrefab: {fileID: 3664311509907110316, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
+  bulletPrefab: {fileID: 5511888285492028580, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
   firePoint: {fileID: 3292702108470565263}
   towerType: 2
 --- !u!82 &3796140291008359052

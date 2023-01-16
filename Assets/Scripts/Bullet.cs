@@ -57,6 +57,7 @@ public class Bullet : MonoBehaviour
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
         transform.LookAt(target);
+        transform.Rotate(180f, 0, 0);
     }
 
     void HitTarget()

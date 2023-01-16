@@ -7,7 +7,7 @@ public class CameraHandler : MonoBehaviour
     [Header("GeneralSettings")]
     [SerializeField] GameObject virtualCamera;
     [SerializeField] string shopTag;
-    [SerializeField] string shapeTag;    
+    [SerializeField] string shapeTag;
 
     GameObject shop;
     GameObject shape;
@@ -52,7 +52,7 @@ public class CameraHandler : MonoBehaviour
         settingsMenu_enabled = settingsMenu.activeSelf;
         shop = GameObject.FindGameObjectWithTag(shopTag);
         shape = GameObject.FindGameObjectWithTag(shapeTag);
-        if (/*shop != null ||*/ shape != null || gamePause_enabled || settingsMenu_enabled || shopItem_selected)
+        if (shape != null || gamePause_enabled || settingsMenu_enabled || shopItem_selected)
         {
             virtualCamera.SetActive(false);
         }

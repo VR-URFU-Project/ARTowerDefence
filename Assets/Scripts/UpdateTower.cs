@@ -50,6 +50,7 @@ public class UpdateTower : MonoBehaviour
             askPanel.GetComponentInChildren<Canvas>().planeDistance = 0.19f;
             askPanelLogic.SetYesAction(() =>
             {
+                CameraHandler.ChangeShopItemSelectedStage(false);
                 MoneySystem.ChangeMoney(-healthItem.Tdata.UpdatePrice);
                 healthItem.Tdata.Upgrade();
                 var towerDatas = tower.GetComponentsInChildren<Canon>();
@@ -65,6 +66,7 @@ public class UpdateTower : MonoBehaviour
             });
 
             askPanelLogic.SetNoAction(() => {
+                CameraHandler.ChangeShopItemSelectedStage(false);
                 ShowShop();
                 //panelActive = false;
             });

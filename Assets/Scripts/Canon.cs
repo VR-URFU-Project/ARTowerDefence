@@ -30,7 +30,7 @@ public class Canon : MonoBehaviour
     public Transform partToRotate;
     public float turnSpeed = 5f;
 
-    public GameObject bulletPrefab;
+    private GameObject bulletPrefab;
     public Transform firePoint;
 
     [Header("TreeHouse Setup Fileds")]
@@ -55,6 +55,7 @@ public class Canon : MonoBehaviour
 
     void Start()
     {
+        bulletPrefab = Resources.Load<GameObject>("Bullet");
         lineRenderer = GetComponent<LineRenderer>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         parent = GameObject.FindGameObjectWithTag("GamingPlace");

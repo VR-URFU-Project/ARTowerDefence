@@ -21,24 +21,32 @@ public class Shop : MonoBehaviour
                 data = TowerManager.GetBallista();
                 if (MoneySystem.GetMoney() >= data.Price)
                     Instantiate(data.shapePrefab, gamingPlace.transform);
+                else
+                    CameraHandler.ChangeShopItemSelectedStage(false);
                 break;
 
             case "TreeHouse":
                 data = TowerManager.GetTreeHouse();
                 if (MoneySystem.GetMoney() >= data.Price)
                     Instantiate(data.shapePrefab, gamingPlace.transform);
+                else
+                    CameraHandler.ChangeShopItemSelectedStage(false);
                 break;
 
             case "Mushroom":
                 data = TowerManager.GetMushroom();
                 if (MoneySystem.GetMoney() >= data.Price)
                     Instantiate(data.shapePrefab, gamingPlace.transform);
+                else
+                    CameraHandler.ChangeShopItemSelectedStage(false);
                 break;
 
             case "LazerTower":
                 data = TowerManager.GetLazerTower();
                 if (MoneySystem.GetMoney() >= data.Price)
                     Instantiate(data.shapePrefab, gamingPlace.transform);
+                else
+                    CameraHandler.ChangeShopItemSelectedStage(false);
                 break;
         }
     }

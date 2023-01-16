@@ -610,7 +610,7 @@ MonoBehaviour:
   FlyEnemyTag: Fly
   partToRotate: {fileID: 4906380155987311093}
   turnSpeed: 5
-  bulletPrefab: {fileID: 3664311509907110316, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
+  bulletPrefab: {fileID: 5511888285492028580, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
   firePoint: {fileID: 1353202873411176373}
   towerType: 1
 --- !u!114 &2913607412306116368
@@ -625,7 +625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01832e354fa1f4428dac2553c013306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gg: {fileID: 0}
+  EndgameMessage: {fileID: 0}
+  pauseButton: {fileID: 0}
   type: 1
   DeathSound: {fileID: 8300000, guid: 2f806726a534ff845a9ea746ae930744, type: 3}
 --- !u!54 &7546589702349091342

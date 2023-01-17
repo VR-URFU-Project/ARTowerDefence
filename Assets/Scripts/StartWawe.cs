@@ -9,7 +9,7 @@ public class StartWawe : MonoBehaviour
 {
     [SerializeField] List<GameObject> spawnPlaces;
     [SerializeField] GameObject crystal;
-    private GameObject mainArea;
+    [SerializeField] GameObject mainArea;
     //[SerializeField] GameObject StartButton;
 
     private const int DISABLED_TIMER_VALUE = -10;
@@ -25,7 +25,7 @@ public class StartWawe : MonoBehaviour
 
     private void Start()
     {
-        mainArea = GameObject.FindGameObjectWithTag("GamingPlace");
+        //mainArea = GameObject.FindGameObjectWithTag("GamingPlace");
         //activeEnemies = new LinkedList<GameObject>();
         dataQueue = new Queue<SubwaveData>();
     }
@@ -175,11 +175,11 @@ public class StartWawe : MonoBehaviour
     private void CreateEnemy(int index, MonsterData data)
     {
         var newData = MonsterController.GetMutatedEnemy(data);
-        var newEnemy = Instantiate(newData.prefab, mainArea.transform);
-        newEnemy.transform.localPosition = spawnPlaces[index].transform.localPosition;
+        var newEnemy = Instantiate(newData.prefab, spawnPlaces[index].transform.position, new Quaternion(), mainArea.transform);
+        //newEnemy.transform.localPosition = spawnPlaces[index].transform.localPosition;
         newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
         newEnemy.GetComponent<EnemyScript>().BasicData = newData;
-        newEnemy.gameObject.SetActive(true);
+        //newEnemy.gameObject.SetActive(true);
         //activeEnemies.AddLast(newEnemy);
         ++activeEnemies;
         newEnemy.GetComponent<EnemyScript>().SetKillEvent(() =>

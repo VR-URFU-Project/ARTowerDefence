@@ -397,6 +397,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1288514947}
     m_Modifications:
+    - target: {fileID: 3524887175834400089, guid: 5780d53c270b78f40913777d9edaeda0, type: 3}
+      propertyPath: AR_button
+      value: 
+      objectReference: {fileID: 314729358}
     - target: {fileID: 3747334656629960228, guid: 5780d53c270b78f40913777d9edaeda0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -555,6 +559,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5780d53c270b78f40913777d9edaeda0, type: 3}
+--- !u!114 &314729358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6720284656481996517, guid: 5780d53c270b78f40913777d9edaeda0, type: 3}
+  m_PrefabInstance: {fileID: 314729357}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &361755766
 GameObject:
   m_ObjectHideFlags: 0

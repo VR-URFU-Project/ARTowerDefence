@@ -412,15 +412,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 113585842266079702, guid: e73ea16c5f898654fa6456e303694e9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.36
+      value: 1021.18
       objectReference: {fileID: 0}
     - target: {fileID: 113585842266079702, guid: e73ea16c5f898654fa6456e303694e9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.84
+      value: -0.27
       objectReference: {fileID: 0}
     - target: {fileID: 113585842266079702, guid: e73ea16c5f898654fa6456e303694e9c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -134.406
+      value: -1.32
       objectReference: {fileID: 0}
     - target: {fileID: 7501163330491883882, guid: e73ea16c5f898654fa6456e303694e9c, type: 3}
       propertyPath: m_Name
@@ -436,15 +436,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7501163330491883891, guid: e73ea16c5f898654fa6456e303694e9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1819601
+      value: -1021
       objectReference: {fileID: 0}
     - target: {fileID: 7501163330491883891, guid: e73ea16c5f898654fa6456e303694e9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1491024
+      value: -0.108
       objectReference: {fileID: 0}
     - target: {fileID: 7501163330491883891, guid: e73ea16c5f898654fa6456e303694e9c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.896142
+      value: -127.9
       objectReference: {fileID: 0}
     - target: {fileID: 7501163330491883891, guid: e73ea16c5f898654fa6456e303694e9c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -568,23 +568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
-  m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: 0}
-  m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 0}
-  m_SubmitAction: {fileID: 0}
-  m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
-  m_CursorLockBehavior: 0
 --- !u!114 &684581157
 MonoBehaviour:
   m_ObjectHideFlags: 0

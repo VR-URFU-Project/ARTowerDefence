@@ -558,6 +558,11 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &668142888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 255393495377000498, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
+  m_PrefabInstance: {fileID: 2357208696928717273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &822723604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,7 +1266,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455325077}
-  m_LocalRotation: {x: 0.05381815, y: -0.05955039, z: 0.10620037, w: 0.99109983}
+  m_LocalRotation: {x: 0.05381815, y: -0.05955036, z: 0.10620035, w: 0.99109983}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1679,6 +1684,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 396156366}
+    - target: {fileID: 1585614045545595115, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
+      propertyPath: mainArea
+      value: 
+      objectReference: {fileID: 668142888}
     - target: {fileID: 1725095411914886645, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

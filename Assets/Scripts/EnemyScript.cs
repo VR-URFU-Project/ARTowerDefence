@@ -11,7 +11,7 @@ public class EnemyScript : MonoBehaviour
     public MonsterData BasicData;
 
     public delegate void OnKill();
-    private OnKill KillEvent;
+    private OnKill KillEvent = null;
 
     private TowerData attackingRN;
 
@@ -59,7 +59,8 @@ public class EnemyScript : MonoBehaviour
     {
         dead = true;
         animator.SetTrigger("Death");
-        KillEvent();
+        if(KillEvent != null)
+            KillEvent();
         MoneySystem.ChangeMoney(BasicData.Money);
         audio.PlayOneShot(DeathSound);
         StartCoroutine(WaitBeforeDeath(1.7f));

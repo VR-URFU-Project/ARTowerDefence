@@ -73,13 +73,13 @@ public class UpdateTower : MonoBehaviour
 
             if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
             {
-                askPanelLogic.SetText("Not enough money\n" + "Cost: " + healthItem.Tdata.UpdatePrice.ToString(), Color.red);
+                askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.NoMoney") + " " + healthItem.Tdata.UpdatePrice.ToString(), Color.red);
                 GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>().interactable = false;
             }
             else
             {
-                askPanelLogic.SetText("Upgrade tower to level " + (healthItem.Tdata.Level + 1).ToString()
-                    + "\nCost: " + healthItem.Tdata.UpdatePrice.ToString());
+                askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.OK") + " " + (healthItem.Tdata.Level + 1).ToString()
+                    + "\n"+ LocalizationManager.Localize("UpgradeTower.Cost") +" "+ healthItem.Tdata.UpdatePrice.ToString());
             }
         }
     }

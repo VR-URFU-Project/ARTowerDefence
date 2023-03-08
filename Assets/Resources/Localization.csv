@@ -1,0 +1,19 @@
+Key,English,Russian
+Main.NewGame,New Game,Новая Игра
+Main.LoadGame,Load Game,Загрузить Игру
+Main.Options,Options,Настройки
+Mode.MainText,Select View Mode[_line_](You can always change it later),Выберете режим[_line_](Вы сможете изменить его позже)
+Mode.NoAR,NO AR,БЕЗ AR
+Settings.Music,Music,Музыка
+Settings.Effects,Effects,Эффекты
+Settings.Back,Back,Назад
+GameMenu.Resume,Resume,Продолжить
+GameMenu.Settings,Settings,Настройки
+GameMenu.Exit,Exit,Выход
+UpgradeTower.OK,Upgrade tower to level,Улучшить башню до уровня
+UpgradeTower.Cost,Cost:,Цена:
+UpgradeTower.NoMoney,Not enough money[_line_] Cost:,Недостаточно денег[_line_]Цена:
+Language.Lang,Language,Язык
+Language.English,English,Английский
+Language.Russian,Russian,Русский
+Language.Back,Back,Назад

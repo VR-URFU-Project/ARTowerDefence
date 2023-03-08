@@ -484,7 +484,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403980763}
-  m_LocalRotation: {x: 0.27303317, y: -0.0016205994, z: 0.00045995417, w: 0.9620032}
+  m_LocalRotation: {x: 0.27303317, y: -0.0016210069, z: 0.00046006983, w: 0.9620032}
   m_LocalPosition: {x: 0.0010398626, y: 1.9920974, z: 0.94614184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1293,7 +1293,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491558146}
-  m_LocalRotation: {x: 0.03587784, y: -0.06292568, z: 0.105925955, w: 0.9917323}
+  m_LocalRotation: {x: 0.03587787, y: -0.06292605, z: 0.10592616, w: 0.99173224}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1957,33 +1957,9 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 396156366}
-    - target: {fileID: 2480290152091409017, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 396156366}
-    - target: {fileID: 2807615304996977217, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3490140628027147538, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4743344743299190827, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7204607772738926393, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 396156366}
-    - target: {fileID: 7638565600277239908, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 403980766}
-    - target: {fileID: 7638565600277239976, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
+    - target: {fileID: 1760000058866888528, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1782765346909182469, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2029,26 +2005,9 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    - target: {fileID: 8091869743572470485, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -16.199997
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
---- !u!1001 &4719612690505280366
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 130322270118025687, guid: 0cc3649e51f07c0419e858268e973965, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bd6eba55529d17a43ab8f484c4ad6d62, type: 2}
-    - target: {fileID: 1262648051947463352, guid: 0cc3649e51f07c0419e858268e973965, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
+    - target: {fileID: 2031568774118241375, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2045788225653201348, guid: 353a58ed53d33254d8fb63cd72d5e64b, type: 3}
       propertyPath: m_StaticEditorFlags

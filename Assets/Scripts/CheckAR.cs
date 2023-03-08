@@ -7,7 +7,6 @@ public class CheckAR : MonoBehaviour
     [SerializeField] private Button AR_button;
     [SerializeField] private GameObject text;
 
-
     private void Awake()
     {
         DoCheck();

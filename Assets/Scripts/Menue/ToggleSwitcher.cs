@@ -15,17 +15,20 @@ public class ToggleSwitcher : MonoBehaviour, IPointerDownHandler
     [SerializeField] RectTransform offValue;
     [SerializeField] RectTransform onValue;
 
-    private Toggle toggle;
+    protected Toggle toggle;
 
-    private void Start()
+    protected void Start()
+    {
+        StartAction();
+    }
+
+    public virtual void StartAction()
     {
         toggle = GetComponent<Toggle>();
         isOn = toggle.isOn;
         //Toggle(isOn);
         MoveIndicator(isOn);
     }
-
-
     //private void Toggle(bool value)
     //{
     //    if (value != isOn)
@@ -37,7 +40,7 @@ public class ToggleSwitcher : MonoBehaviour, IPointerDownHandler
 
     //}
 
-    private void MoveIndicator(bool value) 
+    protected void MoveIndicator(bool value) 
     {
         if (value)
             toggleIndicator.position = onValue.position;

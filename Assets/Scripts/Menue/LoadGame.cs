@@ -21,4 +21,11 @@ public class LoadGame : MonoBehaviour
 
         //SceneManager.LoadScene(index);
     }
+
+    public void NotLoadSavedGame()
+    {
+        var writer = QuickSaveWriter.Create("Temp");
+        writer.Write("needsLoad", 0);
+        writer.Commit();
+    }
 }

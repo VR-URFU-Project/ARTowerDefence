@@ -66,6 +66,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -132,6 +133,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -449,6 +474,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      fantasy icons with bg_8: 2401119500510607649
+      fantasy icons with bg_2: 1420466910197709232
+      fantasy icons with bg_11: 8267493510945895037
+      fantasy icons with bg_10: 7227573866596385450
+      fantasy icons with bg_9: -4285846411842552835
+      fantasy icons with bg_0: 1686078555729209694
+      fantasy icons with bg_1: -9078952434849312048
+      fantasy icons with bg_4: 2714530980079651632
+      fantasy icons with bg_6: 9058965488317525475
+      fantasy icons with bg_13: -8049582418923544506
+      fantasy icons with bg_3: 5197514069756245256
+      fantasy icons with bg_5: 2787841609732712650
+      fantasy icons with bg_12: 5917151201334645368
+      fantasy icons with bg_7: 3209656921054195367
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

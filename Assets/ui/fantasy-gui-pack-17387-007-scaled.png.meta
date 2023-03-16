@@ -78,6 +78,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -144,6 +145,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -545,6 +570,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      fantasy-gui-pack-17387-007-scaled_12: -4454467352492135822
+      fantasy-gui-pack-17387-007-scaled_4: -5455879472048156894
+      fantasy-gui-pack-17387-007-scaled_17: -6313364984423155436
+      fantasy-gui-pack-17387-007-scaled_14: 291297561741465349
+      fantasy-gui-pack-17387-007-scaled_2: -2955451605004765953
+      fantasy-gui-pack-17387-007-scaled_15: 6440841015539470067
+      fantasy-gui-pack-17387-007-scaled_8: 398132005985188412
+      fantasy-gui-pack-17387-007-scaled_1: -4055338814067784779
+      fantasy-gui-pack-17387-007-scaled_0: 9046812962705213285
+      fantasy-gui-pack-17387-007-scaled_11: 8050866937202793984
+      fantasy-gui-pack-17387-007-scaled_5: -6350151022406599774
+      fantasy-gui-pack-17387-007-scaled_9: -5580849178129476516
+      fantasy-gui-pack-17387-007-scaled_3: 6564338851163056862
+      fantasy-gui-pack-17387-007-scaled_7: 2200357892559680087
+      fantasy-gui-pack-17387-007-scaled_10: 560861222245045603
+      fantasy-gui-pack-17387-007-scaled_16: -2338327034396209436
+      fantasy-gui-pack-17387-007-scaled_13: -2660262911393002254
+      fantasy-gui-pack-17387-007-scaled_6: -9114691437037850162
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

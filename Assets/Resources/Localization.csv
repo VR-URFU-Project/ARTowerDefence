@@ -1,7 +1,7 @@
 Key,English,Russian
 Main.NewGame,New Game,Новая Игра
 Main.LoadGame,Load Game,Загрузить Игру
-Main.Options,Options,Настройки
+Main.Options,Settings,Настройки
 Mode.MainText,Select View Mode[_line_](You can always change it later),Выберете режим[_line_](Вы сможете изменить его позже)
 Mode.NoAR,NO AR,БЕЗ AR
 Settings.Music,Music,Музыка

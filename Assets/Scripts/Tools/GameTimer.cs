@@ -8,10 +8,11 @@ public static class GameTimer
     private static Timer timer;
     private static int seconds;
 
-    public static void StartTimer()
+    public static void StartTimer(int milliseconds = 1000)
     {
-        timer = new Timer(1000);
-        //seconds = 0;
+        if (timer != null) timer.Stop();
+
+        timer = new Timer(milliseconds);
         timer.Elapsed += (sender, e) => { seconds++; };
         timer.Start();
     }

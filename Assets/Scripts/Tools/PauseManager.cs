@@ -6,6 +6,7 @@ public static class PauseManager
 {
     private static float flag = 0;
     private static bool adminPaused = false;
+    private static bool doubleSpeed = false;
 
     public static void TogglePause(bool admin = false)
     {
@@ -28,6 +29,7 @@ public static class PauseManager
     {
         if (adminPaused) return;
         adminPaused = admin;
+        if (Time.timeScale == 2) doubleSpeed = true;
         Time.timeScale = 0;
         GameTimer.PauseTimer();
         flag = 1;
@@ -37,8 +39,15 @@ public static class PauseManager
     {
         if (adminPaused && !admin) return;
         adminPaused = false;
-        Time.timeScale = 1;
+        if (doubleSpeed)
+        {
+            Time.timeScale = 2;
+            doubleSpeed = false;
+        }
+        else
+            Time.timeScale = 1;
         GameTimer.ResumeTimer();
         flag = 0;
     }
 }
+ 

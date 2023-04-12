@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class DoubleSpeedButton : MonoBehaviour
 {
-    private Button button;
     private float speed;
+
     void Start()
     {
-        button = gameObject.GetComponent<Button>();
         speed = 2f;
     }
 
@@ -18,6 +17,7 @@ public class DoubleSpeedButton : MonoBehaviour
         if (Time.timeScale == 0) return;
 
         Time.timeScale = speed;
+        GameTimer.StartTimer((int)(1000 / speed));
 
         speed = (speed == 1) ?  2 : 1;
     }

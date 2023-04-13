@@ -14,11 +14,10 @@ public class DoubleSpeedButton : MonoBehaviour
 
     public void ToggleSpeed()
     {
-        if (Time.timeScale == 0) return;
 
         Time.timeScale = speed;
-        GameTimer.StartTimer((int)(1000 / speed));
-
+        GameTimer.SetTimer((int)(1000 / speed));
+        Debug.Log(speed);
         speed = (speed == 1) ?  2 : 1;
     }
 }

@@ -52,7 +52,7 @@ public class StartWawe : MonoBehaviour
     public void EnableEnemy()
     {
         GameTimer.StartTimer();
-        PauseManager.Resume(true);
+        TimescaleManager.Resume(true);
 
         GenerateNextSubwave();
         processSubwave(dataQueue.Dequeue());

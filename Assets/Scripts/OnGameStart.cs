@@ -14,8 +14,7 @@ public class OnGameStart : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1;
-        PauseManager.Pause(true);
+        TimescaleManager.Pause(true);
         HideObjects();
         SetMusic();
         LoadSystems();

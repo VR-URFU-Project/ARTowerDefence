@@ -8,11 +8,11 @@ public class PauseButtonBehavior : MonoBehaviour
 
     public void Pause()
     {
-        PauseManager.Pause();
+        TimescaleManager.Pause();
     }
 
     public void Resume()
     {
-        PauseManager.Resume();
+        TimescaleManager.Resume();
     }
 }

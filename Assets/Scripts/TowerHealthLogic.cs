@@ -45,7 +45,7 @@ public class TowerHealthLogic : MonoBehaviour
         {
             if (type == TowerType.Crystal)
             {
-                PauseManager.Pause(true);
+                TimescaleManager.Pause(true);
                 pauseButton.enabled = false;
                 EndgameMessage.SetActive(true);
             }

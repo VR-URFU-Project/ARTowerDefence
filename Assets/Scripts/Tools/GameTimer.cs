@@ -10,11 +10,16 @@ public static class GameTimer
 
     public static void StartTimer(int milliseconds = 1000)
     {
+        SetTimer(milliseconds);
+        timer.Start();
+    }
+
+    public static void SetTimer(int milliseconds = 1000)
+    {
         if (timer != null) timer.Stop();
 
         timer = new Timer(milliseconds);
         timer.Elapsed += (sender, e) => { seconds++; };
-        timer.Start();
     }
 
     public static void ResetTimer()

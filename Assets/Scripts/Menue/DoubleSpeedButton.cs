@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,11 +14,8 @@ public class DoubleSpeedButton : MonoBehaviour
 
     public void ToggleSpeed()
     {
-        if (Time.timeScale == 0) return;
-
-        Time.timeScale = speed;
-        GameTimer.StartTimer((int)(1000 / speed));
-
-        speed = (speed == 1) ?  2 : 1;
+        TimescaleManager.ScaleTime(speed);
+        Debug.Log(speed);
+        speed = (Math.Abs(speed-1f) < 0.001f) ?  2f : 1f;
     }
 }

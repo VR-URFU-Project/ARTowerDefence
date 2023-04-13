@@ -27,7 +27,7 @@ public class PauseButton : MonoBehaviour
     /// </summary>
     public void PressButton()
     {
-        PauseManager.TogglePause(true);
+        TimescaleManager.TogglePause(true);
         //gameObject.GetComponentInChildren<Text>().text = (Time.timeScale == 0) ? "Resume" : "Pause";
     }
 }

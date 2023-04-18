@@ -22,6 +22,8 @@ public class Shape : MonoBehaviour
 
     private GameObject mainCanvas;
 
+    private TowerSpawner spawner;
+
 
     [Header("Materials")]
     [SerializeField] private Material GreenMatPlane;
@@ -90,6 +92,7 @@ public class Shape : MonoBehaviour
                     shop.CreateTower(transform, gamingPlace.transform);
                     mainCanvas.SetActive(true);
                     CameraHandler.ChangeShopItemSelectedStage(false);
+                    //gameObject.SetActive(false);
                     Destroy(gameObject);
                 }
                 //Debug.Log("yes");
@@ -104,6 +107,7 @@ public class Shape : MonoBehaviour
 
                 mainCanvas.SetActive(true);
                 CameraHandler.ChangeShopItemSelectedStage(false);
+                //gameObject.SetActive(false);
                 Destroy(gameObject);
                 //Debug.Log("no");
             });

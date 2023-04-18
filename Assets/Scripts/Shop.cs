@@ -5,13 +5,16 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     private GameObject gamingPlace;
+    private TowerSpawner towerSpawner;
 
     private void Start()
     {
         gamingPlace = GameObject.FindWithTag("GamingPlace");
+        towerSpawner = new TowerSpawner();
     }
-    
+
     private TowerData data;
+    
 
     public void Purchase(string type)
     {
@@ -21,6 +24,7 @@ public class Shop : MonoBehaviour
                 data = TowerManager.GetBallista();
                 if (MoneySystem.GetMoney() >= data.Price)
                     Instantiate(data.shapePrefab, gamingPlace.transform);
+                    //towerSpawner.GetTowerFromSpawner(data.Type);
                 else
                     CameraHandler.ChangeShopItemSelectedStage(false);
                 break;
@@ -29,6 +33,7 @@ public class Shop : MonoBehaviour
                 data = TowerManager.GetTreeHouse();
                 if (MoneySystem.GetMoney() >= data.Price)
                     Instantiate(data.shapePrefab, gamingPlace.transform);
+                    //towerSpawner.GetTowerFromSpawner(data.Type);
                 else
                     CameraHandler.ChangeShopItemSelectedStage(false);
                 break;
@@ -37,6 +42,7 @@ public class Shop : MonoBehaviour
                 data = TowerManager.GetMushroom();
                 if (MoneySystem.GetMoney() >= data.Price)
                     Instantiate(data.shapePrefab, gamingPlace.transform);
+                    //towerSpawner.GetTowerFromSpawner(data.Type);
                 else
                     CameraHandler.ChangeShopItemSelectedStage(false);
                 break;
@@ -45,6 +51,7 @@ public class Shop : MonoBehaviour
                 data = TowerManager.GetLazerTower();
                 if (MoneySystem.GetMoney() >= data.Price)
                     Instantiate(data.shapePrefab, gamingPlace.transform);
+                    //towerSpawner.GetTowerFromSpawner(data.Type);
                 else
                     CameraHandler.ChangeShopItemSelectedStage(false);
                 break;
@@ -60,7 +67,7 @@ public class Shop : MonoBehaviour
 
     //public void PurchaseBallista()
     //{
-    //    Debug.Log("Вы купили баллисту");
+    //    Debug.Log("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
     //    Instantiate(ballistaShapePrefab, gamingPlace.transform);
     //}
 }

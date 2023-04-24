@@ -34,7 +34,7 @@ public class StartWawe : MonoBehaviour
     {
         if (activeEnemies == 0 && dataQueue.Count == 0 && curWave >= WaveController.WawesInfo.Count)
         {
-            Debug.Log("Победа");
+            //Debug.Log("Победа");
             return;
         }
         if (timer == DISABLED_TIMER_VALUE) return;

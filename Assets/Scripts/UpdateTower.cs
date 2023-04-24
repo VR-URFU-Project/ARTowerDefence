@@ -30,13 +30,13 @@ public class UpdateTower : MonoBehaviour
     void Update()
     {
         if (!(Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began || Input.GetMouseButtonDown(0))) return;
-        Debug.Log("entered Hitted tower");
+        //Debug.Log("entered Hitted tower");
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            Debug.Log("hit tower");
+            //Debug.Log("hit tower");
             var tower = hit.collider.gameObject;
             var healthItem = tower.GetComponent<TowerHealthLogic>();
             if (healthItem == null /*|| panelActive*/) return;

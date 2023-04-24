@@ -51,7 +51,7 @@ public class Canon : MonoBehaviour
     private bool ifEnemiesNearBy = false;
 
     [Header("Special Settings")]
-    private const double _scale = 0.1;
+    private const double _scale = 0.05;
 
     void Start()
     {

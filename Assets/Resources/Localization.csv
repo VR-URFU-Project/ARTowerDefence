@@ -18,3 +18,4 @@ Language.Lang,Language,Язык
 Language.English,English,Английский
 Language.Russian,Russian,Русский
 Language.Back,Back,Назад
+MainMenu.CheckAR.Text,Your device doesn't support AR,Ваше устройство не поддерживает AR

@@ -72,7 +72,7 @@ public static class LocalizationManager
             {
                 val = reader.Read<string>("current");
             }
-            catch (Exception e) 
+            catch 
             {
                 val = "English";
                 Debug.LogWarning("no saves");

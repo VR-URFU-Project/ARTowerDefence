@@ -1,5 +1,5 @@
 Name,Crystal,Ballista,Archer tower,Shroom tower,Laser tower
-Range,10,3,3,4,4
+Range,10,5,3,4,4
 Health,100,30,20,20,30
 Damage,0,3,2,2,1
 Attack speed,0,1,2,0.5,1

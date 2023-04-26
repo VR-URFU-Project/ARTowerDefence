@@ -286,7 +286,7 @@ public class Canon : MonoBehaviour
         if (useLazer)
         {
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage * secCounter);
-            Debug.Log($"Lazer: {Tdata.Damage * secCounter}!!");
+            //Debug.Log($"Lazer: {Tdata.Damage * secCounter}!!");
         }
         else
         {

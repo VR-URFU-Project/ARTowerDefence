@@ -6,10 +6,12 @@ public class CheckAR : MonoBehaviour
 {
     [SerializeField] private Button AR_button;
     [SerializeField] private GameObject text;
+    [SerializeField] private GameObject arSession;
 
     private void Awake()
     {
         DoCheck();
+        arSession.SetActive(false);
     }
 
     private void DoCheck()

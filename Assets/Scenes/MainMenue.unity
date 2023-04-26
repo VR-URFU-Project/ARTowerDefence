@@ -1160,6 +1160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AR_button: {fileID: 314729358}
   text: {fileID: 1898568991}
+  arSession: {fileID: 633037185}
 --- !u!4 &1015526896
 Transform:
   m_ObjectHideFlags: 0

@@ -66,7 +66,7 @@ public static class MonsterController
         data.Health = data.Health * 2;
         data.Movement = data.Movement * 1.5f;
         data.Damage = data.Damage * 4;
-        data.AttacSpeed = data.AttacSpeed * 1.5f;
+        data.AttackSpeed = data.AttackSpeed * 1.5f;
         data.Money = data.Money * 4;
     }
 
@@ -77,7 +77,7 @@ public static class MonsterController
         data.Health = data.Health * 4;
         data.Movement = data.Movement * 2f;
         data.Damage = data.Damage * 8;
-        data.AttacSpeed = data.AttacSpeed * 2f;
+        data.AttackSpeed = data.AttackSpeed * 2f;
         data.Money = data.Money * 8;
     }
 }

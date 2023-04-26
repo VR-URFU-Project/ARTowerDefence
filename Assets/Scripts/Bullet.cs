@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     private Transform target;
 
-    public double speed = 5d;
+    public double speed = 0.4d;
 
     private int _damage;
 

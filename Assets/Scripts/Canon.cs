@@ -262,6 +262,7 @@ public class Canon : MonoBehaviour
 
         if (bullet != null)
         {
+            bullet.speed = Tdata.ProjectileSpeed;
             bullet.Seek(target);
         }
     }

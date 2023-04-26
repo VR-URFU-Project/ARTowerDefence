@@ -7,14 +7,14 @@ using UnityEngine;
 /// </summary>
 public class MonsterData
 {
-    public string Name;
-    public int Health;
-    public float Movement;
-    public int Damage;
-    public float AttacSpeed;
-    public double AttacRange;
-    public bool Flight;
-    public int Money;
+    public string Name { get; set; }
+    public int Health { get; set; }
+    public float Movement { get; set; }
+    public int Damage { get; set; }
+    public float AttackSpeed { get; set; }
+    public double AttacRange { get; set; }
+    public bool Flight { get; set; }
+    public int Money { get; set; }
 
     //public string PrefabName;
     public GameObject prefab => Resources.Load<GameObject>(Name);
@@ -30,7 +30,7 @@ public class MonsterData
         Health = data.Health;
         Movement = data.Movement;
         Damage = data.Damage;
-        AttacSpeed = data.AttacSpeed;
+        AttackSpeed = data.AttackSpeed;
         AttacRange = data.AttacRange;
         Flight = data.Flight;
         Money = data.Money;

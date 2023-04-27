@@ -10,7 +10,7 @@ public class Canon : MonoBehaviour
     public TowerData Tdata;
 
     private Transform target = null;
-    private GameObject parent;
+    public GameObject parent;
 
     [Header("Attributes")]
     [SerializeField]
@@ -30,8 +30,10 @@ public class Canon : MonoBehaviour
     public Transform partToRotate;
     public float turnSpeed = 5f;
 
-    private GameObject bulletPrefab;
+    public Bullet bullet;
     public Transform firePoint;
+
+    private BulletSpawner bulletSpawner;
 
     [Header("TreeHouse Setup Fileds")]
     //public GameObject archer_1;
@@ -55,7 +57,8 @@ public class Canon : MonoBehaviour
 
     void Start()
     {
-        bulletPrefab = Resources.Load<GameObject>("Bullet");
+        bulletSpawner = GetComponent<BulletSpawner>();
+        bullet = Resources.Load<Bullet>("Bullet");
         lineRenderer = GetComponent<LineRenderer>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         parent = GameObject.FindGameObjectWithTag("GamingPlace");
@@ -256,13 +259,17 @@ public class Canon : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, parent.transform);
+        // TODO заменить Instantiate на Pulling.get();
+        //GameObject bulletGO = Instantiate(bullet, firePoint.position, firePoint.rotation, parent.transform);
+        Bullet bullet = bulletSpawner.bulletPool.Get();
         audio.PlayOneShot(ShootSound);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        //Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null)
         {
-            bullet.speed = Tdata.ProjectileSpeed;
+            //var speed = Tdata.ProjectileSpeed;
+            //if (speed > 0)
+            //    bullet.speed = Tdata.ProjectileSpeed;
             bullet.Seek(target);
         }
     }

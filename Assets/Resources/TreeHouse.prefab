@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0.000000011565576, y: 0.84851015, z: -0.000000018544778, w: 0.52917916}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8027286754611741622}
   m_RootOrder: 0
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -110,6 +112,7 @@ Transform:
   m_LocalRotation: {x: -0.00000009735359, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8027286754611741622}
   m_RootOrder: 1
@@ -133,6 +136,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -190,6 +194,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 1.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 668481524459459708}
   m_RootOrder: 0
@@ -223,6 +228,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.44049436, y: 9.292891, z: 0.047332905}
   m_LocalScale: {x: 4.95747, y: 3.3065827, z: 5.1537857}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8027286754611741622}
   m_RootOrder: 3
@@ -246,6 +252,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -299,6 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7567144581853051386}
   - component: {fileID: 5269391434442473306}
+  - component: {fileID: 3556360029650219766}
   - component: {fileID: 3434861330056822549}
   m_Layer: 0
   m_Name: Archer_2
@@ -317,6 +325,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.67559016, z: 0, w: 0.7372774}
   m_LocalPosition: {x: -1.51, y: 10.3, z: 1.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8192492122265239082}
   m_Father: {fileID: 8027286754611741622}
@@ -334,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 0}
   fireCountdown: 0
   ShootSound: {fileID: 8300000, guid: eda58b574acafc740b215bf98f8dd19b, type: 3}
   TargetTag: Target
@@ -341,9 +351,21 @@ MonoBehaviour:
   FlyEnemyTag: Fly
   partToRotate: {fileID: 7567144581853051386}
   turnSpeed: 5
-  bulletPrefab: {fileID: 5511888285492028580, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
+  bullet: {fileID: 7716559045001203718, guid: a29673c6491530b4cb70c1413d720b6a, type: 3}
   firePoint: {fileID: 8192492122265239082}
   towerType: 2
+--- !u!114 &3556360029650219766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649066788863068757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8ca0e65653909478722402233f05b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &3434861330056822549
 AudioSource:
   m_ObjectHideFlags: 0
@@ -468,6 +490,7 @@ Transform:
   m_LocalRotation: {x: -0.00000009735359, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8027286754611741622}
   m_RootOrder: 2
@@ -491,6 +514,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -550,6 +574,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.060244, z: -0, w: -0.9981837}
   m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 16, y: 0.2, z: 16}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8027286754611741622}
   m_RootOrder: 6
@@ -573,6 +598,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -629,6 +655,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7567144581853051386}
   m_RootOrder: 0
@@ -664,6 +691,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.060244, z: -0, w: -0.9981837}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2285683912636327360}
   - {fileID: 3382090619947299769}
@@ -687,6 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 0}
   fireCountdown: 0
   ShootSound: {fileID: 0}
   TargetTag: Target
@@ -694,7 +723,7 @@ MonoBehaviour:
   FlyEnemyTag: Fly
   partToRotate: {fileID: 0}
   turnSpeed: 5
-  bulletPrefab: {fileID: 5511888285492028580, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
+  bullet: {fileID: 0}
   firePoint: {fileID: 0}
   towerType: 2
 --- !u!114 &4772244938604846211
@@ -849,6 +878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 668481524459459708}
   - component: {fileID: 6493246870547495044}
+  - component: {fileID: 82605204170652084}
   - component: {fileID: 3796140291008359052}
   m_Layer: 0
   m_Name: Archer_1
@@ -867,6 +897,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.7386906, z: 0, w: 0.6740447}
   m_LocalPosition: {x: 2.25, y: 9.85, z: -1.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3292702108470565263}
   m_Father: {fileID: 8027286754611741622}
@@ -884,6 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c7bde4cf0d32f49bd4cbcedf86080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 0}
   fireCountdown: 0
   ShootSound: {fileID: 8300000, guid: eda58b574acafc740b215bf98f8dd19b, type: 3}
   TargetTag: Target
@@ -891,9 +923,21 @@ MonoBehaviour:
   FlyEnemyTag: Fly
   partToRotate: {fileID: 668481524459459708}
   turnSpeed: 5
-  bulletPrefab: {fileID: 5511888285492028580, guid: bfb7c073ec208ab4cb81f06b35441d73, type: 3}
+  bullet: {fileID: 7716559045001203718, guid: a29673c6491530b4cb70c1413d720b6a, type: 3}
   firePoint: {fileID: 3292702108470565263}
   towerType: 2
+--- !u!114 &82605204170652084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296932915142367666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8ca0e65653909478722402233f05b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &3796140291008359052
 AudioSource:
   m_ObjectHideFlags: 0

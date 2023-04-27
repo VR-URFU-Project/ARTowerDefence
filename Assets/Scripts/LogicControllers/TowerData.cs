@@ -26,6 +26,8 @@ public class TowerData
 
     public TowerType Type { get; set; }
 
+    public double ProjectileSpeed { get; set; }
+
     public int UpdatePrice => (Price * Level) / 2;
 
     public GameObject prefab => Resources.Load<GameObject>(Enum.GetName(typeof(TowerType), Type));
@@ -48,6 +50,7 @@ public class TowerData
         PVO_enabled = old.PVO_enabled;
         Price = old.Price;
         Type = old.Type;
+        ProjectileSpeed = old.ProjectileSpeed;
     }
 
     public void TakeDamage(int damage)

@@ -108,7 +108,7 @@ public class EnemyScript : MonoBehaviour
         animator.SetInteger("Attack", 1);
         attackingRN = other.GetComponent<TowerHealthLogic>().Tdata;
         agent.speed = 0;
-        InvokeRepeating("CrashTower", 0f, 1 / BasicData.AttacSpeed);
+        InvokeRepeating("CrashTower", 0f, 1 / BasicData.AttackSpeed);
     }
 
     private void TriggerExit()

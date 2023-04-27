@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
@@ -15,20 +16,24 @@ public class Bullet : MonoBehaviour
 
     private Transform target;
 
-    public double speed = 5d;
+    public double speed = 0.4d;
 
     private int _damage;
 
-    private void Start()
+    private ObjectPool<Bullet> bulletPool;
+
+    private void OnEnable()
     {
         switch (type)
         {
             case BulletType.Arrow:
                 _damage = TowerManager.GetTreeHouse().Damage;
+                speed = TowerManager.GetTreeHouse().ProjectileSpeed;
                 break;
 
             case BulletType.Bullet:
                 _damage = TowerManager.GetBallista().Damage;
+                speed = TowerManager.GetBallista().ProjectileSpeed;
                 break;
         }
     }
@@ -42,7 +47,8 @@ public class Bullet : MonoBehaviour
     {
         if (target == null)
         {
-            Destroy(gameObject);
+            bulletPool.Release(this);
+            //Destroy(gameObject);
             return;
         }
 
@@ -64,7 +70,8 @@ public class Bullet : MonoBehaviour
     {
        // Debug.Log("Hitted the target");
         Damage(target);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        bulletPool.Release(this);
     }
 
     void Damage(Transform targetEnemy)
@@ -74,5 +81,10 @@ public class Bullet : MonoBehaviour
         EnemyScript e = targetEnemy.transform.parent.GetComponent<EnemyScript>();
         if (e != null)
             e.TakeDamage(_damage);
+    }
+
+    public void SetPool(ObjectPool<Bullet> bulletPool)
+    {
+        this.bulletPool = bulletPool;
     }
 }

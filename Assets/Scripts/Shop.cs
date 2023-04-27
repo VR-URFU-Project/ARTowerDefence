@@ -5,12 +5,12 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     private GameObject gamingPlace;
-    private TowerSpawner towerSpawner;
+    //private TowerSpawner towerSpawner;
 
     private void Start()
     {
         gamingPlace = GameObject.FindWithTag("GamingPlace");
-        towerSpawner = new TowerSpawner();
+        //towerSpawner = new TowerSpawner();
     }
 
     private TowerData data;

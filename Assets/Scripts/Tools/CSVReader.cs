@@ -44,7 +44,7 @@ public static class CSVReader
                         mobData.Damage = int.Parse(mas[k][i]);
                         break;
                     case var str when str.Contains("Attack Speed"):
-                        mobData.AttacSpeed = float.Parse(mas[k][i], CultureInfo.InvariantCulture);
+                        mobData.AttackSpeed = float.Parse(mas[k][i], CultureInfo.InvariantCulture);
                         break;
                     case var str when str.Contains("Attack Range"):
                         mobData.AttacRange = double.Parse(mas[k][i], CultureInfo.InvariantCulture);
@@ -166,6 +166,9 @@ public static class CSVReader
                         break;
                     case var str when str.Contains("Attack speed"):
                         towerData.AtackSpeed = double.Parse(mas[k][i], CultureInfo.InvariantCulture);
+                        break;
+                    case var str when str.Contains("Projectile speed"):
+                        towerData.ProjectileSpeed = double.Parse(mas[k][i], CultureInfo.InvariantCulture);
                         break;
                     case var str when str.Contains("Targets amount"):
                         towerData.TargetsAmount = int.Parse(mas[k][i]);

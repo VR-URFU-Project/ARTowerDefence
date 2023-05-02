@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Audio;
+using UnityEngine.Pool;
 
 public class EnemyScript : MonoBehaviour
 {
     private NavMeshAgent agent;
     [SerializeField] private Transform target;
     public MonsterData BasicData;
+
+    private ObjectPool<EnemyScript> enemyPool;
 
     public delegate void OnKill();
     private OnKill KillEvent = null;
@@ -21,12 +24,11 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] AudioClip AttackSound;
     [SerializeField] AudioClip DeathSound;
     [SerializeField] AudioClip SpawnSound;
-
-    AudioSource audio;
+    new AudioSource audio;
 
     bool dead = false;
 
-    void Start()
+    void OnEnable()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -34,6 +36,8 @@ public class EnemyScript : MonoBehaviour
         transform.LookAt(target.position);
         audio = GetComponent<AudioSource>();
         audio.PlayOneShot(SpawnSound);
+        BasicData = new MonsterData();
+        dead = false;
     }
 
     public void TakeDamage(int amount)
@@ -52,7 +56,8 @@ public class EnemyScript : MonoBehaviour
     {
         agent.baseOffset = 0f;
         yield return new WaitForSeconds(seconds);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        enemyPool.Release(this);
     }
 
     void Die()
@@ -69,8 +74,16 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         if(dead == false)
-        {   
+        {
+            agent.isStopped = false;
+            gameObject.tag = "Enemy";
+            gameObject.GetComponent<Collider>().enabled = true;
             agent.SetDestination(target.position);
+
+            foreach (Transform child in gameObject.transform)
+            {
+                if (child.CompareTag("Target")) child.gameObject.SetActive(true);
+            }
         }
         else
         {
@@ -127,6 +140,12 @@ public class EnemyScript : MonoBehaviour
         }
         attackingRN.TakeDamage(BasicData.Damage);
 
-        audio.PlayOneShot(AttackSound);
+        if (dead == false)
+            audio.PlayOneShot(AttackSound);
+    }
+
+    public void SetPool(ObjectPool<EnemyScript> enemyPool)
+    {
+        this.enemyPool = enemyPool;
     }
 }

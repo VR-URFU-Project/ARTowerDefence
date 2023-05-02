@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ShineOutline : MonoBehaviour
 {
-    const float toShine = 1f;
-    float toShineCounter = 1f;
+    //const float toShine = 1f;
+    //float toShineCounter = 1f;
 
     [SerializeField]
     float shiningSpeed = 10f;
     Outline rock_outline;
 
     bool shineOn = true;
-    // Start is called before the first frame update
+    // OnEnable is called before the first frame update
     void Start()
     {
         rock_outline = this.GetComponent<Outline>();

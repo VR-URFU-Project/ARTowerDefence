@@ -12,7 +12,7 @@ public class TowerHealthLogic : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] AudioClip DeathSound;
-    AudioSource audio;
+    new AudioSource audio;
 
     void Start()
     {

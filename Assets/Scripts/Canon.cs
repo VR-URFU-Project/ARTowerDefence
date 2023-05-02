@@ -20,7 +20,7 @@ public class Canon : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] AudioClip ShootSound;
-    AudioSource audio;
+    new AudioSource audio;
 
     [Header("Unity Setup Fields")]
     public string TargetTag = "Target";

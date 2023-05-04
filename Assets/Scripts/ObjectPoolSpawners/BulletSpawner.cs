@@ -13,7 +13,7 @@ public class BulletSpawner : MonoBehaviour
     {
         canonScript = GetComponent<Canon>();
         bulletPool = new ObjectPool<Bullet>(CreateBullet, OnTakeBulletFromPool, OnReturnBulletToPool, OnDestroyBullet,
-                                            true, defaultCapacity:1000, maxSize:5000);
+                                            true, defaultCapacity:1000, maxSize:10000);
     }
 
     private Bullet CreateBullet()

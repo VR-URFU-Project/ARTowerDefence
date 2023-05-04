@@ -180,7 +180,7 @@ public class StartWawe : MonoBehaviour
         var newData = MonsterController.GetMutatedEnemy(data);
         
         // задаём значения объекту в пуле
-        enemySpawner.SetVariables(spawnPlaces[index].transform, newData, mainArea.transform);
+        enemySpawner.SetVariables(spawnPlaces[index].transform.position, newData, mainArea.transform);
         // спавним объект из пула
         //var newEnemy = Instantiate(newData.prefab, spawnPlaces[index].transform.position, new Quaternion(), mainArea.transform);
         var newEnemy = enemySpawner.enemyPool.Get();

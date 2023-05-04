@@ -56,7 +56,7 @@ public class EnemyScript : MonoBehaviour
     {
         agent.baseOffset = 0f;
         yield return new WaitForSeconds(seconds);
-        //Destroy(gameObject);
+        //Destroy(gameObject);      
         enemyPool.Release(this);
     }
 
@@ -73,7 +73,7 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        if(dead == false)
+        if(!dead)
         {
             agent.isStopped = false;
             gameObject.tag = "Enemy";

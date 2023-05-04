@@ -11,38 +11,45 @@ public class EnemySpawner : MonoBehaviour
     private Transform spawnPlace;
     private MonsterData monsterData;
     private Transform mainArea;
+    private Vector3 coordinates;
 
     private void Start()
     {
         enemyPool = new ObjectPool<EnemyScript>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool, OnDestroyEnemy, 
-            true, defaultCapacity: 10000, maxSize: 50000);
+            true, defaultCapacity: 1000, maxSize: 2000);
     }
 
     /// <summary>
     /// «адать нужные переменные перед спавном врагов
     /// </summary>
-    public void SetVariables(Transform spawnPlace, MonsterData monsterData, Transform mainArea)
+    public void SetVariables(Vector3 coordinates, MonsterData monsterData, Transform mainArea)
     {
-        this.spawnPlace = spawnPlace;
+        this.coordinates = coordinates;
         this.monsterData = monsterData;
         this.mainArea = mainArea;
     }
 
+/*    public void SetPoolFromSpawner(EnemyScript enemyScript)
+    {
+        enemyScript.SetPool(enemyPool);
+    }*/
+
     private EnemyScript CreateEnemy()
     {
         var enemyObject = Instantiate(
-                                        monsterData.prefab, spawnPlace.position, new Quaternion(), mainArea);
+                                        monsterData.prefab, coordinates, new Quaternion(), mainArea);
         var enemyScript = enemyObject.GetComponent<EnemyScript>();
 
+        //SetPoolFromSpawner(enemyScript);
         enemyScript.SetPool(enemyPool);
-        
+
         return enemyScript;
     }
 
     private void OnTakeEnemyFromPool(EnemyScript enemyScript)
     {
         enemyScript.gameObject.transform.parent = mainArea;
-        enemyScript.gameObject.transform.position = spawnPlace.position;
+        enemyScript.gameObject.transform.position = coordinates;
 
         enemyScript.gameObject.SetActive(true);
     }

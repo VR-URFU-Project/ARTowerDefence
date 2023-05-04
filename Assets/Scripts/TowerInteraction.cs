@@ -61,7 +61,7 @@ public class TowerInteraction : MonoBehaviour
             askPanelLogic.SetDeleteAction(() =>
             {
                 CameraHandler.ChangeShopItemSelectedStage(false);
-                MoneySystem.ChangeMoney(100);
+                MoneySystem.ChangeMoney(healthItem.Tdata.SellPrice);
                 Destroy(tower);
                 ShowShop();
             });

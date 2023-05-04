@@ -73,4 +73,27 @@ public class TowerInteractionPanelLogic : MonoBehaviour
             }
         });
     }
+
+    public void DisableButton(TowerInterractionButton button)
+    {
+        switch (button)
+        {
+            case TowerInterractionButton.Yes:
+                yesButton.interactable = false;
+                break;
+            case TowerInterractionButton.No:
+                noButton.interactable = false;
+                break;
+            case TowerInterractionButton.Delete:
+                deleteButton.interactable = false;
+                break;
+        }
+    }
+}
+
+public enum TowerInterractionButton
+{
+    Yes,
+    No,
+    Delete
 }

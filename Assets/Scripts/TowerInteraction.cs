@@ -61,7 +61,7 @@ public class TowerInteraction : MonoBehaviour
             askPanelLogic.SetDeleteAction(() =>
             {
                 CameraHandler.ChangeShopItemSelectedStage(false);
-                MoneySystem.ChangeMoney(100);
+                MoneySystem.ChangeMoney(healthItem.Tdata.SellPrice);
                 Destroy(tower);
                 ShowShop();
             });
@@ -69,7 +69,7 @@ public class TowerInteraction : MonoBehaviour
             if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
             {
                 askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.NoMoney") + " " + healthItem.Tdata.UpdatePrice.ToString(), Color.red);
-                GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>().interactable = false;
+                askPanelLogic.DisableButton(TowerInterractionButton.Yes);
             }
             else
             {

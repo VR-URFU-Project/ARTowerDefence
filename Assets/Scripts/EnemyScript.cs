@@ -56,8 +56,8 @@ public class EnemyScript : MonoBehaviour
     {
         agent.baseOffset = 0f;
         yield return new WaitForSeconds(seconds);
-        //Destroy(gameObject);      
-        enemyPool.Release(this);
+        if (enemyPool == null) Destroy(gameObject);      
+        else enemyPool.Release(this);
     }
 
     void Die()

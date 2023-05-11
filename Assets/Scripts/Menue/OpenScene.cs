@@ -20,4 +20,9 @@ public class OpenScene : MonoBehaviour
         else
             SceneManager.LoadScene(1);
     }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

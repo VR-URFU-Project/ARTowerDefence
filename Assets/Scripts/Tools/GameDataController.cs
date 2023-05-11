@@ -9,9 +9,10 @@ public static class GameDataController
 {
     public static void SaveGameData()
     {
-        //var writer = QuickSaveWriter.Create("GameData");
-        //writer.Write("status", 1);
-        //writer.Commit();
+        var writer = QuickSaveWriter.Create("DataExists");
+        writer.Write("HasSavedData", 1);
+        writer.Commit();
+
         GameTimer.Save();
         MoneySystem.Save();
 
@@ -19,7 +20,7 @@ public static class GameDataController
         if (waweData == null) Debug.LogError("Не находит wrapper при сохранении");
         waweData[0].GetComponent<StartWawe>().Save();
 
-        var writer = QuickSaveWriter.Create("SceneData");
+        writer = QuickSaveWriter.Create("SceneData");
         writer.Write("scene", SceneManager.GetActiveScene().buildIndex);
         writer.Commit();
 
@@ -29,6 +30,10 @@ public static class GameDataController
 
     public static void LoadGameData()
     {
+        var writer = QuickSaveWriter.Create("DataExists");
+        writer.Write("HasSavedData", 0);
+        writer.Commit();
+
         GameTimer.Load();
         MoneySystem.Load();
 

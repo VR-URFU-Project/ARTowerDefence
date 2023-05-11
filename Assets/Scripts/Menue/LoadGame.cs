@@ -16,7 +16,11 @@ public class LoadGame : MonoBehaviour
         //var index = reader.Read<int>("scene");
 
         var writer = QuickSaveWriter.Create("Temp");
-        writer.Write("needsLoad", 1);
+        var reader = QSReader.Create("DataExists");
+        if (reader.Exists("HasSavedData") && reader.Read<int>("HasSavedData") == 1)
+            writer.Write("needsLoad", 1);
+        else
+            writer.Write("needsLoad", 0);
         writer.Commit();
 
         //SceneManager.LoadScene(index);

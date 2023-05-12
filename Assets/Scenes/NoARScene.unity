@@ -2025,6 +2025,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5898745838803295804, guid: a5073a67a5806984b9d5611bcececd4f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6038873423664379495, guid: a5073a67a5806984b9d5611bcececd4f, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2040,6 +2044,14 @@ PrefabInstance:
     - target: {fileID: 7237313301785721642, guid: a5073a67a5806984b9d5611bcececd4f, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344015861630219996, guid: a5073a67a5806984b9d5611bcececd4f, type: 3}
+      propertyPath: InteractionPanelPrefab
+      value: 
+      objectReference: {fileID: 4430286153569687469, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+    - target: {fileID: 8500227409506251671, guid: a5073a67a5806984b9d5611bcececd4f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8587064695762197780, guid: a5073a67a5806984b9d5611bcececd4f, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -28,7 +28,9 @@ public class TowerData
 
     public double ProjectileSpeed { get; set; }
 
-    public int UpdatePrice => (Price * Level) / 2;
+    public int UpdatePrice => (Price * 3 / 2) * Level;
+
+    public int SellPrice => Price * (4 + 3 * (Level * Level - Level)) / 8;
 
     public GameObject prefab => Resources.Load<GameObject>(Enum.GetName(typeof(TowerType), Type));
 
@@ -61,9 +63,9 @@ public class TowerData
     public void Upgrade()
     {
         Level++;
-        Health = Health + Health/2;
-        Range = Range + Range/2;
-        Damage = Damage + Damage/2;
-        AtackSpeed = AtackSpeed + AtackSpeed/2;
+        Health = Health + Health / 2;
+        Range = Range + Range / 2;
+        Damage = Damage + Damage / 2;
+        AtackSpeed = AtackSpeed + AtackSpeed / 2;
     }
 }

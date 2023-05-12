@@ -6,6 +6,15 @@ using System.Collections;
 
 public static class CSVReader
 {
+    private static Dictionary<string, TowerType> towerMapping = new Dictionary<string, TowerType>()
+        {
+            {"Crystal", TowerType.Crystal },
+            {"Balista", TowerType.Ballista },
+            {"Archer tower", TowerType.TreeHouse },
+            {"Shroom tower", TowerType.Mushroom },
+            {"Laser tower", TowerType.LazerTower }
+        };
+
     /// <summary>
     /// Возвращает список существующих монстров с характеристиками
     /// </summary>
@@ -130,14 +139,7 @@ public static class CSVReader
         var towersStats = new List<TowerData>();
         var mas = new List<List<string>>();
 
-        var dict = new Dictionary<string, TowerType>() 
-        {
-            {"Crystal", TowerType.Crystal },
-            {"Ballista", TowerType.Ballista },
-            {"Archer tower", TowerType.TreeHouse },
-            {"Shroom tower", TowerType.Mushroom },
-            {"Laser tower", TowerType.LazerTower }
-        };
+        
 
         foreach(var line in strData)
         {
@@ -153,7 +155,7 @@ public static class CSVReader
                 switch (mas[k][0])
                 {
                     case var str when str.Contains("Name"):
-                        towerData.Type = dict[ mas[k][i] ];
+                        towerData.Type = towerMapping[ mas[k][i] ];
                         break;
                     case var str when str.Contains("Range"):
                         towerData.Range = double.Parse(mas[k][i], CultureInfo.InvariantCulture);
@@ -185,5 +187,38 @@ public static class CSVReader
             towersStats.Add(towerData);
         }
         return towersStats;
+    }
+
+    public static Dictionary<TowerType, List<string>> ReadUpdateData()
+    {
+        var strData = Resources
+            .Load<TextAsset>("UpdateStats")
+            .text
+            .Split('\n');
+
+        var updateStrings = new Dictionary<TowerType, List<string>>();
+
+        var updateLists = new List<string>[strData.Length-1];
+
+        for(int i = 1; i< strData.Length; ++i)
+        {
+            updateLists[i - 1] = strData[i]
+                                .Split(',')
+                                .Skip(1)
+                                .Select(x => x.Trim())
+                                .ToList();
+        }
+
+        var names = strData[0].Split(',').Skip(1).Select(x => x.Trim()).ToArray();
+        for (int i = 0; i < names.Length; ++i)
+        {
+            updateStrings.Add(towerMapping[names[i]], new List<string>());
+            for(int k = 0; k< updateLists.Length; ++k)
+            {
+                updateStrings[towerMapping[names[i]]].Add(updateLists[k][i]);
+            }
+        }
+
+        return updateStrings;
     }
 }

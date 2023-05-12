@@ -1,0 +1,4 @@
+Level/Name,Balista,Archer tower,Shroom tower,Laser tower
+1,10 hp|1 dmg,1 dmg|0.5 spd,15 hp|0.5 range,1 spd|10 hp
+2,15 hp|1 dmg,1 dmg|1 spd,0.5 range|0.66 spd,2 dmg|1 spd
+3,1 range|0.5 spd,1 trgt|2 range,1 dmg|1 range,1 trgt|1 range

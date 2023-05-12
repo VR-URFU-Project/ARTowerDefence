@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 
@@ -62,10 +63,34 @@ public class TowerData
 
     public void Upgrade()
     {
+        var updateInfo = UpdateController.GetUpdateString(Type, Level);
+        if (updateInfo is null)
+            return;        
         Level++;
-        Health = Health + Health / 2;
-        Range = Range + Range / 2;
-        Damage = Damage + Damage / 2;
-        AtackSpeed = AtackSpeed + AtackSpeed / 2;
+        var parts = updateInfo.Split('|').Select(x => x.Trim());
+
+        foreach(var part in parts)
+        {
+            var data = part.Split(' ').ToArray();
+            switch (data[1])
+            {
+                case var str when str.Contains("hp"):
+                    Health += int.Parse(data[0]);
+                    break;
+                case var str when str.Contains("dmg"):
+                    Damage += int.Parse(data[0]);
+                    break;
+                case var str when str.Contains("range"):
+                    Range += double.Parse(data[0], CultureInfo.InvariantCulture);
+                    break;
+                case var str when str.Contains("spd"):
+                    AtackSpeed += double.Parse(data[0], CultureInfo.InvariantCulture);
+                    break;
+                case var str when str.Contains("trgt"):
+                   // и как?
+                    break;
+
+            }
+        }
     }
 }

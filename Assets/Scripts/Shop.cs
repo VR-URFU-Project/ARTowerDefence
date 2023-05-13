@@ -1,16 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
     private GameObject gamingPlace;
     //private TowerSpawner towerSpawner;
+    [SerializeField] private TMP_Text ballistaPrice;
+    [SerializeField] private TMP_Text TreeHousePrice;
+    [SerializeField] private TMP_Text mushroomPrice;
+    [SerializeField] private TMP_Text lazerTowerPrice;
 
     private void Start()
     {
         gamingPlace = GameObject.FindWithTag("GamingPlace");
         //towerSpawner = new TowerSpawner();
+        ballistaPrice.text = TowerManager.GetBallista().Price.ToString();
+        TreeHousePrice.text = TowerManager.GetTreeHouse().Price.ToString();
+        mushroomPrice.text = TowerManager.GetMushroom().Price.ToString();
+        lazerTowerPrice.text = TowerManager.GetLazerTower().Price.ToString();
     }
 
     private TowerData data;

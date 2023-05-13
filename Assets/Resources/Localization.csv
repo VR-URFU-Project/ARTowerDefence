@@ -14,6 +14,7 @@ GameMenu.Exit,Exit,Выход
 UpgradeTower.OK,Upgrade tower to level,Улучшить башню до уровня
 UpgradeTower.Cost,Cost:,Цена:
 UpgradeTower.NoMoney,Not enough money[_line_] Cost:,Недостаточно денег[_line_]Цена:
+UpgradeTower.MaxLevel,Max level,Башня максимального уровня
 Language.Lang,Language,Язык
 Language.English,English,Английский
 Language.Russian,Russian,Русский

@@ -66,7 +66,12 @@ public class TowerInteraction : MonoBehaviour
                 ShowShop();
             });
 
-            if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
+            if(!UpdateController.CanUpgradeTower(healthItem.Tdata.Type, healthItem.Tdata.Level))
+            {
+                askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.MaxLevel"), Color.green);
+                askPanelLogic.DisableButton(TowerInterractionButton.Yes);
+            }
+            else if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
             {
                 askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.NoMoney") + " " + healthItem.Tdata.UpdatePrice.ToString(), Color.red);
                 askPanelLogic.DisableButton(TowerInterractionButton.Yes);

@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Задать нужные переменные перед спавном врагов
+    /// Р—Р°РґР°С‚СЊ РЅСѓР¶РЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ РїРµСЂРµРґ СЃРїР°РІРЅРѕРј РІСЂР°РіРѕРІ
     /// </summary>
     public void SetVariables(Vector3 coordinates, MonsterData monsterData, Transform mainArea)
     {

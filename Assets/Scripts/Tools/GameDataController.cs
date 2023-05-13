@@ -7,6 +7,8 @@ using CI.QuickSave;
 
 public static class GameDataController
 {
+    private static EnemySpawner enemySpawner;
+
     public static void SaveGameData()
     {
         var writer = QuickSaveWriter.Create("DataExists");
@@ -37,9 +39,10 @@ public static class GameDataController
         GameTimer.Load();
         MoneySystem.Load();
 
-        var waweData = GameObject.FindGameObjectsWithTag("MainPrefab");
+        var waweData = GameObject.FindGameObjectWithTag("MainPrefab");
         if (waweData == null) Debug.LogError("Не находит wrapper при загрузке игры");
-        waweData[0].GetComponent<StartWawe>().Load();
+        enemySpawner = waweData.GetComponent<EnemySpawner>();
+        waweData.GetComponent<StartWawe>().Load();
 
         //var wrapper = GameObject.FindGameObjectsWithTag("GamingPlace");
         //if (wrapper == null) Debug.LogError("Не находит префаб при загрузке башен");
@@ -176,10 +179,12 @@ public static class GameDataController
             data.Health = reader.Read<int>("health" + i.ToString());
 
             var coord = wrapper.transform.TransformPoint(reader.Read<Vector3>("position" + i.ToString()));
-            var obj = MonoBehaviour.Instantiate(data.prefab, coord, new Quaternion(), wrapper.transform);
+            //var obj = MonoBehaviour.Instantiate(data.prefab, coord, new Quaternion(), wrapper.transform);
+            enemySpawner.SetVariables(coord, data, wrapper.transform);
+            EnemyScript obj = enemySpawner.enemyPool.Get();
             //obj.transform.localPosition = reader.Read<Vector3>("position" + i.ToString());
 
-            obj.GetComponent<EnemyScript>().BasicData = data;
+            obj./*GetComponent<EnemyScript>().*/BasicData = data;
         }
     }
 }

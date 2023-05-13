@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ToggleModeSwitch : ToggleSwitcher
 {
-    // Start is called before the first frame update
+    // OnEnable is called before the first frame update
     override public void StartAction()
     {
         if(SceneManager.GetActiveScene().buildIndex == 0)

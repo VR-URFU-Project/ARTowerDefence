@@ -8,8 +8,8 @@ using UnityEngine;
 public static class MonsterController
 {
     static List<MonsterData> Monsters = CSVReader.ReadMonsterData();
-    static private readonly float purpleChance = 0.2f;
-    static private readonly float blackChance = 0.4f;
+    static private readonly float purpleChance = 0.1f;
+    static private readonly float blackChance = 0.2f;
 
 
     /// <summary>

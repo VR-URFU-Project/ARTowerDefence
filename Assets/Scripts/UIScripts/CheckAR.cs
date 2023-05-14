@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class CheckAR : MonoBehaviour
 {
     [SerializeField] private Button AR_button;
-    [SerializeField] private GameObject text;
+    //[SerializeField] private GameObject text;
+    [SerializeField] private Sprite ripAR_sprite;
     [SerializeField] private GameObject arSession;
+
+    private Sprite old_sprite;
 
     private void Awake()
     {
@@ -16,21 +19,20 @@ public class CheckAR : MonoBehaviour
 
     private void DoCheck()
     {
-        text.SetActive(false);
-
+        old_sprite = AR_button.image.sprite;
         try {
             ARSession.CheckAvailability();
             if (ARSession.state == ARSessionState.Unsupported || ARSession.state == ARSessionState.None)
             {
                 AR_button.GetComponent<Button>().interactable = false;
-                text.SetActive(true);
+                AR_button.image.sprite = ripAR_sprite;
             }
             else
                 AR_button.GetComponent<Button>().interactable = true;
                     
         } 
         catch{
-            text.SetActive(false);
+            AR_button.image.sprite = old_sprite;
             AR_button.GetComponent<Button>().interactable = false;
         }
         

@@ -22,8 +22,6 @@ public class Shape : MonoBehaviour
 
     private GameObject mainCanvas;
 
-    private TowerSpawner spawner;
-
 
     [Header("Materials")]
     [SerializeField] private Material GreenMatPlane;

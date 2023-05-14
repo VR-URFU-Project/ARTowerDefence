@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class MainMenuButtons : MonoBehaviour
@@ -11,21 +12,36 @@ public class MainMenuButtons : MonoBehaviour
     private Button optionsButton;
     private Button newGame;
     private Button loadGame;
+    
     public GameObject optionsMenu;
+    public GameObject viewMode;
+
+    //private OpenScene openScene;
+    private LoadGame loadData;
+
 
     void Start()
     {
         optionsButton = document.rootVisualElement.Q<Button>("optionsButton");
         newGame = document.rootVisualElement.Q<Button>("newGame");
         loadGame = document.rootVisualElement.Q<Button>("loadGame");
-        
 
-        //optionsButton.RegisterCallback<ClickEvent, VisualElement>(Clicked, optionsMenu);
-        optionsButton.clicked += Clicked;
+/*        loadData = GetComponent<LoadGame>();
+        openScene = GetComponent<OpenScene>();*/
+
+        optionsButton.clicked += new Action(() => OpenOptions(optionsMenu));
+        newGame.clicked += new Action(() => OpenOptions(viewMode));
+        loadGame.clicked += new Action(() => loadData.LoadSavedGame());
+        //loadGame.clicked += new Action(() => OpenScene(1));
     }
 
-    private void Clicked()
+    private void OpenScene(int v)
     {
-        optionsMenu.SetActive(true);
+        SceneManager.LoadScene(v);
+    }
+
+    private void OpenOptions(GameObject gO)
+    {
+        gO.SetActive(true);
     }
 }

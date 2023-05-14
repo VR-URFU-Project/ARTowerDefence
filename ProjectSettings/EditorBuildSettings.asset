@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenue.unity
     guid: 80b9b13d8f26b304e81952c81e8abc29
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Drag and Drop.unity
     guid: b67e850607e6a094387ea5c2504b13ca
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NoARScene.unity
     guid: 03c4854480771fe4cb022b619668f1a2
   m_configObjects:

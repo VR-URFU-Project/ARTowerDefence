@@ -20,4 +20,4 @@ Language.English,English,Английский
 Language.Russian,Russian,Русский
 Language.Back,Back,Назад
 MainMenu.CheckAR.Text,Your device doesn't support AR,Ваше устройство не поддерживает AR
-Towers.ConfirmDelete,You want to delete tower?,Вы хотите удалить башню?
+Towers.ConfirmSelling,Do you want to sell the tower?,Вы хотите продать эту башню?

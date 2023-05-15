@@ -3073,7 +3073,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455325077}
-  m_LocalRotation: {x: 0.05381815, y: -0.05955036, z: 0.10620035, w: 0.99109983}
+  m_LocalRotation: {x: 0.05381815, y: -0.05955039, z: 0.10620037, w: 0.99109983}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8226,7 +8226,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 10000
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!222 &5521906631744176598
 CanvasRenderer:
@@ -9273,6 +9273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0806fdc0ce0c20643bfbfb073576d536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonIsActive: {fileID: 21300000, guid: 3d4b50e63c91c204493ca8adf1d1fefd, type: 3}
+  buttonIsInactive: {fileID: 21300000, guid: c189c0f9b7867ca48a20bdf9bd6337e0, type: 3}
 --- !u!224 &6968154769916481860
 RectTransform:
   m_ObjectHideFlags: 0

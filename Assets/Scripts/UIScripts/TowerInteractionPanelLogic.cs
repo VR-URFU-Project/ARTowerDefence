@@ -5,33 +5,67 @@ using System;
 
 public class TowerInteractionPanelLogic : MonoBehaviour
 {
-    [SerializeField] private Button yesButton;
+    [SerializeField] private Button upgradeButton;
     [SerializeField] private Button noButton;
     [SerializeField] private Button deleteButton;
-    [SerializeField] private TMP_Text textPlace;
+    [SerializeField] private Button yesButton;
+    [SerializeField] private TMP_Text questionPlace;
+    [SerializeField] private TMP_Text upgradePricePlace;
+    [SerializeField] private TMP_Text sellingPricePlace;
 
     private int counter = 0;
-    private int deleteCounter = 0;
+
+    public Sprite maxSprite;
+    public Sprite noMoneySprite;
+    public Sprite normSprite;
 
     // private void OnEnable()
     //{
     //noButton.onClick.AddListener(() => { Destroy(gameObject); });
     //}
 
+    public void ChangeSprite(string str)
+    {
+        switch (str)
+        {
+            case "max":
+                upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = maxSprite;
+                break;
+
+            case "noMoney":
+                upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = noMoneySprite;
+                break;
+
+            case "norm":
+                upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = normSprite;
+                break;
+        }
+    }
+
+    public void SetSellingPriceText(string textPrice)
+    {
+        sellingPricePlace.text = textPrice;
+    }
+
+    public void SetUpgradePriceInText(string textPrice)
+    {
+        upgradePricePlace.text = textPrice;
+    }
+
     public void SetText(string text)
     {
-        textPlace.text = text;
+        questionPlace.text = text;
     }
 
     public void SetText(string text, Color color)
     {
-        textPlace.color = color;
-        textPlace.text = text;
+        questionPlace.color = color;
+        questionPlace.text = text;
     }
 
     public void SetYesAction(Func<bool> toExec)
     {
-        yesButton.onClick.AddListener(() => {
+        upgradeButton.onClick.AddListener(() => {
             counter++;
             if (counter != 1) return;
             if (!toExec())
@@ -56,21 +90,16 @@ public class TowerInteractionPanelLogic : MonoBehaviour
     public void SetDeleteAction(Action toExec)
     {
         deleteButton.onClick.AddListener(() => {
-            deleteCounter++;
-            if (deleteCounter == 1)
-            {
-                yesButton.gameObject.SetActive(false);
-                SetText(LocalizationManager.Localize("Towers.ConfirmDelete"), Color.red);
-            }
-            else if (deleteCounter == 2)
-            {
-                toExec();
-                Destroy(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+                SetText(LocalizationManager.Localize("Towers.ConfirmSelling"));
+                
+        });
+
+        yesButton.onClick.AddListener(() =>
+        {
+            counter++;
+            if (counter != 1) return;
+            toExec();
+            Destroy(gameObject);
         });
     }
 
@@ -79,7 +108,7 @@ public class TowerInteractionPanelLogic : MonoBehaviour
         switch (button)
         {
             case TowerInterractionButton.Yes:
-                yesButton.interactable = false;
+                upgradeButton.interactable = false;
                 break;
             case TowerInterractionButton.No:
                 noButton.interactable = false;

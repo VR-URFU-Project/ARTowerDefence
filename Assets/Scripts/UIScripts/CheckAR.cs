@@ -15,6 +15,7 @@ public class CheckAR : MonoBehaviour
     {
         DoCheck();
         arSession.SetActive(false);
+
     }
 
     private void DoCheck()
@@ -32,7 +33,7 @@ public class CheckAR : MonoBehaviour
                     
         } 
         catch{
-            AR_button.image.sprite = old_sprite;
+            AR_button.image.sprite = ripAR_sprite;
             AR_button.GetComponent<Button>().interactable = false;
         }
         

@@ -11,7 +11,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Transform target;
     public MonsterData BasicData;
 
-    private ObjectPool<EnemyScript> enemyPool;
+    //private ObjectPool<EnemyScript> enemyPool;
 
     public delegate void OnKill();
     private OnKill KillEvent = null;
@@ -55,13 +55,15 @@ public class EnemyScript : MonoBehaviour
     IEnumerator WaitBeforeDeath(float seconds)
     {
         agent.baseOffset = 0f;
-        yield return new WaitForSeconds(seconds);
-        if (enemyPool == null) Destroy(gameObject);
+        yield return new WaitForSeconds(seconds); Destroy(gameObject);
+        /*if (enemyPool == null) Destroy(gameObject);
         else
         {
-            TriggerExit();
-            enemyPool.Release(this);
-        }
+            //TriggerExit();
+            //enemyPool.Release(this);
+
+        }*/
+        
     }
 
     void Die()
@@ -148,8 +150,8 @@ public class EnemyScript : MonoBehaviour
             audio.PlayOneShot(AttackSound);
     }
 
-    public void SetPool(ObjectPool<EnemyScript> enemyPool)
+/*    public void SetPool(ObjectPool<EnemyScript> enemyPool)
     {
         this.enemyPool = enemyPool;
-    }
+    }*/
 }

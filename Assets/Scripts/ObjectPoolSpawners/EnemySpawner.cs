@@ -41,7 +41,9 @@ public class EnemySpawner : MonoBehaviour
         var enemyScript = enemyObject.GetComponent<EnemyScript>();
 
         //SetPoolFromSpawner(enemyScript);
-        enemyScript.SetPool(enemyPool);
+        
+        // неактивно из-за того, что в EnemyScript пул в комментарии
+        //enemyScript.SetPool(enemyPool);
 
         return enemyScript;
     }

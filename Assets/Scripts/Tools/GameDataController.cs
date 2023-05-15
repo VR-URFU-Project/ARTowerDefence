@@ -179,12 +179,14 @@ public static class GameDataController
             data.Health = reader.Read<int>("health" + i.ToString());
 
             var coord = wrapper.transform.TransformPoint(reader.Read<Vector3>("position" + i.ToString()));
-            //var obj = MonoBehaviour.Instantiate(data.prefab, coord, new Quaternion(), wrapper.transform);
-            enemySpawner.SetVariables(coord, data, wrapper.transform);
-            EnemyScript obj = enemySpawner.enemyPool.Get();
-            //obj.transform.localPosition = reader.Read<Vector3>("position" + i.ToString());
+            var obj = MonoBehaviour.Instantiate(data.prefab, coord, new Quaternion(), wrapper.transform);
+            obj.transform.localPosition = reader.Read<Vector3>("position" + i.ToString());
 
-            obj./*GetComponent<EnemyScript>().*/BasicData = data;
+            //enemySpawner.SetVariables(coord, data, wrapper.transform);
+            //EnemyScript obj = enemySpawner.enemyPool.Get();
+
+
+            obj.GetComponent<EnemyScript>().BasicData = data;
         }
     }
 }

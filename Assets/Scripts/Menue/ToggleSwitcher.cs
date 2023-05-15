@@ -10,14 +10,17 @@ public class ToggleSwitcher : MonoBehaviour, IPointerDownHandler
     //private bool _isOn = false;
     public bool isOn { get; set; }
 
-    [SerializeField] private RectTransform toggleIndicator;
+    //[SerializeField] private RectTransform toggleIndicator;
 
-    [SerializeField] RectTransform offValue;
-    [SerializeField] RectTransform onValue;
+    /*[SerializeField] RectTransform offValue;
+    [SerializeField] RectTransform onValue;*/
+
+    [SerializeField] GameObject on;
+    [SerializeField] GameObject off;
 
     protected Toggle toggle;
 
-    protected void Start()
+    protected void OnEnable()
     {
         StartAction();
     }
@@ -26,37 +29,29 @@ public class ToggleSwitcher : MonoBehaviour, IPointerDownHandler
     {
         toggle = GetComponent<Toggle>();
         isOn = toggle.isOn;
-        //Toggle(isOn);
         MoveIndicator(isOn);
     }
-    //private void Toggle(bool value)
-    //{
-    //    if (value != isOn)
-    //    {
-    //        isOn = value;
-
-    //        MoveIndicator(isOn);
-    //    }
-
-    //}
 
     protected void MoveIndicator(bool value) 
     {
         if (value)
-            toggleIndicator.position = onValue.position;
-        else
-            toggleIndicator.position = offValue.position;
-    }
+        {
+            on.SetActive(true);
+            off.SetActive(false);
+            //toggleIndicator.position = onValue.position;
+        }
 
-    //public void OnSwitch(PointerEventData eventData)
-    //{
-    //    Toggle(!isOn);
-    //}
+        else
+        {
+            on.SetActive(false);
+            off.SetActive(true);
+            //toggleIndicator.position = offValue.position;
+        }
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         isOn = toggle.isOn;
-        //Toggle(!isOn);
         MoveIndicator(!isOn);
     }
 }

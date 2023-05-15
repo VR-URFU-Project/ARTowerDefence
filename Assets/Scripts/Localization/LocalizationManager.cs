@@ -75,7 +75,7 @@ public static class LocalizationManager
             catch 
             {
                 val = "English";
-                Debug.LogWarning("no saves");
+                //Debug.LogWarning("no saves");
             }
             _language = val;
         }

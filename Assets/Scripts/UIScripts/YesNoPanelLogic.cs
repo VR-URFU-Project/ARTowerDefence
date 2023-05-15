@@ -9,15 +9,15 @@ public class YesNoPanelLogic : MonoBehaviour
 {
     private Button yesButton;
     private Button noButton;
-    private TMP_Text textPlace;
 
-    private int counter=0;
+    [SerializeField] private TMP_Text textPlace;
+
+    private int counter = 0;
 
     private void OnEnable()
     {
         yesButton = GameObject.FindGameObjectWithTag("Yes")?.GetComponent<Button>();
         noButton = GameObject.FindGameObjectWithTag("No")?.GetComponent<Button>();
-        textPlace = GameObject.Find("Question")?.GetComponent<TMP_Text>();
         noButton.onClick.AddListener(() => { Destroy(gameObject); });
     }
 

@@ -250,7 +250,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Unity.Projects/_builds/teel.keystore
+  AndroidKeystoreName: D:/UnityProjects/_builds/teel.keystore
   AndroidKeyaliasName: arealkey
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

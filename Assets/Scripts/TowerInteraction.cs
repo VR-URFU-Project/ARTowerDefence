@@ -65,21 +65,29 @@ public class TowerInteraction : MonoBehaviour
                 Destroy(tower);
                 ShowShop();
             });
+            askPanelLogic.SetSellingPriceText(healthItem.Tdata.SellPrice.ToString());
 
-            if(!UpdateController.CanUpgradeTower(healthItem.Tdata.Type, healthItem.Tdata.Level))
+            if (!UpdateController.CanUpgradeTower(healthItem.Tdata.Type, healthItem.Tdata.Level))
             {
-                askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.MaxLevel"), Color.green);
                 askPanelLogic.DisableButton(TowerInterractionButton.Yes);
+                askPanelLogic.ChangeSprite("max");
+                askPanelLogic.SetUpgradePriceInText("");
+                //askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.MaxLevel"), Color.green);
+                //askPanelLogic.DisableButton(TowerInterractionButton.Yes);
             }
             else if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
             {
-                askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.NoMoney") + " " + healthItem.Tdata.UpdatePrice.ToString(), Color.red);
+                //askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.NoMoney") + " " + healthItem.Tdata.UpdatePrice.ToString(), Color.red);
                 askPanelLogic.DisableButton(TowerInterractionButton.Yes);
+                askPanelLogic.ChangeSprite("noMoney");
+                askPanelLogic.SetUpgradePriceInText(healthItem.Tdata.UpdatePrice.ToString());
             }
             else
             {
-                askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.OK") + " " + (healthItem.Tdata.Level + 1).ToString()
-                    + "\n" + LocalizationManager.Localize("UpgradeTower.Cost") + " " + healthItem.Tdata.UpdatePrice.ToString());
+                /*askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.OK") + " " + (healthItem.Tdata.Level + 1).ToString()
+                    + "\n" + LocalizationManager.Localize("UpgradeTower.Cost") + " " + healthItem.Tdata.UpdatePrice.ToString());*/
+                askPanelLogic.ChangeSprite("norm");
+                askPanelLogic.SetUpgradePriceInText(healthItem.Tdata.UpdatePrice.ToString());
             }
         }
     }

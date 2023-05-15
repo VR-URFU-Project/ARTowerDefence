@@ -15,6 +15,7 @@ public class CameraHandler : MonoBehaviour
     [Header("ZoomSettings")]
     //float fieldOfView;
     CinemachineCameraOffset camOffset;
+    CinemachineFreeLook freeLookCam;
     [SerializeField] float zoomMin;
     [SerializeField] float zoomMax;
     [SerializeField] float zoomSpeed;
@@ -32,12 +33,17 @@ public class CameraHandler : MonoBehaviour
 
     bool gamePause_enabled;
     bool settingsMenu_enabled;
-    public static bool shopItem_selected;
+    private static bool shopItem_selected;
+    bool zoom_activated;
+    float X_speed;
 
     private void Start()
     {
+        freeLookCam = virtualCamera.GetComponent<CinemachineFreeLook>();
         camOffset = virtualCamera.GetComponent<CinemachineCameraOffset>();
         shopItem_selected = false;
+        zoom_activated = false;
+        X_speed = freeLookCam.m_XAxis.m_MaxSpeed;
     }
 
     private void Update()
@@ -60,13 +66,23 @@ public class CameraHandler : MonoBehaviour
         {
             virtualCamera.SetActive(true);
         }
+
+        if (zoom_activated)
+        {
+            freeLookCam.m_XAxis.m_MaxSpeed = 0;//X_speed / 2;
+        }
+        else
+        {
+            freeLookCam.m_XAxis.m_MaxSpeed = X_speed;
+        }
     }
 
     private void AndroidZoom()
     {
         if (Input.touchCount == 2)
         {
-            virtualCamera.GetComponent<CinemachineFreeLook>().enabled = false;
+            zoom_activated = true;
+            //virtualCamera.GetComponent<CinemachineFreeLook>().enabled = false;
             touch1 = Input.GetTouch(0);
             touch2 = Input.GetTouch(1);
             touch1_direction = touch1.position - touch1.deltaPosition;
@@ -83,7 +99,8 @@ public class CameraHandler : MonoBehaviour
             //var currentZoom = fieldOfView - zoom * sensivity;
             //fieldOfView = Mathf.Clamp(currentZoom, zoomMin, zoomMax);
         }
-        virtualCamera.GetComponent<CinemachineFreeLook>().enabled = true;        
+        else { zoom_activated = false; }
+        //virtualCamera.GetComponent<CinemachineFreeLook>().enabled = true;        
     }
 
     public static void ChangeShopItemSelectedStage(bool B)

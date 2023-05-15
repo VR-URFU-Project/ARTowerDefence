@@ -10,14 +10,20 @@ public class PauseButton : MonoBehaviour
     {
         if (Time.timeScale == 0)
         {
-            gameObject.GetComponentsInChildren<Image>()[0].sprite = Resources.Load<Sprite>("play icon");
-            gameObject.GetComponentsInChildren<Image>()[0].SetNativeSize();
+            gameObject.GetComponentsInChildren<Image>()[0].sprite = Resources.Load<Sprite>("Play");
+            SpriteState spriteState = new SpriteState();
+            spriteState = gameObject.GetComponent<Button>().spriteState;
+            spriteState.pressedSprite = Resources.Load<Sprite>("PlayD");
+            //gameObject.GetComponentsInChildren<Image>()[0].SetNativeSize();
         }
 
         else
         {
-            gameObject.GetComponentsInChildren<Image>()[0].sprite = Resources.Load<Sprite>("pause icon");
-            gameObject.GetComponentsInChildren<Image>()[0].SetNativeSize();
+            gameObject.GetComponentsInChildren<Image>()[0].sprite = Resources.Load<Sprite>("Pause");
+            SpriteState spriteState = new SpriteState();
+            spriteState = gameObject.GetComponent<Button>().spriteState;
+            spriteState.pressedSprite = Resources.Load<Sprite>("PauseD");
+            //gameObject.GetComponentsInChildren<Image>()[0].SetNativeSize();
         }
             
     }

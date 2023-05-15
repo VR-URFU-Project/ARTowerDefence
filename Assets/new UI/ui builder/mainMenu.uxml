@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/new%20UI/ui%20builder/mainMenu.uss?fileID=7433441132597879392&amp;guid=f202dd4f23141334b916c9b883e529c3&amp;type=3#mainMenu" />
+    <ui:VisualElement style="background-image: url(&apos;project://database/Assets/ui/updated%20bg.png?fileID=2800000&amp;guid=16fcd1a14106e0544a8d7c4985f22e15&amp;type=3#updated bg&apos;); width: 100%; justify-content: center; align-items: flex-start; flex-grow: 1;">
+        <ui:VisualElement style="flex-direction: row; flex-grow: 1; align-items: stretch; width: 100%; justify-content: flex-start;">
+            <ui:VisualElement name="settingsButton" style="flex-grow: 1;">
+                <ui:Button display-tooltip-when-elided="true" name="optionsButton" class="optionsButton" style="left: 35px; top: 76px; right: 0; bottom: 0; width: 150px; height: 150px; position: relative; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="title" style="left: 0;">
+                <ui:VisualElement name="titleImage" style="background-image: url(&apos;project://database/Assets/ui/cooltext425916143928758.png?fileID=2800000&amp;guid=3dd34732163e9044487bb2b5c2f5ecd4&amp;type=3#cooltext425916143928758&apos;); width: 900px; height: 150px; position: relative; left: -500px; top: 80px; justify-content: flex-start; flex-grow: 0; align-items: stretch;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="width: 100%; flex-grow: 1; position: relative;">
+            <ui:Button text="New Game" display-tooltip-when-elided="true" name="newGame" class="menuButton" style="left: 130px; top: auto; position: absolute; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; bottom: 115px;" />
+            <ui:Button text="Load Game" display-tooltip-when-elided="true" name="loadGame" class="menuButton" style="left: 1340px; top: auto; position: absolute; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; bottom: 115px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

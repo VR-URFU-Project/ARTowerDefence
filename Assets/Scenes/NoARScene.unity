@@ -495,7 +495,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403980763}
-  m_LocalRotation: {x: 0.27303317, y: -0.0016210069, z: 0.00046006983, w: 0.9620032}
+  m_LocalRotation: {x: 0.27303323, y: -0.0016210071, z: 0.00046006998, w: 0.9620032}
   m_LocalPosition: {x: 0.29817227, y: 1.4667783, z: -1.1129575}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1249,7 +1249,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455325077}
-  m_LocalRotation: {x: 0.05381815, y: -0.05955039, z: 0.10620037, w: 0.99109983}
+  m_LocalRotation: {x: 0.05381815, y: -0.05955036, z: 0.10620035, w: 0.99109983}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1327,7 +1327,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491558146}
-  m_LocalRotation: {x: 0.03587787, y: -0.06292605, z: 0.10592616, w: 0.99173224}
+  m_LocalRotation: {x: 0.03587793, y: -0.06292604, z: 0.10592617, w: 0.99173224}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1565,7 +1565,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128454806}
-  m_LocalRotation: {x: 0.017780973, y: -0.06336875, z: 0.10396707, w: 0.99240065}
+  m_LocalRotation: {x: 0.017780973, y: -0.0633688, z: 0.1039671, w: 0.99240065}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1601,6 +1601,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 403980766}
+    - target: {fileID: 7571729073735468669, guid: 1dec7918897940e4596b539dcabeefd3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7571729073735468712, guid: 1dec7918897940e4596b539dcabeefd3, type: 3}
       propertyPath: m_Name
       value: NOAR21

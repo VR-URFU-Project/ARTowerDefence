@@ -97,7 +97,7 @@ public class TowerInteraction : MonoBehaviour
         shopState = Shop.activeSelf;
         Shop.SetActive(false);
         CloseShop.SetActive(false);
-        OpenShop.SetActive(true);
+        OpenShop.SetActive(false);
         OpenShop.GetComponent<Button>().interactable = false;
     }
 

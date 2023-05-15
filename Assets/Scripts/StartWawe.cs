@@ -10,7 +10,7 @@ public class StartWawe : MonoBehaviour
     [SerializeField] List<GameObject> spawnPlaces;
     [SerializeField] GameObject crystal;
     [SerializeField] GameObject mainArea;
-    //[SerializeField] GameObject StartButton;
+    [SerializeField] GameObject VictoryPanel;
 
     private const int DISABLED_TIMER_VALUE = -10;
     private int curWave = 0;
@@ -31,6 +31,7 @@ public class StartWawe : MonoBehaviour
         //activeEnemies = new LinkedList<GameObject>();
         enemySpawner = GetComponent<EnemySpawner>();
         dataQueue = new Queue<SubwaveData>();
+        VictoryPanel.SetActive(false);
     }
 
     private void Update()
@@ -38,6 +39,8 @@ public class StartWawe : MonoBehaviour
         if (activeEnemies == 0 && dataQueue.Count == 0 && curWave >= WaveController.WawesInfo.Count)
         {
             //Debug.Log("Победа");
+            VictoryPanel.SetActive(true);
+            TimescaleManager.Pause(true);
             return;
         }
         if (timer == DISABLED_TIMER_VALUE) return;

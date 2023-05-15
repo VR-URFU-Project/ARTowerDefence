@@ -40,7 +40,6 @@ public class Shape : MonoBehaviour
         shop = GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>();
         mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas");
         YesButton = GameObject.FindGameObjectWithTag("Yes").GetComponent<Button>();
-        GameObject.Find("Question").SetActive(false);
         NoButton = GameObject.FindGameObjectWithTag("No").GetComponent<Button>();
         gamingPlace = GameObject.FindWithTag("GamingPlace");
         YesNoPanel.SetActive(false);
@@ -74,6 +73,8 @@ public class Shape : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            YesNoPanel.GetComponent<YesNoPanelLogic>().SetText("Do you want to place the tower?");
+            
             gameObject.layer = 0;
             YesNoPanel.SetActive(true);
             mouseButtonUped = true;

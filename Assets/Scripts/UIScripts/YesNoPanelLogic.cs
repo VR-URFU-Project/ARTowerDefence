@@ -17,7 +17,7 @@ public class YesNoPanelLogic : MonoBehaviour
     {
         yesButton = GameObject.FindGameObjectWithTag("Yes")?.GetComponent<Button>();
         noButton = GameObject.FindGameObjectWithTag("No")?.GetComponent<Button>();
-        textPlace = GameObject.Find("Question")?.GetComponent<TMP_Text>();
+        //textPlace = GameObject.Find("Question")?.GetComponent<TMP_Text>();
         noButton.onClick.AddListener(() => { Destroy(gameObject); });
     }
 

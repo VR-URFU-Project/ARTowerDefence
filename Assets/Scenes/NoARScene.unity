@@ -3709,6 +3709,7 @@ GameObject:
   - component: {fileID: 1577450209}
   - component: {fileID: 1577450208}
   - component: {fileID: 1577450207}
+  - component: {fileID: 1577450210}
   m_Layer: 5
   m_Name: AR_lot
   m_TagString: Untagged
@@ -3889,6 +3890,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3472d58bba1e524469bc2b46e5c7858f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1577450210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577450202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f61eff31833dc54584f4e3cb812a7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1625549880

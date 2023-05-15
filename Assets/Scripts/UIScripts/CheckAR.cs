@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
+using CI.QuickSave;
 
 public class CheckAR : MonoBehaviour
 {
@@ -11,11 +12,15 @@ public class CheckAR : MonoBehaviour
 
     private Sprite old_sprite;
 
+    public int supportAR;
+
     private void Awake()
     {
         DoCheck();
-        arSession.SetActive(false);
-
+        //arSession.SetActive(false);
+        var writer = QuickSaveWriter.Create("supportAR");
+        writer.Write("supportAR", supportAR);
+        writer.Commit();
     }
 
     private void DoCheck()
@@ -25,16 +30,21 @@ public class CheckAR : MonoBehaviour
             ARSession.CheckAvailability();
             if (ARSession.state == ARSessionState.Unsupported || ARSession.state == ARSessionState.None)
             {
+                supportAR = 0;
                 AR_button.GetComponent<Button>().interactable = false;
                 AR_button.image.sprite = ripAR_sprite;
             }
             else
+            {
                 AR_button.GetComponent<Button>().interactable = true;
+                supportAR = 1;
+            }
                     
         } 
         catch{
             AR_button.image.sprite = ripAR_sprite;
             AR_button.GetComponent<Button>().interactable = false;
+            supportAR = 0;
         }
         
 

@@ -954,7 +954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &406994062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1234,6 +1234,7 @@ GameObject:
   - component: {fileID: 467097033}
   - component: {fileID: 467097032}
   - component: {fileID: 467097031}
+  - component: {fileID: 467097035}
   m_Layer: 5
   m_Name: NewGame
   m_TagString: Untagged
@@ -1330,18 +1331,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 406994063}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: New Game
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &467097033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,6 +1369,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467097029}
   m_CullTransparentMesh: 1
+--- !u!114 &467097035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467097029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb3b296675d4694ab3134af30193a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 180dad2ac43a31a4f92b4475649fc531, type: 3}
+  image: {fileID: 19740448}
 --- !u!1 &633037185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,7 +1460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &703644194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2136,6 +2139,7 @@ MonoBehaviour:
   AR_button: {fileID: 1893068547}
   ripAR_sprite: {fileID: 21300000, guid: dab4de6a0e5b8ae42b754699978f4810, type: 3}
   arSession: {fileID: 633037185}
+  supportAR: 0
 --- !u!4 &1015526896
 Transform:
   m_ObjectHideFlags: 0
@@ -3817,6 +3821,7 @@ GameObject:
   - component: {fileID: 2112025126}
   - component: {fileID: 2112025125}
   - component: {fileID: 2112025128}
+  - component: {fileID: 2112025129}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -3913,18 +3918,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 406994063}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Load Game
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &2112025126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3975,6 +3968,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3472d58bba1e524469bc2b46e5c7858f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2112025129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112025123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb3b296675d4694ab3134af30193a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 470386d5052956d41a41a2f49bc0c52d, type: 3}
+  image: {fileID: 19740448}
 --- !u!1 &2119877991
 GameObject:
   m_ObjectHideFlags: 0

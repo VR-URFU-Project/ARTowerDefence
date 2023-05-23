@@ -16,7 +16,7 @@ public class Canon : MonoBehaviour
     [SerializeField]
     private double fireCountdown = 0d;
 
-    private bool partSys_isON = false;
+    //private bool partSys_isON = false;
 
     [Header("Audio")]
     [SerializeField] AudioClip ShootSound;
@@ -39,7 +39,7 @@ public class Canon : MonoBehaviour
 
     [Header("Lazer Settings")]
     private LineRenderer lineRenderer;
-    private bool useLazer = false;
+    //private bool useLazer = false;
     private int secCounter = 1;
 
     // флаг для дерева с лучниками
@@ -71,80 +71,43 @@ public class Canon : MonoBehaviour
     void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
-        //GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
-        GameObject nearestEnemy;
+        GameObject nearestEnemy = null;
 
         switch (Tdata.Type)
         {
             case TowerType.Ballista:
-                nearestEnemy = GetNearestAvailableEnemy(enemies);
-
-                // проверка на наземного врага
-                if (nearestEnemy != null)
-                {
-                    if (nearestEnemy.transform.parent.tag == EnemyTag)
-                    {
-                        target = nearestEnemy.transform;
-                    }
-                }
-                else
-                    target = null;
-
+                nearestEnemy = GetNearestAvailableEnemy(
+                    enemies
+                    .Where(x => x.transform.parent.tag == EnemyTag)
+                    .ToArray());
                 break;
 
             case TowerType.TreeHouse:
-                nearestEnemy = GetNearestAvailableEnemy(enemies/*.Concat(fly_enemies).ToArray()*/);
-
-                if (nearestEnemy != null)
-                    target = nearestEnemy.transform;
-                else
-                    target = null;
+                nearestEnemy = GetNearestAvailableEnemy(enemies);
                 break;
 
             case TowerType.Mushroom:
-                if (/*fly_enemies.Length > 0 ||*/ enemies.Length > 0)
-                {
-                    ifEnemiesNearBy = false;
-                    var radius = Tdata.Range * _scale;
-                    //foreach (GameObject fly in fly_enemies)
-                    //{
-                    //    if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
-                    //    {
-                    //        ifEnemiesNearBy = true;
-                    //    }
-                    //}
+                ifEnemiesNearBy = false;
+                var radius = Tdata.Range * _scale;
 
-                    foreach (GameObject enemy in enemies)
+                foreach (GameObject enemy in enemies)
+                {
+                    if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
                     {
-                        if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
-                        {
-                            ifEnemiesNearBy = true;
-                        }
+                        ifEnemiesNearBy = true;
                     }
-
-                    partSys_isON = ifEnemiesNearBy;
-                }
-                else
-                {
-                    ifEnemiesNearBy = false;
-                    partSys_isON = false;
                 }
                 break;
+
             case TowerType.LazerTower:
-                nearestEnemy = GetNearestAvailableEnemy(enemies/*.Concat(fly_enemies).ToArray()*/);
-
-                if (nearestEnemy != null)
-                {
-                    target = nearestEnemy.transform;
-                    useLazer = true;
-                }
-                else
-                {
-                    target = null;
-                }
-
+                nearestEnemy = GetNearestAvailableEnemy(enemies);
                 break;
         }
+
+        if (nearestEnemy != null)
+            target = nearestEnemy.transform;
+        else
+            target = null;
     }
 
     private GameObject GetNearestAvailableEnemy(GameObject[] enemies)
@@ -167,13 +130,20 @@ public class Canon : MonoBehaviour
 
     void Update()
     {
-        if (partSys_isON)
+        fireCountdown -= Time.deltaTime;
+
+        if (ifEnemiesNearBy)
         {
-            //Debug.Log("partSys_isON");
             foreach (var go in particleSystems)
             {
                 if (!go.isPlaying)
                     go.Play();
+            }
+
+            if (fireCountdown <= 0f)
+            {
+                Explode();
+                fireCountdown = 1d / Tdata.AtackSpeed;
             }
         }
         else
@@ -181,55 +151,38 @@ public class Canon : MonoBehaviour
             foreach (var go in particleSystems) go.Stop();
         }
 
-        if (target == null && !ifEnemiesNearBy)
+
+        if (target == null)
         {
-            if (useLazer)
+            if (Tdata.Type == TowerType.LazerTower)
             {
-                //if (lineRenderer.enabled)
-                //{
                 lineRenderer.enabled = false;
-                //}
+                secCounter = 1;
             }
-            secCounter = 1;
             return;
+        }
+
+
+
+        if (Tdata.Type == TowerType.LazerTower)
+        {
+            UseLazer();
+            if (fireCountdown <= 0f)
+            {
+                audio.PlayOneShot(ShootSound, 0.99f);
+                Damage(target.parent.transform);
+                fireCountdown = 1d / Tdata.AtackSpeed;
+
+                if (secCounter < 10) secCounter += 1;
+            }
         }
         else
         {
-            if (ifEnemiesNearBy)
+            if (fireCountdown <= 0f)
             {
-                if (fireCountdown <= 0f)
-                {
-                    Explode();
-                    fireCountdown = 1d / Tdata.AtackSpeed;
-                }
+                Shoot();
+                fireCountdown = 1d / Tdata.AtackSpeed;
             }
-
-            if (target != null)
-            {
-                if (useLazer)
-                {
-                    UseLazer();
-                    if (fireCountdown <= 0f)
-                    {
-                        audio.PlayOneShot(ShootSound, 0.99f);
-                        Damage(target.parent.transform);
-                        fireCountdown = 1d / Tdata.AtackSpeed;
-
-                        if (secCounter < 10) secCounter += 1;
-                    }
-                }
-                else
-                {
-                    if (fireCountdown <= 0f)
-                    {
-                        Shoot();
-                        fireCountdown = 1d / Tdata.AtackSpeed;
-                    }
-                }
-
-            }
-            fireCountdown -= Time.deltaTime;
-
         }
     }
 
@@ -278,7 +231,7 @@ public class Canon : MonoBehaviour
     void Damage(Transform enemy)
     {
 
-        if (useLazer)
+        if (Tdata.Type == TowerType.LazerTower)
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage * secCounter);
         else
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage);

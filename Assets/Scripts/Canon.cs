@@ -9,7 +9,8 @@ public class Canon : MonoBehaviour
     [Header("Tower Info")]
     public TowerData Tdata;
 
-    private Transform target = null;
+    //private Transform target = null;
+    private List<Transform> targets = null;
     public GameObject parent;
 
     [Header("Attributes")]
@@ -71,19 +72,20 @@ public class Canon : MonoBehaviour
     void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
-        GameObject nearestEnemy = null;
+        //GameObject nearestEnemy = null;
+        var nearestEnemys = new List<GameObject>();
 
         switch (Tdata.Type)
         {
             case TowerType.Ballista:
-                nearestEnemy = GetNearestAvailableEnemy(
+                nearestEnemys = GetNearestAvailableEnemys(
                     enemies
                     .Where(x => x.transform.parent.tag == EnemyTag)
                     .ToArray());
                 break;
 
             case TowerType.TreeHouse:
-                nearestEnemy = GetNearestAvailableEnemy(enemies);
+                nearestEnemys = GetNearestAvailableEnemys(enemies);
                 break;
 
             case TowerType.Mushroom:
@@ -98,14 +100,14 @@ public class Canon : MonoBehaviour
                 break;
 
             case TowerType.LazerTower:
-                nearestEnemy = GetNearestAvailableEnemy(enemies);
+                nearestEnemys = GetNearestAvailableEnemys(enemies);
                 break;
         }
 
-        if (nearestEnemy != null)
-            target = nearestEnemy.transform;
+        if (nearestEnemys != null)
+            targets = nearestEnemys.Select(x => x.transform).ToList();
         else
-            target = null;
+            targets = null;
     }
 
     private GameObject GetNearestAvailableEnemy(GameObject[] enemies)
@@ -124,6 +126,24 @@ public class Canon : MonoBehaviour
         if (shortestDistance <= Tdata.Range * _scale)
             return nearestEnemy;
         return null;
+    }
+
+    private List<GameObject> GetNearestAvailableEnemys(GameObject[] enemies)
+    {
+        var nearestEnemys = new List<GameObject>();
+
+        var a = enemies
+            .Where(x => Vector3.Distance(transform.position, x.transform.position) <= Tdata.Range * _scale)
+            .ToList();
+        a.Sort((x, y) =>
+        Vector3.Distance(transform.position, x.transform.position)
+        .CompareTo(Vector3.Distance(transform.position, y.transform.position)));
+        
+        if(a.Count == 0) return null;
+
+        for (int i=0; i< Tdata.TargetsAmount; ++i)
+            nearestEnemys.Add(a[i % a.Count]);
+        return nearestEnemys;
     }
 
     void Update()
@@ -146,7 +166,7 @@ public class Canon : MonoBehaviour
             foreach (var go in particleSystems) go.Stop();
         }
 
-        if (target == null)
+        if (targets == null)
         {
             if (Tdata.Type == TowerType.LazerTower)
             {
@@ -162,7 +182,8 @@ public class Canon : MonoBehaviour
             if (fireCountdown <= 0f)
             {
                 audio.PlayOneShot(ShootSound, 0.99f);
-                Damage(target.parent.transform);
+                foreach(var target in targets)
+                    Damage(target.parent.transform);
                 fireCountdown = 1d / Tdata.AtackSpeed;
 
                 if (secCounter < 10) secCounter += 1;
@@ -184,25 +205,31 @@ public class Canon : MonoBehaviour
         {
             lineRenderer.enabled = true;
         }
-
-        lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, target.position);
+        foreach (var target in targets)
+        {
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, target.position);
+        }
     }
 
     void Shoot()
     {
         // TODO заменить Instantiate на Pulling.get();
         //GameObject bulletGO = Instantiate(bullet, firePoint.position, firePoint.rotation, parent.transform);
-        Bullet bullet = bulletSpawner.bulletPool.Get();
         audio.PlayOneShot(ShootSound);
         //Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-        if (bullet != null)
+        foreach (var target in targets)
         {
-            //var speed = Tdata.ProjectileSpeed;
-            //if (speed > 0)
-            //    bullet.speed = Tdata.ProjectileSpeed;
-            bullet.Seek(target);
+            Bullet bullet = bulletSpawner.bulletPool.Get();
+
+            if (bullet != null)
+            {
+                //var speed = Tdata.ProjectileSpeed;
+                //if (speed > 0)
+                //    bullet.speed = Tdata.ProjectileSpeed;
+                bullet.Seek(target);
+            }
         }
     }
 
@@ -235,6 +262,9 @@ public class Canon : MonoBehaviour
 
     public Transform GetTarget()
     {
-        return target;
+        if (targets == null)
+            return null;
+        else
+            return targets[0];
     }
 }

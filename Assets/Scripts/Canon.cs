@@ -27,9 +27,6 @@ public class Canon : MonoBehaviour
     public string EnemyTag = "Enemy";
     public string FlyEnemyTag = "Fly";
 
-    public Transform partToRotate;
-    public float turnSpeed = 5f;
-
     public Bullet bullet;
     public Transform firePoint;
 
@@ -58,7 +55,6 @@ public class Canon : MonoBehaviour
     void Start()
     {
         bulletSpawner = GetComponent<BulletSpawner>();
-        bullet = Resources.Load<Bullet>("Bullet");
         lineRenderer = GetComponent<LineRenderer>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         parent = GameObject.FindGameObjectWithTag("GamingPlace");
@@ -84,16 +80,16 @@ public class Canon : MonoBehaviour
                 nearestEnemy = GetNearestAvailableEnemy(enemies);
 
                 // проверка на наземного врага
-                    if (nearestEnemy != null)
+                if (nearestEnemy != null)
+                {
+                    if (nearestEnemy.transform.parent.tag == EnemyTag)
                     {
-                        if (nearestEnemy.transform.parent.tag == EnemyTag)
-                        {
-                            target = nearestEnemy.transform;
-                        }
+                        target = nearestEnemy.transform;
                     }
-                    else
-                        target = null;
-                
+                }
+                else
+                    target = null;
+
                 break;
 
             case TowerType.TreeHouse:
@@ -110,21 +106,21 @@ public class Canon : MonoBehaviour
                 {
                     ifEnemiesNearBy = false;
                     var radius = Tdata.Range * _scale;
-                        //foreach (GameObject fly in fly_enemies)
-                        //{
-                        //    if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
-                        //    {
-                        //        ifEnemiesNearBy = true;
-                        //    }
-                        //}
+                    //foreach (GameObject fly in fly_enemies)
+                    //{
+                    //    if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
+                    //    {
+                    //        ifEnemiesNearBy = true;
+                    //    }
+                    //}
 
-                        foreach (GameObject enemy in enemies)
+                    foreach (GameObject enemy in enemies)
+                    {
+                        if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
                         {
-                            if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
-                            {
-                                ifEnemiesNearBy = true;
-                            }
+                            ifEnemiesNearBy = true;
                         }
+                    }
 
                     partSys_isON = ifEnemiesNearBy;
                 }
@@ -191,7 +187,7 @@ public class Canon : MonoBehaviour
             {
                 //if (lineRenderer.enabled)
                 //{
-                    lineRenderer.enabled = false;
+                lineRenderer.enabled = false;
                 //}
             }
             secCounter = 1;
@@ -210,14 +206,6 @@ public class Canon : MonoBehaviour
 
             if (target != null)
             {
-                void LookOnTarget()
-                {
-                    Vector3 direction = target.position - transform.position;
-                    Quaternion lookRotation = Quaternion.LookRotation(direction);
-                    Vector3 rotationVector = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-                    partToRotate.rotation = Quaternion.Euler(0f, rotationVector.y, 0f);
-                }
-
                 if (useLazer)
                 {
                     UseLazer();
@@ -232,7 +220,6 @@ public class Canon : MonoBehaviour
                 }
                 else
                 {
-                    LookOnTarget();
                     if (fireCountdown <= 0f)
                     {
                         Shoot();
@@ -292,20 +279,19 @@ public class Canon : MonoBehaviour
     {
 
         if (useLazer)
-        {
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage * secCounter);
-            //Debug.Log($"Lazer: {Tdata.Damage * secCounter}!!");
-        }
         else
-        {
-            //Debug.Log("DAMAGEEEE!!");
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage);
-        }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, (float)(Tdata.Range * _scale));
+    }
+
+    public Transform GetTarget()
+    {
+        return target;
     }
 }

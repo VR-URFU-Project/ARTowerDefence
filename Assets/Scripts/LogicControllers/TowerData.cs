@@ -87,7 +87,7 @@ public class TowerData
                     AtackSpeed += double.Parse(data[0], CultureInfo.InvariantCulture);
                     break;
                 case var str when str.Contains("trgt"):
-                   // и как?
+                    TargetsAmount += int.Parse(data[0]);
                     break;
 
             }

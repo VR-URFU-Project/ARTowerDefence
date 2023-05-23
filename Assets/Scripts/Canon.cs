@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -42,7 +42,7 @@ public class Canon : MonoBehaviour
     //private bool useLazer = false;
     private int secCounter = 1;
 
-    // флаг для дерева с лучниками
+    // С„Р»Р°Рі РґР»СЏ РґРµСЂРµРІР° СЃ Р»СѓС‡РЅРёРєР°РјРё
     //private bool treeIsAtacking = false;
 
     private ParticleSystem[] particleSystems;
@@ -93,9 +93,7 @@ public class Canon : MonoBehaviour
                 foreach (GameObject enemy in enemies)
                 {
                     if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
-                    {
                         ifEnemiesNearBy = true;
-                    }
                 }
                 break;
 
@@ -135,10 +133,7 @@ public class Canon : MonoBehaviour
         if (ifEnemiesNearBy)
         {
             foreach (var go in particleSystems)
-            {
-                if (!go.isPlaying)
-                    go.Play();
-            }
+                if (!go.isPlaying) go.Play();
 
             if (fireCountdown <= 0f)
             {
@@ -151,7 +146,6 @@ public class Canon : MonoBehaviour
             foreach (var go in particleSystems) go.Stop();
         }
 
-
         if (target == null)
         {
             if (Tdata.Type == TowerType.LazerTower)
@@ -161,8 +155,6 @@ public class Canon : MonoBehaviour
             }
             return;
         }
-
-
 
         if (Tdata.Type == TowerType.LazerTower)
         {
@@ -199,7 +191,7 @@ public class Canon : MonoBehaviour
 
     void Shoot()
     {
-        // TODO заменить Instantiate на Pulling.get();
+        // TODO Р·Р°РјРµРЅРёС‚СЊ Instantiate РЅР° Pulling.get();
         //GameObject bulletGO = Instantiate(bullet, firePoint.position, firePoint.rotation, parent.transform);
         Bullet bullet = bulletSpawner.bulletPool.Get();
         audio.PlayOneShot(ShootSound);
@@ -222,9 +214,7 @@ public class Canon : MonoBehaviour
         foreach (var collider in colliders)
         {
             if (collider.tag == EnemyTag || collider.tag == FlyEnemyTag)
-            {
                 Damage(collider.transform);
-            }
         }
     }
 

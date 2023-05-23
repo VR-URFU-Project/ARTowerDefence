@@ -33,10 +33,10 @@ public class Canon : MonoBehaviour
 
     private BulletSpawner bulletSpawner;
 
-    [Header("TreeHouse Setup Fileds")]
+    //[Header("TreeHouse Setup Fileds")]
     //public GameObject archer_1;
     //public GameObject archer_2;
-    [SerializeField] public TowerType towerType;
+    //[SerializeField] public TowerType towerType;
 
     [Header("Lazer Settings")]
     private LineRenderer lineRenderer;
@@ -63,10 +63,10 @@ public class Canon : MonoBehaviour
         audio = GetComponent<AudioSource>();
         foreach (var go in particleSystems) go.Stop();
 
-        if (towerType == TowerType.TreeHouse && Tdata == null)
-        {
-            Tdata = TowerManager.GetTreeHouse();
-        }
+        //if (towerType == TowerType.TreeHouse && Tdata == null)
+        //{
+        //    Tdata = TowerManager.GetTreeHouse();
+        //}
     }
 
     void UpdateTarget()
@@ -205,10 +205,11 @@ public class Canon : MonoBehaviour
         {
             lineRenderer.enabled = true;
         }
-        foreach (var target in targets)
+        lineRenderer.positionCount = targets.Count * 2;
+        for(int i=0; i< targets.Count; ++i)
         {
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, target.position);
+            lineRenderer.SetPosition(i*2, firePoint.position);
+            lineRenderer.SetPosition(i*2+1, targets[i].position);
         }
     }
 

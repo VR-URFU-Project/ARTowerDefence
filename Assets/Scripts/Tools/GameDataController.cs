@@ -20,7 +20,13 @@ public static class GameDataController
 
         var waweData = GameObject.FindGameObjectsWithTag("MainPrefab");
         if (waweData == null) Debug.LogError("Не находит wrapper при сохранении");
-        waweData[0].GetComponent<StartWawe>().Save();
+        try {
+            waweData[0].GetComponent<StartWawe>().Save();
+        }
+        catch
+        {
+
+        }
 
         writer = QuickSaveWriter.Create("SceneData");
         writer.Write("scene", SceneManager.GetActiveScene().buildIndex);

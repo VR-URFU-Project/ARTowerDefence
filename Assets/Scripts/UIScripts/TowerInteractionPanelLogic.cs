@@ -5,124 +5,152 @@ using System;
 
 public class TowerInteractionPanelLogic : MonoBehaviour
 {
+    [Header("Panel Buttons")]
     [SerializeField] private Button upgradeButton;
     [SerializeField] private Button noButton;
     [SerializeField] private Button deleteButton;
     [SerializeField] private Button yesButton;
+
+    [Header("Panel Texts")]
     [SerializeField] private TMP_Text questionPlace;
     [SerializeField] private TMP_Text upgradePricePlace;
     [SerializeField] private TMP_Text sellingPricePlace;
 
-    private int counter = 0;
+    [Header("Shop Parts")]
+    [SerializeField] GameObject CloseShop;
+    [SerializeField] GameObject OpenShop;
+    [SerializeField] GameObject Shop;
+    private bool shopState;
 
+    private int counter = 0;
+    private GameObject tower;
+    private TowerData healthData;
+
+    [Header("Sprites")]
     public Sprite maxSprite;
     public Sprite noMoneySprite;
     public Sprite normSprite;
 
-    // private void OnEnable()
-    //{
-    //noButton.onClick.AddListener(() => { Destroy(gameObject); });
-    //}
-
-    public void ChangeSprite(string str)
+    public void Activate(GameObject tower)
     {
-        switch (str)
+        this.tower = tower;
+        healthData = tower.GetComponent<TowerHealthLogic>().Tdata;
+
+        DoMakeUp();
+
+        yesButton.onClick.RemoveAllListeners();
+        yesButton.onClick.AddListener(() =>
         {
-            case "max":
-                upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = maxSprite;
-                break;
+            //counter++;
+            //if (counter != 1) return;
+            MoneySystem.ChangeMoney(healthData.SellPrice);
+            Destroy(tower);
+            gameObject.SetActive(false);
+        });
 
-            case "noMoney":
-                upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = noMoneySprite;
-                break;
+        deleteButton.onClick.RemoveAllListeners();
+        deleteButton.onClick.AddListener(() => {
+            SetQuestionText(LocalizationManager.Localize("Towers.ConfirmSelling"));
+        });
 
-            case "norm":
-                upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = normSprite;
-                break;
+        noButton.onClick.RemoveAllListeners();
+        noButton.onClick.AddListener(() => {
+            //counter++;
+            //if (counter != 1) return;
+            gameObject.SetActive(false);
+        });
+
+        upgradeButton.onClick.RemoveAllListeners();
+        upgradeButton.onClick.AddListener(() => {
+            //counter++;
+            //if (counter != 1) return;
+            MoneySystem.ChangeMoney(-healthData.UpdatePrice);
+            healthData.Upgrade();
+            var canonData = tower.GetComponent<Canon>();
+            canonData.Tdata.Upgrade();
+
+            //Destroy(gameObject);
+        });
+
+        HideShop();
+        gameObject.SetActive(true);
+    }
+
+    public void Update()
+    {
+        DoMakeUp();
+    }
+
+    public void OnDisable()
+    {
+        upgradeButton.interactable = true;
+        upgradePricePlace.color = Color.black;
+        questionPlace.color = Color.black;
+        CameraHandler.ChangeShopItemSelectedStage(false);
+        ShowShop();
+    }
+
+    private void DoMakeUp()
+    {
+        sellingPricePlace.text = healthData.SellPrice.ToString();
+        if (!UpdateController.CanUpgradeTower(healthData.Type, healthData.Level))
+        {
+            upgradeButton.interactable = false;
+            upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = maxSprite;
+            SetUpdatePriceText("", Color.black);
+        }
+        else if (healthData.UpdatePrice > MoneySystem.GetMoney())
+        {
+            upgradeButton.interactable = false;
+            upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = noMoneySprite;
+            SetUpdatePriceText(healthData.UpdatePrice.ToString(), Color.red);
+        }
+        else
+        {
+            upgradeButton.interactable = true;
+            upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = normSprite;
+            SetUpdatePriceText(healthData.UpdatePrice.ToString(), Color.black);
         }
     }
 
-    public void SetSellingPriceText(string textPrice)
+    private void SetUpdatePriceText(string text, Color color)
     {
-        sellingPricePlace.text = textPrice;
+        upgradePricePlace.color = color;
+        upgradePricePlace.text = text;
     }
 
-    public void SetUpgradePriceInText(string textPrice)
-    {
-        upgradePricePlace.text = textPrice;
-    }
-
-    public void SetText(string text)
+    private void SetQuestionText(string text)
     {
         questionPlace.text = text;
     }
 
-    public void SetText(string text, Color color)
+    private void SetQuestionText(string text, Color color)
     {
         questionPlace.color = color;
         questionPlace.text = text;
     }
 
-    public void SetYesAction(Func<bool> toExec)
+    private void HideShop()
     {
-        upgradeButton.onClick.AddListener(() => {
-            counter++;
-            if (counter != 1) return;
-            if (!toExec())
-            {
-                counter = 0;
-                return;
-            }
-            Destroy(gameObject);
-        });
+        shopState = Shop.activeSelf;
+        Shop.SetActive(false);
+        CloseShop.SetActive(false);
+        OpenShop.SetActive(false);
+        OpenShop.GetComponent<Button>().interactable = false;
     }
 
-    public void SetNoAction(Action toExec)
+    private void ShowShop()
     {
-        noButton.onClick.AddListener(() => {
-            counter++;
-            if (counter != 1) return;
-            toExec();
-            Destroy(gameObject);
-        });
-    }
-
-    public void SetDeleteAction(Action toExec)
-    {
-        deleteButton.onClick.AddListener(() => {
-                SetText(LocalizationManager.Localize("Towers.ConfirmSelling"));
-                
-        });
-
-        yesButton.onClick.AddListener(() =>
-        {
-            counter++;
-            if (counter != 1) return;
-            toExec();
-            Destroy(gameObject);
-        });
-    }
-
-    public void DisableButton(TowerInterractionButton button)
-    {
-        switch (button)
-        {
-            case TowerInterractionButton.Yes:
-                upgradeButton.interactable = false;
-                break;
-            case TowerInterractionButton.No:
-                noButton.interactable = false;
-                break;
-            case TowerInterractionButton.Delete:
-                deleteButton.interactable = false;
-                break;
-        }
+        Shop.SetActive(shopState);
+        CloseShop.SetActive(shopState);
+        OpenShop.SetActive(!shopState);
+        OpenShop.GetComponent<Button>().interactable = true;
     }
 }
 
 public enum TowerInterractionButton
 {
-    Yes,
-    No,
+    Upgrade,
+    Exit,
     Delete
 }

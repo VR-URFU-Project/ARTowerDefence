@@ -6,6 +6,9 @@ public class TowerInteraction : MonoBehaviour
     RaycastHit hit;
     [SerializeField] GameObject InteractionPanelPrefab;
 
+    [SerializeField]
+    private TowerInteractionPanelLogic panelLogic;
+
     [SerializeField] GameObject CloseShop;
     [SerializeField] GameObject OpenShop;
     [SerializeField] GameObject Shop;
@@ -34,82 +37,20 @@ public class TowerInteraction : MonoBehaviour
             var healthItem = tower.GetComponent<TowerHealthLogic>();
             if (healthItem == null) return;
 
-            HideShop();
+            //HideShop();
 
-            var askPanel = Instantiate(InteractionPanelPrefab);
-            var askPanelLogic = askPanel.GetComponent<TowerInteractionPanelLogic>();
-            askPanel.GetComponentInChildren<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-            askPanel.GetComponentInChildren<Canvas>().planeDistance = 0.19f;
+            //var askPanel = Instantiate(InteractionPanelPrefab);
+            //var askPanelLogic = askPanel.GetComponent<TowerInteractionPanelLogic>();
+            //askPanel.GetComponentInChildren<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            //askPanel.GetComponentInChildren<Canvas>().planeDistance = 0.19f;
 
-            askPanelLogic.SetYesAction(() =>
-            {
-                CameraHandler.ChangeShopItemSelectedStage(false);
-                MoneySystem.ChangeMoney(-healthItem.Tdata.UpdatePrice);
-                healthItem.Tdata.Upgrade();
-                var towerDatas = tower.GetComponentsInChildren<Canon>();
-                foreach (var data in towerDatas)
-                {
-                    data.Tdata.Upgrade();
-                }
+            //InteractionPanel.SetActive(true);
+            panelLogic.Activate(tower);
 
-                ShowShop();
+            
+            //askPanelLogic.SetSellingPriceText(healthItem.Tdata.SellPrice.ToString());
 
-                return true;
-            });
-
-            askPanelLogic.SetNoAction(() => {
-                CameraHandler.ChangeShopItemSelectedStage(false);
-                ShowShop();
-            });
-
-            askPanelLogic.SetDeleteAction(() =>
-            {
-                CameraHandler.ChangeShopItemSelectedStage(false);
-                MoneySystem.ChangeMoney(healthItem.Tdata.SellPrice);
-                Destroy(tower);
-                ShowShop();
-            });
-            askPanelLogic.SetSellingPriceText(healthItem.Tdata.SellPrice.ToString());
-
-            if (!UpdateController.CanUpgradeTower(healthItem.Tdata.Type, healthItem.Tdata.Level))
-            {
-                askPanelLogic.DisableButton(TowerInterractionButton.Yes);
-                askPanelLogic.ChangeSprite("max");
-                askPanelLogic.SetUpgradePriceInText("");
-                //askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.MaxLevel"), Color.green);
-                //askPanelLogic.DisableButton(TowerInterractionButton.Yes);
-            }
-            else if (healthItem.Tdata.UpdatePrice > MoneySystem.GetMoney())
-            {
-                //askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.NoMoney") + " " + healthItem.Tdata.UpdatePrice.ToString(), Color.red);
-                askPanelLogic.DisableButton(TowerInterractionButton.Yes);
-                askPanelLogic.ChangeSprite("noMoney");
-                askPanelLogic.SetUpgradePriceInText(healthItem.Tdata.UpdatePrice.ToString());
-            }
-            else
-            {
-                /*askPanelLogic.SetText(LocalizationManager.Localize("UpgradeTower.OK") + " " + (healthItem.Tdata.Level + 1).ToString()
-                    + "\n" + LocalizationManager.Localize("UpgradeTower.Cost") + " " + healthItem.Tdata.UpdatePrice.ToString());*/
-                askPanelLogic.ChangeSprite("norm");
-                askPanelLogic.SetUpgradePriceInText(healthItem.Tdata.UpdatePrice.ToString());
-            }
+            
         }
-    }
-
-    private void HideShop()
-    {
-        shopState = Shop.activeSelf;
-        Shop.SetActive(false);
-        CloseShop.SetActive(false);
-        OpenShop.SetActive(false);
-        OpenShop.GetComponent<Button>().interactable = false;
-    }
-
-    private void ShowShop()
-    {
-        Shop.SetActive(shopState);
-        CloseShop.SetActive(shopState);
-        OpenShop.SetActive(!shopState);
-        OpenShop.GetComponent<Button>().interactable = true;
     }
 }

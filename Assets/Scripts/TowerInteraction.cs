@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class TowerInteraction : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class TowerInteraction : MonoBehaviour
 
     private int layerMask;
 
+    private bool mouseButtonUped = false;
+    private bool mouseButtonDowned = false;
+    public CinemachineFreeLook cinemachineFreeLook;
+
     void Start()
     {
         layerMask = LayerMask.GetMask("Tower");
@@ -24,14 +30,21 @@ public class TowerInteraction : MonoBehaviour
     void Update()
     {
         //if (!(Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began || Input.GetMouseButtonDown(0))) return;
-        if (!(
-            Input.GetMouseButtonUp(0) || 
-            (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
-            )) return;
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        if (Input.GetMouseButtonUp(0)) mouseButtonUped = true;
+        else mouseButtonUped = false;
+
+        if (Input.GetMouseButtonDown(0)) mouseButtonDowned = true;
+        else mouseButtonDowned = false;
+
+        if (!(
+            (/*cinemachineFreeLook.m_XAxis.m_InputAxisValue == 0 && mouseButtonUped &&*/ 
+            Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary)
+            //|| (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+            )) return;
+
+        else if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
             var tower = hit.collider.gameObject;
             var healthItem = tower.GetComponent<TowerHealthLogic>();
@@ -48,9 +61,28 @@ public class TowerInteraction : MonoBehaviour
             panelLogic.Activate(tower);
 
             
-            //askPanelLogic.SetSellingPriceText(healthItem.Tdata.SellPrice.ToString());
-
-            
+            //askPanelLogic.SetSellingPriceText(healthItem.Tdata.SellPrice.ToString()); 
         }
+        
+
+    }
+
+    private bool ifMouseButtonClickedTheSameTower(Ray ray, GameObject tempGameObject)
+    {
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        {
+            var tower = hit.collider.gameObject;
+            var healthItem = tower.GetComponent<TowerHealthLogic>();
+            if (healthItem != null)
+            {
+                if (tempGameObject == null) tempGameObject = tower;
+                else if (tower == tempGameObject)
+                {
+                    tempGameObject = null;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -22,7 +22,7 @@ public class TowerInteractionPanelLogic : MonoBehaviour
     [SerializeField] GameObject Shop;
     private bool shopState;
 
-    private int counter = 0;
+    //private int counter = 0;
     private GameObject tower;
     private TowerData healthData;
 

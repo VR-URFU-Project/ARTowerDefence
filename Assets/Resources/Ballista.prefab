@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 7546589702349091342}
   - component: {fileID: -1162993566226000319}
   - component: {fileID: 426149963657683194}
+  - component: {fileID: 5853742956219726623}
   m_Layer: 3
   m_Name: Ballista
   m_TagString: Towers
@@ -625,8 +626,6 @@ MonoBehaviour:
   TargetTag: Target
   EnemyTag: Enemy
   FlyEnemyTag: Fly
-  partToRotate: {fileID: 4906380155987311093}
-  turnSpeed: 5
   bullet: {fileID: 7716559045001203718, guid: d78d5346d36c077469e1f5b38d54da58, type: 3}
   firePoint: {fileID: 1353202873411176373}
   towerType: 1
@@ -784,6 +783,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5853742956219726623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991681139334568636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09427aa617aa17a49928bcbcadfb7099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partToRotate: {fileID: 4906380155987311093}
+  turnSpeed: 5
+  canonScript: {fileID: 34059729279762986}
 --- !u!1 &7033092216996269212
 GameObject:
   m_ObjectHideFlags: 0

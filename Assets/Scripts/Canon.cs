@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -9,14 +9,8 @@ public class Canon : MonoBehaviour
     [Header("Tower Info")]
     public TowerData Tdata;
 
-    private Transform target = null;
+    private List<Transform> targets = null;
     public GameObject parent;
-
-    [Header("Attributes")]
-    [SerializeField]
-    private double fireCountdown = 0d;
-
-    private bool partSys_isON = false;
 
     [Header("Audio")]
     [SerializeField] AudioClip ShootSound;
@@ -27,38 +21,26 @@ public class Canon : MonoBehaviour
     public string EnemyTag = "Enemy";
     public string FlyEnemyTag = "Fly";
 
-    public Transform partToRotate;
-    public float turnSpeed = 5f;
-
     public Bullet bullet;
     public Transform firePoint;
 
     private BulletSpawner bulletSpawner;
 
-    [Header("TreeHouse Setup Fileds")]
-    //public GameObject archer_1;
-    //public GameObject archer_2;
-    [SerializeField] public TowerType towerType;
-
     [Header("Lazer Settings")]
     private LineRenderer lineRenderer;
-    private bool useLazer = false;
     private int secCounter = 1;
 
-    // флаг для дерева с лучниками
-    //private bool treeIsAtacking = false;
-
+    [Header("Shroom Settings")]
     private ParticleSystem[] particleSystems;
-
     private bool ifEnemiesNearBy = false;
 
     [Header("Special Settings")]
     private const double _scale = 0.05;
+    private double fireCountdown = 0d;
 
     void Start()
     {
         bulletSpawner = GetComponent<BulletSpawner>();
-        bullet = Resources.Load<Bullet>("Bullet");
         lineRenderer = GetComponent<LineRenderer>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         parent = GameObject.FindGameObjectWithTag("GamingPlace");
@@ -66,89 +48,51 @@ public class Canon : MonoBehaviour
         audio = GetComponent<AudioSource>();
         foreach (var go in particleSystems) go.Stop();
 
-        if (towerType == TowerType.TreeHouse && Tdata == null)
-        {
-            Tdata = TowerManager.GetTreeHouse();
-        }
+        //if (towerType == TowerType.TreeHouse && Tdata == null)
+        //{
+        //    Tdata = TowerManager.GetTreeHouse();
+        //}
     }
 
     void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
-        //GameObject[] fly_enemies = GameObject.FindGameObjectsWithTag(FlyEnemyTag);
-        GameObject nearestEnemy;
+        //GameObject nearestEnemy = null;
+        var nearestEnemys = new List<GameObject>();
 
         switch (Tdata.Type)
         {
             case TowerType.Ballista:
-                nearestEnemy = GetNearestAvailableEnemy(enemies);
-
-                // проверка на наземного врага
-                    if (nearestEnemy != null)
-                    {
-                        if (nearestEnemy.transform.parent.tag == EnemyTag)
-                        {
-                            target = nearestEnemy.transform;
-                        }
-                    }
-                    else
-                        target = null;
-                
+                nearestEnemys = GetNearestAvailableEnemys(
+                    enemies
+                    .Where(x => x.transform.parent.tag == EnemyTag)
+                    .ToArray());
                 break;
 
             case TowerType.TreeHouse:
-                nearestEnemy = GetNearestAvailableEnemy(enemies/*.Concat(fly_enemies).ToArray()*/);
-
-                if (nearestEnemy != null)
-                    target = nearestEnemy.transform;
-                else
-                    target = null;
+                nearestEnemys = GetNearestAvailableEnemys(enemies);
                 break;
 
             case TowerType.Mushroom:
-                if (/*fly_enemies.Length > 0 ||*/ enemies.Length > 0)
-                {
-                    ifEnemiesNearBy = false;
-                    var radius = Tdata.Range * _scale;
-                        //foreach (GameObject fly in fly_enemies)
-                        //{
-                        //    if (Vector3.Distance(transform.position, fly.transform.position) <= radius)
-                        //    {
-                        //        ifEnemiesNearBy = true;
-                        //    }
-                        //}
+                ifEnemiesNearBy = false;
+                var radius = Tdata.Range * _scale;
 
-                        foreach (GameObject enemy in enemies)
-                        {
-                            if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
-                            {
-                                ifEnemiesNearBy = true;
-                            }
-                        }
-
-                    partSys_isON = ifEnemiesNearBy;
-                }
-                else
+                foreach (GameObject enemy in enemies)
                 {
-                    ifEnemiesNearBy = false;
-                    partSys_isON = false;
+                    if (Vector3.Distance(transform.position, enemy.transform.position) <= radius)
+                        ifEnemiesNearBy = true;
                 }
                 break;
+
             case TowerType.LazerTower:
-                nearestEnemy = GetNearestAvailableEnemy(enemies/*.Concat(fly_enemies).ToArray()*/);
-
-                if (nearestEnemy != null)
-                {
-                    target = nearestEnemy.transform;
-                    useLazer = true;
-                }
-                else
-                {
-                    target = null;
-                }
-
+                nearestEnemys = GetNearestAvailableEnemys(enemies);
                 break;
         }
+
+        if (nearestEnemys != null)
+            targets = nearestEnemys.Select(x => x.transform).ToList();
+        else
+            targets = null;
     }
 
     private GameObject GetNearestAvailableEnemy(GameObject[] enemies)
@@ -169,15 +113,37 @@ public class Canon : MonoBehaviour
         return null;
     }
 
+    private List<GameObject> GetNearestAvailableEnemys(GameObject[] enemies)
+    {
+        var nearestEnemys = new List<GameObject>();
+
+        var a = enemies
+            .Where(x => Vector3.Distance(transform.position, x.transform.position) <= Tdata.Range * _scale)
+            .ToList();
+        a.Sort((x, y) =>
+        Vector3.Distance(transform.position, x.transform.position)
+        .CompareTo(Vector3.Distance(transform.position, y.transform.position)));
+        
+        if(a.Count == 0) return null;
+
+        for (int i=0; i< Tdata.TargetsAmount; ++i)
+            nearestEnemys.Add(a[i % a.Count]);
+        return nearestEnemys;
+    }
+
     void Update()
     {
-        if (partSys_isON)
+        fireCountdown -= Time.deltaTime;
+
+        if (ifEnemiesNearBy)
         {
-            //Debug.Log("partSys_isON");
             foreach (var go in particleSystems)
+                if (!go.isPlaying) go.Play();
+
+            if (fireCountdown <= 0f)
             {
-                if (!go.isPlaying)
-                    go.Play();
+                Explode();
+                fireCountdown = 1d / Tdata.AtackSpeed;
             }
         }
         else
@@ -185,64 +151,36 @@ public class Canon : MonoBehaviour
             foreach (var go in particleSystems) go.Stop();
         }
 
-        if (target == null && !ifEnemiesNearBy)
+        if (targets == null)
         {
-            if (useLazer)
+            if (Tdata.Type == TowerType.LazerTower)
             {
-                //if (lineRenderer.enabled)
-                //{
-                    lineRenderer.enabled = false;
-                //}
+                lineRenderer.enabled = false;
+                secCounter = 1;
             }
-            secCounter = 1;
             return;
+        }
+
+        if (Tdata.Type == TowerType.LazerTower)
+        {
+            UseLazer();
+            if (fireCountdown <= 0f)
+            {
+                audio.PlayOneShot(ShootSound, 0.99f);
+                foreach(var target in targets)
+                    Damage(target.parent.transform);
+                fireCountdown = 1d / Tdata.AtackSpeed;
+
+                if (secCounter < 10) secCounter += 1;
+            }
         }
         else
         {
-            if (ifEnemiesNearBy)
+            if (fireCountdown <= 0f)
             {
-                if (fireCountdown <= 0f)
-                {
-                    Explode();
-                    fireCountdown = 1d / Tdata.AtackSpeed;
-                }
+                Shoot();
+                fireCountdown = 1d / Tdata.AtackSpeed;
             }
-
-            if (target != null)
-            {
-                void LookOnTarget()
-                {
-                    Vector3 direction = target.position - transform.position;
-                    Quaternion lookRotation = Quaternion.LookRotation(direction);
-                    Vector3 rotationVector = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-                    partToRotate.rotation = Quaternion.Euler(0f, rotationVector.y, 0f);
-                }
-
-                if (useLazer)
-                {
-                    UseLazer();
-                    if (fireCountdown <= 0f)
-                    {
-                        audio.PlayOneShot(ShootSound, 0.99f);
-                        Damage(target.parent.transform);
-                        fireCountdown = 1d / Tdata.AtackSpeed;
-
-                        if (secCounter < 10) secCounter += 1;
-                    }
-                }
-                else
-                {
-                    LookOnTarget();
-                    if (fireCountdown <= 0f)
-                    {
-                        Shoot();
-                        fireCountdown = 1d / Tdata.AtackSpeed;
-                    }
-                }
-
-            }
-            fireCountdown -= Time.deltaTime;
-
         }
     }
 
@@ -252,25 +190,32 @@ public class Canon : MonoBehaviour
         {
             lineRenderer.enabled = true;
         }
-
-        lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, target.position);
+        lineRenderer.positionCount = targets.Count * 2;
+        for(int i=0; i< targets.Count; ++i)
+        {
+            lineRenderer.SetPosition(i*2, firePoint.position);
+            lineRenderer.SetPosition(i*2+1, targets[i].position);
+        }
     }
 
     void Shoot()
     {
-        // TODO заменить Instantiate на Pulling.get();
+        // TODO Р·Р°РјРµРЅРёС‚СЊ Instantiate РЅР° Pulling.get();
         //GameObject bulletGO = Instantiate(bullet, firePoint.position, firePoint.rotation, parent.transform);
-        Bullet bullet = bulletSpawner.bulletPool.Get();
         audio.PlayOneShot(ShootSound);
         //Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-        if (bullet != null)
+        foreach (var target in targets)
         {
-            //var speed = Tdata.ProjectileSpeed;
-            //if (speed > 0)
-            //    bullet.speed = Tdata.ProjectileSpeed;
-            bullet.Seek(target);
+            Bullet bullet = bulletSpawner.bulletPool.Get();
+
+            if (bullet != null)
+            {
+                //var speed = Tdata.ProjectileSpeed;
+                //if (speed > 0)
+                //    bullet.speed = Tdata.ProjectileSpeed;
+                bullet.Seek(target);
+            }
         }
     }
 
@@ -282,30 +227,30 @@ public class Canon : MonoBehaviour
         foreach (var collider in colliders)
         {
             if (collider.tag == EnemyTag || collider.tag == FlyEnemyTag)
-            {
                 Damage(collider.transform);
-            }
         }
     }
 
     void Damage(Transform enemy)
     {
 
-        if (useLazer)
-        {
+        if (Tdata.Type == TowerType.LazerTower)
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage * secCounter);
-            //Debug.Log($"Lazer: {Tdata.Damage * secCounter}!!");
-        }
         else
-        {
-            //Debug.Log("DAMAGEEEE!!");
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage);
-        }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, (float)(Tdata.Range * _scale));
+    }
+
+    public Transform GetTarget()
+    {
+        if (targets == null)
+            return null;
+        else
+            return targets[0];
     }
 }

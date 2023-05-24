@@ -241,7 +241,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1902333837422678933}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7025869721348429863}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1302028041114887116
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +814,9 @@ MonoBehaviour:
   questionPlace: {fileID: 7804939547472557221}
   upgradePricePlace: {fileID: 2236390962384776888}
   sellingPricePlace: {fileID: 5879193665622095321}
+  CloseShop: {fileID: 0}
+  OpenShop: {fileID: 0}
+  Shop: {fileID: 0}
   maxSprite: {fileID: 21300000, guid: 81520ea286c2d514eab550a4b6ce1120, type: 3}
   noMoneySprite: {fileID: 21300000, guid: a8f6d959bd5eae64ebf5f71a304427af, type: 3}
   normSprite: {fileID: 21300000, guid: 3d8f57ae2357ecd45b7305349bebe78b, type: 3}

@@ -20,7 +20,11 @@ public class TowerInteraction : MonoBehaviour
 
     void Update()
     {
-        if (!(Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began || Input.GetMouseButtonDown(0))) return;
+        //if (!(Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began || Input.GetMouseButtonDown(0))) return;
+        if (!(
+            Input.GetMouseButtonUp(0) || 
+            (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+            )) return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

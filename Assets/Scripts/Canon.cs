@@ -9,15 +9,8 @@ public class Canon : MonoBehaviour
     [Header("Tower Info")]
     public TowerData Tdata;
 
-    //private Transform target = null;
     private List<Transform> targets = null;
     public GameObject parent;
-
-    [Header("Attributes")]
-    [SerializeField]
-    private double fireCountdown = 0d;
-
-    //private bool partSys_isON = false;
 
     [Header("Audio")]
     [SerializeField] AudioClip ShootSound;
@@ -33,25 +26,17 @@ public class Canon : MonoBehaviour
 
     private BulletSpawner bulletSpawner;
 
-    //[Header("TreeHouse Setup Fileds")]
-    //public GameObject archer_1;
-    //public GameObject archer_2;
-    //[SerializeField] public TowerType towerType;
-
     [Header("Lazer Settings")]
     private LineRenderer lineRenderer;
-    //private bool useLazer = false;
     private int secCounter = 1;
 
-    // флаг для дерева с лучниками
-    //private bool treeIsAtacking = false;
-
+    [Header("Shroom Settings")]
     private ParticleSystem[] particleSystems;
-
     private bool ifEnemiesNearBy = false;
 
     [Header("Special Settings")]
     private const double _scale = 0.05;
+    private double fireCountdown = 0d;
 
     void Start()
     {

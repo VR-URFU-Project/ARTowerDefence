@@ -82,7 +82,8 @@ public class EnemyScript : MonoBehaviour
         if(!dead)
         {
             agent.isStopped = false;
-            gameObject.tag = "Enemy";
+            // если раскомментировать строку ниже, то этот тег начнёт присваиваться всем врагам (в том числе и гарпиям)
+            //gameObject.tag = "Enemy";
             gameObject.GetComponent<Collider>().enabled = true;
             agent.SetDestination(target.position);
 

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: aa20b411130b185438a70f9ca5c20fa3, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: d0677cf4ee94c1a4ba46e11d409acfb1, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 4e25f4cde7019f445ab29a5643faf5f7, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2282,9 +2282,9 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -3693,10 +3693,10 @@ ReflectionProbe:
   m_Enabled: 1
   serializedVersion: 2
   m_Type: 0
-  m_Mode: 1
+  m_Mode: 0
   m_RefreshMode: 0
   m_TimeSlicingMode: 0
-  m_Resolution: 128
+  m_Resolution: 2048
   m_UpdateFrequency: 0
   m_BoxSize: {x: 10, y: 10, z: 10}
   m_BoxOffset: {x: 0, y: 0, z: 0}
@@ -3710,9 +3710,9 @@ ReflectionProbe:
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
   m_BlendDistance: 1
-  m_HDR: 1
+  m_HDR: 0
   m_BoxProjection: 1
-  m_RenderDynamicObjects: 0
+  m_RenderDynamicObjects: 1
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
@@ -5728,11 +5728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0b4019bf9dc7b4e8c639d25dce5ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractionPanelPrefab: {fileID: 4430286153569687469, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
   panelLogic: {fileID: 1033051459}
-  CloseShop: {fileID: 7018229155609798808}
-  OpenShop: {fileID: 7018229155669932993}
-  Shop: {fileID: 5943152342187144982}
+  cinemachineFreeLook: {fileID: 1841130225}
 --- !u!224 &505638899425755022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12002,6 +11999,10 @@ PrefabInstance:
     - target: {fileID: 8726647216373744581, guid: adc5475ca8bb6c4488fecc2d434ab9b6, type: 3}
       propertyPath: m_Name
       value: Plane
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726647216373744581, guid: adc5475ca8bb6c4488fecc2d434ab9b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8726647216373744581, guid: adc5475ca8bb6c4488fecc2d434ab9b6, type: 3}
       propertyPath: m_StaticEditorFlags

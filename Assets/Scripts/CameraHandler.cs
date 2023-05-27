@@ -58,7 +58,7 @@ public class CameraHandler : MonoBehaviour
         settingsMenu_enabled = settingsMenu.activeSelf;
         shop = GameObject.FindGameObjectWithTag(shopTag);
         shape = GameObject.FindGameObjectWithTag(shapeTag);
-        if (shape != null || gamePause_enabled || settingsMenu_enabled || shopItem_selected)
+        if (shape != null || gamePause_enabled || settingsMenu_enabled || shopItem_selected || !Input.GetMouseButton(0))
         {
             virtualCamera.SetActive(false);
         }

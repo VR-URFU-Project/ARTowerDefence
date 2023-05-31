@@ -23,13 +23,13 @@ public class StartWawe : MonoBehaviour
     private float timeoutForSpawn = 0.2f;
     private int spawnBunchSize = 10000;
 
-    //private EnemySpawner enemySpawner;
+    private EnemySpawner enemySpawner;
 
     private void Start()
     {
         //mainArea = GameObject.FindGameObjectWithTag("GamingPlace");
         //activeEnemies = new LinkedList<GameObject>();
-        //enemySpawner = GetComponent<EnemySpawner>();
+        enemySpawner = gameObject.GetComponent<EnemySpawner>();
         dataQueue = new Queue<SubwaveData>();
         VictoryPanel.SetActive(false);
     }
@@ -183,25 +183,44 @@ public class StartWawe : MonoBehaviour
         var newData = MonsterController.GetMutatedEnemy(data);
 
         // задаём значения объекту в пуле
-        //enemySpawner.SetVariables(spawnPlaces[index].transform.position, newData, mainArea.transform);
+        enemySpawner.SetVariables(spawnPlaces[index].transform.position, newData, mainArea.transform);
 
-        var newEnemy = Instantiate(newData.prefab, spawnPlaces[index].transform.position, new Quaternion(), mainArea.transform);
-        
+        //var newEnemy = Instantiate(newData.prefab, spawnPlaces[index].transform.position, new Quaternion(), mainArea.transform);
+
         // спавним объект из пула
-        //var newEnemy = enemySpawner.enemyPool.Get();
+        EnemyScript newEnemy = null;
+        switch (data.Name)
+        {
+            case "Goblin":
+                newEnemy = enemySpawner.GoblinPool.Get();
+                break;
+            case "Wolf":
+                newEnemy = enemySpawner.WolfPool.Get();
+                break;
+            case "Orc":
+                newEnemy = enemySpawner.OrcPool.Get();
+                break;
+            case "Harpy":
+                newEnemy = enemySpawner.HarpyPool.Get();
+                break;
+        }
 
         //newEnemy.transform.localPosition = spawnPlaces[index].transform.localPosition; 
-        newEnemy.GetComponent<EnemyScript>().SetTarget(crystal);
-        newEnemy.GetComponent<EnemyScript>().BasicData = newData;
-        //newEnemy.gameObject.SetActive(true);
-        //activeEnemies.AddLast(newEnemy);
-        ++activeEnemies;
-        newEnemy.GetComponent<EnemyScript>().SetKillEvent(() =>
+        if (newEnemy != null)
         {
-            //MoneySystem.ChangeMoney(newData.Money);
-            //activeEnemies.Remove(newEnemy);
-            --activeEnemies;
-        });
+
+            newEnemy/*.GetComponent<EnemyScript>()*/.SetTarget(crystal);
+            newEnemy/*.GetComponent<EnemyScript>()*/.BasicData = newData;
+            newEnemy.gameObject.SetActive(true);
+            //activeEnemies.AddLast(newEnemy);
+            ++activeEnemies;
+            newEnemy.GetComponent<EnemyScript>().SetKillEvent(() =>
+            {
+                //MoneySystem.ChangeMoney(newData.Money);
+                //activeEnemies.Remove(newEnemy);
+                --activeEnemies;
+            });
+        }
     }
 
     public void Save()

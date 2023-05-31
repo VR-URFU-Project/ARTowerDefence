@@ -621,14 +621,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
-  fireCountdown: 0
   ShootSound: {fileID: 8300000, guid: eda58b574acafc740b215bf98f8dd19b, type: 3}
   TargetTag: Target
   EnemyTag: Enemy
   FlyEnemyTag: Fly
   bullet: {fileID: 7716559045001203718, guid: d78d5346d36c077469e1f5b38d54da58, type: 3}
   firePoint: {fileID: 1353202873411176373}
-  towerType: 1
 --- !u!114 &-2978468792708891163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,6 +639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8ca0e65653909478722402233f05b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePoints:
+  - {fileID: 1353202873411176373}
 --- !u!114 &2913607412306116368
 MonoBehaviour:
   m_ObjectHideFlags: 0

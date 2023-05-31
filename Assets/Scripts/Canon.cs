@@ -47,17 +47,11 @@ public class Canon : MonoBehaviour
         particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>();
         audio = GetComponent<AudioSource>();
         foreach (var go in particleSystems) go.Stop();
-
-        //if (towerType == TowerType.TreeHouse && Tdata == null)
-        //{
-        //    Tdata = TowerManager.GetTreeHouse();
-        //}
     }
 
     void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(TargetTag);
-        //GameObject nearestEnemy = null;
         var nearestEnemys = new List<GameObject>();
 
         switch (Tdata.Type)
@@ -93,24 +87,6 @@ public class Canon : MonoBehaviour
             targets = nearestEnemys.Select(x => x.transform).ToList();
         else
             targets = null;
-    }
-
-    private GameObject GetNearestAvailableEnemy(GameObject[] enemies)
-    {
-        var shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-        foreach (GameObject enemy in enemies)
-        {
-            var distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
-            {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
-            }
-        }
-        if (shortestDistance <= Tdata.Range * _scale)
-            return nearestEnemy;
-        return null;
     }
 
     private List<GameObject> GetNearestAvailableEnemys(GameObject[] enemies)

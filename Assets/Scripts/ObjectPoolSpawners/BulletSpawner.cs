@@ -7,7 +7,12 @@ public class BulletSpawner : MonoBehaviour
 {
     public ObjectPool<Bullet> bulletPool;
 
+    [SerializeField]
+    public List<Transform> firePoints;
+
     private Canon canonScript;
+
+    private int previous = -1;
 
     private void Start()
     {
@@ -18,7 +23,7 @@ public class BulletSpawner : MonoBehaviour
 
     private Bullet CreateBullet()
     {
-        Bullet bullet = Instantiate(canonScript.bullet, canonScript.firePoint.position, canonScript.firePoint.rotation, canonScript.parent.transform);
+        Bullet bullet = Instantiate(canonScript.bullet, firePoints[0].position, firePoints[0].rotation, canonScript.parent.transform);
 
         bullet.SetPool(bulletPool);
 
@@ -29,8 +34,21 @@ public class BulletSpawner : MonoBehaviour
     {
         // set the transform
         bullet.gameObject.transform.parent = canonScript.parent.transform;
-        bullet.gameObject.transform.position = canonScript.firePoint.position;
-        bullet.gameObject.transform.rotation = canonScript.firePoint.rotation;
+
+        int a;
+
+        if (firePoints.Count == 1)
+            a = 0;
+        else
+        {
+            do
+            {
+                a = Random.Range(0, firePoints.Count);
+            } while (a == previous);
+        }
+
+        bullet.gameObject.transform.position = firePoints[a].position;
+        bullet.gameObject.transform.rotation = firePoints[a].rotation;
 
         // activate GO
         bullet.gameObject.SetActive(true);

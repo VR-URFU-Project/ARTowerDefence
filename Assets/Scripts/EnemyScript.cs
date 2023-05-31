@@ -11,7 +11,11 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Transform target;
     public MonsterData BasicData;
 
-    //private ObjectPool<EnemyScript> enemyPool;
+    private ObjectPool<EnemyScript> enemyPool;
+/*    private ObjectPool<EnemyScript> GoblinPool;
+      private ObjectPool<EnemyScript> WolfPool;
+      private ObjectPool<EnemyScript> OrcPool;
+      private ObjectPool<EnemyScript> HarpyPool;*/
 
     public delegate void OnKill();
     private OnKill KillEvent = null;
@@ -55,14 +59,13 @@ public class EnemyScript : MonoBehaviour
     IEnumerator WaitBeforeDeath(float seconds)
     {
         agent.baseOffset = 0f;
-        yield return new WaitForSeconds(seconds); Destroy(gameObject);
-        /*if (enemyPool == null) Destroy(gameObject);
+        yield return new WaitForSeconds(seconds); //Destroy(gameObject);
+        if (enemyPool == null) Destroy(gameObject);
         else
         {
-            //TriggerExit();
-            //enemyPool.Release(this);
-
-        }*/
+            TriggerExit();
+            enemyPool.Release(this);
+        }
         
     }
 
@@ -82,8 +85,10 @@ public class EnemyScript : MonoBehaviour
         if(!dead)
         {
             agent.isStopped = false;
-            // если раскомментировать строку ниже, то этот тег начнёт присваиваться всем врагам (в том числе и гарпиям)
-            //gameObject.tag = "Enemy";
+
+            if (!BasicData.Flight) gameObject.tag = "Enemy";
+            else gameObject.tag = "Fly";
+
             gameObject.GetComponent<Collider>().enabled = true;
             agent.SetDestination(target.position);
 
@@ -151,8 +156,23 @@ public class EnemyScript : MonoBehaviour
             audio.PlayOneShot(AttackSound);
     }
 
-/*    public void SetPool(ObjectPool<EnemyScript> enemyPool)
+    public void SetPool(ObjectPool<EnemyScript> enemyPool)
     {
         this.enemyPool = enemyPool;
-    }*/
+        /*switch (monsterName)
+        {
+            case "Goblin":
+                GoblinPool = enemyPool;
+                break;
+            case "Wolf":
+                WolfPool = enemyPool;
+                break;
+            case "Orc":
+                OrcPool = enemyPool;
+                break;
+            case "Harpy":
+                HarpyPool = enemyPool;
+                break;
+        }*/
+    }
 }

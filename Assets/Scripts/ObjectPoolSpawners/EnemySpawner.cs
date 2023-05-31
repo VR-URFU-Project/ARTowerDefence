@@ -6,7 +6,10 @@ using UnityEngine.Pool;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public ObjectPool<EnemyScript> enemyPool;
+    public ObjectPool<EnemyScript> GoblinPool;
+    public ObjectPool<EnemyScript> WolfPool;
+    public ObjectPool<EnemyScript> OrcPool;
+    public ObjectPool<EnemyScript> HarpyPool;
 
     private Transform spawnPlace;
     private MonsterData monsterData;
@@ -15,7 +18,16 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        enemyPool = new ObjectPool<EnemyScript>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool, OnDestroyEnemy, 
+        GoblinPool = new ObjectPool<EnemyScript>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool, OnDestroyEnemy, 
+            true, defaultCapacity: 1000, maxSize: 2000);
+
+        WolfPool = new ObjectPool<EnemyScript>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool, OnDestroyEnemy,
+            true, defaultCapacity: 1000, maxSize: 2000);
+
+        OrcPool = new ObjectPool<EnemyScript>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool, OnDestroyEnemy,
+            true, defaultCapacity: 1000, maxSize: 2000);
+
+        HarpyPool = new ObjectPool<EnemyScript>(CreateEnemy, OnTakeEnemyFromPool, OnReturnEnemyToPool, OnDestroyEnemy,
             true, defaultCapacity: 1000, maxSize: 2000);
     }
 
@@ -29,21 +41,28 @@ public class EnemySpawner : MonoBehaviour
         this.mainArea = mainArea;
     }
 
-/*    public void SetPoolFromSpawner(EnemyScript enemyScript)
-    {
-        enemyScript.SetPool(enemyPool);
-    }*/
-
     private EnemyScript CreateEnemy()
     {
         var enemyObject = Instantiate(
                                         monsterData.prefab, coordinates, new Quaternion(), mainArea);
         var enemyScript = enemyObject.GetComponent<EnemyScript>();
 
-        //SetPoolFromSpawner(enemyScript);
-        
         // неактивно из-за того, что в EnemyScript пул в комментарии
-        //enemyScript.SetPool(enemyPool);
+        switch (monsterData.Name)
+        {
+            case "Goblin":
+                enemyScript.SetPool(GoblinPool);
+                break;
+            case "Wolf":
+                enemyScript.SetPool(WolfPool);
+                break;
+            case "Orc":
+                enemyScript.SetPool(OrcPool);
+                break;
+            case "Harpy":
+                enemyScript.SetPool(HarpyPool);
+                break;
+        }
 
         return enemyScript;
     }

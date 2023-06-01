@@ -18,11 +18,13 @@ public class SelectedTowerBehaviour : MonoBehaviour
         {
             sphereRadius.gameObject.transform.position = tower.gameObject.transform.position;
             sphereRadius.SetActive(true);
+            radius.SetActive(false);
         }
         else
         {
             radius.gameObject.transform.position = tower.gameObject.transform.position;
             radius.SetActive(true);
+            sphereRadius.SetActive(false);
         }
     }
 

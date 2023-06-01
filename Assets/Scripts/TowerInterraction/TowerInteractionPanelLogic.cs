@@ -31,10 +31,16 @@ public class TowerInteractionPanelLogic : MonoBehaviour
     public Sprite noMoneySprite;
     public Sprite normSprite;
 
+    [Header("Selected Behaviour")]
+    [SerializeField]
+    private SelectedTowerBehaviour selectedBehaviour;
+
     public void Activate(GameObject tower)
     {
         this.tower = tower;
         healthData = tower.GetComponent<TowerHealthLogic>().Tdata;
+
+        selectedBehaviour.SelectTower(tower);
 
         DoMakeUp();
 
@@ -83,6 +89,8 @@ public class TowerInteractionPanelLogic : MonoBehaviour
 
     public void OnDisable()
     {
+        selectedBehaviour.DeselectTower();
+
         upgradeButton.interactable = true;
         upgradePricePlace.color = Color.black;
         questionPlace.color = Color.black;
@@ -111,6 +119,8 @@ public class TowerInteractionPanelLogic : MonoBehaviour
             upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = normSprite;
             SetUpdatePriceText(healthData.UpdatePrice.ToString(), Color.black);
         }
+
+        selectedBehaviour.UpdateRadius();
     }
 
     private void SetUpdatePriceText(string text, Color color)

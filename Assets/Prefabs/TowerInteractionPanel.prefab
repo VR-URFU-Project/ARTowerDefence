@@ -704,6 +704,7 @@ GameObject:
   - component: {fileID: 6053678460849518365}
   - component: {fileID: 3809401910580380986}
   - component: {fileID: 6908049686669098411}
+  - component: {fileID: 3182456219761123418}
   m_Layer: 0
   m_Name: TowerInteractionPanel
   m_TagString: Untagged
@@ -820,6 +821,20 @@ MonoBehaviour:
   maxSprite: {fileID: 21300000, guid: 81520ea286c2d514eab550a4b6ce1120, type: 3}
   noMoneySprite: {fileID: 21300000, guid: a8f6d959bd5eae64ebf5f71a304427af, type: 3}
   normSprite: {fileID: 21300000, guid: 3d8f57ae2357ecd45b7305349bebe78b, type: 3}
+  selectedBehaviour: {fileID: 3182456219761123418}
+--- !u!114 &3182456219761123418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4430286153569687469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e0db80d3866384ca2b38d7cad5747d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: {fileID: 0}
 --- !u!1 &5500376271350495922
 GameObject:
   m_ObjectHideFlags: 0

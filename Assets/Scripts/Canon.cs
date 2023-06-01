@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.Networking.Types;
 
 public class Canon : MonoBehaviour
 {
@@ -178,7 +179,7 @@ public class Canon : MonoBehaviour
     {
         // TODO заменить Instantiate на Pulling.get();
         //GameObject bulletGO = Instantiate(bullet, firePoint.position, firePoint.rotation, parent.transform);
-        audio.PlayOneShot(ShootSound);
+        if (!audio.isPlaying) audio.PlayOneShot(ShootSound);
         //Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         foreach (var target in targets)

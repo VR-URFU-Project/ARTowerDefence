@@ -77,7 +77,7 @@ public class EnemyScript : MonoBehaviour
         if(KillEvent != null)
             KillEvent();
         MoneySystem.ChangeMoney(BasicData.Money);
-        if(!audio.isPlaying) audio.PlayOneShot(DeathSound);
+        audio.PlayOneShot(DeathSound);
         StartCoroutine(WaitBeforeDeath(1.7f));
     }
 

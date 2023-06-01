@@ -179,7 +179,7 @@ public class Canon : MonoBehaviour
     {
         // TODO заменить Instantiate на Pulling.get();
         //GameObject bulletGO = Instantiate(bullet, firePoint.position, firePoint.rotation, parent.transform);
-        if (!audio.isPlaying) audio.PlayOneShot(ShootSound);
+        audio.PlayOneShot(ShootSound);
         //Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         foreach (var target in targets)

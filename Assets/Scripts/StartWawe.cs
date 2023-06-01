@@ -185,11 +185,9 @@ public class StartWawe : MonoBehaviour
         // задаём значения объекту в пуле
         enemySpawner.SetVariables(spawnPlaces[index].transform.position, newData, mainArea.transform);
 
-        //var newEnemy = Instantiate(newData.prefab, spawnPlaces[index].transform.position, new Quaternion(), mainArea.transform);
-
         // спавним объект из пула
         EnemyScript newEnemy = null;
-        switch (data.Name)
+        switch (newData.Name)
         {
             case "Goblin":
                 newEnemy = enemySpawner.GoblinPool.Get();
@@ -203,6 +201,12 @@ public class StartWawe : MonoBehaviour
             case "Harpy":
                 newEnemy = enemySpawner.HarpyPool.Get();
                 break;
+        }
+
+        if (newData.Name.Contains("_black") || newData.Name.Contains("_purple"))
+        {
+            newEnemy = Instantiate(newData.prefab, spawnPlaces[index].transform.position, new Quaternion(), mainArea.transform)
+                .GetComponent<EnemyScript>();
         }
 
         //newEnemy.transform.localPosition = spawnPlaces[index].transform.localPosition; 

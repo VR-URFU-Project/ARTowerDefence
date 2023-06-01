@@ -59,7 +59,8 @@ public class EnemyScript : MonoBehaviour
     IEnumerator WaitBeforeDeath(float seconds)
     {
         agent.baseOffset = 0f;
-        yield return new WaitForSeconds(seconds); //Destroy(gameObject);
+        yield return new WaitForSeconds(seconds); 
+        //Destroy(gameObject);
         if (enemyPool == null) Destroy(gameObject);
         else
         {
@@ -76,7 +77,7 @@ public class EnemyScript : MonoBehaviour
         if(KillEvent != null)
             KillEvent();
         MoneySystem.ChangeMoney(BasicData.Money);
-        audio.PlayOneShot(DeathSound);
+        if(!audio.isPlaying) audio.PlayOneShot(DeathSound);
         StartCoroutine(WaitBeforeDeath(1.7f));
     }
 

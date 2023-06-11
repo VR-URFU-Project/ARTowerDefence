@@ -20,6 +20,8 @@ public class StartWawe : MonoBehaviour
     private int activeEnemies = 0;
     //private LinkedList<GameObject> activeEnemies;
 
+    private int difficultyTime;
+
     private float timeoutForSpawn = 0.2f;
     private int spawnBunchSize = 10000;
 
@@ -32,11 +34,15 @@ public class StartWawe : MonoBehaviour
         enemySpawner = gameObject.GetComponent<EnemySpawner>();
         dataQueue = new Queue<SubwaveData>();
         VictoryPanel.SetActive(false);
+
+        var reader = QSReader.Create("GameDifficulty");
+        var difficulty = reader.Exists("difficulty") ? reader.Read<int>("difficulty") : 0;
+        SwitchDifficulty(difficulty);
     }
 
     private void Update()
     {
-        if (activeEnemies == 0 && dataQueue.Count == 0 && curWave >= WaveController.WawesInfo.Count)
+        if (activeEnemies == 0 && dataQueue.Count == 0 && WaveController.WavesTimeInfo[curWave] > difficultyTime /*curWave >= WaveController.WawesInfo.Count*/)
         {
             //Debug.Log("Победа");
             VictoryPanel.SetActive(true);
@@ -46,6 +52,8 @@ public class StartWawe : MonoBehaviour
         if (timer == DISABLED_TIMER_VALUE) return;
         timer -= Time.deltaTime;
         if (timer > 0) return;
+
+        if (WaveController.WavesTimeInfo[curWave] > difficultyTime) return;
 
         GenerateNextSubwave();
         if (timer == DISABLED_TIMER_VALUE) return;
@@ -224,6 +232,22 @@ public class StartWawe : MonoBehaviour
                 //activeEnemies.Remove(newEnemy);
                 --activeEnemies;
             });
+        }
+    }
+
+    public void SwitchDifficulty(int difficulty)
+    {
+        switch ((Difficulty)difficulty)
+        {
+            case Difficulty.easy:
+                difficultyTime = 300;
+                break;
+            case Difficulty.normal:
+                difficultyTime = 600;
+                break;
+            case Difficulty.hard:
+                difficultyTime = 900;
+                break;
         }
     }
 

@@ -99,4 +99,13 @@ public static class MonsterController
                 break;
         }
     }
+
+    public static MonsterData UpgradeEnemy(MonsterData data, int times)
+    {
+        var newData = new MonsterData(data);
+        newData.Health = (int)(newData.Health * 1.2 * times);
+        newData.Damage = (int)(newData.Damage * 1.5 * times);
+        newData.Money = (int)(newData.Money * 1.1 * times);
+        return newData;
+    }
 }

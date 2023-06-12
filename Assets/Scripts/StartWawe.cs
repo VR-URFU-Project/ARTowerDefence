@@ -18,7 +18,6 @@ public class StartWawe : MonoBehaviour
     private double timer = DISABLED_TIMER_VALUE;
     private Queue<SubwaveData> dataQueue;
     private int activeEnemies = 0;
-    //private LinkedList<GameObject> activeEnemies;
 
     private int difficultyTime;
     private bool infinityMode;
@@ -30,8 +29,6 @@ public class StartWawe : MonoBehaviour
 
     private void Start()
     {
-        //mainArea = GameObject.FindGameObjectWithTag("GamingPlace");
-        //activeEnemies = new LinkedList<GameObject>();
         enemySpawner = gameObject.GetComponent<EnemySpawner>();
         dataQueue = new Queue<SubwaveData>();
         VictoryPanel.SetActive(false);
@@ -82,7 +79,6 @@ public class StartWawe : MonoBehaviour
     /// </summary>
     public void ContinueGameAfterWinning()
     {
-        //GameTimer.ResumeTimer();
         TimescaleManager.Resume(true);
 
         infinityMode = true;
@@ -249,16 +245,15 @@ public class StartWawe : MonoBehaviour
         //newEnemy.transform.localPosition = spawnPlaces[index].transform.localPosition; 
         if (newEnemy != null)
         {
-
-            newEnemy/*.GetComponent<EnemyScript>()*/.SetTarget(crystal);
-            newEnemy/*.GetComponent<EnemyScript>()*/.BasicData = newData;
+            if(GameTimer.GetSeconds() > 900)
+                newData = MonsterController.UpgradeEnemy(newData, (GameTimer.GetSeconds() - 900)/30 + 1);
+            newEnemy.SetTarget(crystal);
+            newEnemy.BasicData = newData;
             newEnemy.gameObject.SetActive(true);
-            //activeEnemies.AddLast(newEnemy);
             ++activeEnemies;
-            newEnemy.GetComponent<EnemyScript>().SetKillEvent(() =>
+            newEnemy.SetKillEvent(() =>
             {
                 //MoneySystem.ChangeMoney(newData.Money);
-                //activeEnemies.Remove(newEnemy);
                 --activeEnemies;
             });
         }
@@ -272,7 +267,7 @@ public class StartWawe : MonoBehaviour
                 difficultyTime = 300;
                 break;
             case Difficulty.normal:
-                difficultyTime = 60;
+                difficultyTime = 600;
                 break;
             case Difficulty.hard:
                 difficultyTime = 900;
@@ -301,10 +296,5 @@ public class StartWawe : MonoBehaviour
         var reader = QSReader.Create("GameStatus");
         curWave = reader.Exists("wave") ? reader.Read<int>("wave") : 0;
         curSubWave = reader.Exists("subWave") ? reader.Read<int>("subWave") : 0;
-
-        //reader = QSReader.Create("GameDifficulty");
-        //infinityMode = reader.Exists("infinityMode") ? reader.Read<bool>("infinityMode") : false;
-        //var difficulty = reader.Exists("difficulty") ? reader.Read<int>("difficulty") : 1;
-        //SwitchDifficulty(difficulty);
     }
 }

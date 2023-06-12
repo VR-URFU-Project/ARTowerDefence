@@ -8,8 +8,8 @@ using UnityEngine;
 public static class MonsterController
 {
     static List<MonsterData> Monsters = CSVReader.ReadMonsterData();
-    static private readonly float purpleChance = 0.1f;
-    static private readonly float blackChance = 0.2f;
+    static private float purpleChance = 0.1f;
+    static private float blackChance = 0.2f;
 
 
     /// <summary>
@@ -79,5 +79,33 @@ public static class MonsterController
         data.Damage = data.Damage * 8;
         data.AttackSpeed = data.AttackSpeed * 2f;
         data.Money = data.Money * 8;
+    }
+
+    public static void SwitchDifficulty(Difficulty difficulty)
+    {
+        switch (difficulty)
+        {
+            case Difficulty.easy:
+                purpleChance = 0f;
+                blackChance = 0.1f;
+                break;
+            case Difficulty.normal:
+                purpleChance = 0.1f;
+                blackChance = 0.2f;
+                break;
+            case Difficulty.hard:
+                purpleChance = 0.2f;
+                blackChance = 0.3f;
+                break;
+        }
+    }
+
+    public static MonsterData UpgradeEnemy(MonsterData data, int times)
+    {
+        var newData = new MonsterData(data);
+        newData.Health = (int)(newData.Health * 1.2 * times);
+        newData.Damage = (int)(newData.Damage * 1.5 * times);
+        newData.Money = (int)(newData.Money * 1.1 * times);
+        return newData;
     }
 }

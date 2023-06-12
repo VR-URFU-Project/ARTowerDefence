@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class OpenScene : MonoBehaviour
 {
-    private string selectedMode;
+    private static string selectedMode;
     public void OpenNewScene(int sceneId)
     {
         //var oldScene = SceneManager.GetActiveScene();
@@ -35,7 +34,7 @@ public class OpenScene : MonoBehaviour
 
     public void OpenSelectedScene()
     {
-        int sceneId = (selectedMode == "AR" ? 1 : 2);
+        int sceneId = selectedMode == "AR" ? 1 : 2;
         SceneManager.LoadScene(sceneId);
     }
 }

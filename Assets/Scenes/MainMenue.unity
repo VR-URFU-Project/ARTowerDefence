@@ -4637,7 +4637,6 @@ GameObject:
   - component: {fileID: 2112025126}
   - component: {fileID: 2112025125}
   - component: {fileID: 2112025128}
-  - component: {fileID: 2112025129}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -4722,30 +4721,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1131761171}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 2112025129}
-        m_TargetAssemblyTypeName: ChangeSprite, Assembly-CSharp
-        m_MethodName: DoChangeSprite
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &2112025126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4796,20 +4771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3472d58bba1e524469bc2b46e5c7858f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2112025129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112025123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eb3b296675d4694ab3134af30193a2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 470386d5052956d41a41a2f49bc0c52d, type: 3}
-  image: {fileID: 19740448}
 --- !u!1 &2119877991
 GameObject:
   m_ObjectHideFlags: 0

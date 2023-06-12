@@ -21,6 +21,7 @@ public class StartWawe : MonoBehaviour
     //private LinkedList<GameObject> activeEnemies;
 
     private int difficultyTime;
+    private bool infinityMode;
 
     private float timeoutForSpawn = 0.2f;
     private int spawnBunchSize = 10000;
@@ -36,13 +37,17 @@ public class StartWawe : MonoBehaviour
         VictoryPanel.SetActive(false);
 
         var reader = QSReader.Create("GameDifficulty");
-        var difficulty = reader.Exists("difficulty") ? reader.Read<int>("difficulty") : 0;
+        infinityMode = reader.Exists("infinityMode") ? reader.Read<bool>("infinityMode") : false;
+        var difficulty = reader.Exists("difficulty") ? reader.Read<int>("difficulty") : 1;
+
+        Debug.Log("difficulty: " + difficulty + " infinity mode: " + infinityMode);
         SwitchDifficulty(difficulty);
     }
 
     private void Update()
     {
-        if (activeEnemies == 0 && dataQueue.Count == 0 && WaveController.WavesTimeInfo[curWave] > difficultyTime /*curWave >= WaveController.WawesInfo.Count*/)
+        if (VictoryPanel.activeInHierarchy) return;
+        if (activeEnemies == 0 && dataQueue.Count == 0 && WaveController.WavesTimeInfo[curWave] > difficultyTime && !infinityMode)
         {
             //Debug.Log("Победа");
             VictoryPanel.SetActive(true);
@@ -53,7 +58,7 @@ public class StartWawe : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer > 0) return;
 
-        if (WaveController.WavesTimeInfo[curWave] > difficultyTime) return;
+        if (WaveController.WavesTimeInfo[curWave] > difficultyTime && !infinityMode) return;
 
         GenerateNextSubwave();
         if (timer == DISABLED_TIMER_VALUE) return;
@@ -72,22 +77,46 @@ public class StartWawe : MonoBehaviour
         processSubwave(dataQueue.Dequeue());
     }
 
+    /// <summary>
+    /// Вызывается при нажатии на кнопку в ui
+    /// </summary>
+    public void ContinueGameAfterWinning()
+    {
+        //GameTimer.ResumeTimer();
+        TimescaleManager.Resume(true);
+
+        infinityMode = true;
+
+        GenerateNextSubwave();
+        processSubwave(dataQueue.Dequeue());
+    }
+
     private void GenerateNextSubwave()
     {
-        if(GameTimer.GetSeconds() >= WaveController.WavesTimeInfo[curWave])
+        if (infinityMode && curWave >= WaveController.WawesInfo.Count)
         {
-            ++curWave;
-            curSubWave = 0;
+            var wave = Random.Range(0, WaveController.WawesInfo.Count);
+            curSubWave = Random.Range(0, WaveController.WawesInfo[wave].Data.Count);
 
-            if (curWave >= WaveController.WawesInfo.Count)
-            {
-                timer = DISABLED_TIMER_VALUE;
-                return;
-            }
+            dataQueue.Enqueue(WaveController.WawesInfo[wave].Data[curSubWave]);
         }
-        dataQueue.Enqueue(WaveController.WawesInfo[curWave].Data[curSubWave]);
-        curSubWave++;
-        curSubWave = curSubWave % WaveController.WawesInfo[curWave].Data.Count;
+        else
+        {
+            if (GameTimer.GetSeconds() >= WaveController.WavesTimeInfo[curWave])
+            {
+                ++curWave;
+                curSubWave = 0;
+
+                if (curWave >= WaveController.WawesInfo.Count && !infinityMode)
+                {
+                    timer = DISABLED_TIMER_VALUE;
+                    return;
+                }
+            }
+            dataQueue.Enqueue(WaveController.WawesInfo[curWave].Data[curSubWave]);
+            curSubWave++;
+            curSubWave = curSubWave % WaveController.WawesInfo[curWave].Data.Count;
+        }
     }
 
     /// <summary>
@@ -96,7 +125,7 @@ public class StartWawe : MonoBehaviour
     /// <param name="subwave"></param>
     private void processSubwave(SubwaveData subwave)
     {
-        
+
         switch (subwave.SpawnType)
         {
             case "C":
@@ -151,7 +180,7 @@ public class StartWawe : MonoBehaviour
         for (var i = 0; i < enemies.Count; ++i)
         {
             CreateEnemy(ind, enemies[i]);
-            if(i % spawnBunchSize == 0 && i != 0)
+            if (i % spawnBunchSize == 0 && i != 0)
                 yield return new WaitForSeconds(timeoutForSpawn);
         }
 
@@ -166,7 +195,7 @@ public class StartWawe : MonoBehaviour
         for (var i = 0; i < enemies.Count; ++i)
         {
             CreateEnemy(getRandomSpawnPlace(), enemies[i]);
-            if (i % spawnBunchSize == 0 && i!=0)
+            if (i % spawnBunchSize == 0 && i != 0)
                 yield return new WaitForSeconds(timeoutForSpawn);
         }
     }
@@ -243,7 +272,7 @@ public class StartWawe : MonoBehaviour
                 difficultyTime = 300;
                 break;
             case Difficulty.normal:
-                difficultyTime = 600;
+                difficultyTime = 60;
                 break;
             case Difficulty.hard:
                 difficultyTime = 900;
@@ -255,7 +284,15 @@ public class StartWawe : MonoBehaviour
     {
         var writer = QuickSaveWriter.Create("GameStatus");
         writer.Write("subWave", curSubWave)
-            .Write("wave", (curWave-1 < 0) ? 0 : curWave - 1);
+            .Write("wave", (curWave - 1 < 0) ? 0 : curWave - 1);
+        writer.Commit();
+
+        writer = QuickSaveWriter.Create("GameDifficulty");
+        if (difficultyTime / 300 - 1 >= 0)
+            writer.Write("difficulty", difficultyTime / 300 - 1);
+        else
+            writer.Write("difficulty", 0)
+                .Write("infinityMode", infinityMode);
         writer.Commit();
     }
 
@@ -264,5 +301,10 @@ public class StartWawe : MonoBehaviour
         var reader = QSReader.Create("GameStatus");
         curWave = reader.Exists("wave") ? reader.Read<int>("wave") : 0;
         curSubWave = reader.Exists("subWave") ? reader.Read<int>("subWave") : 0;
+
+        //reader = QSReader.Create("GameDifficulty");
+        //infinityMode = reader.Exists("infinityMode") ? reader.Read<bool>("infinityMode") : false;
+        //var difficulty = reader.Exists("difficulty") ? reader.Read<int>("difficulty") : 1;
+        //SwitchDifficulty(difficulty);
     }
 }

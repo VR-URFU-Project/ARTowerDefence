@@ -53,6 +53,8 @@ public class OnGameStart : MonoBehaviour
 
         if (flag == 1) GameDataController.LoadGameData();
 
+        StatisticsCollector.LoadStatistics();
+
         var writer = QuickSaveWriter.Create("Temp");
         writer.Write("needsLoad", 0);
         writer.Commit();

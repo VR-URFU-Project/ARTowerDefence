@@ -53,6 +53,11 @@ public class StatisticsCollector : MonoBehaviour
         return ret;
     }
 
+    public int GetCurrentTimeRecord()
+    {
+        return CurrentTimeRecord;
+    }
+
     public void ChangeTimeRecord(int newRecord)
     {
         CurrentTimeRecord = newRecord;

@@ -78,8 +78,8 @@ public class TowerData
             switch (data[1])
             {
                 case var str when str.Contains("hp"):
-                    Health += int.Parse(data[0]);
                     MaxHealth += int.Parse(data[0]);
+                    Health = MaxHealth;
                     break;
                 case var str when str.Contains("dmg"):
                     Damage += int.Parse(data[0]);

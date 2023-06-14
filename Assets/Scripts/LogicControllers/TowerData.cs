@@ -10,6 +10,8 @@ public class TowerData
 
     public int Health { get; set; }
 
+    public int MaxHealth { get; set; }
+
     public double Range { get; set; }
 
     public int Damage { get; set; }
@@ -46,6 +48,7 @@ public class TowerData
     {
         Level = old.Level;
         Health = old.Health;
+        MaxHealth = old.MaxHealth;
         Range = old.Range;
         Damage = old.Damage;
         AtackSpeed = old.AtackSpeed;
@@ -76,6 +79,7 @@ public class TowerData
             {
                 case var str when str.Contains("hp"):
                     Health += int.Parse(data[0]);
+                    MaxHealth += int.Parse(data[0]);
                     break;
                 case var str when str.Contains("dmg"):
                     Damage += int.Parse(data[0]);

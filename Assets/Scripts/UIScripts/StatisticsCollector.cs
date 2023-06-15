@@ -86,15 +86,18 @@ public class StatisticsCollector : MonoBehaviour
         damageWriter.Commit();
     }
 
-    public static void LoadStatistics()
+    public static void LoadTowerStatistics()
     {
         var reader = QSReader.Create("DamageStatistics");
         if (reader.Exists("Ballista")) BallistaDamage = reader.Read<int>("Ballista");
         if (reader.Exists("TreeHouse")) TreeHouseDamage = reader.Read<int>("TreeHouse");
         if (reader.Exists("Mushroom")) MushroomDamage = reader.Read<int>("Mushroom");
         if (reader.Exists("LazerTower")) LazerTowerDamage = reader.Read<int>("LazerTower");
+    }
 
-        reader = QSReader.Create("TimeStatistics");
+    public static void LoadTimeStatistics()
+    {
+        var reader = QSReader.Create("TimeStatistics");
         if (reader.Exists("TimeRecord")) CurrentTimeRecord = reader.Read<int>("TimeRecord");
     }
 }

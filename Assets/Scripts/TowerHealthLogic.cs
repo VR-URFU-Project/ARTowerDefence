@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class TowerHealthLogic : MonoBehaviour
     [SerializeField] public GameObject EndgameMessage;
     [SerializeField] public Button pauseButton;
     [SerializeField] public TowerType type;
+    [SerializeField] private StatisticsCollector statsCollector;
     public TowerData Tdata;
 
     [Header("Audio")]
@@ -45,9 +47,7 @@ public class TowerHealthLogic : MonoBehaviour
         {
             if (type == TowerType.Crystal)
             {
-                TimescaleManager.Pause(true);
-                pauseButton.enabled = false;
-                EndgameMessage.SetActive(true);
+                GameOver();
             }
             else
             {
@@ -55,5 +55,19 @@ public class TowerHealthLogic : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    private void GameOver()
+    {
+        TimescaleManager.Pause(true);
+        pauseButton.enabled = false;
+
+        int curTime = GameTimer.GetSeconds();
+        if (curTime > statsCollector.GetCurrentTimeRecord())
+        {
+            statsCollector.ChangeTimeRecord(curTime);
+        }
+        
+        EndgameMessage.SetActive(true);
     }
 }

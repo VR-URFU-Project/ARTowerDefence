@@ -8,5 +8,6 @@ public class SaveGame : MonoBehaviour
     public void SaveAll()
     {
         GameDataController.SaveGameData();
+        StatisticsCollector.SaveStatistics();
     }
 }

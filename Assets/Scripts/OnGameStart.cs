@@ -51,7 +51,17 @@ public class OnGameStart : MonoBehaviour
         if (!reader.Exists("needsLoad")) return;
         var flag = reader.Read<int>("needsLoad");
 
-        if (flag == 1) GameDataController.LoadGameData();
+        if (flag == 1)
+        {
+            GameDataController.LoadGameData();
+            StatisticsCollector.LoadTowerStatistics();
+        }
+        else
+        {
+            StatisticsCollector.ResetTowersStatistics();
+        }
+
+        StatisticsCollector.LoadTimeStatistics();
 
         var writer = QuickSaveWriter.Create("Temp");
         writer.Write("needsLoad", 0);

@@ -31,6 +31,10 @@ public class TowerInteractionPanelLogic : MonoBehaviour
     public Sprite noMoneySprite;
     public Sprite normSprite;
 
+    [Header("Colors")]
+    public Color notEnoughMoneyColor;
+    public Color defaultColor;
+
     [Header("Selected Behaviour")]
     [SerializeField]
     private SelectedTowerBehaviour selectedBehaviour;
@@ -92,8 +96,8 @@ public class TowerInteractionPanelLogic : MonoBehaviour
         selectedBehaviour.DeselectTower();
 
         upgradeButton.interactable = true;
-        upgradePricePlace.color = Color.black;
-        questionPlace.color = Color.black;
+        upgradePricePlace.color = defaultColor;//Color.black;
+        questionPlace.color = defaultColor;// Color.black;
         CameraHandler.ChangeShopItemSelectedStage(false);
         ShowShop();
     }
@@ -105,19 +109,19 @@ public class TowerInteractionPanelLogic : MonoBehaviour
         {
             upgradeButton.interactable = false;
             upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = maxSprite;
-            SetUpdatePriceText("", Color.black);
+            SetUpdatePriceText("", defaultColor/*Color.black*/);
         }
         else if (healthData.UpdatePrice > MoneySystem.GetMoney())
         {
             upgradeButton.interactable = false;
-            upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = noMoneySprite;
-            SetUpdatePriceText(healthData.UpdatePrice.ToString(), Color.red);
+            //upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = noMoneySprite;
+            SetUpdatePriceText(healthData.UpdatePrice.ToString(), notEnoughMoneyColor/* Color.red*/);
         }
         else
         {
             upgradeButton.interactable = true;
             upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = normSprite;
-            SetUpdatePriceText(healthData.UpdatePrice.ToString(), Color.black);
+            SetUpdatePriceText(healthData.UpdatePrice.ToString(), defaultColor/*Color.black*/);
         }
 
         selectedBehaviour.UpdateRadius();

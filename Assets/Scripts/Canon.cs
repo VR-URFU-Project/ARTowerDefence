@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 using UnityEngine;
-using UnityEngine.Networking.Types;
 
 public class Canon : MonoBehaviour
 {
@@ -38,9 +36,11 @@ public class Canon : MonoBehaviour
     [Header("Special Settings")]
     private const double _scale = 0.05;
     private double fireCountdown = 0d;
+    private StatisticsCollector statsCollector;
 
     void Start()
     {
+        statsCollector = GameObject.FindGameObjectWithTag("MainPrefab").GetComponent<StatisticsCollector>();
         bulletSpawner = GetComponent<BulletSpawner>();
         lineRenderer = GetComponent<LineRenderer>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
@@ -193,6 +193,9 @@ public class Canon : MonoBehaviour
                 //    bullet.speed = Tdata.ProjectileSpeed;
                 bullet.Seek(target);
             }
+
+            // Ballista and TreeHouse damage statistics
+            statsCollector.AddDamageToStatistics(Tdata.Type, Tdata.Damage);
         }
     }
 
@@ -206,13 +209,22 @@ public class Canon : MonoBehaviour
             if (collider.tag == EnemyTag || collider.tag == FlyEnemyTag)
                 Damage(collider.transform);
         }
+
+        // Mushroom damage statisticss
+        statsCollector.AddDamageToStatistics(Tdata.Type, Tdata.Damage * colliders.Length);
     }
 
     void Damage(Transform enemy)
     {
 
         if (Tdata.Type == TowerType.LazerTower)
-            enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage * secCounter);
+        {
+            var damage = Tdata.Damage * secCounter;
+            enemy.GetComponent<EnemyScript>().TakeDamage(damage);
+
+            // LazerTower damage statistics
+            statsCollector.AddDamageToStatistics(Tdata.Type, damage);
+        }
         else
             enemy.GetComponent<EnemyScript>().TakeDamage(Tdata.Damage);
     }

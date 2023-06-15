@@ -77,6 +77,7 @@ public class StatisticsCollector : MonoBehaviour
     {
         var timeWriter = QuickSaveWriter.Create("TimeStatistics");
         timeWriter.Write("TimeRecord", CurrentTimeRecord);
+        timeWriter.Commit();
 
         var damageWriter = QuickSaveWriter.Create("DamageStatistics");
         damageWriter.Write("Ballista", BallistaDamage);

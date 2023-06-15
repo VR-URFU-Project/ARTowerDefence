@@ -114,7 +114,7 @@ public class TowerInteractionPanelLogic : MonoBehaviour
         else if (healthData.UpdatePrice > MoneySystem.GetMoney())
         {
             upgradeButton.interactable = false;
-            //upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = noMoneySprite;
+            upgradePricePlace.transform.parent.gameObject.GetComponent<Image>().sprite = noMoneySprite;
             SetUpdatePriceText(healthData.UpdatePrice.ToString(), notEnoughMoneyColor/* Color.red*/);
         }
         else

@@ -1887,7 +1887,7 @@ PrefabInstance:
     - target: {fileID: 3427059575207401338, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
       propertyPath: m_SpriteState.m_DisabledSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 61a8593b32d6a0a4985e541f1ccb26d1, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4430286153569687469, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
       propertyPath: m_Name
       value: TowerInteractionPanel
@@ -7645,7 +7645,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455325077}
-  m_LocalRotation: {x: 0.05381815, y: -0.05955036, z: 0.10620035, w: 0.99109983}
+  m_LocalRotation: {x: 0.05381815, y: -0.05955039, z: 0.10620037, w: 0.99109983}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9998,6 +9998,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5384016123327861106}
+        m_TargetAssemblyTypeName: StatisticsCollector, Assembly-CSharp
+        m_MethodName: SaveStatistics
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2001563552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11625,6 +11637,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5384016123327861106}
+        m_TargetAssemblyTypeName: StatisticsCollector, Assembly-CSharp
+        m_MethodName: SaveStatistics
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13780,7 +13804,7 @@ GameObject:
   - component: {fileID: 457015973}
   - component: {fileID: 5384016123327861106}
   m_Layer: 0
-  m_Name: NOAR23
+  m_Name: AR26
   m_TagString: MainPrefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18786,6 +18810,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: OpenScene, Assembly-CSharp
         m_MethodName: OpenNewScene
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5384016123327861106}
+        m_TargetAssemblyTypeName: StatisticsCollector, Assembly-CSharp
+        m_MethodName: SaveStatistics
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

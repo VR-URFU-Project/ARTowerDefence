@@ -32,7 +32,8 @@ public static class TimescaleManager
         if (adminPaused && !admin) return;
         adminPaused = false;
         Time.timeScale = speedBeforePause;
-        GameTimer.ResumeTimer();
+        //GameTimer.ResumeTimer();
+        GameTimer.StartTimer((int)(1000 / speedBeforePause));
         pauseFlag = 0;
     }
 

@@ -21,6 +21,6 @@ public class VictoryTextElement : MonoBehaviour
 
     private void SetText(StatisticsCollector statsCollector)
     {
-        tmp_text.text = "Damage: " + statsCollector.GetDamage(type);
+        tmp_text.text = /*"Damage: " + */statsCollector.GetDamage(type);
     }
 }

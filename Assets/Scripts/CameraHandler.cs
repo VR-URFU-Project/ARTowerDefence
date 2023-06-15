@@ -27,12 +27,18 @@ public class CameraHandler : MonoBehaviour
     float distanceBetweenPositions;
     float distanceBetweenDirections;
 
-    [Header("Menus")]
+    [Header("Menues")]
     [SerializeField] GameObject gamePause;
     [SerializeField] GameObject settingsMenu;
+    [SerializeField] GameObject victoryPanel;
+    [SerializeField] GameObject gameOverPanel;
+
 
     bool gamePause_enabled;
     bool settingsMenu_enabled;
+    bool victoryPanel_enabled;
+    bool gameOverPanel_enabled;
+
     private static bool shopItem_selected;
     bool zoom_activated;
     float X_speed;
@@ -56,9 +62,13 @@ public class CameraHandler : MonoBehaviour
     {
         gamePause_enabled = gamePause.activeSelf;
         settingsMenu_enabled = settingsMenu.activeSelf;
+        victoryPanel_enabled = victoryPanel.activeSelf;
+        gameOverPanel_enabled = gameOverPanel.activeSelf;
+
         shop = GameObject.FindGameObjectWithTag(shopTag);
         shape = GameObject.FindGameObjectWithTag(shapeTag);
-        if (shape != null || gamePause_enabled || settingsMenu_enabled || shopItem_selected || !Input.GetMouseButton(0))
+        if (shape != null || gamePause_enabled || settingsMenu_enabled || shopItem_selected || !Input.GetMouseButton(0)
+            || victoryPanel_enabled || gameOverPanel_enabled)
         {
             virtualCamera.SetActive(false);
         }

@@ -56,6 +56,10 @@ public class OnGameStart : MonoBehaviour
             GameDataController.LoadGameData();
             StatisticsCollector.LoadTowerStatistics();
         }
+        else
+        {
+            StatisticsCollector.ResetTowersStatistics();
+        }
 
         StatisticsCollector.LoadTimeStatistics();
 

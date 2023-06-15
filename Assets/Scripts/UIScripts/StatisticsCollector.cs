@@ -86,13 +86,25 @@ public class StatisticsCollector : MonoBehaviour
         damageWriter.Commit();
     }
 
+    public static void ResetTowersStatistics()
+    {
+        BallistaDamage = 0;
+        TreeHouseDamage = 0;
+        MushroomDamage = 0;
+        LazerTowerDamage = 0;
+    }
+
     public static void LoadTowerStatistics()
     {
         var reader = QSReader.Create("DamageStatistics");
         if (reader.Exists("Ballista")) BallistaDamage = reader.Read<int>("Ballista");
+
         if (reader.Exists("TreeHouse")) TreeHouseDamage = reader.Read<int>("TreeHouse");
+
         if (reader.Exists("Mushroom")) MushroomDamage = reader.Read<int>("Mushroom");
+
         if (reader.Exists("LazerTower")) LazerTowerDamage = reader.Read<int>("LazerTower");
+
     }
 
     public static void LoadTimeStatistics()

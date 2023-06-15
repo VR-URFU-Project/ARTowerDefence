@@ -29,6 +29,11 @@ public class ElementOrganizer : MonoBehaviour
 
     private void SortElementsInHierarchy(List<KeyValuePair<TowerType, int>> sortedElements)
     {
+        for (int i = 0; i < elements.Count; i++)
+        {
+            elements[i].SetActive(false);
+        }
+
         int index = 0;
         foreach(var pair in sortedElements)
         {
@@ -46,9 +51,6 @@ public class ElementOrganizer : MonoBehaviour
                     }
                 }
             }
-
-            
-            //index++;
         }
     }
 }

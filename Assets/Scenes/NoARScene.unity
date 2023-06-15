@@ -1673,6 +1673,10 @@ PrefabInstance:
       propertyPath: sphereRadius
       value: 
       objectReference: {fileID: 141771350}
+    - target: {fileID: 3427059575207401338, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61a8593b32d6a0a4985e541f1ccb26d1, type: 3}
     - target: {fileID: 4430286153569687469, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
       propertyPath: m_Name
       value: TowerInteractionPanel
@@ -1797,6 +1801,54 @@ PrefabInstance:
       propertyPath: maxSprite
       value: 
       objectReference: {fileID: 21300000, guid: f705f4cb0d5fd9d49a3f500b25f67b4a, type: 3}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: defaultColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: defaultColor.b
+      value: 0.101960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: defaultColor.g
+      value: 0.15294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: defaultColor.r
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: notEnoughMoney.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: notEnoughMoney.b
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: notEnoughMoney.g
+      value: 0.85882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: notEnoughMoney.r
+      value: 0.85882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: notEnoughMoneyColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: notEnoughMoneyColor.b
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: notEnoughMoneyColor.g
+      value: 0.85882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908049686669098411, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
+      propertyPath: notEnoughMoneyColor.r
+      value: 0.85882354
+      objectReference: {fileID: 0}
     - target: {fileID: 6936331095002144501, guid: 46769c744ac2f6341ad01802a07eb187, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2395,7 +2447,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403980763}
-  m_LocalRotation: {x: 0.27303323, y: -0.0016210071, z: 0.00046006998, w: 0.9620032}
+  m_LocalRotation: {x: 0.27303317, y: -0.0016210069, z: 0.00046006983, w: 0.9620032}
   m_LocalPosition: {x: 0.29817227, y: 1.4667783, z: -1.1129575}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7133,7 +7185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491558146}
-  m_LocalRotation: {x: 0.03587793, y: -0.06292604, z: 0.10592617, w: 0.99173224}
+  m_LocalRotation: {x: 0.03587787, y: -0.06292605, z: 0.10592616, w: 0.99173224}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9660,7 +9712,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128454806}
-  m_LocalRotation: {x: 0.017780973, y: -0.0633688, z: 0.1039671, w: 0.99240065}
+  m_LocalRotation: {x: 0.017780973, y: -0.06336875, z: 0.10396707, w: 0.99240065}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
